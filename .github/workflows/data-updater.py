@@ -103,9 +103,9 @@ df.to_excel("flight_prices_all.xlsx", index=False)
 
 import json
 
-client_id = os.environ["ONEDRIVE_CLIENT_ID"]
-client_secret = os.environ["ONEDRIVE_CLIENT_SECRET"]
-tenant_id = os.environ["ONEDRIVE_TENANT_ID"]
+client_id = os.getenv("ONEDRIVE_CLIENT_ID")
+client_secret = os.getenv("ONEDRIVE_CLIENT_SECRET")
+tenant_id = os.getenv("ONEDRIVE_TENANT_ID")
 
 # Get access token
 token_url = f"https://login.microsoftonline.com/{tenant_id}/oauth2/v2.0/token"
@@ -139,6 +139,7 @@ if response.status_code == 201 or response.status_code == 200:
     print("✅ Upload successful!")
 else:
     print("❌ Upload failed:", response.status_code, response.text)
+
 
 
 
