@@ -15,7 +15,7 @@ jobs:
         with:
           python-version: '3.11.9'
       - name: Install dependencies
-        run: pip install requests pandas
+        run: pip install requests pandas openpyxl
       - name: Run script
         run: python .github/workflows/data-updater.py
         env:
