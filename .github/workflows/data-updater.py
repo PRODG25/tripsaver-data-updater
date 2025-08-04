@@ -1,6 +1,9 @@
 import requests
 import pandas as pd
 import os
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+import json
 
 polish_airports = [
     "KTW",  # Katowice
@@ -97,48 +100,39 @@ df = pd.DataFrame(all_results)
 df = df[["departure", "return", "price", "departure_airport", "arrival_airport"]]
 
 # Print DataFrame
-print(df)
+print("DF Saved")
 
 df.to_excel("flight_prices_all.xlsx", index=False)
 
-import json
 
-client_id = os.getenv("ONEDRIVE_CLIENT_ID")
-client_secret = os.getenv("ONEDRIVE_CLIENT_SECRET")
-tenant_id = os.getenv("ONEDRIVE_TENANT_ID")
 
-# Get access token
-token_url = f"https://login.microsoftonline.com/{tenant_id}/oauth2/v2.0/token"
-token_data = {
-    "client_id": client_id,
-    "scope": "https://graph.microsoft.com/.default",
-    "client_secret": client_secret,
-    "grant_type": "client_credentials"
-}
+# === CONFIG ===
+SPREADSHEET_ID = "1HT99Uk4qG4q-l6Te3w5x0r0Ijx0RByTDotjjOyAMow4"
+SHEET_NAME = "Sheet1"
+KEY_FILE_PATH = "sheet_key.json"
 
-token_r = requests.post(token_url, data=token_data)
-access_token = token_r.json()["access_token"]
+# === WRITE GOOGLE CREDENTIALS FILE ===
+google_creds = os.environ.get("GOOGLE_SHEETS_KEY_JSON")
 
-# Upload file to OneDrive
-file_path = "flight_prices_all.xlsx"
-one_drive_path = "/TripSaver/flight_prices_all.xlsx"  # Or from env
+if not google_creds:
+    raise Exception("Missing GOOGLE_SHEETS_KEY_JSON environment variable")
 
-with open(file_path, "rb") as f:
-    content = f.read()
+with open(KEY_FILE_PATH, "w") as f:
+    f.write(google_creds)
 
-headers = {
-    "Authorization": f"Bearer {access_token}",
-    "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+# === AUTHORIZE ===
+scope = [
+    "https://spreadsheets.google.com/feeds",
+    "https://www.googleapis.com/auth/drive"
+]
+creds = ServiceAccountCredentials.from_json_keyfile_name(KEY_FILE_PATH, scope)
+client = gspread.authorize(creds)
 
-}
-
-upload_url = f"https://graph.microsoft.com/v1.0/me/drive/root:{one_drive_path}:/content"
-response = requests.put(upload_url, headers=headers, data=content)
-
-if response.status_code == 201 or response.status_code == 200:
-    print("✅ Upload successful!")
-else:
-    print("❌ Upload failed:", response.status_code, response.text)
+# === READ CSV & WRITE TO SHEET ===
+spreadsheet = client.open_by_key(SPREADSHEET_ID)
+worksheet = spreadsheet.worksheet(SHEET_NAME)
+worksheet.clear()
+worksheet.update([df.columns.values.tolist()] + df.values.tolist())
 
 
 
