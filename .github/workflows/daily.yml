@@ -20,12 +20,13 @@ jobs:
         run: python .github/workflows/data-updater.py
         env:
           API_KEY: ${{ secrets.API_KEY }}
-      - name: Commit and push updated xlsx
+      - name: Commit and push xlsx
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add routes_to_exclude.xlsx
-          git commit -m "Update Excel file" || echo "No changes to commit"
-          git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/PRODG25/tripsaver-data-updater.git
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git add flight_prices_all.xlsx
+          git commit -m "Auto-update flight prices"
+          git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/PRODG25/tripsaver-data-updater.git HEAD:main
+
 
 
