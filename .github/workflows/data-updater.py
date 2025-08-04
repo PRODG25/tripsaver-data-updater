@@ -132,7 +132,10 @@ client = gspread.authorize(creds)
 spreadsheet = client.open_by_key(SPREADSHEET_ID)
 worksheet = spreadsheet.worksheet(SHEET_NAME)
 worksheet.clear()
-worksheet.update([df.columns.values.tolist()] + df.values.tolist())
+df_clean = df.replace([float("inf"), float("-inf")], pd.NA).fillna("").astype(str)
+worksheet.update([df_clean.columns.values.tolist()] + df_clean.values.tolist())
+
+
 
 
 
