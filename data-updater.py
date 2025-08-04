@@ -106,34 +106,6 @@ df.to_excel("flight_prices_all.xlsx", index=False)
 
 
 
-# === CONFIG ===
-SPREADSHEET_ID = "1HT99Uk4qG4q-l6Te3w5x0r0Ijx0RByTDotjjOyAMow4"
-SHEET_NAME = "Sheet1"
-KEY_FILE_PATH = "sheet_key.json"
-
-# === WRITE GOOGLE CREDENTIALS FILE ===
-google_creds = os.environ.get("GOOGLE_SHEETS_KEY_JSON")
-
-if not google_creds:
-    raise Exception("Missing GOOGLE_SHEETS_KEY_JSON environment variable")
-
-with open(KEY_FILE_PATH, "w") as f:
-    f.write(google_creds)
-
-# === AUTHORIZE ===
-scope = [
-    "https://spreadsheets.google.com/feeds",
-    "https://www.googleapis.com/auth/drive"
-]
-creds = ServiceAccountCredentials.from_json_keyfile_name(KEY_FILE_PATH, scope)
-client = gspread.authorize(creds)
-
-# === READ CSV & WRITE TO SHEET ===
-spreadsheet = client.open_by_key(SPREADSHEET_ID)
-worksheet = spreadsheet.worksheet(SHEET_NAME)
-worksheet.clear()
-worksheet.update([df.columns.values.tolist()] + df.values.tolist())
-
 
 
 
