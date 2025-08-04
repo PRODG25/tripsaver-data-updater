@@ -82,7 +82,7 @@ for route in routes:
         "end_date":"2025-10-31"
     }
 
-    response = requests.get(url, headers=headers, params=params, verify=False)
+    response = requests.get(url, headers=headers, params=params)
     
     if response.status_code == 200:
         data = response.json()
@@ -103,3 +103,4 @@ df = df[["departure", "return", "price", "departure_airport", "arrival_airport"]
 print("DF Saved")
 
 df.to_excel("flight_prices_all.xlsx", index=False)
+
