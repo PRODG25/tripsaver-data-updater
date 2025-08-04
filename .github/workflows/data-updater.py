@@ -101,5 +101,45 @@ print(df)
 
 df.to_excel("flight_prices_all.xlsx", index=False)
 
+import json
+
+client_id = os.environ["ONEDRIVE_CLIENT_ID"]
+client_secret = os.environ["ONEDRIVE_CLIENT_SECRET"]
+tenant_id = os.environ["ONEDRIVE_TENANT_ID"]
+
+# Get access token
+token_url = f"https://login.microsoftonline.com/{tenant_id}/oauth2/v2.0/token"
+token_data = {
+    "client_id": client_id,
+    "scope": "https://graph.microsoft.com/.default",
+    "client_secret": client_secret,
+    "grant_type": "client_credentials"
+}
+
+token_r = requests.post(token_url, data=token_data)
+access_token = token_r.json()["access_token"]
+
+# Upload file to OneDrive
+file_path = "flight_prices_all.xlsx"
+one_drive_path = "/TripSaver/flight_prices_all.xlsx"  # Or from env
+
+with open(file_path, "rb") as f:
+    content = f.read()
+
+headers = {
+    "Authorization": f"Bearer {access_token}",
+    "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+
+}
+
+upload_url = f"https://graph.microsoft.com/v1.0/me/drive/root:{one_drive_path}:/content"
+response = requests.put(upload_url, headers=headers, data=content)
+
+if response.status_code == 201 or response.status_code == 200:
+    print("✅ Upload successful!")
+else:
+    print("❌ Upload failed:", response.status_code, response.text)
+
+
 
 
