@@ -26,7 +26,7 @@ jobs:
           git config --global user.name "GitHub Actions"
           git add flight_prices_all.xlsx
           git commit -m "Auto-update flight prices"
-          git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/PRODG25/tripsaver-data-updater.git HEAD:main
+          git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/PRODG25/tripsaver-data-updater.git
 
 
 
