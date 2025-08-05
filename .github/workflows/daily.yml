@@ -45,7 +45,7 @@ jobs:
         
           # Add the new files
           git add "$file1" 
-          git add "$file2"
+          git add "best_deals_detected_05082025.csv"
         
           # Commit all changes (archive moves + new files)
           git commit -m "Archived old CSVs and added new ones for $today" || echo "No changes to commit"
