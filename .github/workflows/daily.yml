@@ -24,6 +24,10 @@ jobs:
         run: |
           echo "Searching for CSV files..."
           find . -type f -name "*.csv"
+      - name: Move existing CSVs to archive folder
+        run: |
+          mkdir -p archive
+          find . -type f -name "*.csv" ! -path "./archive/*" -exec bash -c 'mv "$0" archive/' {} \;
       - name: Commit and push generated CSV files
         env:
           GIT_AUTH_TOKEN: ${{ secrets.GH_PAT }}
