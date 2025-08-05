@@ -24,8 +24,6 @@ jobs:
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "GitHub Actions"
-
-          cd $GITHUB_WORKSPACE
           
           git checkout master
         
@@ -43,7 +41,7 @@ jobs:
           # Generate today's filenames
           today=$(date +'%d%m%Y')
           file1="best_deals_detected_${today}.csv"
-          file2="multi_city_tickets_${today}.csv"
+          file2="/home/runner/work/tripsaver-data-updater/tripsaver-data-updater/multi_city_tickets_${today}.csv"
         
           # Add the new files
           git add "$file1" "$file2"
