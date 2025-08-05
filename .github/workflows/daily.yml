@@ -15,7 +15,7 @@ jobs:
         with:
           python-version: '3.11.9'
       - name: Install dependencies
-        run: pip install requests pandas openpyxl gspread oauth2client
+        run: pip install requests pandas openpyxl
       - name: Run script
         run: python .github/workflows/data-updater.py
         env:
@@ -24,9 +24,10 @@ jobs:
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "GitHub Actions"
+          git checkout master
           git add flight_prices_all.xlsx
-          git commit -m "Auto-update flight prices"
-          git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/PRODG25/tripsaver-data-updater.git
+          git commit -m "Auto-update flight prices" || echo "Nothing to commit"
+          git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/PRODG25/tripsaver-data-updater.git master
 
 
 
