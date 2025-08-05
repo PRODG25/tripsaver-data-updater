@@ -1,8 +1,6 @@
 import requests
 import pandas as pd
 import os
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
 import json
 
 polish_airports = [
@@ -103,4 +101,5 @@ df = df[["departure", "return", "price", "departure_airport", "arrival_airport"]
 print("DF Saved")
 
 df.to_excel("flight_prices_all.xlsx", index=False)
+
 
