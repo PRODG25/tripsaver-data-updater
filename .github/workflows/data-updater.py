@@ -462,7 +462,7 @@ if os.path.exists(yesterday_filename):
     df = df.merge(df_yesterday, on="route_id", how="left")
 
     # Calculate % change
-    df["price_change_percent"] = ((df["price"] - df["price_yesterday"]) / df["price_yesterday"]) * 100
+    df["price_change_percent"] = ((df["Total Price"] - df["price_yesterday"]) / df["price_yesterday"]) * 100
     df["price_change_percent"] = df["price_change_percent"].fillna(0).round(2)
 else:
     print(f"⚠️ Yesterday's file '{yesterday_filename}' not found. Skipping price comparison.")
@@ -473,6 +473,7 @@ output_filename = f"best_deals_detected.csv"
 df.to_csv(output_filename, index=False)
 
 print(f"✅ Saved {len(df)} best deals to '{output_filename}' with price change info.")
+
 
 
 
