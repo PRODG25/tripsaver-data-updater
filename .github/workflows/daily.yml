@@ -41,10 +41,11 @@ jobs:
           # Generate today's filenames
           today=$(date +'%d%m%Y')
           file1="best_deals_detected_${today}.csv"
-          file2="/home/runner/work/tripsaver-data-updater/tripsaver-data-updater/multi_city_tickets_${today}.csv"
+          file2="multi_city_tickets_${today}.csv"
         
           # Add the new files
-          git add "$file1" "$file2"
+          git add "$file1" 
+          git add "$file2"
         
           # Commit all changes (archive moves + new files)
           git commit -m "Archived old CSVs and added new ones for $today" || echo "No changes to commit"
