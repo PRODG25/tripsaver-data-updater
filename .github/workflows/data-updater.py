@@ -394,7 +394,7 @@ final_df['Round_Trip_Link'] = final_df.apply(
 # Export to Excel
 today_str = datetime.today().strftime('%d%m%Y')
 
-filename2 = f"multi_city_tickets_{today_str}.csv"
+filename2 = f"multi_city_tickets.csv"
 final_df.to_csv(filename2, index=False, encoding='utf-8-sig')
 
 
@@ -435,10 +435,11 @@ best_deals = best_deals.sort_values(by='z_score')
 
 # Save to Excel
 today = datetime.today().strftime('%d%m%Y')
-output_filename = f"best_deals_detected_{today}.csv"
+output_filename = f"best_deals_detected.csv"
 best_deals.to_csv(output_filename, index=False)
 
 print(f"✅ Saved {len(best_deals)} best deals to '{output_filename}'")
+
 
 
 
