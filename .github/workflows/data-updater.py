@@ -440,8 +440,7 @@ best_deals.to_csv(output_filename, index=False)
 
 print(f"✅ Saved {len(best_deals)} best deals to '{output_filename}'")
 
-# Export to Excel
-today_str = datetime.today().strftime('%d%m%Y')
+
 
 
 
