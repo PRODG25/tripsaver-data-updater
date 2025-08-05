@@ -254,9 +254,8 @@ df = df.merge(
 )
 
 # Create filename with today's date in DDMMYYYY format
-today_str = datetime.today().strftime('%d%m%Y')
-filename = f"flight_prices_{today_str}.xlsx"
-
+filename = "flight_prices_raw.csv"
+df.to_csv(filename, index=False, encoding='utf-8-sig')
 
 print(f"DataFrame with all fight prices created saved")
 
@@ -428,17 +427,18 @@ df = df.merge(stats, on=['Route', 'Month'], how='left')
 df['z_score'] = (df['Total Price'] - df['AvgPrice']) / df['StdDev']
 
 # Filter best deals: at least 1 std dev below avg
-best_deals = df[df['z_score'] <= -1].copy()
+#best_deals = df[df['z_score'] <= -1].copy()
 
 # Sort by best deals first
-best_deals = best_deals.sort_values(by='z_score')
+df = df.sort_values(by='Total Price')
 
 # Save to Excel
 today = datetime.today().strftime('%d%m%Y')
 output_filename = f"best_deals_detected.csv"
-best_deals.to_csv(output_filename, index=False)
+df.to_csv(output_filename, index=False)
 
-print(f"✅ Saved {len(best_deals)} best deals to '{output_filename}'")
+print(f"✅ Saved {len(df)} best deals to '{output_filename}'")
+
 
 
 
