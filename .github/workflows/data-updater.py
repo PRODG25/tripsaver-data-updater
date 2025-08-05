@@ -403,7 +403,7 @@ print("Filtered dataframe with top 50% cheapest round-trips by route and month s
 #best deals
 
 # Load data
-df = pd.read_csv(filename2)
+df = final_df
 
 # Ensure date format
 df['Departure Date'] = pd.to_datetime(df['Departure Date'], errors='coerce')
@@ -439,6 +439,7 @@ output_filename = f"best_deals_detected_{today}.csv"
 best_deals.to_csv(output_filename, index=False)
 
 print(f"✅ Saved {len(best_deals)} best deals to '{output_filename}'")
+
 
 
 
