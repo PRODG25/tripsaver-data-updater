@@ -432,12 +432,48 @@ df['z_score'] = (df['Total Price'] - df['AvgPrice']) / df['StdDev']
 # Sort by best deals first
 df = df.sort_values(by='Total Price')
 
-# Save to Excel
-today = datetime.today().strftime('%d%m%Y')
+# === CREATE TODAY'S UNIQUE ID ===
+df["route_id"] = (
+    df["IATA_Departure"] + "_" +
+    df["IATA_Destination"] + "_" +
+    df["IATA_Return"] + "_" +
+    df["Departure Date"].astype(str) + "_" +
+    df["Return Date"].astype(str)
+)
+
+# === LOAD YESTERDAY'S FILE ===
+yesterday_filename = "archive/best_deals_detected.csv"
+
+if os.path.exists(yesterday_filename):
+    df_yesterday = pd.read_csv(yesterday_filename)
+
+    df_yesterday["route_id"] = (
+        df_yesterday["IATA_Departure"] + "_" +
+        df_yesterday["IATA_Destination"] + "_" +
+        df_yesterday["IATA_Return"] + "_" +
+        df_yesterday["Departure Date"].astype(str) + "_" +
+        df_yesterday["Return Date"].astype(str)
+    )
+
+    # Select only needed columns
+    df_yesterday = df_yesterday[["route_id", "Total Price"]].rename(columns={"Total Price": "price_yesterday"})
+
+    # Merge today's and yesterday's data
+    df = df.merge(df_yesterday, on="route_id", how="left")
+
+    # Calculate % change
+    df["price_change_percent"] = ((df["price"] - df["price_yesterday"]) / df["price_yesterday"]) * 100
+    df["price_change_percent"] = df["price_change_percent"].fillna(0).round(2)
+else:
+    print(f"⚠️ Yesterday's file '{yesterday_filename}' not found. Skipping price comparison.")
+    df["price_change_percent"] = None
+
+
 output_filename = f"best_deals_detected.csv"
 df.to_csv(output_filename, index=False)
 
-print(f"✅ Saved {len(df)} best deals to '{output_filename}'")
+print(f"✅ Saved {len(df)} best deals to '{output_filename}' with price change info.")
+
 
 
 
