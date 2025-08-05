@@ -439,5 +439,8 @@ output_filename = f"best_deals_detected_{today}.csv"
 best_deals.to_csv(output_filename, index=False)
 
 print(f"✅ Saved {len(best_deals)} best deals to '{output_filename}'")
+print("Saved to", os.path.abspath(output_filename))
+
+
 
 
