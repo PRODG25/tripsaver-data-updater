@@ -25,15 +25,31 @@ jobs:
           git config --global user.email "github-actions@github.com"
           git config --global user.name "GitHub Actions"
           
+          git checkout master
+        
+          # Ensure archive folder exists
+          mkdir -p archive
+        
+          # Move all existing CSV files to archive (only if any exist)
+          shopt -s nullglob
+          for file in *.csv; do
+            mv "$file" archive/
+            git add "archive/$file"
+          done
+          shopt -u nullglob
+        
+          # Generate today's filenames
           today=$(date +'%d%m%Y')
-          
           file1="best_deals_detected_${today}.csv"
           file2="multi_city_tickets_${today}.csv"
-          
-          git checkout master
+        
+          # Add the new files
           git add "$file1" "$file2"
-          git commit -m "Auto-update flight CSVs for $today" || echo "No changes to commit"
+        
+          # Commit all changes (archive moves + new files)
+          git commit -m "Archived old CSVs and added new ones for $today" || echo "No changes to commit"
           git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/PRODG25/tripsaver-data-updater.git master
+
 
 
 
