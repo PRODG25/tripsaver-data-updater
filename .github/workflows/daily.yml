@@ -24,6 +24,8 @@ jobs:
         run: |
           echo "Searching for CSV files..."
           find . -type f -name "*.csv"
+      - name: Increase Git buffer size
+        run: git config --global http.postBuffer 524288000
       - name: Move existing CSVs to archive folder
         run: |
           mkdir -p archive
