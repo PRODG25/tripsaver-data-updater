@@ -80,54 +80,6 @@ summer_destinations_from_poland = [
     # Albania
     "TIA",  # Tirana
 
-    # Portugal
-    "FAO",  # Faro (Algarve)
-    "LIS",  # Lisbon
-    "OPO",  # Porto
-    "FNC",  # Madeira
-
-    # France
-    "CDG",  # Paris Charles de Gaulle
-    "ORY",  # Paris Orly
-    "BVA",  # Paris Beauvais
-    "LYS",  # Lyon–Saint-Exupéry
-    "NCE",  # Nice Côte d'Azur
-    "MRS",  # Marseille Provence
-    "BIQ",  # Biarritz Pays Basque
-
-    "KEF",  # Reyjkjavik
-
-    "RMO",  #Moldova
-    "BBU",  #Bucharest
-    "OTP",  #Bucharest
-    "CPH",  #Copenhagen
-    "ARN",  #Stocholm
-    "GOT",  #Gothenburg
-    "ATH",  #Athens
-    "BUD",  #Budapest
-    "AUH",  #AbuDhabi
-    "IST",  #Istanbul
-    "SKP",  #Skopje
-    "KUT",  #Kutaisi
-    "MLA", #Malta
-    "AMM", #Amman
-    "RAK", #Marakech
-    "RBA", #Rabat
-    "AGA", #Agadir
-    "EIN", #Eindhoven
-    "OSL", #Oslo
-    "TRF", #Oslo
-    "AMS", #Amsterdam
-    "STN", #Stansted
-    "LTN", #Luton
-    "LGW", #Gatwick
-    "MAN", #Manchester
-    "DUB", #Dublin
-    "AYT", # Antalya
-    "ADB", #Izmir
-    "GLA", #Glasgow
-    "EDI", #Edingburgh
-
 ]
 
 
@@ -586,6 +538,7 @@ output_filename = f"best_deals_detected.csv"
 df.to_csv(output_filename, index=False)
 
 print(f"✅ Saved {len(df)} best deals to '{output_filename}' with price change info.")
+
 
 
 
