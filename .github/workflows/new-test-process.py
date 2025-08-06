@@ -103,6 +103,12 @@ final_df2 = process_chunk(df2)
 final_df = pd.concat([final_df1, final_df2]).sort_values(by='Total Price').reset_index(drop=True)
 print(f"Combined results from both chunks, total rows: {len(final_df)}")
 
+# Detect and remove duplicates
+num_duplicates = final_df.duplicated().sum()
+print(f"🔁 Number of duplicate rows before removal: {num_duplicates}")
+
+final_df = final_df.drop_duplicates().reset_index(drop=True)
+print(f"✅ Duplicates removed. Final row count: {len(final_df)}")
 
 # Load data
 df = final_df
@@ -174,15 +180,19 @@ else:
 df = df.drop(columns=[
     'Outbound Price', 
     'Inbound Price', 
-    'IATA_Departure', 
-    'IATA_Destination', 
-    'IATA_Return', 
     'Route', 
     'Month', 
     'StdDev', 
     'route_id'
 ])
 
+
+# Detect and remove duplicates
+num_duplicates = df.duplicated().sum()
+print(f"🔁 Number of duplicate rows before removal: {num_duplicates}")
+
+df = df.drop_duplicates().reset_index(drop=True)
+print(f"✅ Duplicates removed. Final row count: {len(df)}")
 
 output_filename = f"best_deals_detected.csv"
 df.to_csv(output_filename, index=False)
