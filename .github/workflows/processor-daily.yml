@@ -17,7 +17,7 @@ jobs:
       - name: Install dependencies
         run: pip install pandas openpyxl
       - name: Run script
-        run: python -u .github/workflows/new-test-process.py
+        run: python -u .github/workflows/test-upd.py
         env:
           API_KEY: ${{ secrets.API_KEY }}
       - name: List all CSV files
