@@ -3,7 +3,7 @@ import os
 from datetime import datetime, timedelta
 import time
 
-df = pd.read_csv("archive/flight_prices_raw.csv")
+df = pd.read_excel("archive/flight_prices_raw.xlsx")
 print(f"DataFrame with all fight prices created saved")
 print(df.head())
 
