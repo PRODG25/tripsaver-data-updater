@@ -110,6 +110,33 @@ def format_date(dt):
     dt_adjusted = dt
     return dt_adjusted.strftime('%y%m%d')
 
+# Create outbound link:
+final_df['Outbound_Link'] = final_df.apply(
+    lambda row: f"https://www.skyscanner.pl/transport/loty/{row['IATA_Departure']}/{row['IATA_Destination']}/{format_date(row['Departure Date'])}/"
+                "?"
+                "adultsv2=1&cabinclass=economy&childrenv2=&inboundaltsenabled=false&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=0",
+    axis=1
+)
+
+# Create inbound link:
+final_df['Inbound_Link'] = final_df.apply(
+    lambda row: f"https://www.skyscanner.pl/transport/loty/{row['IATA_Destination']}/{row['IATA_Return']}/{format_date(row['Return Date'])}/"
+                "?"
+                "adultsv2=1&cabinclass=economy&childrenv2=&inboundaltsenabled=false&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=0",
+    axis=1
+)
+
+# Create round trip link (only if departure = return airport)
+final_df['Round_Trip_Link'] = final_df.apply(
+    lambda row: (
+        f"https://www.skyscanner.pl/transport/loty/{row['IATA_Departure']}/{row['IATA_Destination']}/"
+        f"{format_date(row['Departure Date'])}/{format_date(row['Return Date'])}/"
+        "?"
+        "adultsv2=1&cabinclass=economy&childrenv2=&ref=home&rtn=1&preferdirects=false&outboundaltsenabled=false&inboundaltsenabled=false"
+    ) if row['IATA_Departure'] == row['IATA_Return'] else None,
+    axis=1
+)
+
 # Export to Excel
 today_str = datetime.today().strftime('%d%m%Y')
 
