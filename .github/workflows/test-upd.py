@@ -68,7 +68,7 @@ valid_trips['route'] = valid_trips['DepartureCity'] + ' - ' + valid_trips['Arriv
 
 # Group by route and departure month, get top 10% cheapest flights per group
 def top_10_percent(group):
-    cutoff = int(len(group) * 0.3)
+    cutoff = int(len(group) * 0.2)
     if cutoff == 0:
         cutoff = 1
     return group.nsmallest(cutoff, 'total_price')
@@ -114,7 +114,7 @@ def format_date(dt):
 final_df['Outbound_Link'] = final_df.apply(
     lambda row: f"https://www.skyscanner.pl/transport/loty/{row['IATA_Departure']}/{row['IATA_Destination']}/{format_date(row['Departure Date'])}/"
                 "?"
-                "adultsv2=1&cabinclass=economy&childrenv2=&inboundaltsenabled=false&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=0",
+                "adultsv2=1",
     axis=1
 )
 
@@ -122,7 +122,7 @@ final_df['Outbound_Link'] = final_df.apply(
 final_df['Inbound_Link'] = final_df.apply(
     lambda row: f"https://www.skyscanner.pl/transport/loty/{row['IATA_Destination']}/{row['IATA_Return']}/{format_date(row['Return Date'])}/"
                 "?"
-                "adultsv2=1&cabinclass=economy&childrenv2=&inboundaltsenabled=false&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=0",
+                "adultsv2=1",
     axis=1
 )
 
@@ -132,7 +132,7 @@ final_df['Round_Trip_Link'] = final_df.apply(
         f"https://www.skyscanner.pl/transport/loty/{row['IATA_Departure']}/{row['IATA_Destination']}/"
         f"{format_date(row['Departure Date'])}/{format_date(row['Return Date'])}/"
         "?"
-        "adultsv2=1&cabinclass=economy&childrenv2=&ref=home&rtn=1&preferdirects=false&outboundaltsenabled=false&inboundaltsenabled=false"
+        "adultsv2=1"
     ) if row['IATA_Departure'] == row['IATA_Return'] else None,
     axis=1
 )
