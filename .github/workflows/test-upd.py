@@ -215,6 +215,18 @@ else:
     print(f"⚠️ Yesterday's file '{yesterday_filename}' not found. Skipping price comparison.")
     df["price_change_percent"] = None
 
+df = df.drop(columns=[
+    'Outbound Price', 
+    'Inbound Price', 
+    'IATA_Departure', 
+    'IATA_Destination', 
+    'IATA_Return', 
+    'Route', 
+    'Month', 
+    'StdDev', 
+    'route_id'
+])
+
 
 output_filename = f"best_deals_detected.csv"
 df.to_csv(output_filename, index=False)
