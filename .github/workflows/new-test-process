@@ -4,7 +4,7 @@ import os
 from datetime import datetime
 
 # Load in chunks or split manually if memory is tight
-df = pd.read_csv("flight_prices_05082025.csv")
+df = pd.read_csv("archive/flight_prices_raw.csv")
 
 print(f"✅ DataFrame with all flight prices loaded.")
 
