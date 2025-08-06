@@ -100,7 +100,7 @@ final_df = filtered_df[[
 })
 
 # Sort by Total Price
-final_df = final_df[final_df['Total Price'] <= 2000].sort_values(by='Total Price').reset_index(drop=True)
+final_df = final_df[final_df['Total Price'] <= 1500].sort_values(by='Total Price').reset_index(drop=True)
 
 
 
@@ -147,7 +147,7 @@ df = df.merge(stats, on=['Route', 'Month'], how='left')
 df['z_score'] = (df['Total Price'] - df['AvgPrice']) / df['StdDev']
 
 # Filter best deals: at least 1 std dev below avg
-best_deals = df[df['z_score'] <= -0.5].copy()
+best_deals = df[df['z_score'] <= -1].copy()
 
 # Sort by best deals first
 df = df.sort_values(by='Total Price')
