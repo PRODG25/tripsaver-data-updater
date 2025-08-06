@@ -149,7 +149,6 @@ for route in routes:
     
     if response.status_code == 200:
         data = response.json()
-	print("success")    
         for entry in data.get("data", []):
             entry["departure_airport"] = route["departure_id"]
             entry["arrival_airport"] = route["arrival_id"]
@@ -539,6 +538,7 @@ output_filename = f"best_deals_detected.csv"
 df.to_csv(output_filename, index=False)
 
 print(f"✅ Saved {len(df)} best deals to '{output_filename}' with price change info.")
+
 
 
 
