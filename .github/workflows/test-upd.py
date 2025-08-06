@@ -1,3 +1,10 @@
+import requests
+import pandas as pd
+import os
+import json
+from datetime import datetime, timedelta
+import time
+
 df = pd.read_excel("flight_prices_05082025.xlsx")
 print(f"DataFrame with all fight prices created saved")
 
