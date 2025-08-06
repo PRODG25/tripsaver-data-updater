@@ -79,6 +79,55 @@ summer_destinations_from_poland = [
 
     # Albania
     "TIA",  # Tirana
+    
+ # Portugal
+    "FAO",  # Faro (Algarve)
+    "LIS",  # Lisbon
+    "OPO",  # Porto
+    "FNC",  # Madeira
+
+    # France
+    "CDG",  # Paris Charles de Gaulle
+    "ORY",  # Paris Orly
+    "BVA",  # Paris Beauvais
+    "LYS",  # Lyon–Saint-Exupéry
+    "NCE",  # Nice Côte d'Azur
+    "MRS",  # Marseille Provence
+    "BIQ",  # Biarritz Pays Basque
+
+    "KEF",  # Reyjkjavik
+
+    "RMO",  #Moldova
+    "BBU",  #Bucharest
+    "OTP",  #Bucharest
+    "CPH",  #Copenhagen
+    "ARN",  #Stocholm
+    "GOT",  #Gothenburg
+    "ATH",  #Athens
+    "BUD",  #Budapest
+    "AUH",  #AbuDhabi
+    "IST",  #Istanbul
+    "SKP",  #Skopje
+    "KUT",  #Kutaisi
+    "MLA", #Malta
+    "AMM", #Amman
+    "RAK", #Marakech
+    "RBA", #Rabat
+    "AGA", #Agadir
+    "EIN", #Eindhoven
+    "OSL", #Oslo
+    "TRF", #Oslo
+    "AMS", #Amsterdam
+    "STN", #Stansted
+    "LTN", #Luton
+    "LGW", #Gatwick
+    "MAN", #Manchester
+    "DUB", #Dublin
+    "AYT", # Antalya
+    "ADB", #Izmir
+    "GLA", #Glasgow
+    "EDI", #Edingburgh
+
 
 ]
 
@@ -155,9 +204,11 @@ for route in routes:
             all_results.append(entry)
     else:
         print(f"Failed for {route['departure_id']} to {route['arrival_id']}")
-
+	    
+print("data success")
 # Convert to DataFrame
 df = pd.DataFrame(all_results)
+print("data converted to df")
 
 # Optional: reorder columns
 df = df[["departure", "return", "price", "departure_airport", "arrival_airport"]]
@@ -320,7 +371,7 @@ df = df.merge(
 
 # Create filename with today's date in DDMMYYYY format
 filename = "flight_prices_raw.csv"
-df.to_csv(filename, index=False, encoding='utf-8-sig')
+df.to_csv(filename, index=False)
 
 print(f"DataFrame with all fight prices created saved")
 
@@ -538,6 +589,7 @@ output_filename = f"best_deals_detected.csv"
 df.to_csv(output_filename, index=False)
 
 print(f"✅ Saved {len(df)} best deals to '{output_filename}' with price change info.")
+
 
 
 
