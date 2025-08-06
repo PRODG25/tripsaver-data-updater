@@ -68,7 +68,7 @@ valid_trips['route'] = valid_trips['DepartureCity'] + ' - ' + valid_trips['Arriv
 
 # Group by route and departure month, get top 10% cheapest flights per group
 def top_10_percent(group):
-    cutoff = int(len(group) * 0.3)
+    cutoff = int(len(group) * 0.5)
     if cutoff == 0:
         cutoff = 1
     return group.nsmallest(cutoff, 'total_price')
@@ -100,7 +100,7 @@ final_df = filtered_df[[
 })
 
 # Sort by Total Price
-final_df = final_df.sort_values(by='Total Price').reset_index(drop=True)
+final_df = final_df[final_df['Total Price'] <= 4000].sort_values(by='Total Price').reset_index(drop=True)
 
 
 
