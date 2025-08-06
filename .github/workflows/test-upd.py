@@ -6,7 +6,9 @@ import time
 df = pd.read_csv("archive/flight_prices_raw.csv")
 print(f"DataFrame with all fight prices created saved")
 print(df.head())
+df = df.sort_values(by='price').reset_index(drop=True)
 
+df = df.iloc[:100_000].reset_index(drop=True)
 # Ensure datetime format
 df['departure'] = pd.to_datetime(df['departure'])
 df['return'] = pd.to_datetime(df['return'])
