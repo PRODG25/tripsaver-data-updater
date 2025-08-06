@@ -5,7 +5,7 @@ import time
 
 df = pd.read_csv("archive/flight_prices_raw.csv")
 print(f"DataFrame with all fight prices created saved")
-
+print(df.head())
 
 # Ensure datetime format
 df['departure'] = pd.to_datetime(df['departure'])
