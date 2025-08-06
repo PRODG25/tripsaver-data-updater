@@ -3,6 +3,7 @@ import pandas as pd
 import os
 import json
 from datetime import datetime, timedelta
+import time
 
 
 polish_airports = [
@@ -191,8 +192,8 @@ for route in routes:
         "country_code": "PL",
         "end_date":"2025-12-30"
     }
-
-    response = requests.get(url, headers=headers, params=params)
+    time.sleep(0.5)
+    response = requests.get(url, headers=headers, params=params, timeout=10)
     
     if response.status_code == 200:
         data = response.json()
@@ -585,6 +586,7 @@ output_filename = f"best_deals_detected.csv"
 df.to_csv(output_filename, index=False)
 
 print(f"✅ Saved {len(df)} best deals to '{output_filename}' with price change info.")
+
 
 
 
