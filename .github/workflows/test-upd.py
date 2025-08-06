@@ -1,4 +1,4 @@
-df = pd.read_csv("flight_prices_05082025.csv")
+df = pd.read_excel("flight_prices_05082025.xlsx")
 print(f"DataFrame with all fight prices created saved")
 
 
