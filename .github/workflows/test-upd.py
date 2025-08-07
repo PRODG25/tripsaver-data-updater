@@ -216,12 +216,6 @@ else:
     df["price_change_percent"] = None
 
 df = df.drop(columns=[
-    'Outbound Price', 
-    'Inbound Price', 
-    'IATA_Departure', 
-    'IATA_Destination', 
-    'IATA_Return', 
-    'Route', 
     'Month', 
     'StdDev', 
     'route_id'
