@@ -2,7 +2,7 @@ name: Processor - Daily Flight Data Refresh
 
 on:
   schedule:
-    - cron: "0 8 * * *"   # runs daily at 6:00 UTC
+    - cron: "0 15 * * *"   # runs daily at 6:00 UTC
   workflow_dispatch:
 
 jobs:
