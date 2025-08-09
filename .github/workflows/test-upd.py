@@ -100,7 +100,7 @@ final_df = filtered_df[[
 })
 
 # Sort by Total Price
-final_df = final_df[final_df['Total Price'] <= 2000].sort_values(by='Total Price').reset_index(drop=True)
+final_df = final_df[final_df['Total Price'] <= 1000].sort_values(by='Total Price').reset_index(drop=True)
 
 
 
