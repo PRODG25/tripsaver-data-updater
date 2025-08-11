@@ -104,34 +104,45 @@ final_df = final_df[final_df['Total Price'] <= 1000].sort_values(by='Total Price
 
 from urllib.parse import quote
 
-def format_ddmm(date_str):
-    return date_str.strftime("%d%m")  # assuming Departure Date and Return Date are datetime
+def format_ddmm(date_val):
+    return date_val.strftime("%d%m")  # assuming these are datetime objects
 
 # Outbound (one way)
 final_df['Outbound_Link'] = final_df.apply(
-    lambda row: f"https://tp.media/r?marker=659868&trs=445359&p=8310&u="
-                f"{quote(f'https://www.aviasales.com/search/{row['IATA_Departure']}{format_ddmm(row['Departure Date'])}{row['IATA_Destination']}1')}"
-                f"&campaign_id=541",
+    lambda row: (
+        lambda url: f"https://tp.media/r?marker=659868&trs=445359&p=8310&u={quote(url)}&campaign_id=541"
+    )(
+        f"https://www.aviasales.com/search/"
+        f"{row['IATA_Departure']}{format_ddmm(row['Departure Date'])}{row['IATA_Destination']}1"
+    ),
     axis=1
 )
 
 # Inbound (one way back)
 final_df['Inbound_Link'] = final_df.apply(
-    lambda row: f"https://tp.media/r?marker=659868&trs=445359&p=8310&u="
-                f"{quote(f'https://www.aviasales.com/search/{row['IATA_Destination']}{format_ddmm(row['Return Date'])}{row['IATA_Return']}1')}"
-                f"&campaign_id=541",
+    lambda row: (
+        lambda url: f"https://tp.media/r?marker=659868&trs=445359&p=8310&u={quote(url)}&campaign_id=541"
+    )(
+        f"https://www.aviasales.com/search/"
+        f"{row['IATA_Destination']}{format_ddmm(row['Return Date'])}{row['IATA_Return']}1"
+    ),
     axis=1
 )
 
 # Round trip (only if departure = return airport)
 final_df['Round_Trip_Link'] = final_df.apply(
     lambda row: (
-        f"https://tp.media/r?marker=659868&trs=445359&p=8310&u="
-        f"{quote(f'https://www.aviasales.com/search/{row['IATA_Departure']}{format_ddmm(row['Departure Date'])}{row['IATA_Destination']}{format_ddmm(row['Return Date'])}1')}"
-        f"&campaign_id=541"
+        (
+            lambda url: f"https://tp.media/r?marker=659868&trs=445359&p=8310&u={quote(url)}&campaign_id=541"
+        )(
+            f"https://www.aviasales.com/search/"
+            f"{row['IATA_Departure']}{format_ddmm(row['Departure Date'])}"
+            f"{row['IATA_Destination']}{format_ddmm(row['Return Date'])}1"
+        )
     ) if row['IATA_Departure'] == row['IATA_Return'] else None,
     axis=1
 )
+
 
 
 # Export to Excel
