@@ -7,8 +7,8 @@ import time
 
 
 polish_airports = [
-    "WAW",  # Warsaw Chopin
-    "WMI",  # Warsaw Modlin
+    "WAW",  # Warszawa Chopin
+    "WMI",  # Warszawa Modlin
     "KRK",  # Krakow
     "GDN",  # Gdansk
     "WRO",  # Wroclaw
@@ -17,7 +17,7 @@ polish_airports = [
 ]
 
 summer_destinations_from_poland = [
-    # Greece
+    # Grecja
     "HER",  # Heraklion (Crete)
     "RHO",  # Rhodes
     "SKG",  # Thessaloniki
@@ -26,7 +26,7 @@ summer_destinations_from_poland = [
     "KGS",  # Kos
     "CHQ",  # Chania
 
-    # Spain
+    # Hiszpania
     "MAD",  # Madrid Barajas
     "BCN",  # Barcelona El Prat
     "AGP",  # Málaga
@@ -41,7 +41,7 @@ summer_destinations_from_poland = [
     "SPC",  # La Palma
     "GRX",  # Granada
 
-    # Italy
+    # Włochy
     "FCO",  # Rome Fiumicino
     "CIA",  # Rome Ciampino
     "MXP",  # Milan Malpensa
@@ -80,13 +80,13 @@ summer_destinations_from_poland = [
     # Albania
     "TIA",  # Tirana
     
- # Portugal
+ # Portugalia
     "FAO",  # Faro (Algarve)
     "LIS",  # Lisbon
     "OPO",  # Porto
     "FNC",  # Madeira
 
-    # France
+    # Francja
     "CDG",  # Paris Charles de Gaulle
     "ORY",  # Paris Orly
     "BVA",  # Paris Beauvais
@@ -216,129 +216,129 @@ df = df[["departure", "return", "price", "departure_airport", "arrival_airport"]
 # Define data as a list of dictionaries
 airport_data = [
     # Poland
-    {"IATA": "WAW", "City": "Warsaw", "Country": "Poland"},
-    {"IATA": "WMI", "City": "Warsaw", "Country": "Poland"},
-    {"IATA": "KRK", "City": "Krakow", "Country": "Poland"},
-    {"IATA": "GDN", "City": "Gdansk", "Country": "Poland"},
-    {"IATA": "WRO", "City": "Wroclaw", "Country": "Poland"},
-    {"IATA": "KTW", "City": "Katowice", "Country": "Poland"},
-    {"IATA": "POZ", "City": "Poznan", "Country": "Poland"},
-    {"IATA": "RZE", "City": "Rzeszow", "Country": "Poland"},
-    {"IATA": "LUZ", "City": "Lublin", "Country": "Poland"},
+    {"IATA": "WAW", "City": "Warszawa", "Country": "Polska"},
+    {"IATA": "WMI", "City": "Warszawa", "Country": "Polska"},
+    {"IATA": "KRK", "City": "Kraków", "Country": "Polska"},
+    {"IATA": "GDN", "City": "Gdańsk", "Country": "Polska"},
+    {"IATA": "WRO", "City": "Wrocław", "Country": "Polska"},
+    {"IATA": "KTW", "City": "Katowice", "Country": "Polska"},
+    {"IATA": "POZ", "City": "Poznań", "Country": "Polska"},
+    {"IATA": "RZE", "City": "Rzeszow", "Country": "Polska"},
+    {"IATA": "LUZ", "City": "Lublin", "Country": "Polska"},
 
 
     # Greece
-    {"IATA": "HER", "City": "Heraklion", "Country": "Greece"},
-    {"IATA": "RHO", "City": "Rhodes", "Country": "Greece"},
-    {"IATA": "SKG", "City": "Thessaloniki", "Country": "Greece"},
-    {"IATA": "CFU", "City": "Corfu", "Country": "Greece"},
-    {"IATA": "ZTH", "City": "Zakynthos", "Country": "Greece"},
-    {"IATA": "KGS", "City": "Kos", "Country": "Greece"},
-    {"IATA": "CHQ", "City": "Chania", "Country": "Greece"},
+    {"IATA": "HER", "City": "Heraklion", "Country": "Grecja"},
+    {"IATA": "RHO", "City": "Rodos", "Country": "Grecja"},
+    {"IATA": "SKG", "City": "Saloniki", "Country": "Grecja"},
+    {"IATA": "CFU", "City": "Korfu", "Country": "Grecja"},
+    {"IATA": "ZTH", "City": "Zakynthos", "Country": "Grecja"},
+    {"IATA": "KGS", "City": "Kos", "Country": "Grecja"},
+    {"IATA": "CHQ", "City": "Chania", "Country": "Grecja"},
 
-    # Spain
-    {"IATA": "MAD", "City": "Madrid", "Country": "Spain"},
-    {"IATA": "BCN", "City": "Barcelona", "Country": "Spain"},
-    {"IATA": "AGP", "City": "Malaga", "Country": "Spain"},
-    {"IATA": "PMI", "City": "Palma de Mallorca", "Country": "Spain"},
-    {"IATA": "ALC", "City": "Alicante", "Country": "Spain"},
-    {"IATA": "TFS", "City": "Tenerife", "Country": "Spain"},
-    {"IATA": "SVQ", "City": "Seville", "Country": "Spain"},
-    {"IATA": "IBZ", "City": "Ibiza", "Country": "Spain"},
-    {"IATA": "VLC", "City": "Valencia", "Country": "Spain"},
-    {"IATA": "BIO", "City": "Bilbao", "Country": "Spain"},
-    {"IATA": "TFN", "City": "Tenerife", "Country": "Spain"},
-    {"IATA": "SPC", "City": "La Palma", "Country": "Spain"},
-    {"IATA": "GRX", "City": "Granada", "Country": "Spain"},
+    # Hiszpania
+    {"IATA": "MAD", "City": "Madryt", "Country": "Hiszpania"},
+    {"IATA": "BCN", "City": "Barcelona", "Country": "Hiszpania"},
+    {"IATA": "AGP", "City": "Malaga", "Country": "Hiszpania"},
+    {"IATA": "PMI", "City": "Majorka", "Country": "Hiszpania"},
+    {"IATA": "ALC", "City": "Alicante", "Country": "Hiszpania"},
+    {"IATA": "TFS", "City": "Teneryfa", "Country": "Hiszpania"},
+    {"IATA": "SVQ", "City": "Sewilla", "Country": "Hiszpania"},
+    {"IATA": "IBZ", "City": "Ibiza", "Country": "Hiszpania"},
+    {"IATA": "VLC", "City": "Valencia", "Country": "Hiszpania"},
+    {"IATA": "BIO", "City": "Bilbao", "Country": "Hiszpania"},
+    {"IATA": "TFN", "City": "Teneryfa", "Country": "Hiszpania"},
+    {"IATA": "SPC", "City": "Palma", "Country": "Hiszpania"},
+    {"IATA": "GRX", "City": "Granada", "Country": "Hiszpania"},
 
-    # Italy
-    {"IATA": "FCO", "City": "Rome", "Country": "Italy"},
-    {"IATA": "CIA", "City": "Rome", "Country": "Italy"},
-    {"IATA": "MXP", "City": "Milan", "Country": "Italy"},
-    {"IATA": "BGY", "City": "Milan", "Country": "Italy"},
-    {"IATA": "VCE", "City": "Venice", "Country": "Italy"},
-    {"IATA": "NAP", "City": "Naples", "Country": "Italy"},
-    {"IATA": "BLQ", "City": "Bologna", "Country": "Italy"},
-    {"IATA": "PSA", "City": "Pisa", "Country": "Italy"},
-    {"IATA": "FLR", "City": "Florence", "Country": "Italy"},
-    {"IATA": "TRN", "City": "Turin", "Country": "Italy"},
-    {"IATA": "BRI", "City": "Bari", "Country": "Italy"},
-    {"IATA": "PMO", "City": "Palermo", "Country": "Italy"},
-    {"IATA": "CTA", "City": "Catania", "Country": "Italy"},
-    {"IATA": "OLB", "City": "Olbia", "Country": "Italy"},
-    {"IATA": "AHO", "City": "Alghero", "Country": "Italy"},
-    {"IATA": "VRN", "City": "Verona", "Country": "Italy"},
-    {"IATA": "GOA", "City": "Genoa", "Country": "Italy"},
+    # Włochy
+    {"IATA": "FCO", "City": "Rzym", "Country": "Włochy"},
+    {"IATA": "CIA", "City": "Rzym", "Country": "Włochy"},
+    {"IATA": "MXP", "City": "Mediolan", "Country": "Włochy"},
+    {"IATA": "BGY", "City": "Mediolan", "Country": "Włochy"},
+    {"IATA": "VCE", "City": "Wenecja", "Country": "Włochy"},
+    {"IATA": "NAP", "City": "Neapol", "Country": "Włochy"},
+    {"IATA": "BLQ", "City": "Bolonia", "Country": "Włochy"},
+    {"IATA": "PSA", "City": "Piza", "Country": "Włochy"},
+    {"IATA": "FLR", "City": "Florencja", "Country": "Włochy"},
+    {"IATA": "TRN", "City": "Turyn", "Country": "Włochy"},
+    {"IATA": "BRI", "City": "Bari", "Country": "Włochy"},
+    {"IATA": "PMO", "City": "Palermo", "Country": "Włochy"},
+    {"IATA": "CTA", "City": "Katania", "Country": "Włochy"},
+    {"IATA": "OLB", "City": "Olbia", "Country": "Włochy"},
+    {"IATA": "AHO", "City": "Alghero", "Country": "Włochy"},
+    {"IATA": "VRN", "City": "Werona", "Country": "Włochy"},
+    {"IATA": "GOA", "City": "Genoa", "Country": "Włochy"},
 
     # Croatia
-    {"IATA": "SPU", "City": "Split", "Country": "Croatia"},
-    {"IATA": "DBV", "City": "Dubrovnik", "Country": "Croatia"},
-    {"IATA": "ZAD", "City": "Zadar", "Country": "Croatia"},
+    {"IATA": "SPU", "City": "Split", "Country": "Chorwacja"},
+    {"IATA": "DBV", "City": "Dubrovnik", "Country": "Chorwacja"},
+    {"IATA": "ZAD", "City": "Zadar", "Country": "Chorwacja"},
 
     # Cyprus
-    {"IATA": "LCA", "City": "Larnaca", "Country": "Cyprus"},
-    {"IATA": "PFO", "City": "Paphos", "Country": "Cyprus"},
+    {"IATA": "LCA", "City": "Larnaka", "Country": "Cypr"},
+    {"IATA": "PFO", "City": "Pafos", "Country": "Cypr"},
 
     # Bulgaria
-    {"IATA": "VAR", "City": "Varna", "Country": "Bulgaria"},
-    {"IATA": "BOJ", "City": "Burgas", "Country": "Bulgaria"},
-    {"IATA": "SOF", "City": "Sofia", "Country": "Bulgaria"},
+    {"IATA": "VAR", "City": "Warna", "Country": "Bułagria"},
+    {"IATA": "BOJ", "City": "Burgas", "Country": "Bułagria"},
+    {"IATA": "SOF", "City": "Sofia", "Country": "Bułagria"},
 
     # Montenegro
-    {"IATA": "TGD", "City": "Podgorica", "Country": "Montenegro"},
+    {"IATA": "TGD", "City": "Podgorica", "Country": "Czarnogóra"},
 
     # Albania
     {"IATA": "TIA", "City": "Tirana", "Country": "Albania"},
 
-    # Portugal
-    {"IATA": "FAO", "City": "Faro", "Country": "Portugal"},
-    {"IATA": "LIS", "City": "Lisbon", "Country": "Portugal"},
-    {"IATA": "OPO", "City": "Porto", "Country": "Portugal"},
-    {"IATA": "FNC", "City": "Madeira", "Country": "Portugal"},
+    # Portugalia
+    {"IATA": "FAO", "City": "Faro", "Country": "Portugalia"},
+    {"IATA": "LIS", "City": "Lizbona", "Country": "Portugalia"},
+    {"IATA": "OPO", "City": "Porto", "Country": "Portugalia"},
+    {"IATA": "FNC", "City": "Madera", "Country": "Portugalia"},
 
-    # France
-    {"IATA": "CDG", "City": "Paris", "Country": "France"},
-    {"IATA": "ORY", "City": "Paris", "Country": "France"},
-    {"IATA": "BVA", "City": "Paris", "Country": "France"},
-    {"IATA": "LYS", "City": "Lyon", "Country": "France"},
-    {"IATA": "NCE", "City": "Nice", "Country": "France"},
-    {"IATA": "MRS", "City": "Marseille", "Country": "France"},
-    {"IATA": "BIQ", "City": "Biarritz", "Country": "France"},
+    # Francja
+    {"IATA": "CDG", "City": "Paryż", "Country": "Francja"},
+    {"IATA": "ORY", "City": "Paryż", "Country": "Francja"},
+    {"IATA": "BVA", "City": "Paryż", "Country": "Francja"},
+    {"IATA": "LYS", "City": "Lyon", "Country": "Francja"},
+    {"IATA": "NCE", "City": "Nicea", "Country": "Francja"},
+    {"IATA": "MRS", "City": "Marsylia", "Country": "Francja"},
+    {"IATA": "BIQ", "City": "Biarritz", "Country": "Francja"},
 
     # Iceland
-    {"IATA": "KEF", "City": "Reykjavik", "Country": "Iceland"},
+    {"IATA": "KEF", "City": "Reykjavik", "Country": "Islandia"},
 
     # Other
-    {"IATA": "RMO", "City": "Chisinau", "Country": "Moldova"},
-    {"IATA": "BBU", "City": "Bucharest", "Country": "Romania"},
-    {"IATA": "OTP", "City": "Bucharest", "Country": "Romania"},
-    {"IATA": "CPH", "City": "Copenhagen", "Country": "Denmark"},
-    {"IATA": "ARN", "City": "Stockholm", "Country": "Sweden"},
-    {"IATA": "GOT", "City": "Gothenburg", "Country": "Sweden"},
-    {"IATA": "ATH", "City": "Athens", "Country": "Greece"},
-    {"IATA": "BUD", "City": "Budapest", "Country": "Hungary"},
-    {"IATA": "AUH", "City": "Abu Dhabi", "Country": "United Arab Emirates"},
-    {"IATA": "IST", "City": "Istanbul", "Country": "Turkey"},
-    {"IATA": "SKP", "City": "Skopje", "Country": "North Macedonia"},
-    {"IATA": "KUT", "City": "Kutaisi", "Country": "Georgia"},
+    {"IATA": "RMO", "City": "Kiszyniów", "Country": "Mołdawia"},
+    {"IATA": "BBU", "City": "Bukareszt", "Country": "Rumunia"},
+    {"IATA": "OTP", "City": "Bukareszt", "Country": "Rumunia"},
+    {"IATA": "CPH", "City": "Kopenhaga", "Country": "Dania"},
+    {"IATA": "ARN", "City": "Sztokholm", "Country": "Szwecja"},
+    {"IATA": "GOT", "City": "Gotenburg", "Country": "Szwecja"},
+    {"IATA": "ATH", "City": "Ateny", "Country": "Grecja"},
+    {"IATA": "BUD", "City": "Budapeszt", "Country": "Węgry"},
+    {"IATA": "AUH", "City": "Abu Dhabi", "Country": "Zjednoczone Emiraty Arabskie"},
+    {"IATA": "IST", "City": "Stambuł", "Country": "Turcja"},
+    {"IATA": "SKP", "City": "Skopje", "Country": "Macedonia Półncona"},
+    {"IATA": "KUT", "City": "Kutaisi", "Country": "Gruzja"},
     {"IATA": "MLA", "City": "Valletta", "Country": "Malta"},
-    {"IATA": "AMM", "City": "Amman", "Country": "Jordan"},
-    {"IATA": "RAK", "City": "Marrakesh", "Country": "Morocco"},
-    {"IATA": "AGA", "City": "Agadir", "Country": "Morocco"},
-    {"IATA": "RBA", "City": "Rabat", "Country": "Morocco"},
-    {"IATA": "EIN", "City": "Eindhoven", "Country": "Netherlands"},
-    {"IATA": "AMS", "City": "Amsterdam", "Country": "Netherlands"},
-    {"IATA": "OSL", "City": "Oslo", "Country": "Norway"},
-    {"IATA": "TRF", "City": "Oslo", "Country": "Norway"},
-    {"IATA": "STN", "City": "London", "Country": "United Kingdom"},
-    {"IATA": "LTN", "City": "London", "Country": "United Kingdom"},
-    {"IATA": "LGW", "City": "London", "Country": "United Kingdom"},
-    {"IATA": "MAN", "City": "Manchester", "Country": "United Kingdom"},
-    {"IATA": "DUB", "City": "Dublin", "Country": "Ireland"},
-    {"IATA": "AYT", "City": "Antalya", "Country": "Turkey"},
-    {"IATA": "ADB", "City": "Izmir", "Country": "Turkey"},
-    {"IATA": "GLA", "City": "Glasgow", "Country": "Scotland"},
-    {"IATA": "EDI", "City": "Edinburgh", "Country": "Scotland"},
+    {"IATA": "AMM", "City": "Amman", "Country": "Jordania"},
+    {"IATA": "RAK", "City": "Marakesz", "Country": "Maroko"},
+    {"IATA": "AGA", "City": "Agadir", "Country": "Maroko"},
+    {"IATA": "RBA", "City": "Rabat", "Country": "Maroko"},
+    {"IATA": "EIN", "City": "Eindhoven", "Country": "Holandia"},
+    {"IATA": "AMS", "City": "Amsterdam", "Country": "Holandia"},
+    {"IATA": "OSL", "City": "Oslo", "Country": "Norwegia"},
+    {"IATA": "TRF", "City": "Oslo", "Country": "Norwegia"},
+    {"IATA": "STN", "City": "Londyn", "Country": "Wielka Brytania"},
+    {"IATA": "LTN", "City": "Londyn", "Country": "Wielka Brytania"},
+    {"IATA": "LGW", "City": "Londyn", "Country": "Wielka Brytania"},
+    {"IATA": "MAN", "City": "Manchester", "Country": "Wielka Brytania"},
+    {"IATA": "DUB", "City": "Dublin", "Country": "Irlandia"},
+    {"IATA": "AYT", "City": "Antalya", "Country": "Turcja"},
+    {"IATA": "ADB", "City": "Izmir", "Country": "Turcja"},
+    {"IATA": "GLA", "City": "Glasgow", "Country": "Szkocja"},
+    {"IATA": "EDI", "City": "Edynburg", "Country": "Szkocja"},
 
 
 
@@ -374,6 +374,7 @@ filename = "flight_prices_raw.csv"
 df.to_csv(filename, index=False)
 
 print(f"DataFrame with all fight prices created saved")
+
 
 
 
