@@ -102,40 +102,37 @@ final_df = filtered_df[[
 # Sort by Total Price
 final_df = final_df[final_df['Total Price'] <= 1000].sort_values(by='Total Price').reset_index(drop=True)
 
+from urllib.parse import quote
 
+def format_ddmm(date_str):
+    return date_str.strftime("%d%m")  # assuming Departure Date and Return Date are datetime
 
-
-# Updated function (now works with pd.Timestamp or datetime.datetime)
-def format_date(dt):
-    dt_adjusted = dt
-    return dt_adjusted.strftime('%y%m%d')
-
-# Create outbound link:
+# Outbound (one way)
 final_df['Outbound_Link'] = final_df.apply(
-    lambda row: f"https://www.skyscanner.pl/transport/loty/{row['IATA_Departure']}/{row['IATA_Destination']}/{format_date(row['Departure Date'])}/"
-                "?"
-                "adultsv2=1",
+    lambda row: f"https://tp.media/r?marker=659868&trs=445359&p=8310&u="
+                f"{quote(f'https://www.aviasales.com/search/{row['IATA_Departure']}{format_ddmm(row['Departure Date'])}{row['IATA_Destination']}1')}"
+                f"&campaign_id=541",
     axis=1
 )
 
-# Create inbound link:
+# Inbound (one way back)
 final_df['Inbound_Link'] = final_df.apply(
-    lambda row: f"https://www.skyscanner.pl/transport/loty/{row['IATA_Destination']}/{row['IATA_Return']}/{format_date(row['Return Date'])}/"
-                "?"
-                "adultsv2=1",
+    lambda row: f"https://tp.media/r?marker=659868&trs=445359&p=8310&u="
+                f"{quote(f'https://www.aviasales.com/search/{row['IATA_Destination']}{format_ddmm(row['Return Date'])}{row['IATA_Return']}1')}"
+                f"&campaign_id=541",
     axis=1
 )
 
-# Create round trip link (only if departure = return airport)
+# Round trip (only if departure = return airport)
 final_df['Round_Trip_Link'] = final_df.apply(
     lambda row: (
-        f"https://www.skyscanner.pl/transport/loty/{row['IATA_Departure']}/{row['IATA_Destination']}/"
-        f"{format_date(row['Departure Date'])}/{format_date(row['Return Date'])}/"
-        "?"
-        "adultsv2=1"
+        f"https://tp.media/r?marker=659868&trs=445359&p=8310&u="
+        f"{quote(f'https://www.aviasales.com/search/{row['IATA_Departure']}{format_ddmm(row['Departure Date'])}{row['IATA_Destination']}{format_ddmm(row['Return Date'])}1')}"
+        f"&campaign_id=541"
     ) if row['IATA_Departure'] == row['IATA_Return'] else None,
     axis=1
 )
+
 
 # Export to Excel
 today_str = datetime.today().strftime('%d%m%Y')
