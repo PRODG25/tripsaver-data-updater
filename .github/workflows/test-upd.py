@@ -24,8 +24,8 @@ df = df.rename(columns={
 })
 
 # Create outbound and inbound datasets
-outbound = df[df['DepartureCountry'] == 'Poland'].copy()
-inbound = df[df['ArrivalCountry'] == 'Poland'].copy()
+outbound = df[df['DepartureCountry'] == 'Polska'].copy()
+inbound = df[df['ArrivalCountry'] == 'Polska'].copy()
 
 # Rename inbound columns to avoid collisions when merging
 inbound = inbound.rename(columns={
@@ -101,58 +101,46 @@ final_df = filtered_df[[
 
 # Sort by Total Price
 final_df = final_df[final_df['Total Price'] <= 1000].sort_values(by='Total Price').reset_index(drop=True)
-print(final_df.head())
-
-import pandas as pd
-import urllib.parse
 
 
-# Base affiliate params
-AFFILIATE_PREFIX = "https://tp.media/r?campaign_id=100&marker=659868&p=4114&trs=445359&u="
+from urllib.parse import quote
 
-def format_date(date_str):
-    """Convert DD.MM to DDMM"""
-    return date_str.replace(".", "")
+def format_ddmm(date_val):
+    return date_val.strftime("%d%m")  # ensure datetime
 
-def make_aviasales_url(dep, dep_date, arr, ret_date=None):
-    """Create Aviasales search URL string"""
-    if ret_date:
-        # round trip
-        search_path = f"{dep}{format_date(dep_date)}{arr}{format_date(ret_date)}"
-    else:
-        # one-way trip ends with '1'
-        search_path = f"{dep}{format_date(dep_date)}{arr}1"
-    return f"https://www.aviasales.com/search/{search_path}"
+# Outbound (one way)
+final_df['Outbound_Link'] = final_df.apply(
+    lambda row: (
+        lambda url: f"https://tp.media/r?marker=659868&trs=445359&p=4114&u={quote(url)}&campaign_id=100"
+    )(
+        f"https://www.aviasales.com/search/"
+        f"{row['IATA_Departure']}{format_ddmm(row['Departure Date'])}{row['IATA_Destination']}1"
+    ),
+    axis=1
+)
 
-def wrap_affiliate(url):
-    """Wrap search URL in affiliate link"""
-    return AFFILIATE_PREFIX + urllib.parse.quote(url, safe="")
+# Inbound (one way back)
+final_df['Inbound_Link'] = final_df.apply(
+    lambda row: (
+        lambda url: f"https://tp.media/r?marker=659868&trs=445359&p=4114&u={quote(url)}&campaign_id=100"
+    )(
+        f"https://www.aviasales.com/search/"
+        f"{row['IATA_Destination']}{format_ddmm(row['Return Date'])}{row['IATA_Return']}1"
+    ),
+    axis=1
+)
 
-def create_links(row):
-    # Round trip link
-    round_url = make_aviasales_url(
-        row["IATA_Departure"], row["Departure Date"], row["IATA_Inbound"], row["Return Date"]
-    )
-    # Outbound link (departure → inbound)
-    outbound_url = make_aviasales_url(
-        row["IATA_Departure"], row["Departure Date"], row["IATA_Inbound"]
-    )
-    # Inbound link (inbound → return city)
-    inbound_url = make_aviasales_url(
-        row["IATA_Inbound"], row["Return Date"], row["IATA_Return"]
-    )
-
-    return pd.Series({
-        "Round_URL": wrap_affiliate(round_url),
-        "Outbound_URL": wrap_affiliate(outbound_url),
-        "Inbound_URL": wrap_affiliate(inbound_url)
-    })
-
-# Apply to dataframe
-final_df[["Round_URL", "Outbound_URL", "Inbound_URL"]] = final_df.apply(create_links, axis=1)
-
-print(final_df)
-
+# Round trip
+final_df['Round_Trip_Link'] = final_df.apply(
+    lambda row: (
+        lambda url: f"https://tp.media/r?marker=659868&trs=445359&p=4114&u={quote(url)}&campaign_id=100"
+    )(
+        f"https://www.aviasales.com/search/"
+        f"{row['IATA_Departure']}{format_ddmm(row['Departure Date'])}"
+        f"{row['IATA_Destination']}{format_ddmm(row['Return Date'])}1"
+    ),
+    axis=1
+)
 
 
 
