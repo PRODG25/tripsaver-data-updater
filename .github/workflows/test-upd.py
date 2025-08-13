@@ -112,7 +112,7 @@ def format_ddmm(date_val):
     return date_val.strftime("%d%m")
 
 final_df['Outbound_Link'] = final_df.apply(
-    lambda row: f"https://tp.media/r?marker=659868&trs=445359&p=4114&u={quote(f'https://www.aviasales.com/search/{row.IATA_Departure}{format_ddmm(row['Departure Date'])}{row.IATA_Destination}1')}&campaign_id=100",
+    lambda row: f"https://tp.media/r?marker=659868&trs=445359&p=4114&u={quote(f"https://www.aviasales.com/search/{row.IATA_Departure}{format_ddmm(row{'Departure Date'})}{row.IATA_Destination}1')}&campaign_id=100",
     axis=1
 )
 
