@@ -121,7 +121,7 @@ final_df['Outbound_Link'] = final_df.apply(
         f"{row['IATA_Return']}{format_ddmm(row['Departure Date'])}{row['IATA_Destination']}1"
     ),
     axis=1
-))
+)
 
 # Inbound (one way back)
 final_df['Inbound_Link'] = final_df.apply(
