@@ -111,12 +111,17 @@ def format_ddmm(date_val):
         date_val = pd.to_datetime(date_val)
     return date_val.strftime("%d%m")
 
+
+# Inbound (one way back)
 final_df['Outbound_Link'] = final_df.apply(
-    lambda row: f"https://tp.media/r?marker=659868&trs=445359&p=4114&u={quote(f"https://www.aviasales.com/search/{row.IATA_Departure}{format_ddmm(row{'Departure Date'})}{row.IATA_Destination}1')}&campaign_id=100",
+    lambda row: (
+        lambda url: f"https://tp.media/r?marker=659868&trs=445359&p=4114&u={quote(url)}&campaign_id=100"
+    )(
+        f"https://www.aviasales.com/search/"
+        f"{row['IATA_Return']}{format_ddmm(row['Departure Date'])}{row['IATA_Destination']}1"
+    ),
     axis=1
-)
-
-
+))
 
 # Inbound (one way back)
 final_df['Inbound_Link'] = final_df.apply(
