@@ -106,18 +106,17 @@ final_df = final_df[final_df['Total Price'] <= 1000].sort_values(by='Total Price
 from urllib.parse import quote
 
 def format_ddmm(date_val):
-    return date_val.strftime("%d%m")  # ensure datetime
+    if not hasattr(date_val, "strftime"):
+        # Convert to datetime if it's not already
+        import pandas as pd
+        date_val = pd.to_datetime(date_val)
+    return date_val.strftime("%d%m")
 
-# Outbound (one way)
 final_df['Outbound_Link'] = final_df.apply(
-    lambda row: (
-        lambda url: f"https://tp.media/r?marker=659868&trs=445359&p=4114&u={quote(url)}&campaign_id=100"
-    )(
-        f"https://www.aviasales.com/search/"
-        f"{row['IATA_Departure']}{format_ddmm(row['Departure Date'])}{row['IATA_Destination']}1"
-    ),
+    lambda row: f"https://tp.media/r?marker=659868&trs=445359&p=4114&u={quote(f'https://www.aviasales.com/search/{row.IATA_Departure}{format_ddmm(row["Departure Date"])}{row.IATA_Destination}1')}&campaign_id=100",
     axis=1
 )
+
 
 # Inbound (one way back)
 final_df['Inbound_Link'] = final_df.apply(
