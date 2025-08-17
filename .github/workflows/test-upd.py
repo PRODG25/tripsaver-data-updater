@@ -158,6 +158,26 @@ print("Filtered dataframe with top 50% cheapest round-trips by route and month s
 # Load data
 df = final_df
 
+print("Start:", len(final_df))
+
+df = final_df.copy()
+print("After copy:", len(df))
+
+df = df.dropna(subset=['Total Price', 'Departure Date'])
+print("After dropna:", len(df))
+
+df = df.merge(stats, on=['Route', 'Month'], how='left')
+print("After merge with stats:", len(df))
+
+df = df[df['z_score'] <= -1]
+print("After z_score filter:", len(df))
+
+# After merging yesterday's
+if os.path.exists(yesterday_filename):
+    df = df.merge(df_yesterday, on="route_id", how="left")
+    print("After merge with yesterday:", len(df))
+
+
 # Ensure date format
 df['Departure Date'] = pd.to_datetime(df['Departure Date'], errors='coerce')
 
