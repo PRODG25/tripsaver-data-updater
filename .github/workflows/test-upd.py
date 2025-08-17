@@ -158,19 +158,8 @@ print("Filtered dataframe with top 50% cheapest round-trips by route and month s
 # Load data
 df = final_df
 
-print("Start:", len(final_df))
 
-df = final_df.copy()
-print("After copy:", len(df))
 
-df = df.dropna(subset=['Total Price', 'Departure Date'])
-print("After dropna:", len(df))
-
-df = df.merge(stats, on=['Route', 'Month'], how='left')
-print("After merge with stats:", len(df))
-
-df = df[df['z_score'] <= -1]
-print("After z_score filter:", len(df))
 
 # After merging yesterday's
 if os.path.exists(yesterday_filename):
@@ -196,12 +185,15 @@ stats.rename(columns={'mean': 'AvgPrice', 'std': 'StdDev'}, inplace=True)
 
 # Merge statistics back into main DataFrame
 df = df.merge(stats, on=['Route', 'Month'], how='left')
+print("After merge with stats:", len(df))
+
 
 # Calculate z-score
 df['z_score'] = (df['Total Price'] - df['AvgPrice']) / df['StdDev']
 
 # Filter best deals: at least 1 std dev below avg
 df = df[df['z_score'] <= -1].copy()
+print("After z_score filter:", len(df))
 
 # Sort by best deals first
 df = df.sort_values(by='Total Price')
