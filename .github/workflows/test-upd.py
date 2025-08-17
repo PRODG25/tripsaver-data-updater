@@ -100,7 +100,7 @@ final_df = filtered_df[[
 })
 
 # Sort by Total Price
-final_df = final_df[final_df['Total Price'] <= 1000].sort_values(by='Total Price').reset_index(drop=True)
+final_df = final_df[final_df['Total Price'] <= 800].sort_values(by='Total Price').reset_index(drop=True)
 
 
 from urllib.parse import quote
@@ -143,7 +143,7 @@ final_df['Round_Trip_Link'] = final_df.apply(
 )
 
 
-
+print(len(final_df)) 
 # Export to Excel
 today_str = datetime.today().strftime('%d%m%Y')
 
@@ -228,6 +228,7 @@ df = df.drop(columns=[
     'route_id'
 ])
 
+print(len(df))
 
 output_filename = f"best_deals_detected.csv"
 df.to_csv(output_filename, index=False)
