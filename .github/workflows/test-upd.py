@@ -213,9 +213,13 @@ if os.path.exists(yesterday_filename):
         df_yesterday["Departure Date"].astype(str) + "_" +
         df_yesterday["Return Date"].astype(str)
     )
-
+    
     # Select only needed columns
     df_yesterday = df_yesterday[["route_id", "Total Price"]].rename(columns={"Total Price": "price_yesterday"})
+    df_yesterday = df_yesterday.sort_values("price_yesterday").drop_duplicates("route_id", keep="first")
+    print("Duplicates in df:", df.duplicated(subset="route_id").sum())
+    print("Duplicates in df_yesterday:", df_yesterday.duplicated(subset="route_id").sum())
+
 
     # Merge today's and yesterday's data
     df = df.merge(df_yesterday, on="route_id", how="left")
