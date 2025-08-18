@@ -157,14 +157,7 @@ print("Filtered dataframe with top 50% cheapest round-trips by route and month s
 
 # Load data
 df = final_df
-
-
-
-
-# After merging yesterday's
-if os.path.exists(yesterday_filename):
-    df = df.merge(df_yesterday, on="route_id", how="left")
-    print("After merge with yesterday:", len(df))
+    
 
 
 # Ensure date format
@@ -226,6 +219,7 @@ if os.path.exists(yesterday_filename):
 
     # Merge today's and yesterday's data
     df = df.merge(df_yesterday, on="route_id", how="left")
+    print("After merge with yesterday:", len(df))
 
     # Calculate % change
     df["price_change_percent"] = ((df["Total Price"] - df["price_yesterday"]) / df["price_yesterday"]) * 100
