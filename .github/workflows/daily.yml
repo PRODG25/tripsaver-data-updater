@@ -44,6 +44,10 @@ jobs:
           echo "Committing changes..."
           git commit -m "Update CSV files [CI]" || echo "No changes to commit"
 
+          echo "Pulling latest master..."
+          git fetch origin master
+          git rebase origin/master || git rebase --abort
+
           echo "Pushing to master..."
           git push origin master
 
