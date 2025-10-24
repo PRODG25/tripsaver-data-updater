@@ -128,6 +128,13 @@ summer_destinations_from_poland = [
     "GLA", #Glasgow
     "EDI", #Edingburgh
 
+	#Exoctic
+	"MEX", #Mexico
+	"CUN", #Cancun
+	"BKK",
+	"HKT",
+	"KBV"
+
 
 ]
 
@@ -339,6 +346,12 @@ airport_data = [
     {"IATA": "ADB", "City": "Izmir", "Country": "Turcja"},
     {"IATA": "GLA", "City": "Glasgow", "Country": "Szkocja"},
     {"IATA": "EDI", "City": "Edynburg", "Country": "Szkocja"},
+    {"IATA": "MEX", "City": "Meksyk", "Country": "Meksyk"},
+    {"IATA": "CUN", "City": "Cancún", "Country": "Meksyk"},
+    {"IATA": "BKK", "City": "Bangkok", "Country": "Tajlandia"},
+    {"IATA": "HKT", "City": "Phuket", "Country": "Tajlandia"},
+    {"IATA": "KBV", "City": "Krabi", "Country": "Tajlandia"},
+
 
 
 
@@ -374,6 +387,7 @@ filename = "flight_prices_raw.csv"
 df.to_csv(filename, index=False)
 
 print(f"DataFrame with all fight prices created saved")
+
 
 
 
