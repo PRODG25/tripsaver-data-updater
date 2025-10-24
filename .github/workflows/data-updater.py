@@ -133,7 +133,8 @@ summer_destinations_from_poland = [
 	"CUN", #Cancun
 	"BKK",
 	"HKT",
-	"KBV"
+	"KBV",
+	"KUT"
 
 
 ]
@@ -351,6 +352,7 @@ airport_data = [
     {"IATA": "BKK", "City": "Bangkok", "Country": "Tajlandia"},
     {"IATA": "HKT", "City": "Phuket", "Country": "Tajlandia"},
     {"IATA": "KBV", "City": "Krabi", "Country": "Tajlandia"},
+	{"IATA": "KUT", "City": "Kutaisi", "Country": "Gruzja"},
 
 
 
@@ -387,6 +389,7 @@ filename = "flight_prices_raw.csv"
 df.to_csv(filename, index=False)
 
 print(f"DataFrame with all fight prices created saved")
+
 
 
 
