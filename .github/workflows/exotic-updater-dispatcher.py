@@ -4,6 +4,8 @@ from itertools import product
 import time
 import os
 from datetime import datetime, timedelta
+from urllib.parse import quote
+
 
 # ----------------------------------
 # CONFIG
@@ -16,12 +18,12 @@ headers = {
     "x-rapidapi-host": "google-flights2.p.rapidapi.com"
 }
 
-departure_ids = ["WAW", "KRK", "BER", "VIE", "ARN", "CPH", "MAD", "ATH", "FCO", "BUD", "PRG", "KTW", "POZ", "LGW", "LHR"]         # example: Warsaw, Krakow
-arrival_ids = ["BKK", "HKT", "MNL", "SIN", "KBV", "NRT", "ICN", "PEK", "MEX", "CUN", "MIA", "PVG", "ZNZ", "SID"]    # example: Bangkok, Phuket, Dubai
-#departure_ids = ["WAW", "KRK"]        # example: Warsaw, Krakow
-#arrival_ids = ["BKK", "HKT"] 
+#departure_ids = ["WAW", "KRK", "BER", "VIE", "ARN", "CPH", "MAD", "ATH", "FCO", "BUD", "PRG", "KTW", "POZ", "LGW", "LHR"]         # example: Warsaw, Krakow
+#arrival_ids = ["BKK", "HKT", "MNL", "SIN", "KBV", "NRT", "ICN", "PEK", "MEX", "CUN", "MIA", "PVG", "ZNZ", "SID"]    # example: Bangkok, Phuket, Dubai
+departure_ids = ["WAW", "KRK"]        # example: Warsaw, Krakow
+arrival_ids = ["BKK", "HKT"] 
 
-trip_days_range = range(10, 17)         # 10 to 16 days
+trip_days_range = range(9, 17)         # 10 to 16 days
 
 # ----------------------------------
 # LOOP OVER ALL COMBINATIONS
@@ -177,10 +179,10 @@ df['departure_month'] = df['return'].dt.to_period('M')
 
 # Group by route and departure month, get top 10% cheapest flights per group
 def top_10_percent(group):
-    cutoff = int(len(group) * 0.2)
+    cutoff = int(len(group) * 0.1)
     if cutoff == 0:
         cutoff = 1
-    return group.nsmallest(cutoff, 'total_price')
+    return group.nsmallest(cutoff, 'price')
 
 df = (
     df
@@ -188,8 +190,11 @@ df = (
     .apply(top_10_percent)
 )
 
+def format_ddmm(date_val):
+    return date_val.strftime("%d%m")  # ensure datetime
+
 # Round trip
-df['Round_Trip_Link'] = final_df.apply(
+df['Round_Trip_Link'] = df.apply(
     lambda row: (
         lambda url: f"https://tp.media/r?marker=659868&trs=445359&p=4114&u={quote(url)}&campaign_id=100"
     )(
@@ -240,10 +245,10 @@ else:
     df["price_change_percent"] = None
 
 df = df.drop(columns=[
-    'Month', 
+    'departure_month', 
     'route_id'
 ])
-
+print(df.head())
 # Create filename with today's date in DDMMYYYY format
 filename = "exotic_flight_prices_raw.csv"
 df.to_csv(filename, index=False)
