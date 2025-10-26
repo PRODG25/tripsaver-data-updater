@@ -1,4 +1,4 @@
-name: Dispatcher - Daily Flight Data Refresh
+name: Dispatcher & Processor - Weekly Exotic Data Refresh
 
 on:
   schedule:
