@@ -18,10 +18,10 @@ headers = {
     "x-rapidapi-host": "google-flights2.p.rapidapi.com"
 }
 
-departure_ids = ["WAW", "KRK", "BER", "VIE", "ARN", "CPH", "MAD", "ATH", "FCO", "BUD", "PRG", "KTW", "POZ", "LGW", "LHR"]         # example: Warsaw, Krakow
-arrival_ids = ["BKK", "HKT", "MNL", "SIN", "KBV", "NRT", "ICN", "PEK", "MEX", "CUN", "MIA", "PVG", "ZNZ", "SID", "CMB", "MLE", "SGN", "PUJ", "HAN"]    # example: Bangkok, Phuket, Dubai
-#departure_ids = ["WAW", "KRK"]        # example: Warsaw, Krakow
-#arrival_ids = ["BKK", "HKT"] 
+#departure_ids = ["WAW", "KRK", "BER", "VIE", "ARN", "CPH", "MAD", "ATH", "FCO", "BUD", "PRG", "KTW", "POZ", "LGW", "LHR"]         # example: Warsaw, Krakow
+#arrival_ids = ["BKK", "HKT", "MNL", "SIN", "KBV", "NRT", "ICN", "PEK", "MEX", "CUN", "MIA", "PVG", "ZNZ", "SID", "CMB", "MLE", "SGN", "PUJ", "HAN"]    # example: Bangkok, Phuket, Dubai
+departure_ids = ["WAW", "KRK"]        # example: Warsaw, Krakow
+arrival_ids = ["BKK", "HKT"] 
 
 trip_days_range = range(9, 17)         # 10 to 16 days
 
