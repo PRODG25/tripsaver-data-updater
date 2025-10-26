@@ -18,10 +18,10 @@ headers = {
     "x-rapidapi-host": "google-flights2.p.rapidapi.com"
 }
 
-#departure_ids = ["WAW", "KRK", "BER", "VIE", "ARN", "CPH", "MAD", "ATH", "FCO", "BUD", "PRG", "KTW", "POZ", "LGW", "LHR"]         # example: Warsaw, Krakow
-#arrival_ids = ["BKK", "HKT", "MNL", "SIN", "KBV", "NRT", "ICN", "PEK", "MEX", "CUN", "MIA", "PVG", "ZNZ", "SID"]    # example: Bangkok, Phuket, Dubai
-departure_ids = ["WAW", "KRK"]        # example: Warsaw, Krakow
-arrival_ids = ["BKK", "HKT"] 
+departure_ids = ["WAW", "KRK", "BER", "VIE", "ARN", "CPH", "MAD", "ATH", "FCO", "BUD", "PRG", "KTW", "POZ", "LGW", "LHR"]         # example: Warsaw, Krakow
+arrival_ids = ["BKK", "HKT", "MNL", "SIN", "KBV", "NRT", "ICN", "PEK", "MEX", "CUN", "MIA", "PVG", "ZNZ", "SID", "CMB", "MLE", "SGN", "PUJ", "HAN"]    # example: Bangkok, Phuket, Dubai
+#departure_ids = ["WAW", "KRK"]        # example: Warsaw, Krakow
+#arrival_ids = ["BKK", "HKT"] 
 
 trip_days_range = range(9, 17)         # 10 to 16 days
 
@@ -45,7 +45,7 @@ for dep, arr, days in product(departure_ids, arrival_ids, trip_days_range):
     }
 
     try:
-        response = requests.get(url, headers=headers, params=params, verify=False)
+        response = requests.get(url, headers=headers, params=params, verify=True)
         data = response.json()
 
         # Only process if data is valid
@@ -148,6 +148,13 @@ exotic_airport_data = [
 
     # 🇨🇻 Cape Verde
     {"IATA": "SID", "City": "Sal", "Country": "Wyspy Zielonego Przylądka"},
+    {"IATA": "CMB", "City": "Colombo", "Country": "Sri Lanka"},
+    {"IATA": "MLE", "City": "Male", "Country": "Malediwy"},
+    {"IATA": "SGN", "City": "Ho Chi Min", "Country": "Wietnam"},
+    {"IATA": "PUJ", "City": "Punta Cana", "Country": "Dominikana"},
+    {"IATA": "HAN", "City": "Hanoi", "Country": "Wietnam"}
+
+    
 ]
 
 
