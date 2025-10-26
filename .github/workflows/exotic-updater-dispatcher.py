@@ -1,0 +1,251 @@
+import requests
+import pandas as pd
+from itertools import product
+import time
+import os
+from datetime import datetime, timedelta
+
+# ----------------------------------
+# CONFIG
+# ----------------------------------
+url = "https://google-flights2.p.rapidapi.com/api/v1/getCalendarPicker"
+api_key = os.getenv("API_KEY")
+
+headers = {
+    "x-rapidapi-key": api_key,
+    "x-rapidapi-host": "google-flights2.p.rapidapi.com"
+}
+
+departure_ids = ["WAW", "KRK", "BER", "VIE", "ARN", "CPH", "MAD", "ATH", "FCO", "BUD", "PRG", "KTW", "POZ", "LGW", "LHR"]         # example: Warsaw, Krakow
+arrival_ids = ["BKK", "HKT", "MNL", "SIN", "KBV", "NRT", "ICN", "PEK", "MEX", "CUN", "MIA", "PVG", "ZNZ", "SID"]    # example: Bangkok, Phuket, Dubai
+#departure_ids = ["WAW", "KRK"]        # example: Warsaw, Krakow
+#arrival_ids = ["BKK", "HKT"] 
+
+trip_days_range = range(10, 17)         # 10 to 16 days
+
+# ----------------------------------
+# LOOP OVER ALL COMBINATIONS
+# ----------------------------------
+all_results = []  # list to collect dataframes
+
+for dep, arr, days in product(departure_ids, arrival_ids, trip_days_range):
+    params = {
+        "departure_id": dep,
+        "arrival_id": arr,
+        "start_date": "2025-11-01",
+        "end_date": "2026-04-30",
+        "travel_class": "ECONOMY",
+        "trip_type": "ROUND",
+        "trip_days": str(days),
+        "adults": "1",
+        "currency": "PLN",
+        "country_code": "PL"
+    }
+
+    try:
+        response = requests.get(url, headers=headers, params=params, verify=False)
+        data = response.json()
+
+        # Only process if data is valid
+        if data.get("status") and "data" in data:
+            df_temp = pd.DataFrame(data["data"])
+            df_temp["departure_airport"] = dep
+            df_temp["arrival_airport"] = arr
+            df_temp["trip_days"] = days
+            all_results.append(df_temp)
+
+        print(f"✅ {dep} → {arr} ({days} days): Success")
+
+    except Exception as e:
+        print(f"❌ {dep} → {arr} ({days} days): {e}")
+
+    # To respect rate limits (good practice)
+    time.sleep(0.5)
+
+# ----------------------------------
+# COMBINE ALL RESULTS
+# ----------------------------------
+if all_results:
+    df_all = pd.concat(all_results, ignore_index=True)
+    df_all['departure'] = pd.to_datetime(df_all['departure'])
+    df_all['return'] = pd.to_datetime(df_all['return'])
+    df_all = df_all.sort_values(by='price', ascending=True)
+    print("✅ Combined DataFrame created successfully!")
+else:
+    print("⚠️ No data returned from API.")
+
+
+exotic_airport_data = [
+    # 🇵🇱 Poland
+    {"IATA": "WAW", "City": "Warszawa", "Country": "Polska"},
+    {"IATA": "KRK", "City": "Kraków", "Country": "Polska"},
+    {"IATA": "KTW", "City": "Katowice", "Country": "Polska"},
+    {"IATA": "POZ", "City": "Poznań", "Country": "Polska"},
+
+    # 🇩🇪 Germany
+    {"IATA": "BER", "City": "Berlin", "Country": "Niemcy"},
+
+    # 🇦🇹 Austria
+    {"IATA": "VIE", "City": "Wiedeń", "Country": "Austria"},
+
+    # 🇸🇪 Sweden
+    {"IATA": "ARN", "City": "Sztokholm", "Country": "Szwecja"},
+
+    # 🇩🇰 Denmark
+    {"IATA": "CPH", "City": "Kopenhaga", "Country": "Dania"},
+
+    # 🇪🇸 Spain
+    {"IATA": "MAD", "City": "Madryt", "Country": "Hiszpania"},
+
+    # 🇬🇷 Greece
+    {"IATA": "ATH", "City": "Ateny", "Country": "Grecja"},
+
+    # 🇮🇹 Italy
+    {"IATA": "FCO", "City": "Rzym", "Country": "Włochy"},
+
+    # 🇭🇺 Hungary
+    {"IATA": "BUD", "City": "Budapeszt", "Country": "Węgry"},
+
+    # 🇨🇿 Czech Republic
+    {"IATA": "PRG", "City": "Praga", "Country": "Czechy"},
+
+    # 🇬🇧 United Kingdom
+    {"IATA": "LGW", "City": "Londyn", "Country": "Wielka Brytania"},
+    {"IATA": "LHR", "City": "Londyn", "Country": "Wielka Brytania"},
+
+    # 🇹🇭 Thailand
+    {"IATA": "BKK", "City": "Bangkok", "Country": "Tajlandia"},
+    {"IATA": "HKT", "City": "Phuket", "Country": "Tajlandia"},
+    {"IATA": "KBV", "City": "Krabi", "Country": "Tajlandia"},
+
+    # 🇵🇭 Philippines
+    {"IATA": "MNL", "City": "Manila", "Country": "Filipiny"},
+
+    # 🇸🇬 Singapore
+    {"IATA": "SIN", "City": "Singapur", "Country": "Singapur"},
+
+    # 🇯🇵 Japan
+    {"IATA": "NRT", "City": "Tokio", "Country": "Japonia"},
+
+    # 🇰🇷 South Korea
+    {"IATA": "ICN", "City": "Seul", "Country": "Korea Południowa"},
+
+    # 🇨🇳 China
+    {"IATA": "PEK", "City": "Pekin", "Country": "Chiny"},
+    {"IATA": "PVG", "City": "Szanghaj", "Country": "Chiny"},
+
+    # 🇲🇽 Mexico
+    {"IATA": "MEX", "City": "Meksyk", "Country": "Meksyk"},
+    {"IATA": "CUN", "City": "Cancún", "Country": "Meksyk"},
+
+    # 🇺🇸 USA
+    {"IATA": "MIA", "City": "Miami", "Country": "Stany Zjednoczone"},
+
+    # 🇹🇿 Tanzania
+    {"IATA": "ZNZ", "City": "Zanzibar", "Country": "Tanzania"},
+
+    # 🇨🇻 Cape Verde
+    {"IATA": "SID", "City": "Sal", "Country": "Wyspy Zielonego Przylądka"},
+]
+
+
+# Create DataFrame
+exotic_airport_df = pd.DataFrame(exotic_airport_data)
+
+# Preview
+print(exotic_airport_df.head())
+
+df = df_all
+# Merge to get DepartureCity and DepartureCountry
+df = df.merge(
+    exotic_airport_df.rename(columns={"IATA": "departure_airport", "City": "DepartureCity", "Country": "DepartureCountry"}),
+    on="departure_airport",
+    how="left"
+)
+
+# Merge to get ArrivalCity and ArrivalCountry
+df = df.merge(
+    exotic_airport_df.rename(columns={"IATA": "arrival_airport", "City": "ArrivalCity", "Country": "ArrivalCountry"}),
+    on="arrival_airport",
+    how="left"
+)
+print(df.head())
+
+df['return'] = pd.to_datetime(df['return'])
+df['route'] = df['departure_airport'] + ' - ' + df['arrival_airport']
+df['departure_month'] = df['return'].dt.to_period('M')
+
+# Group by route and departure month, get top 10% cheapest flights per group
+def top_10_percent(group):
+    cutoff = int(len(group) * 0.2)
+    if cutoff == 0:
+        cutoff = 1
+    return group.nsmallest(cutoff, 'total_price')
+
+df = (
+    df
+    .groupby(['route', 'departure_month'], group_keys=False)
+    .apply(top_10_percent)
+)
+
+# Round trip
+df['Round_Trip_Link'] = final_df.apply(
+    lambda row: (
+        lambda url: f"https://tp.media/r?marker=659868&trs=445359&p=4114&u={quote(url)}&campaign_id=100"
+    )(
+        f"https://www.aviasales.com/search/"
+        f"{row['departure_airport']}{format_ddmm(row['departure'])}"
+        f"{row['arrival_airport']}{format_ddmm(row['return'])}1"
+    ),
+    axis=1
+)
+
+# === CREATE TODAY'S UNIQUE ID ===
+df["route_id"] = (
+    df["departure_airport"] + "_" +
+    df["arrival_airport"] + "_" +
+    df["departure"].astype(str) + "_" +
+    df["return"].astype(str)
+)
+
+# === LOAD YESTERDAY'S FILE ===
+yesterday_filename = "archive/exotic_flight_prices_raw.csv"
+
+if os.path.exists(yesterday_filename):
+    df_yesterday = pd.read_csv(yesterday_filename)
+
+    df_yesterday["route_id"] = (
+        df_yesterday["departure_airport"] + "_" +
+        df_yesterday["arrival_airport"] + "_" +
+        df_yesterday["departure"].astype(str) + "_" +
+        df_yesterday["return"].astype(str)
+    )
+    
+    # Select only needed columns
+    df_yesterday = df_yesterday[["route_id", "price"]].rename(columns={"price": "price_yesterday"})
+    df_yesterday = df_yesterday.sort_values("price_yesterday").drop_duplicates("route_id", keep="first")
+    print("Duplicates in df:", df.duplicated(subset="route_id").sum())
+    print("Duplicates in df_yesterday:", df_yesterday.duplicated(subset="route_id").sum())
+
+
+    # Merge today's and yesterday's data
+    df = df.merge(df_yesterday, on="route_id", how="left")
+    print("After merge with yesterday:", len(df))
+
+    # Calculate % change
+    df["price_change_percent"] = ((df["price"] - df["price_yesterday"]) / df["price_yesterday"]) * 100
+    df["price_change_percent"] = df["price_change_percent"].fillna(0).round(2)
+else:
+    print(f"⚠️ Yesterday's file '{yesterday_filename}' not found. Skipping price comparison.")
+    df["price_change_percent"] = None
+
+df = df.drop(columns=[
+    'Month', 
+    'route_id'
+])
+
+# Create filename with today's date in DDMMYYYY format
+filename = "exotic_flight_prices_raw.csv"
+df.to_csv(filename, index=False)
+
+print(f"DataFrame with all exotic fight prices created saved")    
