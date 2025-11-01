@@ -146,7 +146,12 @@ def create_trip_link(row):
             f"?adultsv2=1"
             f"&cabinclass=economy"
             f"&childrenv2="
-            f"&ref=home"
+            f"&associateid={ASSOCIATE_ID}"
+            f"&utm_medium=affiliate"
+            f"&utm_source=6439681-Trip%20Saver"
+            f"&utm_campaign="
+            f"&campaign_id={MARKER}"
+            f"&utm_content=Online%20Tracking%20Link"
         )
     else:
         # Round trip format uses YYMMDD (via format_skyscanner_date)
