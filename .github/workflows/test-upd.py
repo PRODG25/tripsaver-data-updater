@@ -130,17 +130,42 @@ final_df['Inbound_Link'] = final_df.apply(
     axis=1
 )
 
-# Round trip
+
+from urllib.parse import quote
+
+def format_skyscanner_date(dt):
+    return dt.strftime("%y%m%d")  # Skyscanner uses YYMMDD
+
+# --- Replace this with your Skyscanner parameters ---
+ASSOCIATE_ID = "AFF_TRA_19354_00001"
+UTM_SOURCE = "6439681-Trip Saver"
+MARKER = "6439681"   # Example — update to yours
+# ----------------------------------------------------
+
 final_df['Round_Trip_Link'] = final_df.apply(
     lambda row: (
-        lambda url: f"https://tp.media/r?marker=659868&trs=445359&p=4114&u={quote(url)}&campaign_id=100"
-    )(
-        f"https://www.aviasales.com/search/"
-        f"{row['IATA_Departure']}{format_ddmm(row['Departure Date'])}"
-        f"{row['IATA_Destination']}{format_ddmm(row['Return Date'])}1"
+        f"https://www.skyscanner.pl/transport/loty/"
+        f"{row['IATA_Departure'].lower()}/"
+        f"{row['IATA_Destination'].lower()}/"
+        f"{format_skyscanner_date(row['Departure Date'])}/"
+        f"{format_skyscanner_date(row['Return Date'])}/"
+        f"?adultsv2=1"
+        f"&cabinclass=economy"
+        f"&childrenv2="
+        f"&rtn=1"
+        f"&preferdirects=false"
+        f"&outboundaltsenabled=false"
+        f"&inboundaltsenabled=false"
+        f"&associateid={ASSOCIATE_ID}"
+        f"&utm_medium=affiliate"
+        f"&utm_source=6439681-Trip%20Saver"
+        f"&utm_campaign="
+        f"&campaign_id={MARKER}"
+        f"&utm_content=Online%20Tracking%20Link"
     ),
     axis=1
 )
+
 
 
 print(len(final_df)) 
