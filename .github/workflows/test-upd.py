@@ -9,6 +9,33 @@ print(df.head())
 df = df.sort_values(by='price').reset_index(drop=True)
 
 df = df.iloc[:100_000].reset_index(drop=True)
+# Create a dictionary mapping airport codes to city codes
+airport_to_city = {
+    # Warsaw airports
+    'WMI': 'WARS',
+    'WAW': 'WARS',
+    # Bucharest airports
+    'BBU': 'BUCH',
+    'OTP': 'BUCH',
+    # Oslo airports
+    'OSL': 'OSLO',
+    'TRF': 'OSLO',
+    # London airports
+    'LTN': 'LOND',
+    'STN': 'LOND',
+    'LHR': 'LOND',
+    'LGW': 'LOND',
+    # Rome airports
+    'FCO': 'ROME',
+    'CIA': 'ROME',
+    # Milan airports
+    'BGY': 'MILA',
+    'MXP': 'MILA'
+}
+
+# Replace values in both columns
+df['departure_airport'] = df['departure_airport'].replace(airport_to_city)
+df['arrival_airport'] = df['arrival_airport'].replace(airport_to_city)
 # Ensure datetime format
 df['departure'] = pd.to_datetime(df['departure'])
 df['return'] = pd.to_datetime(df['return'])
