@@ -68,7 +68,7 @@ valid_trips['route'] = valid_trips['DepartureCity'] + ' - ' + valid_trips['Arriv
 
 # Group by route and departure month, get top 10% cheapest flights per group
 def top_10_percent(group):
-    cutoff = int(len(group) * 0.5)
+    cutoff = int(len(group) * 0.3)
     if cutoff == 0:
         cutoff = 1
     return group.nsmallest(cutoff, 'total_price')
@@ -99,8 +99,10 @@ final_df = filtered_df[[
     'ReturnArrivalAirport': 'IATA_Return'
 })
 
+
+
 # Sort by Total Price
-final_df = final_df[final_df['Total Price'] <= 1000].sort_values(by='Total Price').reset_index(drop=True)
+final_df = final_df[final_df['Total Price'] <= 800].sort_values(by='Total Price').reset_index(drop=True)
 
 
 from urllib.parse import quote
@@ -120,30 +122,59 @@ UTM_SOURCE = "6439681-Trip Saver"
 MARKER = "6439681"   # Example — update to yours
 # ----------------------------------------------------
 
-final_df['Round_Trip_Link'] = final_df.apply(
-    lambda row: (
-        f"https://www.skyscanner.pl/transport/loty/"
-        f"{row['IATA_Departure'].lower()}/"
-        f"{row['IATA_Destination'].lower()}/"
-        f"{format_skyscanner_date(row['Departure Date'])}/"
-        f"{format_skyscanner_date(row['Return Date'])}/"
-        f"?adultsv2=1"
-        f"&cabinclass=economy"
-        f"&childrenv2="
-        f"&rtn=1"
-        f"&preferdirects=false"
-        f"&outboundaltsenabled=false"
-        f"&inboundaltsenabled=false"
-        f"&associateid={ASSOCIATE_ID}"
-        f"&utm_medium=affiliate"
-        f"&utm_source=6439681-Trip%20Saver"
-        f"&utm_campaign="
-        f"&campaign_id={MARKER}"
-        f"&utm_content=Online%20Tracking%20Link"
-    ),
-    axis=1
-)
 
+def create_trip_link(row):
+    departure = row['IATA_Departure'].lower()
+    destination = row['IATA_Destination'].lower()
+    return_airport = row['IATA_Return'].lower()
+    
+    # Check if it's a multicity trip (different return airport)
+    if departure != return_airport:
+        # Multicity format uses YYYY-MM-DD
+        departure_date = row['Departure Date'].strftime('%Y-%m-%d')
+        return_date = row['Return Date'].strftime('%Y-%m-%d')
+        
+        # Multicity format: /d/origin/date/dest1/dest2/date/return_airport
+        return (
+            f"https://www.skyscanner.pl/transport/d/"
+            f"{departure}/"
+            f"{departure_date}/"
+            f"{destination}/"
+            f"{destination}/"
+            f"{return_date}/"
+            f"{return_airport}/"
+            f"?adultsv2=1"
+            f"&cabinclass=economy"
+            f"&childrenv2="
+            f"&ref=home"
+        )
+    else:
+        # Round trip format uses YYMMDD (via format_skyscanner_date)
+        departure_date = format_skyscanner_date(row['Departure Date'])
+        return_date = format_skyscanner_date(row['Return Date'])
+        
+        return (
+            f"https://www.skyscanner.pl/transport/loty/"
+            f"{departure}/"
+            f"{destination}/"
+            f"{departure_date}/"
+            f"{return_date}/"
+            f"?adultsv2=1"
+            f"&cabinclass=economy"
+            f"&childrenv2="
+            f"&rtn=1"
+            f"&preferdirects=false"
+            f"&outboundaltsenabled=false"
+            f"&inboundaltsenabled=false"
+            f"&associateid={ASSOCIATE_ID}"
+            f"&utm_medium=affiliate"
+            f"&utm_source=6439681-Trip%20Saver"
+            f"&utm_campaign="
+            f"&campaign_id={MARKER}"
+            f"&utm_content=Online%20Tracking%20Link"
+        )
+
+final_df['Round_Trip_Link'] = final_df.apply(create_trip_link, axis=1)
 
 
 print(len(final_df)) 
