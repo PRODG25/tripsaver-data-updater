@@ -108,28 +108,6 @@ from urllib.parse import quote
 def format_ddmm(date_val):
     return date_val.strftime("%d%m")  # ensure datetime
 
-# Outbound (one way)
-final_df['Outbound_Link'] = final_df.apply(
-    lambda row: (
-        lambda url: f"https://tp.media/r?marker=659868&trs=445359&p=4114&u={quote(url)}&campaign_id=100"
-    )(
-        f"https://www.aviasales.com/search/"
-        f"{row['IATA_Departure']}{format_ddmm(row['Departure Date'])}{row['IATA_Destination']}1"
-    ),
-    axis=1
-)
-
-# Inbound (one way back)
-final_df['Inbound_Link'] = final_df.apply(
-    lambda row: (
-        lambda url: f"https://tp.media/r?marker=659868&trs=445359&p=4114&u={quote(url)}&campaign_id=100"
-    )(
-        f"https://www.aviasales.com/search/"
-        f"{row['IATA_Destination']}{format_ddmm(row['Return Date'])}{row['IATA_Return']}1"
-    ),
-    axis=1
-)
-
 
 from urllib.parse import quote
 
