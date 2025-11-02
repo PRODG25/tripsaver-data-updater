@@ -162,29 +162,16 @@ def create_trip_link(row):
         return_date = row['Return Date'].strftime('%Y-%m-%d')
         
         # Multicity format: /d/origin/date/dest1/dest2/date/return_airport
-        return (
-            f"https://www.skyscanner.pl/transport/d/"
-            f"{departure}/"
-            f"{departure_date}/"
-            f"{destination}/"
-            f"{destination}/"
-            f"{return_date}/"
-            f"{return_airport}/"
-            f"?adultsv2=1&cabinclass=economy&market=pl&locale=pl-pl&currency=pln&referralServiceVersion=meeseeks-referral-service-v1&utm_term=HelloWorld&irclickid=_sdn6b6xn29cfri9kj3whlzkrkv22zz1u23x2rfc000&associateid=AFF_TRA_19354_00001&utm_medium=affiliate&utm_source=6439681-Trip%20Saver&utm_campaign=&campaign_id=6439681&utm_content=Flight%20Search%20Widget&adid=1103262&click_timestamp=1762043153649&irmweb=&irgwc=1&afsrc=1"
-        )
+        return (f"https://skyscanner.net/g/referrals/v1/flights/multicity/?mediaPartnerId=6439681&origin0={departure}&date0={departure_date}&destination0={destination}&origin1={destination}&date1={departure_date}&destination1={return_airport}&adultsv2=1&market=PL&locale=pl-PL&currency=PLN")
+        
     else:
         # Round trip format uses YYMMDD (via format_skyscanner_date)
-        departure_date = format_skyscanner_date(row['Departure Date'])
-        return_date = format_skyscanner_date(row['Return Date'])
-        
+        departure_date = row['Departure Date'].strftime('%Y-%m-%d')
+        return_date = row['Return Date'].strftime('%Y-%m-%d')
+        return (f"https://www.skyscanner.net/g/referrals/v1/flights/day-view/"
+                f"?origin={departure}&destination={destination}&outboundDate={departure_date}&inboundDate={return_date}&market=PL&locale=pl-PL&currency=PLN&mediaPartnerId=6439681")
+#2026-01-01
 
-        return (f"https://www.skyscanner.pl/transport/loty/"
-                f"{departure}/"
-                f"{destination}/"
-                f"{departure_date}/"
-                f"{return_date}/"
-                f"?adultsv2=1&cabinclass=economy&market=pl&locale=pl-pl&currency=pln&referralServiceVersion=meeseeks-referral-service-v1&utm_term=HelloWorld&associateid=AFF_TRA_19354_00001&utm_medium=affiliate&utm_source=6439681-Trip%20Saver&utm_campaign=&campaign_id=6439681&utm_content=Flight%20Search%20Widget&adid=1103262&irmweb=&irgwc=1&afsrc=1"
-               )
 final_df['Round_Trip_Link'] = final_df.apply(create_trip_link, axis=1)
 
 
