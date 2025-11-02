@@ -18,7 +18,7 @@ headers = {
     "x-rapidapi-host": "google-flights2.p.rapidapi.com"
 }
 
-departure_ids = ["WAW", "KRK", "BER", "VIE", "ARN", "CPH", "MAD", "ATH", "FCO", "BUD", "PRG", "KTW", "POZ", "LGW", "LHR"]         # example: Warsaw, Krakow
+departure_ids = ["WAW", "KRK", "BER", "VIE", "ARN", "CPH", "MAD", "ATH", "FCO", "BUD", "PRG"]         # example: Warsaw, Krakow
 arrival_ids = ["BKK", "HKT", "MNL", "SIN", "KBV", "NRT", "ICN", "PEK", "MEX", "CUN", "MIA", "PVG", "ZNZ", "SID", "CMB", "MLE", "SGN", "PUJ", "HAN"]    # example: Bangkok, Phuket, Dubai
 #departure_ids = ["WAW", "KRK"]        # example: Warsaw, Krakow
 #arrival_ids = ["BKK", "HKT"] 
@@ -186,7 +186,7 @@ df['departure_month'] = df['return'].dt.to_period('M')
 
 # Group by route and departure month, get top 10% cheapest flights per group
 def top_10_percent(group):
-    cutoff = int(len(group) * 0.1)
+    cutoff = int(len(group) * 0.3)
     if cutoff == 0:
         cutoff = 1
     return group.nsmallest(cutoff, 'price')
@@ -201,16 +201,6 @@ def format_ddmm(date_val):
     return date_val.strftime("%d%m")  # ensure datetime
 
 # Round trip
-df['Round_Trip_Link'] = df.apply(
-    lambda row: (
-        lambda url: f"https://tp.media/r?marker=659868&trs=445359&p=4114&u={quote(url)}&campaign_id=100"
-    )(
-        f"https://www.aviasales.com/search/"
-        f"{row['departure_airport']}{format_ddmm(row['departure'])}"
-        f"{row['arrival_airport']}{format_ddmm(row['return'])}1"
-    ),
-    axis=1
-)
 
 # === CREATE TODAY'S UNIQUE ID ===
 df["route_id"] = (
