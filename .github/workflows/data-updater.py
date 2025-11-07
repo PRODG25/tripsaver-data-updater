@@ -18,13 +18,12 @@ polish_airports = [
 
 summer_destinations_from_poland = [
     # Grecja
-    "HER",  # Heraklion (Crete)
     "RHO",  # Rhodes
     "SKG",  # Thessaloniki
     "CFU",  # Corfu
     "ZTH",  # Zakynthos
     "KGS",  # Kos
-    "CHQ",  # Chania
+    #"CHQ",  # Chania
 
     # Hiszpania
     "MAD",  # Madrid Barajas
@@ -37,9 +36,9 @@ summer_destinations_from_poland = [
     "IBZ",  # Ibiza
     "VLC",  # Valencia
     "BIO",  # Bilbao
-    "TFN",  # Tenerife North
-    "SPC",  # La Palma
-    "GRX",  # Granada
+    #"TFN",  # Tenerife North
+    #"SPC",  # La Palma
+    #"GRX",  # Granada
 
     # Włochy
     "FCO",  # Rome Fiumicino
@@ -93,7 +92,7 @@ summer_destinations_from_poland = [
     "LYS",  # Lyon–Saint-Exupéry
     "NCE",  # Nice Côte d'Azur
     "MRS",  # Marseille Provence
-    "BIQ",  # Biarritz Pays Basque
+    #"BIQ",  # Biarritz Pays Basque
 
     "KEF",  # Reyjkjavik
 
@@ -127,14 +126,6 @@ summer_destinations_from_poland = [
     "ADB", #Izmir
     "GLA", #Glasgow
     "EDI", #Edingburgh
-
-	#Exoctic
-	"MEX", #Mexico
-	"CUN", #Cancun
-	"BKK",
-	"HKT",
-	"KBV",
-	"KUT"
 
 
 ]
@@ -199,7 +190,7 @@ for route in routes:
         "adults": "1",
         "currency": "PLN",
         "country_code": "PL",
-        "end_date":"2026-01-30"
+        "end_date":"2026-02-28"
     }
     
     response = requests.get(url, headers=headers, params=params)
@@ -389,6 +380,7 @@ filename = "flight_prices_raw.csv"
 df.to_csv(filename, index=False)
 
 print(f"DataFrame with all fight prices created saved")
+
 
 
 
