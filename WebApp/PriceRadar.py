@@ -7,7 +7,7 @@ from PIL import Image
 # Konfiguracja strony
 st.set_page_config(
     page_title="Tripsaver - Price Radar AI",
-    page_icon="svg.svg",
+    page_icon="assets/svg.svg",
     layout="wide"
 )
 
@@ -150,7 +150,7 @@ try:
 
     # Logo w sidebar
     st.sidebar.markdown('<div class="logo-container">', unsafe_allow_html=True)
-    st.sidebar.image("logo.svg", width=250)
+    st.sidebar.image("assets/logo.svg", width=250)
     st.sidebar.markdown('</div>', unsafe_allow_html=True)
     # Logo w sidebar
     st.sidebar.markdown("---")
