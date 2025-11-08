@@ -7,7 +7,7 @@ from PIL import Image
 # Konfiguracja strony
 st.set_page_config(
     page_title="Tripsaver - Price Radar AI",
-    page_icon=r"C:\Users\GADZINDA\Downloads\svg.svg",
+    page_icon="svg.svg",
     layout="wide"
 )
 
@@ -23,7 +23,7 @@ def get_cache_key():
 @st.cache_data(ttl=86400)  # 86400 sekund = 24 godziny
 def load_data(cache_key):
     """Załaduj dane lotów. Parametr cache_key zapewnia codzienne odświeżanie."""
-    url = r"C:\Users\GADZINDA\Downloads\multi_city_tickets (1).csv"
+    url = "archive/multi_city_tickets.csv"
     df = pd.read_csv(url)
     
     # Konwertuj kolumny dat na datetime
@@ -49,7 +49,7 @@ def load_data(cache_key):
 @st.cache_data(ttl=86400)
 def load_ai_deals(cache_key):
     """Załaduj dane ofert AI. Parametr cache_key zapewnia codzienne odświeżanie."""
-    url = r"C:\Users\GADZINDA\Downloads\best_deals_detected (2).csv"
+    url = "archive/best_deals_detected.csv"
     df = pd.read_csv(url)
     
     # Konwertuj kolumny dat na datetime
@@ -75,7 +75,7 @@ def load_ai_deals(cache_key):
 @st.cache_data(ttl=86400)
 def load_exotic_flights(cache_key):
     """Załaduj dane lotów egzotycznych. Parametr cache_key zapewnia codzienne odświeżanie."""
-    url = r"C:\Users\GADZINDA\Downloads\exotic_flight_prices_raw.csv"
+    url = "archive/exotic_flight_prices_raw.csv"
     df = pd.read_csv(url)
     
     # Mapuj nazwy kolumn do standardowego formatu
@@ -150,7 +150,7 @@ try:
 
     # Logo w sidebar
     st.sidebar.markdown('<div class="logo-container">', unsafe_allow_html=True)
-    st.sidebar.image(r"C:\Users\GADZINDA\Downloads\logo.svg", width=250)
+    st.sidebar.image("logo.svg", width=250)
     st.sidebar.markdown('</div>', unsafe_allow_html=True)
     # Logo w sidebar
     st.sidebar.markdown("---")
