@@ -21,7 +21,7 @@ headers = {
 #departure_ids = ["WAW", "KRK", "BER", "VIE", "ARN", "CPH", "MAD", "ATH", "FCO", "BUD", "PRG"]         # example: Warsaw, Krakow
 #arrival_ids = ["BKK", "HKT", "MNL", "SIN", "KBV", "NRT", "ICN", "PEK", "MEX", "CUN", "MIA", "PVG", "ZNZ", "SID", "CMB", "MLE", "SGN", "PUJ", "HAN"]    # example: Bangkok, Phuket, Dubai
 departure_ids = ["WAW", "KRK"]        # example: Warsaw, Krakow
-arrival_ids = ["BKK"] #, "HKT"] 
+arrival_ids = ["BKK", "HKT"] 
 
 trip_days_range = range(10, 12)         # 10 to 16 days
 
