@@ -2,7 +2,7 @@ name: Dispatcher & Processor - Weekly Exotic Data Refresh
 
 on:
   schedule:
-    #- cron: "0 06 * * 1"   # runs every Monday at 10:00 UTC  
+    - cron: "0 06 * * 1"   # runs every Monday at 10:00 UTC  
   workflow_dispatch:
 
 jobs:
