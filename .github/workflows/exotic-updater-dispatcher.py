@@ -20,21 +20,24 @@ headers = {
 
 #departure_ids = ["WAW", "KRK", "BER", "VIE", "ARN", "CPH", "MAD", "ATH", "FCO", "BUD", "PRG"]         # example: Warsaw, Krakow
 #arrival_ids = ["BKK", "HKT", "MNL", "SIN", "KBV", "NRT", "ICN", "PEK", "MEX", "CUN", "MIA", "PVG", "ZNZ", "SID", "CMB", "MLE", "SGN", "PUJ", "HAN"]    # example: Bangkok, Phuket, Dubai
-departure_ids = ["WAW", "KRK"]        # example: Warsaw, Krakow
+departure_ids = ["WAW"]#, "KRK"]        # example: Warsaw, Krakow
 arrival_ids = ["BKK", "HKT"] 
 
-trip_days_range = range(10, 12)         # 10 to 16 days
+trip_days_range = range(10, 11)         # 10 to 16 days
 
 # ----------------------------------
 # LOOP OVER ALL COMBINATIONS
 # ----------------------------------
 all_results = []  # list to collect dataframes
 
+
+start_date = date.today().isoformat()
+
 for dep, arr, days in product(departure_ids, arrival_ids, trip_days_range):
     params = {
         "departure_id": dep,
         "arrival_id": arr,
-        "start_date": "2025-11-01",
+        "start_date": start_date,
         "end_date": "2026-04-30",
         "travel_class": "ECONOMY",
         "trip_type": "ROUND",
