@@ -257,13 +257,13 @@ MARKER = "6439681"   # Example — update to yours
 
 
 def create_trip_link(row):
-    departure = row['IATA_Departure'].lower()
-    destination = row['IATA_Destination'].lower()
-    return_airport = row['IATA_Return'].lower()
+    departure = row['departure_airport'].lower()
+    destination = row['arrival_airport'].lower()
+    return_airport = row['departure_airport'].lower()
 
     # Round trip format uses YYMMDD (via format_skyscanner_date)
-    departure_date = row['Departure Date'].strftime('%Y-%m-%d')
-    return_date = row['Return Date'].strftime('%Y-%m-%d')
+    departure_date = row['departure'].strftime('%Y-%m-%d')
+    return_date = row['return'].strftime('%Y-%m-%d')
     return (f"https://www.skyscanner.net/g/referrals/v1/flights/day-view/"
             f"?origin={departure}&destination={destination}&outboundDate={departure_date}&inboundDate={return_date}&market=PL&locale=pl-PL&currency=PLN&mediaPartnerId=6439681")
 #2026-01-01
