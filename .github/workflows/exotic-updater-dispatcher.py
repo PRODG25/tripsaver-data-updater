@@ -19,7 +19,7 @@ headers = {
     "x-rapidapi-host": "google-flights2.p.rapidapi.com"
 }
 
-departure_ids = ["WAW", "KRK", "BER", "ARN", "MAD", "ATH", "FCO", "BUD", "LGW"]         # example: Warsaw, Krakow
+departure_ids = ["WAW", "KRK", "BER"] #, "ARN", "MAD", "ATH", "FCO", "BUD", "LGW"]         # example: Warsaw, Krakow
 arrival_ids = ["BKK", "HKT", "MNL", "SIN", "KBV", "NRT", "ICN", "PEK", "MEX", "CUN", "MIA", "PVG", "ZNZ", "SID", "CMB", "MLE", "SGN", "PUJ", "HAN"]    # example: Bangkok, Phuket, Dubai
 #departure_ids = ["WAW"]#, "KRK"]        # example: Warsaw, Krakow
 #arrival_ids = ["BKK", "HKT"] 
