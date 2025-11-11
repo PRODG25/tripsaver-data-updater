@@ -23,7 +23,7 @@ headers = {
 departure_ids = ["WAW"]#, "KRK"]        # example: Warsaw, Krakow
 arrival_ids = ["BKK"] #, "HKT"] 
 
-trip_days_range = range(10, 11)         # 10 to 16 days
+trip_days_range = range(10, 12)         # 10 to 16 days
 
 # ----------------------------------
 # LOOP OVER ALL COMBINATIONS
