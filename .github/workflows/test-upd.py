@@ -162,7 +162,7 @@ def create_trip_link(row):
         return_date = row['Return Date'].strftime('%Y-%m-%d')
         
         # Multicity format: /d/origin/date/dest1/dest2/date/return_airport
-        return (f"https://skyscanner.net/g/referrals/v1/flights/multicity/?mediaPartnerId=6439681&origin0={departure}&date0={departure_date}&destination0={destination}&origin1={destination}&date1={departure_date}&destination1={return_airport}&adultsv2=1&market=PL&locale=pl-PL&currency=PLN")
+        return (f"https://skyscanner.net/g/referrals/v1/flights/multicity/?mediaPartnerId=6439681&origin0={departure}&date0={departure_date}&destination0={destination}&origin1={destination}&date1={return_date}&destination1={return_airport}&adultsv2=1&market=PL&locale=pl-PL&currency=PLN")
         
     else:
         # Round trip format uses YYMMDD (via format_skyscanner_date)
