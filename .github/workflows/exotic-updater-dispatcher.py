@@ -20,10 +20,10 @@ headers = {
 
 #departure_ids = ["WAW", "KRK", "BER", "VIE", "ARN", "CPH", "MAD", "ATH", "FCO", "BUD", "PRG"]         # example: Warsaw, Krakow
 #arrival_ids = ["BKK", "HKT", "MNL", "SIN", "KBV", "NRT", "ICN", "PEK", "MEX", "CUN", "MIA", "PVG", "ZNZ", "SID", "CMB", "MLE", "SGN", "PUJ", "HAN"]    # example: Bangkok, Phuket, Dubai
-#departure_ids = ["WAW", "KRK"]        # example: Warsaw, Krakow
-#arrival_ids = ["BKK", "HKT"] 
+departure_ids = ["WAW"]#, "KRK"]        # example: Warsaw, Krakow
+arrival_ids = ["BKK"] #, "HKT"] 
 
-trip_days_range = range(10, 17)         # 10 to 16 days
+trip_days_range = range(10, 11)         # 10 to 16 days
 
 # ----------------------------------
 # LOOP OVER ALL COMBINATIONS
@@ -186,7 +186,7 @@ df['departure_month'] = df['return'].dt.to_period('M')
 
 # Group by route and departure month, get top 10% cheapest flights per group
 def top_10_percent(group):
-    cutoff = int(len(group) * 0.3)
+    cutoff = int(len(group) * 0.1)
     if cutoff == 0:
         cutoff = 1
     return group.nsmallest(cutoff, 'price')
@@ -245,6 +245,31 @@ df = df.drop(columns=[
     'departure_month', 
     'route_id'
 ])
+
+def format_skyscanner_date(dt):
+    return dt.strftime("%y%m%d")  # Skyscanner uses YYMMDD
+
+# --- Replace this with your Skyscanner parameters ---
+ASSOCIATE_ID = "AFF_TRA_19354_00001"
+UTM_SOURCE = "6439681-Trip Saver"
+MARKER = "6439681"   # Example — update to yours
+# ----------------------------------------------------
+
+
+def create_trip_link(row):
+    departure = row['IATA_Departure'].lower()
+    destination = row['IATA_Destination'].lower()
+    return_airport = row['IATA_Return'].lower()
+
+    # Round trip format uses YYMMDD (via format_skyscanner_date)
+    departure_date = row['Departure Date'].strftime('%Y-%m-%d')
+    return_date = row['Return Date'].strftime('%Y-%m-%d')
+    return (f"https://www.skyscanner.net/g/referrals/v1/flights/day-view/"
+            f"?origin={departure}&destination={destination}&outboundDate={departure_date}&inboundDate={return_date}&market=PL&locale=pl-PL&currency=PLN&mediaPartnerId=6439681")
+#2026-01-01
+
+df['Round_Trip_Link'] = df.apply(create_trip_link, axis=1)
+
 print(df.head())
 # Create filename with today's date in DDMMYYYY format
 filename = "exotic_flight_prices_raw.csv"
