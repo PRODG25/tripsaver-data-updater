@@ -4,6 +4,7 @@ from itertools import product
 import time
 import os
 from datetime import datetime, timedelta
+from datetime import date
 from urllib.parse import quote
 
 
