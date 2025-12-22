@@ -1,0 +1,1506 @@
+# Product Requirements Document (PRD)
+# Tripsaver Flight + Hotel Offer Automation System
+
+**Version:** 1.0  
+**Date:** December 23, 2025  
+**Product Owner:** Damian  
+**Target Platform:** tripsaver.pl  
+
+---
+
+## 1. Executive Summary
+
+### 1.1 Product Vision
+Automate the creation, approval, and publication of flight-only and flight+hotel package offers on tripsaver.pl, reducing manual work while maintaining quality control through strategic approval checkpoints.
+
+### 1.2 Business Goals
+- Publish 1 flight+hotel offer daily (minimum)
+- Reduce offer creation time from hours to minutes
+- Maintain quality through manual approval gates
+- Enable scalable growth to multiple daily offers
+- Generate revenue through affiliate links (flights) and direct sales (packages)
+
+### 1.3 Success Metrics
+- Time to publish: < 15 minutes from approval to live
+- Daily offer target: 1+ flight+hotel packages
+- User conversion: Track purchase confirmations
+- System uptime: 99%+ availability
+- Error rate: < 5% failed automations
+
+---
+
+## 2. User Personas
+
+### 2.1 Primary User: Damian (Admin/Curator)
+- **Role:** Content creator, offer curator
+- **Goals:** Quickly review and approve best deals, maintain brand quality
+- **Pain Points:** Manual offer creation is time-consuming, hotel research is tedious
+- **Technical Level:** Comfortable with Google Sheets, basic GitHub workflows
+- **Mobile Usage:** Needs to approve offers on mobile device
+
+### 2.2 Secondary User: Tripsaver Customer
+- **Role:** Budget-conscious traveler from Poland
+- **Goals:** Find affordable flight+hotel packages, easy booking process
+- **Pain Points:** Comparing flights and hotels separately is overwhelming
+- **Preferred Languages:** Polish
+- **Purchase Behavior:** Expects clear pricing, simple confirmation flow
+
+---
+
+## 3. Product Scope
+
+### 3.1 In Scope (MVP v1)
+✅ Daily automated deal recommendations from existing CSV  
+✅ Manual approval workflow for flight ideas  
+✅ Multi-ticket flight support (2+ separate round-trip tickets)  
+✅ Hotel search via Booking.com API (RapidAPI)  
+✅ Manual hotel selection from top results  
+✅ Automated WordPress custom post creation  
+✅ PDF generation with branding (logo, colors)  
+✅ Purchase confirmation modal with email notifications  
+✅ Pending order tracking  
+✅ Mobile-friendly admin UI  
+✅ Email notifications (recommendations, purchases, errors)  
+✅ GitHub Actions automation  
+✅ Flight-only deals (existing workflow enhancement)  
+
+### 3.2 Out of Scope (Future Phases)
+❌ Integrated payment gateway (Blik, PayU)  
+❌ Multi-language support (English, German)  
+❌ Customer account/login system  
+❌ Automated hotel auto-selection  
+❌ Real-time flight API integration (Skyscanner, Kiwi)  
+❌ Dynamic pricing based on demand  
+❌ Inventory management for package limits  
+
+---
+
+## 4. System Architecture Overview
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    DAILY AUTOMATION FLOW                     │
+└─────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│  GitHub Actions (Scheduled Cron)                             │
+│  - Fetches CSV from GitHub repo                              │
+│  - Analyzes deals (z_score + price logic)                    │
+│  - Generates top 20 recommendations                          │
+│  - Sends email notification to admin                         │
+└─────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│  Admin UI (Mobile-Friendly Web Interface)                    │
+│  - View daily recommendations                                │
+│  - Approve flight idea (flight-only OR flight+hotel)         │
+│  - Add manual flights (multi-ticket support)                 │
+│  - Select hotel from search results                          │
+│  - Track pending orders                                      │
+└─────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│  Backend API (Python FastAPI)                                │
+│  - Recommendation engine                                     │
+│  - Hotel search orchestration (Booking API)                  │
+│  - WordPress post generation                                 │
+│  - PDF creation                                              │
+│  - Email notifications                                       │
+│  - Order tracking                                            │
+└─────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│  External Integrations                                       │
+│  - WordPress API (posts creation)                            │
+│  - Booking.com API (RapidAPI)                                │
+│  - Gmail SMTP (notifications)                                │
+│  - GitHub (PDF storage)                                      │
+└─────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│  Tripsaver.pl Website                                        │
+│  - Flight-only posts (affiliate links)                       │
+│  - Flight+Hotel custom post type (purchase flow)             │
+│  - Confirmation modal + email trigger                        │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 5. Detailed Functional Requirements
+
+### 5.1 Daily Deal Recommendation Engine
+
+#### 5.1.1 CSV Processing
+**Input:** `https://raw.githubusercontent.com/PRODG25/tripsaver-data-updater/refs/heads/master/archive/best_deals_detected.csv`
+
+**CSV Schema:**
+```
+Columns: Outbound From, Destination, ArrivalCountry, Inbound To, 
+         Departure Date, Return Date, Trip Duration (Days), 
+         Outbound Price, Inbound Price, Total Price, 
+         IATA_Departure, IATA_Destination, IATA_Return, 
+         Round_Trip_Link, Route, AvgPrice, z_score, 
+         price_yesterday, price_change_percent
+```
+
+**Processing Logic:**
+1. Fetch CSV daily via GitHub Actions (cron: 6:00 AM CET)
+2. Parse all rows into structured data
+3. Filter valid deals:
+   - `Departure Date` >= today + 7 days (minimum advance booking)
+   - `Total Price` > 0
+   - `z_score` is not null
+4. Rank deals by composite score:
+   - Primary: `z_score` (lower is better)
+   - Secondary: `Total Price` (lower is better)
+5. Group by `ArrivalCountry` and select top deals per country
+6. Return maximum 20 recommendations total
+
+**Output Format:**
+```json
+{
+  "recommendations": [
+    {
+      "id": "generated_uuid",
+      "route": "Poznań-Mediolan",
+      "departure_from": "Poznań",
+      "destination": "Mediolan",
+      "country": "Włochy",
+      "return_to": "Kraków",
+      "departure_date": "2026-01-26",
+      "return_date": "2026-02-02",
+      "duration_days": 7,
+      "total_price": 106.0,
+      "z_score": -1.67,
+      "iata_codes": {
+        "departure": "POZ",
+        "destination": "MILA",
+        "return": "KRK"
+      },
+      "affiliate_link": "https://skyscanner.net/g/referrals/...",
+      "is_multi_ticket": false
+    }
+  ],
+  "generated_at": "2025-12-23T06:00:00Z"
+}
+```
+
+#### 5.1.2 Notification System
+- Send email to admin with:
+  - Subject: "🔥 Tripsaver: 20 New Deal Recommendations - [Date]"
+  - Body: HTML formatted table with top deals
+  - Link to admin UI for approval
+- Use Gmail SMTP with app password
+- Retry logic: 3 attempts with exponential backoff
+
+---
+
+### 5.2 Admin UI (Mobile-Friendly Interface)
+
+#### 5.2.1 Technology Stack
+- **Framework:** React (lightweight, mobile-first)
+- **Hosting:** Free tier options:
+  - Vercel (recommended)
+  - Netlify
+  - GitHub Pages
+- **State Management:** React Context API
+- **Authentication:** Basic auth (username/password, stored as env variable)
+
+#### 5.2.2 Screen: Daily Recommendations
+
+**Layout:**
+```
+┌────────────────────────────────────┐
+│  🏠 Tripsaver Admin                │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│  📅 Recommendations: Dec 23, 2025  │
+│                                    │
+│  ┌──────────────────────────────┐ │
+│  │ 🔥 z-score: -1.67            │ │
+│  │ Poznań → Mediolan (Włochy)   │ │
+│  │ 26 sty - 02 lut (7 dni)      │ │
+│  │ 💰 106 PLN                   │ │
+│  │                              │ │
+│  │ [✈️ Flight Only] [✈️🏨 +Hotel] │
+│  └──────────────────────────────┘ │
+│                                    │
+│  [Load More...] (20 total)        │
+└────────────────────────────────────┘
+```
+
+**Actions:**
+- **Flight Only:** Creates flight-only deal (existing workflow)
+- **+Hotel:** Triggers hotel search flow
+
+#### 5.2.3 Screen: Add Manual Flight
+
+**Form Fields:**
+```
+┌────────────────────────────────────┐
+│  ➕ Add Manual Flight               │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│  Ticket #1 (Required)              │
+│  From: [POZ ▼] To: [LGW ▼]        │
+│  Departure: [📅] Return: [📅]      │
+│  Price: [64] PLN                   │
+│  Link: [https://...]              │
+│                                    │
+│  ➕ Add Ticket #2 (Optional)        │
+│  From: [LGW ▼] To: [CUN ▼]        │
+│  Departure: [📅] Return: [📅]      │
+│  Price: [850] PLN                  │
+│  Link: [https://...]              │
+│                                    │
+│  Total Price: 914 PLN (auto-calc) │
+│                                    │
+│  [✈️ Flight Only] [✈️🏨 +Hotel]     │
+└────────────────────────────────────┘
+```
+
+**Validation:**
+- All required fields filled
+- Dates are logical (departure < return)
+- IATA codes valid (dropdown from predefined list)
+- Affiliate links are valid URLs
+
+#### 5.2.4 Screen: Hotel Selection
+
+**Flow:**
+1. Admin approves flight+hotel idea
+2. System searches hotels via Booking API
+3. Display top 5 hotels (rating ≥ 6.5, reviews ≥ 100)
+
+**Layout:**
+```
+┌────────────────────────────────────┐
+│  🏨 Select Hotel                    │
+│  Mediolan • 26 sty - 02 lut        │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│  ┌──────────────────────────────┐ │
+│  │ 🖼️ [Hotel Photo]             │ │
+│  │ Hotel Milano Centrale ⭐ 8.2  │ │
+│  │ 📍 Centro, 0.5 km from center│ │
+│  │ 💬 245 reviews               │ │
+│  │ 💰 450 PLN/night (avg)       │ │
+│  │ Total: 3,150 PLN (7 nights)  │ │
+│  │                              │ │
+│  │ [✅ Select This Hotel]        │ │
+│  └──────────────────────────────┘ │
+│                                    │
+│  [Show 5 more hotels...]          │
+└────────────────────────────────────┘
+```
+
+**Hotel Card Data:**
+- Hotel name + rating (Booking.com score)
+- Main photo
+- Location/district
+- Review count
+- Average price per night
+- Total price for stay
+- Amenities (WiFi, breakfast, parking)
+
+#### 5.2.5 Screen: Pending Orders
+
+**Layout:**
+```
+┌────────────────────────────────────┐
+│  📦 Pending Orders (3)              │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│  ┌──────────────────────────────┐ │
+│  │ Order #TS001                 │ │
+│  │ Poznań → Mediolan + Hotel    │ │
+│  │ 👥 2 persons • 89 PLN        │ │
+│  │ 📧 jan.kowalski@gmail.com    │ │
+│  │ ⏰ 23 gru, 14:32              │ │
+│  │                              │ │
+│  │ [✅ Mark Paid] [✉️ Resend]    │ │
+│  └──────────────────────────────┘ │
+└────────────────────────────────────┘
+```
+
+**Order States:**
+- `pending_payment` (default after confirmation)
+- `paid` (manually marked by admin)
+- `cancelled` (if user doesn't pay)
+
+---
+
+### 5.3 Hotel Search & Selection
+
+#### 5.3.1 Booking API Integration (RapidAPI)
+
+**Step 1: Get Destination ID**
+```python
+# Endpoint: getHotelDetails (location search)
+url = "https://booking-com15.p.rapidapi.com/api/v1/hotels/searchDestination"
+params = {
+    "query": "Mediolan"  # City name from flight data
+}
+headers = {
+    "X-RapidAPI-Key": "[YOUR_KEY]",
+    "X-RapidAPI-Host": "booking-com15.p.rapidapi.com"
+}
+
+# Expected Response
+{
+  "data": [
+    {
+      "dest_id": "123456",
+      "dest_type": "city",
+      "label": "Milan, Lombardy, Italy"
+    }
+  ]
+}
+```
+
+**Step 2: Search Hotels**
+```python
+url = "https://booking-com15.p.rapidapi.com/api/v1/hotels/searchHotels"
+params = {
+    "dest_id": "123456",
+    "search_type": "CITY",
+    "arrival_date": "2026-01-26",
+    "departure_date": "2026-02-02",
+    "adults": "2",
+    "room_qty": "1",
+    "units": "metric",
+    "temperature_unit": "c",
+    "languagecode": "pl",
+    "currency_code": "PLN"
+}
+
+# Expected Response (simplified)
+{
+  "data": {
+    "hotels": [
+      {
+        "hotel_id": 789012,
+        "accessibilityLabel": "Hotel Millennium",
+        "property": {
+          "reviewScore": 8.5,
+          "reviewCount": 342,
+          "priceBreakdown": {
+            "grossPrice": {"value": 3150}
+          },
+          "photoUrls": ["https://..."],
+          "name": "Hotel Millennium"
+        }
+      }
+    ]
+  }
+}
+```
+
+**Step 3: Get Hotel Details**
+```python
+url = "https://booking-com15.p.rapidapi.com/api/v1/hotels/getHotelDetails"
+params = {
+    "hotel_id": "789012",
+    "arrival_date": "2026-01-26",
+    "departure_date": "2026-02-02",
+    "adults": "2",
+    "room_qty": "1",
+    "languagecode": "pl",
+    "currency_code": "PLN"
+}
+
+# Expected Response (key fields)
+{
+  "data": {
+    "hotel_id": 789012,
+    "hotel_name": "Hotel Millennium",
+    "url": "https://www.booking.com/hotel/it/millennium.pl.html?aid=[AFFILIATE_ID]",
+    "review_score": 8.5,
+    "review_nr": 342,
+    "address": "Via Centrale 45, Milan",
+    "photos": [...],
+    "description": "Modern hotel in city center...",
+    "facilities": ["WiFi", "Breakfast", "Parking"]
+  }
+}
+```
+
+#### 5.3.2 Hotel Filtering Logic
+**Minimum Requirements:**
+- Review score ≥ 6.5
+- Review count ≥ 100
+- Has photos
+- Price available for selected dates
+
+**Ranking Algorithm:**
+```python
+def calculate_hotel_score(hotel):
+    score = 0
+    
+    # Rating component (40% weight)
+    score += (hotel['review_score'] / 10) * 40
+    
+    # Value component (40% weight)
+    price_per_night = hotel['total_price'] / duration_days
+    value_score = max(0, (500 - price_per_night) / 500 * 40)
+    score += value_score
+    
+    # Review count component (20% weight)
+    review_score = min(hotel['review_count'] / 500, 1.0) * 20
+    score += review_score
+    
+    return score
+```
+
+**Return Top 5 Hotels** sorted by score descending.
+
+---
+
+### 5.4 WordPress Integration
+
+#### 5.4.1 Custom Post Type: `tripsaver_package`
+
+**Registration (functions.php):**
+```php
+function register_tripsaver_package_post_type() {
+    register_post_type('tripsaver_package', [
+        'labels' => [
+            'name' => 'Flight+Hotel Packages',
+            'singular_name' => 'Package'
+        ],
+        'public' => true,
+        'has_archive' => true,
+        'supports' => ['title', 'editor', 'thumbnail', 'custom-fields'],
+        'menu_icon' => 'dashicons-palmtree',
+        'rewrite' => ['slug' => 'pakiety']
+    ]);
+}
+add_action('init', 'register_tripsaver_package_post_type');
+```
+
+#### 5.4.2 Post Creation via WordPress REST API
+
+**Endpoint:** `POST /wp-json/wp/v2/tripsaver_package`
+
+**Authentication:** Application Password (WordPress 5.6+)
+
+**Payload Structure:**
+```json
+{
+  "title": "Mediolan + Hotel Millennium - 7 dni (26 sty - 02 lut)",
+  "status": "publish",
+  "content": "[Generated HTML from template]",
+  "featured_media": "[uploaded_image_id]",
+  "meta": {
+    "package_id": "TS-PKG-20251223-001",
+    "flight_details": "[JSON string]",
+    "hotel_details": "[JSON string]",
+    "pricing_tiers": {
+      "tier_1_2": 49,
+      "tier_3_6": 89,
+      "tier_7_10": 129
+    },
+    "pdf_url": "https://raw.githubusercontent.com/PRODG25/tripsaver-pdfs/master/TS-PKG-20251223-001.pdf",
+    "departure_date": "2026-01-26",
+    "return_date": "2026-02-02",
+    "destination_city": "Mediolan",
+    "destination_country": "Włochy"
+  }
+}
+```
+
+#### 5.4.3 Post Template (HTML Content)
+
+**Structure:**
+```html
+<!-- Hero Section -->
+<div class="package-hero">
+  <h1>Poznań → Mediolan (Włochy)</h1>
+  <p class="dates">26 stycznia - 02 lutego 2026 • 7 dni</p>
+  <div class="price-badge">od 49 PLN/os</div>
+</div>
+
+<!-- Flight Details Section -->
+<div class="flight-section">
+  <h2>✈️ Szczegóły lotów</h2>
+  
+  <!-- Ticket #1 (if multi-ticket) -->
+  <div class="flight-card">
+    <h3>Lot #1: Dojazd do Londynu</h3>
+    <p>🛫 Poznań (POZ) → Londyn (LGW)</p>
+    <p>📅 26 stycznia 2026</p>
+    <p>🛬 Londyn (LGW) → Kraków (KRK)</p>
+    <p>📅 02 lutego 2026</p>
+    <p>💰 64 PLN</p>
+    <a href="[AFFILIATE_LINK_1]" class="btn-secondary" target="_blank">
+      Kup bilet #1 →
+    </a>
+  </div>
+  
+  <!-- Ticket #2 -->
+  <div class="flight-card">
+    <h3>Lot #2: Lot główny</h3>
+    <p>🛫 Londyn (LGW) → Mediolan (MILA)</p>
+    <p>📅 26 stycznia 2026</p>
+    <p>🛬 Mediolan (MILA) → Londyn (LGW)</p>
+    <p>📅 02 lutego 2026</p>
+    <p>💰 850 PLN</p>
+    <a href="[AFFILIATE_LINK_2]" class="btn-secondary" target="_blank">
+      Kup bilet #2 →
+    </a>
+  </div>
+</div>
+
+<!-- Hotel Details Section -->
+<div class="hotel-section">
+  <h2>🏨 Twój hotel</h2>
+  <div class="hotel-card">
+    <img src="[HOTEL_MAIN_PHOTO]" alt="Hotel Millennium">
+    <h3>Hotel Millennium ⭐ 8.5/10</h3>
+    <p>📍 Centro, 0.5 km od centrum</p>
+    <p>💬 342 opinii na Booking.com</p>
+    <p>🛏️ 7 nocy • 2 osoby</p>
+    
+    <h4>Udogodnienia:</h4>
+    <ul>
+      <li>✅ Bezpłatne WiFi</li>
+      <li>✅ Śniadanie wliczone</li>
+      <li>✅ Parking</li>
+    </ul>
+    
+    <p class="hotel-description">
+      [Hotel description from Booking API]
+    </p>
+  </div>
+</div>
+
+<!-- Pricing Section -->
+<div class="pricing-section">
+  <h2>💰 Cennik gotowego planu</h2>
+  <p class="info-text">
+    Otrzymasz kompletny plan podróży z detalami lotów i hotelu w PDF.
+    Bilety i hotel rezerwujesz samodzielnie przez nasze linki.
+  </p>
+  
+  <div class="price-tiers">
+    <div class="tier">
+      <span class="persons">1-2 osoby</span>
+      <span class="price">49 PLN</span>
+    </div>
+    <div class="tier">
+      <span class="persons">3-6 osób</span>
+      <span class="price">89 PLN</span>
+    </div>
+    <div class="tier">
+      <span class="persons">7-10 osób</span>
+      <span class="price">129 PLN</span>
+    </div>
+  </div>
+  
+  <button class="btn-primary" onclick="openPurchaseModal()">
+    🛒 Kup gotowy plan →
+  </button>
+</div>
+
+<!-- Download PDF Section -->
+<div class="pdf-section">
+  <h2>📄 Pobierz PDF z planem</h2>
+  <p>Po zakupie otrzymasz pełny plan podróży w PDF:</p>
+  <ul>
+    <li>✅ Szczegółowy harmonogram lotów</li>
+    <li>✅ Dane hotelu z linkiem do rezerwacji</li>
+    <li>✅ Instrukcje jak dokonać rezerwacji</li>
+    <li>✅ Wskazówki dotyczące pakowania i dokumentów</li>
+  </ul>
+</div>
+```
+
+#### 5.4.4 Purchase Confirmation Modal
+
+**Triggered by:** `onclick="openPurchaseModal()"`
+
+**Modal HTML (injected via JavaScript):**
+```html
+<div id="purchase-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closePurchaseModal()">&times;</span>
+    
+    <h2>🛒 Potwierdź zakup</h2>
+    
+    <div class="summary">
+      <h3>Mediolan + Hotel Millennium</h3>
+      <p>26 stycznia - 02 lutego 2026 (7 dni)</p>
+    </div>
+    
+    <div class="form-group">
+      <label>Liczba osób:</label>
+      <select id="travelers-count" onchange="updatePrice()">
+        <option value="1">1 osoba</option>
+        <option value="2">2 osoby</option>
+        <option value="3">3 osoby</option>
+        <option value="4">4 osoby</option>
+        <option value="5">5 osób</option>
+        <option value="6">6 osób</option>
+        <option value="7">7 osób</option>
+        <option value="8">8 osób</option>
+        <option value="9">9 osób</option>
+        <option value="10">10 osób</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label>Twój email:</label>
+      <input type="email" id="customer-email" required 
+             placeholder="jan.kowalski@gmail.com">
+    </div>
+    
+    <div class="price-display">
+      <span>Do zapłaty:</span>
+      <span id="final-price" class="price-large">49 PLN</span>
+    </div>
+    
+    <button class="btn-primary" onclick="confirmPurchase()">
+      ✅ Potwierdzam zakup
+    </button>
+    
+    <p class="terms">
+      Klikając "Potwierdzam zakup" akceptujesz nasz 
+      <a href="/regulamin">Regulamin</a>
+    </p>
+  </div>
+</div>
+```
+
+**JavaScript Logic:**
+```javascript
+function updatePrice() {
+  const count = parseInt(document.getElementById('travelers-count').value);
+  let price;
+  
+  if (count <= 2) price = 49;
+  else if (count <= 6) price = 89;
+  else price = 129;
+  
+  document.getElementById('final-price').textContent = price + ' PLN';
+}
+
+function confirmPurchase() {
+  const email = document.getElementById('customer-email').value;
+  const travelers = document.getElementById('travelers-count').value;
+  const price = document.getElementById('final-price').textContent;
+  const packageId = '[FROM_POST_META]';
+  
+  // Validate email
+  if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+    alert('Proszę podać prawidłowy adres email');
+    return;
+  }
+  
+  // Send to backend API
+  fetch('/api/orders/create', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      package_id: packageId,
+      customer_email: email,
+      travelers_count: parseInt(travelers),
+      price: parseInt(price),
+      timestamp: new Date().toISOString()
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      alert('✅ Zamówienie potwierdzone! Sprawdź email z instrukcjami płatności.');
+      closePurchaseModal();
+    } else {
+      alert('❌ Wystąpił błąd. Spróbuj ponownie lub napisz do nas.');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('❌ Wystąpił błąd połączenia. Spróbuj ponownie.');
+  });
+}
+```
+
+---
+
+### 5.5 PDF Generation
+
+#### 5.5.1 Technology Stack
+- **Library:** ReportLab (Python) or Puppeteer (headless Chrome)
+- **Template:** HTML → PDF conversion
+- **Storage:** GitHub repository (`tripsaver-pdfs`)
+- **Naming:** `TS-PKG-[DATE]-[ID].pdf` (e.g., `TS-PKG-20251223-001.pdf`)
+
+#### 5.5.2 PDF Content Structure
+
+**Page 1: Cover**
+```
+┌───────────────────────────────────┐
+│                                   │
+│      [TRIPSAVER LOGO]             │
+│                                   │
+│   GOTOWY PLAN PODRÓŻY             │
+│                                   │
+│   Mediolan, Włochy                │
+│   26 stycznia - 02 lutego 2026    │
+│   7 dni                           │
+│                                   │
+│   [Hero Image: Milan/Hotel]       │
+│                                   │
+└───────────────────────────────────┘
+```
+
+**Page 2: Flight Details**
+```
+┌───────────────────────────────────┐
+│ ✈️ SZCZEGÓŁY LOTÓW                 │
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━│
+│                                   │
+│ LOT #1: DOJAZD                    │
+│ Poznań (POZ) → Londyn (LGW)       │
+│ 📅 26 stycznia 2026               │
+│ 🕐 [Time from API if available]   │
+│ 💰 64 PLN                         │
+│                                   │
+│ 🔗 KUP BILET #1:                  │
+│ [QR Code + Short URL]             │
+│                                   │
+│ Powrót:                           │
+│ Londyn (LGW) → Kraków (KRK)       │
+│ 📅 02 lutego 2026                 │
+│                                   │
+│ ─────────────────────────────    │
+│                                   │
+│ LOT #2: LOT GŁÓWNY                │
+│ Londyn (LGW) → Mediolan (MILA)    │
+│ 📅 26 stycznia 2026               │
+│ 💰 850 PLN                        │
+│                                   │
+│ 🔗 KUP BILET #2:                  │
+│ [QR Code + Short URL]             │
+│                                   │
+│ Powrót:                           │
+│ Mediolan (MILA) → Londyn (LGW)    │
+│ 📅 02 lutego 2026                 │
+│                                   │
+│ 💰 ŁĄCZNY KOSZT LOTÓW: 914 PLN    │
+└───────────────────────────────────┘
+```
+
+**Page 3: Hotel Details**
+```
+┌───────────────────────────────────┐
+│ 🏨 TWÓJ HOTEL                      │
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━│
+│                                   │
+│ [Hotel Main Photo - Large]        │
+│                                   │
+│ Hotel Millennium ⭐⭐⭐⭐           │
+│ Ocena: 8.5/10 (342 opinii)        │
+│                                   │
+│ 📍 ADRES:                         │
+│ Via Centrale 45                   │
+│ Centro, Milano, Italy             │
+│ 0.5 km od centrum miasta          │
+│                                   │
+│ 📅 TERMIN:                        │
+│ Zameldowanie: 26 stycznia 2026    │
+│ Wymeldowanie: 02 lutego 2026      │
+│ Liczba nocy: 7                    │
+│                                   │
+│ 💰 SZACUNKOWY KOSZT:              │
+│ ~450 PLN/noc (dla 2 osób)         │
+│ ~3,150 PLN całość                 │
+│                                   │
+│ ✅ UDOGODNIENIA:                  │
+│ • Bezpłatne WiFi                  │
+│ • Śniadanie wliczone              │
+│ • Parking (opłata)                │
+│ • Klimatyzacja                    │
+│ • Całodobowa recepcja             │
+│                                   │
+│ 🔗 ZAREZERWUJ HOTEL:              │
+│ [QR Code + Booking.com URL]       │
+└───────────────────────────────────┘
+```
+
+**Page 4: Practical Info**
+```
+┌───────────────────────────────────┐
+│ 📋 PRAKTYCZNE INFORMACJE           │
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━│
+│                                   │
+│ ✈️ JAK KUPIĆ BILETY?              │
+│                                   │
+│ 1. Kliknij w linki powyżej lub    │
+│    zeskanuj kody QR               │
+│ 2. Wybierz liczbę pasażerów       │
+│ 3. Postępuj zgodnie z instrukcją  │
+│    na stronie partnera            │
+│ 4. Po zakupie otrzymasz           │
+│    potwierdzenie mailem           │
+│                                   │
+│ 🏨 JAK ZAREZERWOWAĆ HOTEL?        │
+│                                   │
+│ 1. Użyj linku/QR do Booking.com   │
+│ 2. Sprawdź dostępność na Twoje    │
+│    daty (26.01 - 02.02.2026)      │
+│ 3. Wybierz typ pokoju             │
+│ 4. Dokonaj rezerwacji             │
+│                                   │
+│ 🎒 CO ZABRAĆ?                     │
+│ □ Paszport/dowód osobisty         │
+│ □ Karty płatnicze + gotówka EUR   │
+│ □ Potwierdzenie rezerwacji hotelu │
+│ □ Bilety lotnicze (digital OK)    │
+│ □ Ubezpieczenie podróżne          │
+│                                   │
+│ 💡 WSKAZÓWKI:                     │
+│ • Zamelduj się online 24h przed   │
+│   lotem (oszczędź czas!)          │
+│ • Sprawdź wymiary bagażu          │
+│   podręcznego                     │
+│ • Mediolan - w styczniu ~5°C,     │
+│   weź ciepłe ubrania              │
+│                                   │
+│ 📞 KONTAKT TRIPSAVER:             │
+│ Email: kontakt@tripsaver.pl       │
+│ Web: www.tripsaver.pl             │
+└───────────────────────────────────┘
+```
+
+#### 5.5.3 PDF Generation Code (Python Example)
+
+```python
+from reportlab.lib.pagesizes import A4
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image, Table
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.lib.units import cm
+from reportlab.lib import colors
+import qrcode
+
+def generate_package_pdf(offer_data, output_path):
+    """
+    Generate branded PDF for flight+hotel package
+    
+    Args:
+        offer_data: Dict with flight, hotel, pricing info
+        output_path: Path to save PDF (GitHub repo path)
+    """
+    
+    doc = SimpleDocTemplate(output_path, pagesize=A4)
+    story = []
+    styles = getSampleStyleSheet()
+    
+    # Custom styles with Tripsaver branding
+    title_style = ParagraphStyle(
+        'CustomTitle',
+        parent=styles['Heading1'],
+        fontSize=24,
+        textColor=colors.HexColor('#FF6B35'),  # Tripsaver orange
+        spaceAfter=20
+    )
+    
+    # Page 1: Cover
+    logo = Image('tripsaver_logo.png', width=8*cm, height=3*cm)
+    story.append(logo)
+    story.append(Spacer(1, 2*cm))
+    
+    title = Paragraph(f"GOTOWY PLAN PODRÓŻY<br/>{offer_data['destination']}", title_style)
+    story.append(title)
+    
+    dates = Paragraph(
+        f"{offer_data['departure_date']} - {offer_data['return_date']}<br/>"
+        f"{offer_data['duration_days']} dni",
+        styles['Normal']
+    )
+    story.append(dates)
+    story.append(Spacer(1, 2*cm))
+    
+    # Hero image
+    if offer_data['hero_image_url']:
+        hero_img = Image(offer_data['hero_image_url'], width=15*cm, height=10*cm)
+        story.append(hero_img)
+    
+    # Page 2: Flights
+    story.append(PageBreak())
+    flights_title = Paragraph("✈️ SZCZEGÓŁY LOTÓW", title_style)
+    story.append(flights_title)
+    
+    for idx, ticket in enumerate(offer_data['tickets'], 1):
+        ticket_title = Paragraph(f"LOT #{idx}: {ticket['label']}", styles['Heading2'])
+        story.append(ticket_title)
+        
+        # Flight details table
+        flight_data = [
+            ['Trasa:', f"{ticket['from_city']} ({ticket['from_iata']}) → {ticket['to_city']} ({ticket['to_iata']})"],
+            ['Data wylotu:', ticket['departure_date']],
+            ['Data powrotu:', ticket['return_date']],
+            ['Cena:', f"{ticket['price']} PLN"]
+        ]
+        
+        flight_table = Table(flight_data, colWidths=[4*cm, 11*cm])
+        flight_table.setStyle(TableStyle([
+            ('BACKGROUND', (0, 0), (0, -1), colors.lightgrey),
+            ('GRID', (0, 0), (-1, -1), 1, colors.black)
+        ]))
+        story.append(flight_table)
+        story.append(Spacer(1, 0.5*cm))
+        
+        # QR Code for affiliate link
+        qr = qrcode.make(ticket['affiliate_link'])
+        qr_path = f"/tmp/qr_ticket_{idx}.png"
+        qr.save(qr_path)
+        qr_img = Image(qr_path, width=3*cm, height=3*cm)
+        
+        qr_label = Paragraph(f"🔗 SKANUJ ABY KUPIĆ BILET #{idx}", styles['Normal'])
+        story.append(qr_label)
+        story.append(qr_img)
+        story.append(Spacer(1, 1*cm))
+    
+    # Total flight cost
+    total_flights = Paragraph(
+        f"💰 ŁĄCZNY KOSZT LOTÓW: {offer_data['total_flight_price']} PLN",
+        styles['Heading3']
+    )
+    story.append(total_flights)
+    
+    # Page 3: Hotel
+    story.append(PageBreak())
+    hotel_title = Paragraph("🏨 TWÓJ HOTEL", title_style)
+    story.append(hotel_title)
+    
+    hotel = offer_data['hotel']
+    hotel_img = Image(hotel['main_photo_url'], width=15*cm, height=10*cm)
+    story.append(hotel_img)
+    story.append(Spacer(1, 0.5*cm))
+    
+    hotel_name = Paragraph(
+        f"{hotel['name']} {'⭐' * hotel['stars']}<br/>"
+        f"Ocena: {hotel['rating']}/10 ({hotel['review_count']} opinii)",
+        styles['Heading2']
+    )
+    story.append(hotel_name)
+    
+    hotel_details = [
+        ['📍 Adres:', f"{hotel['address']}<br/>{hotel['district']}, {hotel['city']}"],
+        ['📅 Termin:', f"Zameldowanie: {hotel['checkin_date']}<br/>Wymeldowanie: {hotel['checkout_date']}"],
+        ['🛏️ Pobyt:', f"{hotel['nights']} nocy"],
+        ['💰 Koszt:', f"~{hotel['price_per_night']} PLN/noc<br/>~{hotel['total_price']} PLN całość"]
+    ]
+    
+    hotel_table = Table(hotel_details, colWidths=[4*cm, 11*cm])
+    hotel_table.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (0, -1), colors.lightgrey),
+        ('GRID', (0, 0), (-1, -1), 1, colors.black),
+        ('VALIGN', (0, 0), (-1, -1), 'TOP')
+    ]))
+    story.append(hotel_table)
+    story.append(Spacer(1, 1*cm))
+    
+    # Amenities
+    amenities_title = Paragraph("✅ UDOGODNIENIA:", styles['Heading3'])
+    story.append(amenities_title)
+    
+    amenities_list = "<br/>".join([f"• {am}" for am in hotel['amenities']])
+    amenities_p = Paragraph(amenities_list, styles['Normal'])
+    story.append(amenities_p)
+    story.append(Spacer(1, 1*cm))
+    
+    # Booking QR
+    booking_qr = qrcode.make(hotel['booking_url'])
+    booking_qr_path = "/tmp/qr_hotel.png"
+    booking_qr.save(booking_qr_path)
+    
+    booking_label = Paragraph("🔗 ZAREZERWUJ HOTEL (skanuj kod)", styles['Normal'])
+    story.append(booking_label)
+    
+    booking_qr_img = Image(booking_qr_path, width=4*cm, height=4*cm)
+    story.append(booking_qr_img)
+    
+    # Page 4: Practical info (similar structure)
+    # ... (add remaining pages)
+    
+    # Build PDF
+    doc.build(story)
+    print(f"✅ PDF generated: {output_path}")
+```
+
+#### 5.5.4 PDF Storage & Delivery
+
+**GitHub Storage:**
+- Repository: `PRODG25/tripsaver-pdfs` (public or private)
+- Path structure: `packages/YYYY/MM/TS-PKG-YYYYMMDD-XXX.pdf`
+- Raw URL: `https://raw.githubusercontent.com/PRODG25/tripsaver-pdfs/master/packages/2025/12/TS-PKG-20251223-001.pdf`
+
+**Automatic Upload:**
+```python
+import subprocess
+
+def upload_pdf_to_github(pdf_path, package_id):
+    """Upload generated PDF to GitHub repo"""
+    
+    year = package_id.split('-')[2][:4]
+    month = package_id.split('-')[2][4:6]
+    
+    github_path = f"packages/{year}/{month}/{package_id}.pdf"
+    
+    # Git commands
+    subprocess.run(['git', 'add', pdf_path])
+    subprocess.run(['git', 'commit', '-m', f'Add package PDF: {package_id}'])
+    subprocess.run(['git', 'push', 'origin', 'master'])
+    
+    raw_url = f"https://raw.githubusercontent.com/PRODG25/tripsaver-pdfs/master/{github_path}"
+    return raw_url
+```
+
+---
+
+### 5.6 Order Management & Email Notifications
+
+#### 5.6.1 Order Creation Flow
+
+**API Endpoint:** `POST /api/orders/create`
+
+**Request Body:**
+```json
+{
+  "package_id": "TS-PKG-20251223-001",
+  "customer_email": "jan.kowalski@gmail.com",
+  "travelers_count": 2,
+  "price": 49,
+  "timestamp": "2025-12-23T14:32:00Z"
+}
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "order_id": "TS-ORD-20251223-001",
+  "confirmation_sent": true
+}
+```
+
+**Database Schema (SQLite or PostgreSQL):**
+```sql
+CREATE TABLE orders (
+    order_id VARCHAR(50) PRIMARY KEY,
+    package_id VARCHAR(50) NOT NULL,
+    customer_email VARCHAR(255) NOT NULL,
+    travelers_count INTEGER NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    status VARCHAR(20) DEFAULT 'pending_payment',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    paid_at TIMESTAMP NULL,
+    pdf_url VARCHAR(500),
+    FOREIGN KEY (package_id) REFERENCES packages(package_id)
+);
+
+CREATE INDEX idx_status ON orders(status);
+CREATE INDEX idx_created_at ON orders(created_at DESC);
+```
+
+#### 5.6.2 Confirmation Email (Sent to Customer)
+
+**Template:**
+```
+Subject: ✅ Potwierdzenie zamówienia #{order_id} - Tripsaver
+
+---
+
+Cześć!
+
+Dziękujemy za zamówienie gotowego planu podróży! 🎉
+
+📦 SZCZEGÓŁY ZAMÓWIENIA:
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+Numer zamówienia: {order_id}
+Pakiet: {destination} ({departure_date} - {return_date})
+Liczba osób: {travelers_count}
+Kwota do zapłaty: {price} PLN
+
+💳 INSTRUKCJE PŁATNOŚCI:
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+Prosimy o dokonanie przelewu BLIK na numer telefonu:
+
+📱 Numer BLIK: +48 XXX XXX XXX
+💰 Kwota: {price} PLN
+📝 Tytuł: {order_id}
+
+WAŻNE: W tytule przelewu koniecznie podaj numer zamówienia!
+
+Po otrzymaniu płatności (zazwyczaj w ciągu 1-2 godzin) wyślemy Ci:
+✅ Plik PDF z kompletnym planem podróży
+✅ Linki do rezerwacji lotów i hotelu
+✅ Praktyczne wskazówki
+
+📧 MASZ PYTANIA?
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+Napisz do nas: kontakt@tripsaver.pl
+Odpisujemy w ciągu 24h!
+
+Do zobaczenia w podróży! ✈️
+Zespół Tripsaver
+
+---
+www.tripsaver.pl
+```
+
+#### 5.6.3 Admin Notification Email
+
+**Template:**
+```
+Subject: 🔔 Nowe zamówienie: {order_id}
+
+---
+
+Nowe zamówienie w systemie!
+
+Zamówienie: {order_id}
+Pakiet: {package_id} - {destination}
+Email klienta: {customer_email}
+Liczba osób: {travelers_count}
+Kwota: {price} PLN
+Data: {timestamp}
+
+Status: Oczekuje na płatność
+
+🔗 Zobacz szczegóły:
+{admin_ui_url}/orders/{order_id}
+
+---
+Tripsaver Admin System
+```
+
+#### 5.6.4 Payment Confirmation Email (After Admin Marks as Paid)
+
+**Template:**
+```
+Subject: 🎉 Płatność potwierdzona - Twój plan podróży!
+
+---
+
+Cześć!
+
+Otrzymaliśmy Twoją płatność! 🎊
+
+📄 TWÓJ PLAN PODRÓŻY:
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+Zamówienie: {order_id}
+Pakiet: {destination}
+Termin: {departure_date} - {return_date}
+
+Pobierz plik PDF z planem:
+🔗 {pdf_download_url}
+
+CO DALEJ?
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. Otwórz plik PDF
+2. Kup bilety lotnicze (użyj linków/kodów QR w PDF)
+3. Zarezerwuj hotel (link w PDF)
+4. Sprawdź listę rzeczy do spakowania
+5. Ciesz się podróżą! ✈️🏨
+
+💡 WSKAZÓWKI:
+• Kupuj bilety jak najszybciej - ceny mogą wzrosnąć
+• Rezerwuj hotel z opcją darmowej anulacji
+• Sprawdź wymagania wizowe dla {destination_country}
+
+Masz pytania? Napisz: kontakt@tripsaver.pl
+
+Udanej podróży!
+Zespół Tripsaver
+
+---
+www.tripsaver.pl
+```
+
+#### 5.6.5 Email Sending Configuration
+
+**Technology:** Gmail SMTP with App Password
+
+**Python Code Example:**
+```python
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
+def send_email(to_email, subject, html_body):
+    """Send email via Gmail SMTP"""
+    
+    # Configuration (from env variables)
+    SMTP_HOST = 'smtp.gmail.com'
+    SMTP_PORT = 587
+    SENDER_EMAIL = 'kontakt@tripsaver.pl'  # Your Gmail
+    APP_PASSWORD = os.getenv('GMAIL_APP_PASSWORD')
+    
+    # Create message
+    msg = MIMEMultipart('alternative')
+    msg['From'] = f"Tripsaver <{SENDER_EMAIL}>"
+    msg['To'] = to_email
+    msg['Subject'] = subject
+    
+    # Add HTML body
+    html_part = MIMEText(html_body, 'html', 'utf-8')
+    msg.attach(html_part)
+    
+    # Send
+    try:
+        with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as server:
+            server.starttls()
+            server.login(SENDER_EMAIL, APP_PASSWORD)
+            server.send_message(msg)
+        
+        print(f"✅ Email sent to {to_email}")
+        return True
+        
+    except Exception as e:
+        print(f"❌ Email failed: {str(e)}")
+        return False
+```
+
+---
+
+### 5.7 Flight-Only Deals (Existing Workflow Enhancement)
+
+#### 5.7.1 Current Process
+- Manual entry in Google Sheets
+- Change status to "Ready to Post"
+- GitHub Action triggers `GenerateOffer.py`
+- Post created on WordPress using `PageContent.txt` template
+
+#### 5.7.2 Enhancements for Multi-Ticket Support
+
+**Updated Google Sheets Schema:**
+
+| Column | Description | Example |
+|--------|-------------|---------|
+| offer_id | Auto-generated | FO-20251223-001 |
+| ticket_1_from | IATA code | POZ |
+| ticket_1_to | IATA code | LGW |
+| ticket_1_departure | Date | 2026-01-26 |
+| ticket_1_return | Date | 2026-02-02 |
+| ticket_1_price | PLN | 64 |
+| ticket_1_link | Affiliate URL | https://... |
+| ticket_2_from | IATA (optional) | LGW |
+| ticket_2_to | IATA (optional) | CUN |
+| ticket_2_departure | Date (optional) | 2026-01-26 |
+| ticket_2_return | Date (optional) | 2026-02-02 |
+| ticket_2_price | PLN (optional) | 850 |
+| ticket_2_link | Affiliate URL (optional) | https://... |
+| status | Workflow status | Ready to Post |
+
+**Updated `GenerateOffer.py` Logic:**
+```python
+def generate_flight_only_post(sheet_row):
+    """Enhanced to support multi-ticket flights"""
+    
+    # Check if multi-ticket
+    is_multi_ticket = sheet_row['ticket_2_from'] is not None
+    
+    # Build tickets array
+    tickets = [
+        {
+            'label': 'Dojazd' if is_multi_ticket else 'Lot',
+            'from_iata': sheet_row['ticket_1_from'],
+            'to_iata': sheet_row['ticket_1_to'],
+            'departure_date': sheet_row['ticket_1_departure'],
+            'return_date': sheet_row['ticket_1_return'],
+            'price': sheet_row['ticket_1_price'],
+            'affiliate_link': sheet_row['ticket_1_link']
+        }
+    ]
+    
+    if is_multi_ticket:
+        tickets.append({
+            'label': 'Lot główny',
+            'from_iata': sheet_row['ticket_2_from'],
+            'to_iata': sheet_row['ticket_2_to'],
+            'departure_date': sheet_row['ticket_2_departure'],
+            'return_date': sheet_row['ticket_2_return'],
+            'price': sheet_row['ticket_2_price'],
+            'affiliate_link': sheet_row['ticket_2_link']
+        })
+    
+    # Load template
+    with open('PageContent.txt', 'r') as f:
+        template = f.read()
+    
+    # Generate ticket HTML
+    tickets_html = ""
+    for idx, ticket in enumerate(tickets, 1):
+        tickets_html += f"""
+        <div class="flight-ticket">
+            <h3>Bilet #{idx}: {ticket['label']}</h3>
+            <p>🛫 {ticket['from_iata']} → {ticket['to_iata']}</p>
+            <p>📅 {ticket['departure_date']}</p>
+            <p>🛬 Powrót: {ticket['return_date']}</p>
+            <p>💰 {ticket['price']} PLN</p>
+            <a href="{ticket['affiliate_link']}" class="btn-buy" target="_blank">
+                Kup bilet #{idx} →
+            </a>
+        </div>
+        """
+    
+    # Fill template
+    total_price = sum(t['price'] for t in tickets)
+    post_content = template.replace('{{TICKETS}}', tickets_html)
+    post_content = post_content.replace('{{TOTAL_PRICE}}', str(total_price))
+    # ... (replace other placeholders)
+    
+    # Publish to WordPress
+    publish_to_wordpress(post_content, sheet_row)
+```
+
+---
+
+## 6. Non-Functional Requirements
+
+### 6.1 Performance
+- **Recommendation generation:** < 30 seconds
+- **Hotel search:** < 10 seconds (Booking API response)
+- **PDF generation:** < 20 seconds
+- **WordPress post creation:** < 5 seconds
+- **Email delivery:** < 10 seconds
+
+### 6.2 Scalability
+- Support up to 50 packages/month (MVP)
+- Handle 100 concurrent users on website
+- Database: 10,000+ orders capacity
+
+### 6.3 Reliability
+- System uptime: 99%+
+- GitHub Actions: Retry failed runs (max 3 attempts)
+- Email delivery: Retry failed sends (exponential backoff)
+- Fallback: Manual approval if automation fails
+
+### 6.4 Security
+- Admin UI: Basic HTTP authentication (username/password)
+- API: API keys stored in environment variables
+- Passwords: Never stored in code (use GitHub Secrets)
+- WordPress: Application passwords (not admin credentials)
+
+### 6.5 Usability
+- Admin UI: Mobile-first responsive design
+- Load time: < 3 seconds on 4G connection
+- Notifications: Clear, actionable messages
+- Error handling: User-friendly error messages
+
+### 6.6 Maintainability
+- Code: Modular Python functions
+- Documentation: Inline comments + README
+- Logging: All critical operations logged
+- Monitoring: Error alerts via email
+
+---
+
+## 7. Technology Stack
+
+### 7.1 Backend
+- **Language:** Python 3.9+
+- **Framework:** FastAPI (API server)
+- **Database:** SQLite (MVP) → PostgreSQL (future)
+- **PDF Generation:** ReportLab
+- **HTTP Client:** `requests` library
+- **Email:** `smtplib` (Gmail SMTP)
+
+### 7.2 Frontend (Admin UI)
+- **Framework:** React 18+
+- **Styling:** Tailwind CSS
+- **Hosting:** Vercel (free tier)
+- **State:** React Context API
+
+### 7.3 Automation
+- **Orchestration:** GitHub Actions
+- **Scheduling:** Cron expressions
+- **Secrets:** GitHub Secrets
+
+### 7.4 External Services
+- **WordPress:** REST API
+- **Booking.com:** RapidAPI endpoints
+- **Email:** Gmail SMTP
+- **Storage:** GitHub (PDFs, CSV)
+
+### 7.5 Development Tools
+- **Version Control:** Git + GitHub
+- **Package Manager:** pip (Python), npm (React)
+- **Testing:** pytest (Python), Jest (React)
+- **Linting:** flake8 (Python), ESLint (React)
+
+---
+
+## 8. Data Models
+
+### 8.1 Package Offer
+```python
+{
+    "package_id": "TS-PKG-20251223-001",
+    "offer_type": "flight_hotel",  # or "flight_only"
+    "status": "published",  # draft, approved, published
+    "created_at": "2025-12-23T10:00:00Z",
+    "published_at": "2025-12-23T14:00:00Z",
+    
+    # Destination
+    "destination_city": "Mediolan",
+    "destination_country": "Włochy",
+    "departure_date": "2026-01-26",
+    "return_date": "2026-02-02",
+    "duration_days": 7,
+    
+    # Flights
+    "tickets": [
+        {
+            "ticket_id": "T1",
+            "label": "Dojazd",
+            "from_city": "Poznań",
+            "from_iata": "POZ",
+            "to_city": "Londyn",
+            "to_iata": "LGW",
+            "departure_date": "2026-01-26",
+            "return_date": "2026-02-02",
+            "price": 64.0,
+            "affiliate_link": "https://..."
+        },
+        {
+            "ticket_id": "T2",
+            "label": "Lot główny",
+            "from_city": "Londyn",
+            "from_iata": "LGW",
+            "to_city": "Cancún",
+            "to_iata": "CUN",
+            "departure_date": "2026-01-27",
+            "return_date": "2026-02-01",
+            "price": 850.0,
+            "affiliate_link": "https://..."
+        }
+    ],
+    "total_flight_price": 914.0,
+    
+    # Hotel (if flight_hotel)
+    "hotel": {
+        "hotel_id": "789012",
+        "name": "Hotel Millennium",
+        "address": "Via Centrale 45",
+        "city": "Milano",
+        "district": "Centro",
+        "rating": 8.5,
+        "review_count": 342,
+        "stars": 4,
+        "main_photo_url": "https://...",
+        "photos": ["https://...", "https://..."],
+        "amenities": ["WiFi", "Breakfast", "Parking"],
+        "price_per_night": 450.0,
+        "total_price": 3150.0,
+        "booking_url": "https://www.booking.com/..."
+    },
+    
+    # Pricing
+    "pricing_tiers": {
+        "tier_1_2": 49,
+        "tier_3_6": 89,
