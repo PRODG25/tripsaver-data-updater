@@ -1,8 +1,8 @@
 name: Dispatcher - Daily Flight Data Refresh
 
 on:
-  #schedule:
-    #- cron: "0 10 * * *"   # runs daily at 6:00 UTC
+  schedule:
+    - cron: "0 10 * * *"   # runs daily at 6:00 UTC
   workflow_dispatch:
 
 jobs:
