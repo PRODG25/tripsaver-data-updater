@@ -190,7 +190,7 @@ for route in routes:
         "adults": "1",
         "currency": "PLN",
         "country_code": "PL",
-        "end_date":"2026-04-30"
+        "end_date":"2026-06-30"
     }
     
     response = requests.get(url, headers=headers, params=params)
@@ -380,6 +380,7 @@ filename = "flight_prices_raw.csv"
 df.to_csv(filename, index=False)
 
 print(f"DataFrame with all fight prices created saved")
+
 
 
 
