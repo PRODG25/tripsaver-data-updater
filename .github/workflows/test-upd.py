@@ -8,7 +8,7 @@ print(f"DataFrame with all fight prices created saved")
 print(df.head())
 df = df.sort_values(by='price').reset_index(drop=True)
 
-df = df.iloc[:100_000].reset_index(drop=True)
+#df = df.iloc[:100_000].reset_index(drop=True)
 # Create a dictionary mapping airport codes to city codes
 airport_to_city = {
     # Warsaw airports
@@ -95,7 +95,7 @@ valid_trips['route'] = valid_trips['DepartureCity'] + ' - ' + valid_trips['Arriv
 
 # Group by route and departure month, get top 10% cheapest flights per group
 def top_10_percent(group):
-    cutoff = int(len(group) * 0.15)
+    cutoff = int(len(group) * 0.3)
     if cutoff == 0:
         cutoff = 1
     return group.nsmallest(cutoff, 'total_price')
