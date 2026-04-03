@@ -190,7 +190,7 @@ for route in routes:
         "adults": "1",
         "currency": "PLN",
         "country_code": "PL",
-        "end_date":"2026-06-30"
+        "end_date":"2026-07-30"
     }
     
     response = requests.get(url, headers=headers, params=params)
