@@ -1,0 +1,123 @@
+polish_airports = [
+    "WAW",  # Warszawa Chopin
+    "WMI",  # Warszawa Modlin
+    "KRK",  # Krakow
+    "GDN",  # Gdansk
+    "WRO",  # Wroclaw
+    "KTW",  # Katowice
+    "POZ",  # Poznan
+]
+
+summer_destinations_from_poland = [
+    # Grecja
+    "RHO",  # Rhodes
+    "SKG",  # Thessaloniki
+    "CFU",  # Corfu
+    "ZTH",  # Zakynthos
+    "KGS",  # Kos
+    #"CHQ",  # Chania
+
+    # Hiszpania
+    "MAD",  # Madrid Barajas
+    "BCN",  # Barcelona El Prat
+    "AGP",  # Málaga
+    "PMI",  # Palma de Mallorca
+    "ALC",  # Alicante
+    "TFS",  # Tenerife South
+    "SVQ",  # Seville
+    "IBZ",  # Ibiza
+    "VLC",  # Valencia
+    "BIO",  # Bilbao
+    #"TFN",  # Tenerife North
+    #"SPC",  # La Palma
+    #"GRX",  # Granada
+
+    # Włochy
+    "FCO",  # Rome Fiumicino
+    "CIA",  # Rome Ciampino
+    "MXP",  # Milan Malpensa
+    "BGY",  # Bergamo (Orio al Serio)
+    "VCE",  # Venice Marco Polo
+    "NAP",  # Naples
+    "BLQ",  # Bologna
+    "PSA",  # Pisa
+    "FLR",  # Florence
+    "TRN",  # Turin
+    "BRI",  # Bari
+    "PMO",  # Palermo
+    "CTA",  # Catania
+    "OLB",  # Olbia
+    "AHO",  # Alghero
+    "VRN",  # Verona
+    "GOA",  # Genoa
+
+    # Croatia
+    "SPU",  # Split
+    "DBV",  # Dubrovnik
+    "ZAD",  # Zadar
+
+    # Cyprus
+    "LCA",  # Larnaca
+    "PFO",  # Paphos
+
+    # Bulgaria
+    "VAR",  # Varna
+    "BOJ",  # Burgas
+    "SOF",  #Sofia
+
+    # Montenegro
+    "TGD",  # Podgorica
+
+    # Albania
+    "TIA",  # Tirana
+    
+ # Portugalia
+    "FAO",  # Faro (Algarve)
+    "LIS",  # Lisbon
+    "OPO",  # Porto
+    "FNC",  # Madeira
+
+    # Francja
+    "CDG",  # Paris Charles de Gaulle
+    "ORY",  # Paris Orly
+    "BVA",  # Paris Beauvais
+    "LYS",  # Lyon–Saint-Exupéry
+    "NCE",  # Nice Côte d'Azur
+    "MRS",  # Marseille Provence
+    #"BIQ",  # Biarritz Pays Basque
+
+    "KEF",  # Reyjkjavik
+
+    "RMO",  #Moldova
+    "BBU",  #Bucharest
+    "OTP",  #Bucharest
+    "CPH",  #Copenhagen
+    "ARN",  #Stocholm
+    "GOT",  #Gothenburg
+    "ATH",  #Athens
+    "BUD",  #Budapest
+    "AUH",  #AbuDhabi
+    "IST",  #Istanbul
+    "SKP",  #Skopje
+    "KUT",  #Kutaisi
+    "MLA", #Malta
+    "AMM", #Amman
+    "RAK", #Marakech
+    "RBA", #Rabat
+    "AGA", #Agadir
+    "EIN", #Eindhoven
+    "OSL", #Oslo
+    "TRF", #Oslo
+    "AMS", #Amsterdam
+    "STN", #Stansted
+    "LTN", #Luton
+    "LGW", #Gatwick
+    "MAN", #Manchester
+    "DUB", #Dublin
+    "AYT", # Antalya
+    "ADB", #Izmir
+    "GLA", #Glasgow
+    "EDI", #Edingburgh
+
+
+]
