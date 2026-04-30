@@ -1,6 +1,7 @@
 import argparse
 import asyncio
 import calendar
+import csv
 import json
 import random
 import re
@@ -11,6 +12,31 @@ from typing import Dict, List, Tuple
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 from playwright.async_api import Browser, Page, async_playwright
+
+POLISH_AIRPORTS = [
+    "WAW",
+    "WMI",
+    "KRK",
+    "GDN",
+    "WRO",
+    "KTW",
+    "POZ",
+]
+
+SUMMER_DESTINATIONS_FROM_POLAND = [
+    "RHO", "SKG", "CFU", "ZTH", "KGS",
+    "MAD", "BCN", "AGP", "PMI", "ALC", "TFS", "SVQ", "IBZ", "VLC", "BIO",
+    "FCO", "CIA", "MXP", "BGY", "VCE", "NAP", "BLQ", "PSA", "FLR", "TRN", "BRI", "PMO", "CTA", "OLB", "AHO", "VRN", "GOA",
+    "SPU", "DBV", "ZAD",
+    "LCA", "PFO",
+    "VAR", "BOJ", "SOF",
+    "TGD", "TIA",
+    "FAO", "LIS", "OPO", "FNC",
+    "CDG", "ORY", "BVA", "LYS", "NCE", "MRS",
+    "KEF", "RMO", "BBU", "OTP", "CPH", "ARN", "GOT", "ATH", "BUD", "AUH",
+    "IST", "SKP", "KUT", "MLA", "AMM", "RAK", "RBA", "AGA", "EIN", "OSL", "TRF", "AMS",
+    "STN", "LTN", "LGW", "MAN", "DUB", "AYT", "ADB", "GLA", "EDI",
+]
 
 
 EXTRACT_PRICES_JS = """() => {
@@ -92,16 +118,26 @@ def build_month_url(base_url: str, year: int, month: int) -> str:
     return urlunsplit((parsed.scheme, parsed.netloc, path, urlencode(query, doseq=True), parsed.fragment))
 
 
-def parse_airports_file(path: Path) -> Tuple[List[str], List[str]]:
-    content = path.read_text(encoding="utf-8")
+def generate_routes_from_lists(
+    *,
+    include_return_routes: bool,
+    max_routes: int,
+) -> List[Tuple[str, str]]:
+    routes: List[Tuple[str, str]] = []
+    for origin in POLISH_AIRPORTS:
+        for destination in SUMMER_DESTINATIONS_FROM_POLAND:
+            if origin != destination:
+                routes.append((origin, destination))
 
-    def extract_list(name: str) -> List[str]:
-        block = re.search(rf"{name}\s*=\s*\[(.*?)\]", content, re.DOTALL)
-        if not block:
-            raise ValueError(f"List '{name}' missing in {path}")
-        return re.findall(r'"([A-Z]{3})"', block.group(1))
+    if include_return_routes:
+        for origin in SUMMER_DESTINATIONS_FROM_POLAND:
+            for destination in POLISH_AIRPORTS:
+                if origin != destination:
+                    routes.append((origin, destination))
 
-    return extract_list("polish_airports"), extract_list("summer_destinations_from_poland")
+    if max_routes > 0:
+        return routes[:max_routes]
+    return routes
 
 
 def build_base_url(origin: str, destination: str, start_month: str) -> str:
@@ -189,16 +225,48 @@ async def scrape_route_months(
         )
 
         if offset < month_count - 1:
+            next_year, next_month = add_months(start_year, start_month_num, offset + 1)
+            next_ym = f"{next_year}-{next_month:02d}"
+            next_url = build_month_url(base_url, next_year, next_month)
+
             clicked = await page.evaluate(
-                """() => {
+                """(nextYm) => {
                     const icon = document.querySelector('.month-selector__pager__icon.icon__arrow--toright');
-                    if (!icon) return false;
-                    const target = icon.closest('button,[role="button"],a,div');
-                    if (target instanceof HTMLElement) { target.click(); return true; }
-                    return false;
-                }"""
+                    if (icon) {
+                        const target = icon.closest('button,[role="button"],a,div');
+                        if (target instanceof HTMLElement) {
+                            target.click();
+                            return "arrow";
+                        }
+                    }
+
+                    const hrefNode = document.querySelector(`a[href*="flexible=${nextYm}"], button[data-month="${nextYm}"]`);
+                    if (hrefNode instanceof HTMLElement) {
+                        hrefNode.click();
+                        return "month_link";
+                    }
+
+                    const candidates = Array.from(document.querySelectorAll('a,button,div,span'));
+                    const monthTexts = [nextYm, nextYm.replace("-", "/"), nextYm.replace("-", ".")];
+                    for (const el of candidates) {
+                        const txt = (el.textContent || '').replace(/\\s+/g, ' ').trim();
+                        if (!txt) continue;
+                        if (!monthTexts.some((m) => txt.includes(m))) continue;
+                        if (el instanceof HTMLElement) {
+                            el.click();
+                            return "text_match";
+                        }
+                    }
+                    return "";
+                }""",
+                next_ym,
             )
-            await page.wait_for_timeout(render_wait_ms if clicked else render_wait_ms + 400)
+
+            if clicked:
+                await page.wait_for_timeout(render_wait_ms + 300)
+            else:
+                await page.goto(next_url, wait_until="domcontentloaded", timeout=90000)
+                await page.wait_for_timeout(render_wait_ms)
 
     return {
         "base_url": base_url,
@@ -212,11 +280,13 @@ async def run(args: argparse.Namespace) -> None:
     start_month = args.start_month or f"{now.year}-{now.month:02d}"
     year, month = [int(x) for x in start_month.split("-")]
 
-    origins, destinations = parse_airports_file(Path(args.airports_file))
     if args.route_pairs.strip():
         selected_routes = [tuple(x.strip().upper().split("-", 1)) for x in args.route_pairs.split(",") if x.strip()]
     else:
-        selected_routes = [(o, d) for o in origins for d in destinations if o != d][: args.max_routes]
+        selected_routes = generate_routes_from_lists(
+            include_return_routes=args.include_return_routes,
+            max_routes=args.max_routes,
+        )
 
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -281,18 +351,74 @@ async def run(args: argparse.Namespace) -> None:
     summary["failure_count"] = sum(1 for x in summary["routes_processed"] if x["status"] == "failed")
     summary_path = output_dir / "summary.json"
     summary_path.write_text(json.dumps(summary, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+    if args.csv_path:
+        csv_rows = []
+        for route_info in summary["routes_processed"]:
+            if route_info.get("status") != "ok":
+                continue
+            route = route_info["route"]
+            origin, destination = route.split("-", 1)
+            route_file = Path(route_info["output_file"])
+            if not route_file.exists():
+                continue
+            payload = json.loads(route_file.read_text(encoding="utf-8"))
+            for month_data in payload.get("months", []):
+                month = month_data.get("month")
+                status = month_data.get("status", "")
+                data = month_data.get("data", {})
+                for direction in ("outbound", "return"):
+                    for entry in data.get(direction, []):
+                        csv_rows.append(
+                            {
+                                "route": route,
+                                "origin": origin,
+                                "destination": destination,
+                                "month": month,
+                                "direction": direction,
+                                "day": entry.get("day"),
+                                "date": entry.get("date"),
+                                "pricePLN": entry.get("pricePLN"),
+                                "month_status": status,
+                                "exported_at_utc": summary["finished_at_utc"],
+                            }
+                        )
+
+        csv_output_path = Path(args.csv_path)
+        csv_output_path.parent.mkdir(parents=True, exist_ok=True)
+        with csv_output_path.open("w", newline="", encoding="utf-8") as fh:
+            writer = csv.DictWriter(
+                fh,
+                fieldnames=[
+                    "route",
+                    "origin",
+                    "destination",
+                    "month",
+                    "direction",
+                    "day",
+                    "date",
+                    "pricePLN",
+                    "month_status",
+                    "exported_at_utc",
+                ],
+            )
+            writer.writeheader()
+            writer.writerows(csv_rows)
+        print(f"CSV saved: {csv_output_path}")
+
     print(f"Done. Total elapsed: {summary['total_elapsed_seconds']}s")
     print(f"Summary: {summary_path}")
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Wizzair route matrix scraper with one browser per N routes.")
-    parser.add_argument("--airports-file", default="Airports")
     parser.add_argument("--route-pairs", default="")
-    parser.add_argument("--max-routes", type=int, default=5)
+    parser.add_argument("--max-routes", type=int, default=0, help="0 means all generated routes.")
+    parser.add_argument("--include-return-routes", action="store_true", default=False)
     parser.add_argument("--start-month", default=None)
     parser.add_argument("--month-count", type=int, default=4)
     parser.add_argument("--output-dir", default="route_matrix_output_window")
+    parser.add_argument("--csv-path", default="", help="Optional CSV output path in repo.")
     parser.add_argument("--routes-per-browser", type=int, default=5)
     parser.add_argument("--route-timeout-seconds", type=int, default=300)
     parser.add_argument("--scraper-max-wait-for-prices-seconds", type=int, default=25)
