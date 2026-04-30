@@ -1,0 +1,59 @@
+name: Wizzair Test Routes (Headed via Xvfb)
+
+on:
+  workflow_dispatch:
+    inputs:
+      start_month:
+        description: "Start month (YYYY-MM)"
+        required: true
+        default: "2026-05"
+      month_count:
+        description: "How many months to scrape"
+        required: true
+        default: "4"
+      output_dir:
+        description: "Output directory for JSON artifacts"
+        required: true
+        default: "route_matrix_output_ci_visible"
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Install Playwright browser
+        run: python -m playwright install --with-deps chromium
+
+      - name: Run three test routes (headed mode via virtual display)
+        env:
+          START_MONTH: ${{ github.event.inputs.start_month || '2026-05' }}
+          MONTH_COUNT: ${{ github.event.inputs.month_count || '4' }}
+          OUTPUT_DIR: ${{ github.event.inputs.output_dir || 'route_matrix_output_ci_visible' }}
+        run: |
+          xvfb-run -a python scrape_wizzair_route_matrix_window.py \
+            --route-pairs "WAW-FCO,WAW-BLQ,WAW-BCN" \
+            --start-month "$START_MONTH" \
+            --month-count "$MONTH_COUNT" \
+            --routes-per-browser 5 \
+            --output-dir "$OUTPUT_DIR" \
+            --no-headless
+
+      - name: Upload output artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: wizzair-test-routes-output
+          path: ${{ github.event.inputs.output_dir || 'route_matrix_output_ci_visible' }}
+          if-no-files-found: error
