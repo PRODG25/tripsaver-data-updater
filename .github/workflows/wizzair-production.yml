@@ -1,0 +1,81 @@
+name: Wizzair Production Scrape
+
+on:
+  workflow_dispatch:
+    inputs:
+      start_month:
+        description: "Start month (YYYY-MM)"
+        required: true
+        default: "2026-05"
+      month_count:
+        description: "How many months to scrape"
+        required: true
+        default: "4"
+      max_routes:
+        description: "How many generated routes to process (0 = all, useful for testing)"
+        required: true
+        default: "0"
+      output_dir:
+        description: "Output directory for JSON artifacts"
+        required: true
+        default: "route_matrix_output_ci_production"
+  schedule:
+    - cron: "0 5 * * *"
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Install Playwright browser
+        run: python -m playwright install --with-deps chromium
+
+      - name: Run production route scrape (headed via virtual display)
+        env:
+          START_MONTH: ${{ github.event.inputs.start_month || '2026-05' }}
+          MONTH_COUNT: ${{ github.event.inputs.month_count || '4' }}
+          MAX_ROUTES: ${{ github.event.inputs.max_routes || '0' }}
+          OUTPUT_DIR: ${{ github.event.inputs.output_dir || 'route_matrix_output_ci_production' }}
+        run: |
+          xvfb-run -a python scrape_wizzair_route_matrix_window.py \
+            --start-month "$START_MONTH" \
+            --month-count "$MONTH_COUNT" \
+            --max-routes "$MAX_ROUTES" \
+            --routes-per-browser 5 \
+            --output-dir "$OUTPUT_DIR" \
+            --csv-path "data/wizzair_prices.csv" \
+            --no-headless
+
+      - name: Commit CSV into repository
+        run: |
+          if [ -f "data/wizzair_prices.csv" ]; then
+            git add data/wizzair_prices.csv
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "update wizzair prices csv" || echo "No CSV changes to commit"
+            git push
+          else
+            echo "CSV not found, skipping commit"
+          fi
+
+      - name: Upload output artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: wizzair-production-output
+          path: ${{ github.event.inputs.output_dir || 'route_matrix_output_ci_production' }}
+          if-no-files-found: error
