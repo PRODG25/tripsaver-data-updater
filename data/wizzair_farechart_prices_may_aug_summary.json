@@ -1,0 +1,86 @@
+{
+  "input_csv": "data/wizzair_polish_routes.csv",
+  "output_csv": "data/wizzair_farechart_prices_may_aug.csv",
+  "start_date": "2026-05-01",
+  "end_date": "2026-08-31",
+  "include_return_routes": true,
+  "base_routes_requested": 5,
+  "route_directions_requested": 10,
+  "rows_written": 1230,
+  "priced_rows": 942,
+  "errors": [],
+  "routes": [
+    {
+      "route": "WAW-AGA",
+      "calendar_days": 123,
+      "priced_days": 9,
+      "errors": 0,
+      "elapsed_seconds": 9.35
+    },
+    {
+      "route": "AGA-WAW",
+      "calendar_days": 123,
+      "priced_days": 9,
+      "errors": 0,
+      "elapsed_seconds": 9.14
+    },
+    {
+      "route": "WAW-AGP",
+      "calendar_days": 123,
+      "priced_days": 122,
+      "errors": 0,
+      "elapsed_seconds": 9.17
+    },
+    {
+      "route": "AGP-WAW",
+      "calendar_days": 123,
+      "priced_days": 121,
+      "errors": 0,
+      "elapsed_seconds": 9.13
+    },
+    {
+      "route": "WAW-ALC",
+      "calendar_days": 123,
+      "priced_days": 120,
+      "errors": 0,
+      "elapsed_seconds": 9.25
+    },
+    {
+      "route": "ALC-WAW",
+      "calendar_days": 123,
+      "priced_days": 123,
+      "errors": 0,
+      "elapsed_seconds": 9.2
+    },
+    {
+      "route": "WAW-BBU",
+      "calendar_days": 123,
+      "priced_days": 95,
+      "errors": 0,
+      "elapsed_seconds": 57.27
+    },
+    {
+      "route": "BBU-WAW",
+      "calendar_days": 123,
+      "priced_days": 97,
+      "errors": 0,
+      "elapsed_seconds": 9.1
+    },
+    {
+      "route": "WAW-BCN",
+      "calendar_days": 123,
+      "priced_days": 123,
+      "errors": 0,
+      "elapsed_seconds": 9.34
+    },
+    {
+      "route": "BCN-WAW",
+      "calendar_days": 123,
+      "priced_days": 123,
+      "errors": 0,
+      "elapsed_seconds": 9.2
+    }
+  ],
+  "elapsed_seconds": 140.14,
+  "scraped_at_utc": "2026-04-30T22:23:59Z"
+}
