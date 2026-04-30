@@ -39,26 +39,20 @@ SUMMER_DESTINATIONS_FROM_POLAND = [
 ]
 
 
-EXTRACT_PRICES_JS = """() => {
+EXTRACT_ALL_PRICES_JS = """() => {
     const raw = [];
     const elements = Array.from(document.querySelectorAll('div, button, li'));
     for (const el of elements) {
         const text = (el.textContent || '').replace(/\\s+/g, ' ').trim();
         if (!/\\bPLN\\b/i.test(text)) continue;
-        if (/\\bPLN\\b/gi.test(text) && (text.match(/\\bPLN\\b/gi) || []).length !== 1) continue;
-        const compactMatch = text.match(/^(\\d{1,2})\\D{0,20}?(\\d{2,4})\\s*PLN\\b/i);
-        let dayMatch = null;
-        let priceMatch = null;
-        if (compactMatch) {
-            dayMatch = [compactMatch[0], compactMatch[1]];
-            priceMatch = [compactMatch[0], compactMatch[2]];
-        } else {
-            dayMatch = text.match(/^(\\d{1,2})\\b/);
-            priceMatch = text.match(/(\\d{2,4})\\s*PLN\\b/i);
-        }
-        if (!dayMatch || !priceMatch) continue;
+        const dayMatch = text.match(/^(\\d{1,2})\\b/);
+        if (!dayMatch) continue;
+        const priceMatches = [...text.matchAll(/(\\d{2,4})\\s*PLN\\b/gi)];
+        if (!priceMatches.length) continue;
         const day = Number(dayMatch[1]);
-        const price = Number(String(priceMatch[1]).replace(/\\s/g, ''));
+        // In some tiles Wizzair renders multiple PLN amounts (e.g. club vs regular).
+        // Use the highest value as the public/base fare.
+        const price = Math.max(...priceMatches.map((m) => Number(String(m[1]).replace(/\\s/g, ''))));
         if (!Number.isFinite(day) || !Number.isFinite(price)) continue;
         if (day < 1 || day > 31) continue;
         if (price < 1 || price > 10000) continue;
@@ -67,27 +61,16 @@ EXTRACT_PRICES_JS = """() => {
         raw.push({ day, pricePLN: price, x: rect.x, y: rect.y });
     }
     raw.sort((a, b) => a.y - b.y || a.x - b.x);
-    const outboundByDay = new Map();
-    const returnByDay = new Map();
-    const uniqueX = [...new Set(raw.map((r) => Math.round(r.x)))].sort((a, b) => a - b);
-    let splitX = null;
-    let bestGap = 0;
-    for (let i = 1; i < uniqueX.length; i++) {
-        const gap = uniqueX[i] - uniqueX[i - 1];
-        if (gap > bestGap) {
-            bestGap = gap;
-            splitX = (uniqueX[i] + uniqueX[i - 1]) / 2;
+    const byDay = new Map();
+    for (const item of raw) {
+        if (!byDay.has(item.day)) {
+            byDay.set(item.day, { day: item.day, pricePLN: item.pricePLN });
+        } else {
+            const current = byDay.get(item.day);
+            if (item.pricePLN > current.pricePLN) byDay.set(item.day, { day: item.day, pricePLN: item.pricePLN });
         }
     }
-    const hasTwoCalendars = bestGap >= 80;
-    for (const item of raw) {
-        const side = hasTwoCalendars && splitX !== null && item.x > splitX ? 'return' : 'outbound';
-        const target = side === 'outbound' ? outboundByDay : returnByDay;
-        if (!target.has(item.day)) target.set(item.day, { day: item.day, pricePLN: item.pricePLN });
-    }
-    const outbound = Array.from(outboundByDay.values()).sort((a, b) => a.day - b.day);
-    const ret = Array.from(returnByDay.values()).sort((a, b) => a.day - b.day);
-    return { outbound, return: ret };
+    return Array.from(byDay.values()).sort((a, b) => a.day - b.day);
 }"""
 
 
@@ -95,6 +78,8 @@ NO_FLIGHTS_MARKERS = [
     "brak lot",
     "brak dost",
     "nie znaleziono lot",
+    "nie znaleziono ofert",
+    "nie znaleźliśmy żadnych ofert",
     "no flights",
     "no available flights",
     "no results",
@@ -182,11 +167,46 @@ async def scrape_route_months(
 
         status = "ok"
         start = time.perf_counter()
+        clicked_search_once = False
         while True:
             body = await page.locator("body").inner_text()
             if "PLN" in body:
                 break
-            if any(marker in body.lower() for marker in NO_FLIGHTS_MARKERS):
+
+            # Some routes/months open in fare-finder search form state and never render
+            # the calendar until user clicks "Wyszukaj" explicitly.
+            if not clicked_search_once:
+                search_clicked = await page.evaluate(
+                    """() => {
+                        const root = document.querySelector('.fare-finder--loading, .fare-finder__search--empty-list, .fare-finder');
+                        if (!root) return false;
+                        const candidates = Array.from(document.querySelectorAll('button, [role="button"], input[type="submit"]'));
+                        for (const el of candidates) {
+                            const txt = ((el.textContent || el.getAttribute('value') || '') + '').replace(/\\s+/g, ' ').trim();
+                            if (!txt) continue;
+                            if (/^wyszukaj$|^search$/i.test(txt)) {
+                                if (el instanceof HTMLElement) {
+                                    el.click();
+                                    return true;
+                                }
+                            }
+                        }
+                        return false;
+                    }"""
+                )
+                if search_clicked:
+                    clicked_search_once = True
+                    await page.wait_for_timeout(max(900, render_wait_ms))
+                    continue
+
+            lower_body = body.lower()
+            has_no_offer_text = any(marker in lower_body for marker in NO_FLIGHTS_MARKERS)
+            has_right_arrow = await page.evaluate(
+                """() => !!document.querySelector('.month-selector__pager__icon.icon__arrow--toright')"""
+            )
+            # If "no offers" is visible and month navigation arrow is missing,
+            # treat this month as unavailable and continue via next month URL fallback.
+            if has_no_offer_text and not has_right_arrow:
                 status = "no_flights"
                 break
             if time.perf_counter() - start > max_wait_for_prices_seconds:
@@ -197,9 +217,27 @@ async def scrape_route_months(
         outbound = []
         ret = []
         if status == "ok":
-            extracted = await page.evaluate(EXTRACT_PRICES_JS)
-            outbound = extracted.get("outbound", [])
-            ret = extracted.get("return", [])
+            outbound = await page.evaluate(EXTRACT_ALL_PRICES_JS)
+            # Trigger return-calendar view by selecting one available outbound day.
+            clicked_for_return = await page.evaluate(
+                """() => {
+                    const elements = Array.from(document.querySelectorAll('button, [role="button"], div, li'));
+                    for (const el of elements) {
+                        const text = (el.textContent || '').replace(/\\s+/g, ' ').trim();
+                        if (!/^\\d{1,2}\\b/.test(text)) continue;
+                        if (!/\\bPLN\\b/i.test(text)) continue;
+                        const clickable = el.closest('button, [role="button"], a, div') || el;
+                        if (clickable instanceof HTMLElement) {
+                            clickable.click();
+                            return true;
+                        }
+                    }
+                    return false;
+                }"""
+            )
+            if clicked_for_return:
+                await page.wait_for_timeout(max(900, render_wait_ms))
+                ret = await page.evaluate(EXTRACT_ALL_PRICES_JS)
 
         months.append(
             {
