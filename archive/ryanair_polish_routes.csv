@@ -1,0 +1,307 @@
+origin,destination,route,origin_city,origin_country,destination_city,destination_country,destination_airport_name,operator,seasonal,recent,scraped_at_utc
+WAW,AGP,WAW-AGP,Warszawa,Polska,Malaga,Hiszpania,Malaga,FR,False,True,2026-05-01T09:09:28Z
+WAW,ALC,WAW-ALC,Warszawa,Polska,Alicante,Hiszpania,Alicante,FR,False,True,2026-05-01T09:09:28Z
+WAW,CRL,WAW-CRL,Warszawa,Polska,Charleroi,Belgia,Bruksela-Charleroi,FR,False,True,2026-05-01T09:09:28Z
+WAW,LBA,WAW-LBA,Warszawa,Polska,Leeds,Wielka Brytania,Leeds/Bradford,FR,False,True,2026-05-01T09:09:28Z
+WAW,MAN,WAW-MAN,Warszawa,Polska,Manchester,Wielka Brytania,Manchester,FR,False,True,2026-05-01T09:09:28Z
+WAW,OPO,WAW-OPO,Warszawa,Polska,Porto,Portugalia,Porto,FR,False,True,2026-05-01T09:09:28Z
+WAW,PFO,WAW-PFO,Warszawa,Polska,Pafos,Cypr,Pafos,FR,False,True,2026-05-01T09:09:28Z
+WAW,PMI,WAW-PMI,Warszawa,Polska,Majorka,Hiszpania,Palma,FR,False,True,2026-05-01T09:09:28Z
+WAW,PSA,WAW-PSA,Warszawa,Polska,Piza,Włochy,Piza,FR,False,True,2026-05-01T09:09:28Z
+WAW,SVQ,WAW-SVQ,Warszawa,Polska,Sewilla,Hiszpania,Sewilla,FR,False,True,2026-05-01T09:09:28Z
+WAW,TIA,WAW-TIA,Warszawa,Polska,Tirana,Albania,Tirana,FR,False,True,2026-05-01T09:09:28Z
+WAW,VIE,WAW-VIE,Warszawa,Polska,Wiedeń,Austria,Wiedeń,FR,False,True,2026-05-01T09:09:28Z
+WMI,AGP,WMI-AGP,Warszawa,Polska,Malaga,Hiszpania,Malaga,FR,False,False,2026-05-01T09:09:28Z
+WMI,AHO,WMI-AHO,Warszawa,Polska,Alghero,Włochy,Alghero,FR,False,True,2026-05-01T09:09:28Z
+WMI,ALC,WMI-ALC,Warszawa,Polska,Alicante,Hiszpania,Alicante,FR,False,False,2026-05-01T09:09:28Z
+WMI,ARN,WMI-ARN,Warszawa,Polska,Sztokholm,Szwecja,Sztokholm Arlanda,FR,False,False,2026-05-01T09:09:28Z
+WMI,ATH,WMI-ATH,Warszawa,Polska,Ateny,Grecja,Ateny,FR,False,True,2026-05-01T09:09:28Z
+WMI,BCN,WMI-BCN,Warszawa,Polska,Barcelona,Hiszpania,Barcelona-El Prat,FR,False,False,2026-05-01T09:09:28Z
+WMI,BGY,WMI-BGY,Warszawa,Polska,Mediolan,Włochy,Mediolan-Bergamo,FR,False,False,2026-05-01T09:09:28Z
+WMI,BHX,WMI-BHX,Warszawa,Polska,Birmingham,Wielka Brytania,Birmingham,FR,False,False,2026-05-01T09:09:28Z
+WMI,BLQ,WMI-BLQ,Warszawa,Polska,Bolonia,Włochy,Bolonia,FR,False,False,2026-05-01T09:09:28Z
+WMI,BOJ,WMI-BOJ,Warszawa,Polska,Burgas,Bułagria,Burgas,FR,False,False,2026-05-01T09:09:28Z
+WMI,BRI,WMI-BRI,Warszawa,Polska,Bari,Włochy,Bari,FR,False,False,2026-05-01T09:09:28Z
+WMI,BTS,WMI-BTS,Warszawa,Polska,Bratysława,Słowacja,Bratysława,FR,False,True,2026-05-01T09:09:28Z
+WMI,BUD,WMI-BUD,Warszawa,Polska,Budapeszt,Węgry,Budapeszt,FR,False,True,2026-05-01T09:09:28Z
+WMI,BVA,WMI-BVA,Warszawa,Polska,Paryż,Francja,Paryż-Beauvais,FR,False,False,2026-05-01T09:09:28Z
+WMI,CFU,WMI-CFU,Warszawa,Polska,Korfu,Grecja,Korfu,FR,False,False,2026-05-01T09:09:28Z
+WMI,CHQ,WMI-CHQ,Warszawa,Polska,Chania,Grecja,Chania (Kreta),FR,False,False,2026-05-01T09:09:28Z
+WMI,CIA,WMI-CIA,Warszawa,Polska,Rzym,Włochy,Rzym-Ciampino,FR,False,False,2026-05-01T09:09:28Z
+WMI,CPH,WMI-CPH,Warszawa,Polska,Kopenhaga,Dania,Kopenhaga,FR,False,True,2026-05-01T09:09:28Z
+WMI,CRL,WMI-CRL,Warszawa,Polska,Charleroi,Belgia,Bruksela-Charleroi,FR,False,False,2026-05-01T09:09:28Z
+WMI,CTA,WMI-CTA,Warszawa,Polska,Katania,Włochy,Catania,FR,False,False,2026-05-01T09:09:28Z
+WMI,DUB,WMI-DUB,Warszawa,Polska,Dublin,Irlandia,Dublin,FR,False,False,2026-05-01T09:09:28Z
+WMI,EDI,WMI-EDI,Warszawa,Polska,Edynburg,Szkocja,Edynburg,FR,False,False,2026-05-01T09:09:28Z
+WMI,EIN,WMI-EIN,Warszawa,Polska,Eindhoven,Holandia,Eindhoven,FR,False,False,2026-05-01T09:09:28Z
+WMI,FAO,WMI-FAO,Warszawa,Polska,Faro,Portugalia,Faro,FR,False,True,2026-05-01T09:09:28Z
+WMI,GLA,WMI-GLA,Warszawa,Polska,Glasgow,Szkocja,Glasgow,FR,False,True,2026-05-01T09:09:28Z
+WMI,HEL,WMI-HEL,Warszawa,Polska,Helsinki,Finlandia,Helsinki,FR,False,False,2026-05-01T09:09:28Z
+WMI,LIS,WMI-LIS,Warszawa,Polska,Lizbona,Portugalia,Lisbon,FR,False,False,2026-05-01T09:09:28Z
+WMI,LPL,WMI-LPL,Warszawa,Polska,Liverpool,Wielka Brytania,Liverpool,FR,False,False,2026-05-01T09:09:28Z
+WMI,MAD,WMI-MAD,Warszawa,Polska,Madryt,Hiszpania,Madryt,FR,False,False,2026-05-01T09:09:28Z
+WMI,MLA,WMI-MLA,Warszawa,Polska,Valletta,Malta,Malta,FR,False,False,2026-05-01T09:09:28Z
+WMI,MMX,WMI-MMX,Warszawa,Polska,Malmo,Szwecja,Malmo,FR,False,True,2026-05-01T09:09:28Z
+WMI,MXP,WMI-MXP,Warszawa,Polska,Mediolan,Włochy,Mediolan-Malpensa,FR,False,True,2026-05-01T09:09:28Z
+WMI,NAP,WMI-NAP,Warszawa,Polska,Neapol,Włochy,Neapol,FR,False,False,2026-05-01T09:09:28Z
+WMI,OPO,WMI-OPO,Warszawa,Polska,Porto,Portugalia,Porto,FR,False,False,2026-05-01T09:09:28Z
+WMI,PFO,WMI-PFO,Warszawa,Polska,Pafos,Cypr,Pafos,FR,False,False,2026-05-01T09:09:28Z
+WMI,PMI,WMI-PMI,Warszawa,Polska,Majorka,Hiszpania,Palma,FR,False,False,2026-05-01T09:09:28Z
+WMI,PMO,WMI-PMO,Warszawa,Polska,Palermo,Włochy,Palermo,FR,False,True,2026-05-01T09:09:28Z
+WMI,RHO,WMI-RHO,Warszawa,Polska,Rodos,Grecja,Rodos,FR,False,False,2026-05-01T09:09:28Z
+WMI,SKG,WMI-SKG,Warszawa,Polska,Saloniki,Grecja,Saloniki,FR,False,False,2026-05-01T09:09:28Z
+WMI,SNN,WMI-SNN,Warszawa,Polska,Shannon,Irlandia,Shannon,FR,False,False,2026-05-01T09:09:28Z
+WMI,SOF,WMI-SOF,Warszawa,Polska,Sofia,Bułagria,Sofia,FR,False,True,2026-05-01T09:09:28Z
+WMI,STN,WMI-STN,Warszawa,Polska,Londyn,Wielka Brytania,Londyn-Stansted,FR,False,False,2026-05-01T09:09:28Z
+WMI,SUF,WMI-SUF,Warszawa,Polska,Lamezia,Włochy,Lamezia,FR,False,True,2026-05-01T09:09:28Z
+WMI,TFS,WMI-TFS,Warszawa,Polska,Teneryfa,Hiszpania,Teneryfa-Południe,FR,False,False,2026-05-01T09:09:28Z
+WMI,TIA,WMI-TIA,Warszawa,Polska,Tirana,Albania,Tirana,FR,False,True,2026-05-01T09:09:28Z
+WMI,TSF,WMI-TSF,Warszawa,Polska,Wenecja,Włochy,Wenecja-Treviso,FR,False,False,2026-05-01T09:09:28Z
+WMI,VLC,WMI-VLC,Warszawa,Polska,Valencia,Hiszpania,Walencja,FR,False,True,2026-05-01T09:09:28Z
+WMI,ZAD,WMI-ZAD,Warszawa,Polska,Zadar,Chorwacja,Zadar,FR,False,False,2026-05-01T09:09:28Z
+WMI,ZTH,WMI-ZTH,Warszawa,Polska,Zakynthos,Grecja,Zakynthos,FR,False,False,2026-05-01T09:09:28Z
+WRO,AGA,WRO-AGA,Wrocław,Polska,Agadir,Maroko,Agadir,FR,False,True,2026-05-01T09:09:28Z
+WRO,AGP,WRO-AGP,Wrocław,Polska,Malaga,Hiszpania,Malaga,FR,False,False,2026-05-01T09:09:28Z
+WRO,ALC,WRO-ALC,Wrocław,Polska,Alicante,Hiszpania,Alicante,FR,False,False,2026-05-01T09:09:28Z
+WRO,ARN,WRO-ARN,Wrocław,Polska,Sztokholm,Szwecja,Sztokholm Arlanda,FR,False,False,2026-05-01T09:09:28Z
+WRO,ATH,WRO-ATH,Wrocław,Polska,Ateny,Grecja,Ateny,FR,False,False,2026-05-01T09:09:28Z
+WRO,BDS,WRO-BDS,Wrocław,Polska,Brindisi,Włochy,Brindisi,FR,False,False,2026-05-01T09:09:28Z
+WRO,BGY,WRO-BGY,Wrocław,Polska,Mediolan,Włochy,Mediolan-Bergamo,FR,False,False,2026-05-01T09:09:28Z
+WRO,BLQ,WRO-BLQ,Wrocław,Polska,Bolonia,Włochy,Bolonia,FR,False,False,2026-05-01T09:09:28Z
+WRO,BOH,WRO-BOH,Wrocław,Polska,Bournemouth,Wielka Brytania,Bournemouth,FR,False,False,2026-05-01T09:09:28Z
+WRO,BRS,WRO-BRS,Wrocław,Polska,Bristol,Wielka Brytania,Bristol,FR,False,False,2026-05-01T09:09:28Z
+WRO,BVA,WRO-BVA,Wrocław,Polska,Paryż,Francja,Paryż-Beauvais,FR,False,False,2026-05-01T09:09:28Z
+WRO,CFU,WRO-CFU,Wrocław,Polska,Korfu,Grecja,Korfu,FR,False,False,2026-05-01T09:09:28Z
+WRO,CHQ,WRO-CHQ,Wrocław,Polska,Chania,Grecja,Chania (Kreta),FR,False,False,2026-05-01T09:09:28Z
+WRO,CIA,WRO-CIA,Wrocław,Polska,Rzym,Włochy,Rzym-Ciampino,FR,False,False,2026-05-01T09:09:28Z
+WRO,CRL,WRO-CRL,Wrocław,Polska,Charleroi,Belgia,Bruksela-Charleroi,FR,False,False,2026-05-01T09:09:28Z
+WRO,DBV,WRO-DBV,Wrocław,Polska,Dubrovnik,Chorwacja,Dubrownik,FR,False,True,2026-05-01T09:09:28Z
+WRO,DUB,WRO-DUB,Wrocław,Polska,Dublin,Irlandia,Dublin,FR,False,False,2026-05-01T09:09:28Z
+WRO,EDI,WRO-EDI,Wrocław,Polska,Edynburg,Szkocja,Edynburg,FR,False,False,2026-05-01T09:09:28Z
+WRO,EMA,WRO-EMA,Wrocław,Polska,East Midlands,Wielka Brytania,East Midlands,FR,False,False,2026-05-01T09:09:28Z
+WRO,GDN,WRO-GDN,Wrocław,Polska,Gdańsk,Polska,Gdańsk,FR,False,False,2026-05-01T09:09:28Z
+WRO,GLA,WRO-GLA,Wrocław,Polska,Glasgow,Szkocja,Glasgow,FR,False,False,2026-05-01T09:09:28Z
+WRO,GRO,WRO-GRO,Wrocław,Polska,Girona,Hiszpania,Barcelona-Girona,FR,False,False,2026-05-01T09:09:28Z
+WRO,LBA,WRO-LBA,Wrocław,Polska,Leeds,Wielka Brytania,Leeds/Bradford,FR,False,False,2026-05-01T09:09:28Z
+WRO,LIS,WRO-LIS,Wrocław,Polska,Lizbona,Portugalia,Lisbon,FR,False,True,2026-05-01T09:09:28Z
+WRO,LPL,WRO-LPL,Wrocław,Polska,Liverpool,Wielka Brytania,Liverpool,FR,False,False,2026-05-01T09:09:28Z
+WRO,LTN,WRO-LTN,Wrocław,Polska,Londyn,Wielka Brytania,Londyn-Luton,FR,False,True,2026-05-01T09:09:28Z
+WRO,MAN,WRO-MAN,Wrocław,Polska,Manchester,Wielka Brytania,Manchester,FR,False,False,2026-05-01T09:09:28Z
+WRO,MLA,WRO-MLA,Wrocław,Polska,Valletta,Malta,Malta,FR,False,False,2026-05-01T09:09:28Z
+WRO,MRS,WRO-MRS,Wrocław,Polska,Marsylia,Francja,Marsylia,FR,False,True,2026-05-01T09:09:28Z
+WRO,NAP,WRO-NAP,Wrocław,Polska,Neapol,Włochy,Neapol,FR,False,False,2026-05-01T09:09:28Z
+WRO,NCL,WRO-NCL,Wrocław,Polska,Newcastle,Wielka Brytania,Newcastle,FR,False,False,2026-05-01T09:09:28Z
+WRO,OPO,WRO-OPO,Wrocław,Polska,Porto,Portugalia,Porto,FR,False,False,2026-05-01T09:09:28Z
+WRO,PFO,WRO-PFO,Wrocław,Polska,Pafos,Cypr,Pafos,FR,False,False,2026-05-01T09:09:28Z
+WRO,PMI,WRO-PMI,Wrocław,Polska,Majorka,Hiszpania,Palma,FR,False,False,2026-05-01T09:09:28Z
+WRO,PMO,WRO-PMO,Wrocław,Polska,Palermo,Włochy,Palermo,FR,False,False,2026-05-01T09:09:28Z
+WRO,PSA,WRO-PSA,Wrocław,Polska,Piza,Włochy,Piza,FR,False,False,2026-05-01T09:09:28Z
+WRO,PSR,WRO-PSR,Wrocław,Polska,Pescara,Włochy,Pescara,FR,False,True,2026-05-01T09:09:28Z
+WRO,RJK,WRO-RJK,Wrocław,Polska,Rijeka,Chorwacja,Rijeka,FR,False,True,2026-05-01T09:09:28Z
+WRO,RMI,WRO-RMI,Wrocław,Polska,Rimini,Włochy,Rimini,FR,False,True,2026-05-01T09:09:28Z
+WRO,SNN,WRO-SNN,Wrocław,Polska,Shannon,Irlandia,Shannon,FR,False,False,2026-05-01T09:09:28Z
+WRO,SOF,WRO-SOF,Wrocław,Polska,Sofia,Bułagria,Sofia,FR,False,False,2026-05-01T09:09:28Z
+WRO,STN,WRO-STN,Wrocław,Polska,Londyn,Wielka Brytania,Londyn-Stansted,FR,False,False,2026-05-01T09:09:28Z
+WRO,SUF,WRO-SUF,Wrocław,Polska,Lamezia,Włochy,Lamezia,FR,False,True,2026-05-01T09:09:28Z
+WRO,SVQ,WRO-SVQ,Wrocław,Polska,Sewilla,Hiszpania,Sewilla,FR,False,True,2026-05-01T09:09:28Z
+WRO,TGD,WRO-TGD,Wrocław,Polska,Podgorica,Czarnogóra,Podgorica,FR,False,False,2026-05-01T09:09:28Z
+WRO,TIA,WRO-TIA,Wrocław,Polska,Tirana,Albania,Tirana,FR,False,True,2026-05-01T09:09:28Z
+WRO,TRF,WRO-TRF,Wrocław,Polska,Oslo,Norwegia,Oslo-Torp,FR,False,False,2026-05-01T09:09:28Z
+WRO,TSF,WRO-TSF,Wrocław,Polska,Wenecja,Włochy,Wenecja-Treviso,FR,False,False,2026-05-01T09:09:28Z
+WRO,VLC,WRO-VLC,Wrocław,Polska,Valencia,Hiszpania,Walencja,FR,False,False,2026-05-01T09:09:28Z
+WRO,ZAD,WRO-ZAD,Wrocław,Polska,Zadar,Chorwacja,Zadar,FR,False,False,2026-05-01T09:09:28Z
+GDN,AAR,GDN-AAR,Gdańsk,Polska,Aarhus,Dania,Aarhus,FR,False,False,2026-05-01T09:09:28Z
+GDN,AGP,GDN-AGP,Gdańsk,Polska,Malaga,Hiszpania,Malaga,FR,False,False,2026-05-01T09:09:28Z
+GDN,ALC,GDN-ALC,Gdańsk,Polska,Alicante,Hiszpania,Alicante,FR,False,False,2026-05-01T09:09:28Z
+GDN,ARN,GDN-ARN,Gdańsk,Polska,Sztokholm,Szwecja,Sztokholm Arlanda,FR,False,False,2026-05-01T09:09:28Z
+GDN,BCN,GDN-BCN,Gdańsk,Polska,Barcelona,Hiszpania,Barcelona-El Prat,FR,False,False,2026-05-01T09:09:28Z
+GDN,BDS,GDN-BDS,Gdańsk,Polska,Brindisi,Włochy,Brindisi,FR,False,True,2026-05-01T09:09:28Z
+GDN,BGY,GDN-BGY,Gdańsk,Polska,Mediolan,Włochy,Mediolan-Bergamo,FR,False,False,2026-05-01T09:09:28Z
+GDN,BOJ,GDN-BOJ,Gdańsk,Polska,Burgas,Bułagria,Burgas,FR,False,False,2026-05-01T09:09:28Z
+GDN,BRS,GDN-BRS,Gdańsk,Polska,Bristol,Wielka Brytania,Bristol,FR,False,False,2026-05-01T09:09:28Z
+GDN,BTS,GDN-BTS,Gdańsk,Polska,Bratysława,Słowacja,Bratysława,FR,False,True,2026-05-01T09:09:28Z
+GDN,BVA,GDN-BVA,Gdańsk,Polska,Paryż,Francja,Paryż-Beauvais,FR,False,False,2026-05-01T09:09:28Z
+GDN,CFU,GDN-CFU,Gdańsk,Polska,Korfu,Grecja,Korfu,FR,False,False,2026-05-01T09:09:28Z
+GDN,CHQ,GDN-CHQ,Gdańsk,Polska,Chania,Grecja,Chania (Kreta),FR,False,False,2026-05-01T09:09:28Z
+GDN,CPH,GDN-CPH,Gdańsk,Polska,Kopenhaga,Dania,Kopenhaga,FR,False,False,2026-05-01T09:09:28Z
+GDN,DBV,GDN-DBV,Gdańsk,Polska,Dubrovnik,Chorwacja,Dubrownik,FR,False,True,2026-05-01T09:09:28Z
+GDN,DUB,GDN-DUB,Gdańsk,Polska,Dublin,Irlandia,Dublin,FR,False,False,2026-05-01T09:09:28Z
+GDN,EDI,GDN-EDI,Gdańsk,Polska,Edynburg,Szkocja,Edynburg,FR,False,False,2026-05-01T09:09:28Z
+GDN,FCO,GDN-FCO,Gdańsk,Polska,Rzym,Włochy,Rzym-Fiumicino,FR,False,True,2026-05-01T09:09:28Z
+GDN,GOT,GDN-GOT,Gdańsk,Polska,Gotenburg,Szwecja,Göteborg-Landvetter,FR,False,False,2026-05-01T09:09:28Z
+GDN,HAM,GDN-HAM,Gdańsk,Polska,Hamburg,Niemcy,Hamburg,FR,False,False,2026-05-01T09:09:28Z
+GDN,JTR,GDN-JTR,Gdańsk,Polska,Santorini,Grecja,Santorini,FR,False,False,2026-05-01T09:09:28Z
+GDN,KRK,GDN-KRK,Gdańsk,Polska,Kraków,Polska,Kraków,FR,False,False,2026-05-01T09:09:28Z
+GDN,LBA,GDN-LBA,Gdańsk,Polska,Leeds,Wielka Brytania,Leeds/Bradford,FR,False,False,2026-05-01T09:09:28Z
+GDN,LUZ,GDN-LUZ,Gdańsk,Polska,Lublin,Polska,Lublin,FR,False,True,2026-05-01T09:09:28Z
+GDN,MAN,GDN-MAN,Gdańsk,Polska,Manchester,Wielka Brytania,Manchester,FR,False,False,2026-05-01T09:09:28Z
+GDN,MLA,GDN-MLA,Gdańsk,Polska,Valletta,Malta,Malta,FR,False,False,2026-05-01T09:09:28Z
+GDN,NAP,GDN-NAP,Gdańsk,Polska,Neapol,Włochy,Neapol,FR,False,False,2026-05-01T09:09:28Z
+GDN,NCL,GDN-NCL,Gdańsk,Polska,Newcastle,Wielka Brytania,Newcastle,FR,False,False,2026-05-01T09:09:28Z
+GDN,OTP,GDN-OTP,Gdańsk,Polska,Bukareszt,Rumunia,Bucharest (Otopeni),FR,False,True,2026-05-01T09:09:28Z
+GDN,PFO,GDN-PFO,Gdańsk,Polska,Pafos,Cypr,Pafos,FR,False,False,2026-05-01T09:09:28Z
+GDN,PMI,GDN-PMI,Gdańsk,Polska,Majorka,Hiszpania,Palma,FR,False,True,2026-05-01T09:09:28Z
+GDN,PMO,GDN-PMO,Gdańsk,Polska,Palermo,Włochy,Palermo,FR,False,True,2026-05-01T09:09:28Z
+GDN,PRG,GDN-PRG,Gdańsk,Polska,Praga,Czechy,Praga,FR,False,False,2026-05-01T09:09:28Z
+GDN,PSA,GDN-PSA,Gdańsk,Polska,Piza,Włochy,Piza,FR,False,False,2026-05-01T09:09:28Z
+GDN,SFT,GDN-SFT,Gdańsk,Polska,Skelleftea,Szwecja,Skelleftea,FR,False,True,2026-05-01T09:09:28Z
+GDN,STN,GDN-STN,Gdańsk,Polska,Londyn,Wielka Brytania,Londyn-Stansted,FR,False,False,2026-05-01T09:09:28Z
+GDN,TGD,GDN-TGD,Gdańsk,Polska,Podgorica,Czarnogóra,Podgorica,FR,False,False,2026-05-01T09:09:28Z
+GDN,TIA,GDN-TIA,Gdańsk,Polska,Tirana,Albania,Tirana,FR,False,True,2026-05-01T09:09:28Z
+GDN,TRF,GDN-TRF,Gdańsk,Polska,Oslo,Norwegia,Oslo-Torp,FR,False,False,2026-05-01T09:09:28Z
+GDN,TSF,GDN-TSF,Gdańsk,Polska,Wenecja,Włochy,Wenecja-Treviso,FR,False,False,2026-05-01T09:09:28Z
+GDN,VXO,GDN-VXO,Gdańsk,Polska,Växjö,Szwecja,Växjö-Småland,FR,False,False,2026-05-01T09:09:28Z
+GDN,WRO,GDN-WRO,Gdańsk,Polska,Wrocław,Polska,Wrocław,FR,False,False,2026-05-01T09:09:28Z
+GDN,ZAD,GDN-ZAD,Gdańsk,Polska,Zadar,Chorwacja,Zadar,FR,False,False,2026-05-01T09:09:28Z
+POZ,AGP,POZ-AGP,Poznań,Polska,Malaga,Hiszpania,Malaga,FR,False,True,2026-05-01T09:09:28Z
+POZ,ALC,POZ-ALC,Poznań,Polska,Alicante,Hiszpania,Alicante,FR,False,False,2026-05-01T09:09:28Z
+POZ,AMM,POZ-AMM,Poznań,Polska,Amman,Jordania, Amman Jordania,FR,False,False,2026-05-01T09:09:28Z
+POZ,ARN,POZ-ARN,Poznań,Polska,Sztokholm,Szwecja,Sztokholm Arlanda,FR,False,False,2026-05-01T09:09:28Z
+POZ,BGY,POZ-BGY,Poznań,Polska,Mediolan,Włochy,Mediolan-Bergamo,FR,False,False,2026-05-01T09:09:28Z
+POZ,BHX,POZ-BHX,Poznań,Polska,Birmingham,Wielka Brytania,Birmingham,FR,False,False,2026-05-01T09:09:28Z
+POZ,BOJ,POZ-BOJ,Poznań,Polska,Burgas,Bułagria,Burgas,FR,False,True,2026-05-01T09:09:28Z
+POZ,BRI,POZ-BRI,Poznań,Polska,Bari,Włochy,Bari,FR,False,False,2026-05-01T09:09:28Z
+POZ,BRS,POZ-BRS,Poznań,Polska,Bristol,Wielka Brytania,Bristol,FR,False,False,2026-05-01T09:09:28Z
+POZ,BVA,POZ-BVA,Poznań,Polska,Paryż,Francja,Paryż-Beauvais,FR,False,False,2026-05-01T09:09:28Z
+POZ,CAG,POZ-CAG,Poznań,Polska,Cagliari,Włochy,Cagliari,FR,False,False,2026-05-01T09:09:28Z
+POZ,CFU,POZ-CFU,Poznań,Polska,Korfu,Grecja,Korfu,FR,False,False,2026-05-01T09:09:28Z
+POZ,CHQ,POZ-CHQ,Poznań,Polska,Chania,Grecja,Chania (Kreta),FR,False,False,2026-05-01T09:09:28Z
+POZ,CIA,POZ-CIA,Poznań,Polska,Rzym,Włochy,Rzym-Ciampino,FR,False,False,2026-05-01T09:09:28Z
+POZ,CPH,POZ-CPH,Poznań,Polska,Kopenhaga,Dania,Kopenhaga,FR,False,True,2026-05-01T09:09:28Z
+POZ,CRL,POZ-CRL,Poznań,Polska,Charleroi,Belgia,Bruksela-Charleroi,FR,False,False,2026-05-01T09:09:28Z
+POZ,DBV,POZ-DBV,Poznań,Polska,Dubrovnik,Chorwacja,Dubrownik,FR,False,True,2026-05-01T09:09:28Z
+POZ,DUB,POZ-DUB,Poznań,Polska,Dublin,Irlandia,Dublin,FR,False,False,2026-05-01T09:09:28Z
+POZ,EDI,POZ-EDI,Poznań,Polska,Edynburg,Szkocja,Edynburg,FR,False,False,2026-05-01T09:09:28Z
+POZ,GRO,POZ-GRO,Poznań,Polska,Girona,Hiszpania,Barcelona-Girona,FR,False,False,2026-05-01T09:09:28Z
+POZ,LBA,POZ-LBA,Poznań,Polska,Leeds,Wielka Brytania,Leeds/Bradford,FR,False,False,2026-05-01T09:09:28Z
+POZ,LIS,POZ-LIS,Poznań,Polska,Lizbona,Portugalia,Lisbon,FR,False,True,2026-05-01T09:09:28Z
+POZ,LPL,POZ-LPL,Poznań,Polska,Liverpool,Wielka Brytania,Liverpool,FR,False,False,2026-05-01T09:09:28Z
+POZ,MAN,POZ-MAN,Poznań,Polska,Manchester,Wielka Brytania,Manchester,FR,False,False,2026-05-01T09:09:28Z
+POZ,MLA,POZ-MLA,Poznań,Polska,Valletta,Malta,Malta,FR,False,False,2026-05-01T09:09:28Z
+POZ,PFO,POZ-PFO,Poznań,Polska,Pafos,Cypr,Pafos,FR,False,True,2026-05-01T09:09:28Z
+POZ,PMI,POZ-PMI,Poznań,Polska,Majorka,Hiszpania,Palma,FR,False,False,2026-05-01T09:09:28Z
+POZ,PMO,POZ-PMO,Poznań,Polska,Palermo,Włochy,Palermo,FR,False,True,2026-05-01T09:09:28Z
+POZ,PRG,POZ-PRG,Poznań,Polska,Praga,Czechy,Praga,FR,False,True,2026-05-01T09:09:28Z
+POZ,PUY,POZ-PUY,Poznań,Polska,Pula,Chorwacja,Pula,FR,False,True,2026-05-01T09:09:28Z
+POZ,SKG,POZ-SKG,Poznań,Polska,Saloniki,Grecja,Saloniki,FR,False,True,2026-05-01T09:09:28Z
+POZ,SNN,POZ-SNN,Poznań,Polska,Shannon,Irlandia,Shannon,FR,False,True,2026-05-01T09:09:28Z
+POZ,STN,POZ-STN,Poznań,Polska,Londyn,Wielka Brytania,Londyn-Stansted,FR,False,False,2026-05-01T09:09:28Z
+POZ,TGD,POZ-TGD,Poznań,Polska,Podgorica,Czarnogóra,Podgorica,FR,False,True,2026-05-01T09:09:28Z
+POZ,TIA,POZ-TIA,Poznań,Polska,Tirana,Albania,Tirana,FR,False,True,2026-05-01T09:09:28Z
+POZ,TRF,POZ-TRF,Poznań,Polska,Oslo,Norwegia,Oslo-Torp,FR,False,False,2026-05-01T09:09:28Z
+POZ,TSF,POZ-TSF,Poznań,Polska,Wenecja,Włochy,Wenecja-Treviso,FR,False,False,2026-05-01T09:09:28Z
+POZ,VLC,POZ-VLC,Poznań,Polska,Valencia,Hiszpania,Walencja,FR,False,True,2026-05-01T09:09:28Z
+POZ,ZAD,POZ-ZAD,Poznań,Polska,Zadar,Chorwacja,Zadar,FR,False,False,2026-05-01T09:09:28Z
+KTW,AAR,KTW-AAR,Katowice,Polska,Aarhus,Dania,Aarhus,FR,False,True,2026-05-01T09:09:28Z
+KTW,AGP,KTW-AGP,Katowice,Polska,Malaga,Hiszpania,Malaga,FR,False,True,2026-05-01T09:09:28Z
+KTW,AHO,KTW-AHO,Katowice,Polska,Alghero,Włochy,Alghero,FR,False,False,2026-05-01T09:09:28Z
+KTW,ALC,KTW-ALC,Katowice,Polska,Alicante,Hiszpania,Alicante,FR,False,False,2026-05-01T09:09:28Z
+KTW,ATH,KTW-ATH,Katowice,Polska,Ateny,Grecja,Ateny,FR,False,False,2026-05-01T09:09:28Z
+KTW,BGY,KTW-BGY,Katowice,Polska,Mediolan,Włochy,Mediolan-Bergamo,FR,False,False,2026-05-01T09:09:28Z
+KTW,BRI,KTW-BRI,Katowice,Polska,Bari,Włochy,Bari,FR,False,True,2026-05-01T09:09:28Z
+KTW,BUD,KTW-BUD,Katowice,Polska,Budapeszt,Węgry,Budapeszt,FR,False,True,2026-05-01T09:09:28Z
+KTW,CRL,KTW-CRL,Katowice,Polska,Charleroi,Belgia,Bruksela-Charleroi,FR,False,True,2026-05-01T09:09:28Z
+KTW,CTA,KTW-CTA,Katowice,Polska,Katania,Włochy,Catania,FR,False,False,2026-05-01T09:09:28Z
+KTW,DBV,KTW-DBV,Katowice,Polska,Dubrovnik,Chorwacja,Dubrownik,FR,False,True,2026-05-01T09:09:28Z
+KTW,DUB,KTW-DUB,Katowice,Polska,Dublin,Irlandia,Dublin,FR,False,False,2026-05-01T09:09:28Z
+KTW,FCO,KTW-FCO,Katowice,Polska,Rzym,Włochy,Rzym-Fiumicino,FR,False,True,2026-05-01T09:09:28Z
+KTW,GRO,KTW-GRO,Katowice,Polska,Girona,Hiszpania,Barcelona-Girona,FR,False,True,2026-05-01T09:09:28Z
+KTW,MAN,KTW-MAN,Katowice,Polska,Manchester,Wielka Brytania,Manchester,FR,False,False,2026-05-01T09:09:28Z
+KTW,MLA,KTW-MLA,Katowice,Polska,Valletta,Malta,Malta,FR,False,True,2026-05-01T09:09:28Z
+KTW,OSL,KTW-OSL,Katowice,Polska,Oslo,Norwegia,Oslo,FR,False,False,2026-05-01T09:09:28Z
+KTW,PFO,KTW-PFO,Katowice,Polska,Pafos,Cypr,Pafos,FR,False,False,2026-05-01T09:09:28Z
+KTW,PUY,KTW-PUY,Katowice,Polska,Pula,Chorwacja,Pula,FR,False,True,2026-05-01T09:09:28Z
+KTW,REG,KTW-REG,Katowice,Polska,Reggio Calabria,Włochy,Reggio Calabria,FR,False,True,2026-05-01T09:09:28Z
+KTW,STN,KTW-STN,Katowice,Polska,Londyn,Wielka Brytania,Londyn-Stansted,FR,False,False,2026-05-01T09:09:28Z
+KTW,SUF,KTW-SUF,Katowice,Polska,Lamezia,Włochy,Lamezia,FR,False,True,2026-05-01T09:09:28Z
+KTW,TIA,KTW-TIA,Katowice,Polska,Tirana,Albania,Tirana,FR,False,True,2026-05-01T09:09:28Z
+KTW,TPS,KTW-TPS,Katowice,Polska,Trapani,Włochy,Trapani-Marsala,FR,False,False,2026-05-01T09:09:28Z
+KTW,TSF,KTW-TSF,Katowice,Polska,Wenecja,Włochy,Wenecja-Treviso,FR,False,False,2026-05-01T09:09:28Z
+KTW,VAR,KTW-VAR,Katowice,Polska,Warna,Bułagria,Varna,FR,False,True,2026-05-01T09:09:28Z
+KTW,ZAD,KTW-ZAD,Katowice,Polska,Zadar,Chorwacja,Zadar,FR,False,True,2026-05-01T09:09:28Z
+KRK,ABZ,KRK-ABZ,Kraków,Polska,Aberdeen,Wielka Brytania,Aberdeen,FR,False,True,2026-05-01T09:09:28Z
+KRK,AGA,KRK-AGA,Kraków,Polska,Agadir,Maroko,Agadir,FR,False,False,2026-05-01T09:09:28Z
+KRK,AGP,KRK-AGP,Kraków,Polska,Malaga,Hiszpania,Malaga,FR,False,False,2026-05-01T09:09:28Z
+KRK,ALC,KRK-ALC,Kraków,Polska,Alicante,Hiszpania,Alicante,FR,False,False,2026-05-01T09:09:28Z
+KRK,AMM,KRK-AMM,Kraków,Polska,Amman,Jordania, Amman Jordania,FR,False,False,2026-05-01T09:09:28Z
+KRK,AOI,KRK-AOI,Kraków,Polska,Ankona,Włochy,Ankona,FR,False,False,2026-05-01T09:09:28Z
+KRK,ARN,KRK-ARN,Kraków,Polska,Sztokholm,Szwecja,Sztokholm Arlanda,FR,False,False,2026-05-01T09:09:28Z
+KRK,ATH,KRK-ATH,Kraków,Polska,Ateny,Grecja,Ateny,FR,False,False,2026-05-01T09:09:28Z
+KRK,BBU,KRK-BBU,Kraków,Polska,Bukareszt,Rumunia,Bucharest Baneasa ,FR,False,True,2026-05-01T09:09:28Z
+KRK,BCN,KRK-BCN,Kraków,Polska,Barcelona,Hiszpania,Barcelona-El Prat,FR,False,False,2026-05-01T09:09:28Z
+KRK,BFS,KRK-BFS,Kraków,Polska,Belfast,Wielka Brytania,Belfast-International,FR,False,False,2026-05-01T09:09:28Z
+KRK,BGY,KRK-BGY,Kraków,Polska,Mediolan,Włochy,Mediolan-Bergamo,FR,False,False,2026-05-01T09:09:28Z
+KRK,BHX,KRK-BHX,Kraków,Polska,Birmingham,Wielka Brytania,Birmingham,FR,False,False,2026-05-01T09:09:28Z
+KRK,BLQ,KRK-BLQ,Kraków,Polska,Bolonia,Włochy,Bolonia,FR,False,False,2026-05-01T09:09:28Z
+KRK,BOH,KRK-BOH,Kraków,Polska,Bournemouth,Wielka Brytania,Bournemouth,FR,False,False,2026-05-01T09:09:28Z
+KRK,BOJ,KRK-BOJ,Kraków,Polska,Burgas,Bułagria,Burgas,FR,False,False,2026-05-01T09:09:28Z
+KRK,BRI,KRK-BRI,Kraków,Polska,Bari,Włochy,Bari,FR,False,False,2026-05-01T09:09:28Z
+KRK,BRS,KRK-BRS,Kraków,Polska,Bristol,Wielka Brytania,Bristol,FR,False,False,2026-05-01T09:09:28Z
+KRK,BUD,KRK-BUD,Kraków,Polska,Budapeszt,Węgry,Budapeszt,FR,False,False,2026-05-01T09:09:28Z
+KRK,BVA,KRK-BVA,Kraków,Polska,Paryż,Francja,Paryż-Beauvais,FR,False,False,2026-05-01T09:09:28Z
+KRK,CAG,KRK-CAG,Kraków,Polska,Cagliari,Włochy,Cagliari,FR,False,False,2026-05-01T09:09:28Z
+KRK,CDT,KRK-CDT,Kraków,Polska,Castellon,Hiszpania,Castellon (Walencja),FR,False,True,2026-05-01T09:09:28Z
+KRK,CFU,KRK-CFU,Kraków,Polska,Korfu,Grecja,Korfu,FR,False,False,2026-05-01T09:09:28Z
+KRK,CHQ,KRK-CHQ,Kraków,Polska,Chania,Grecja,Chania (Kreta),FR,False,False,2026-05-01T09:09:28Z
+KRK,CIA,KRK-CIA,Kraków,Polska,Rzym,Włochy,Rzym-Ciampino,FR,False,False,2026-05-01T09:09:28Z
+KRK,CPH,KRK-CPH,Kraków,Polska,Kopenhaga,Dania,Kopenhaga,FR,False,False,2026-05-01T09:09:28Z
+KRK,CRL,KRK-CRL,Kraków,Polska,Charleroi,Belgia,Bruksela-Charleroi,FR,False,False,2026-05-01T09:09:28Z
+KRK,CTA,KRK-CTA,Kraków,Polska,Katania,Włochy,Catania,FR,False,False,2026-05-01T09:09:28Z
+KRK,DBV,KRK-DBV,Kraków,Polska,Dubrovnik,Chorwacja,Dubrownik,FR,False,True,2026-05-01T09:09:28Z
+KRK,DUB,KRK-DUB,Kraków,Polska,Dublin,Irlandia,Dublin,FR,False,False,2026-05-01T09:09:28Z
+KRK,EDI,KRK-EDI,Kraków,Polska,Edynburg,Szkocja,Edynburg,FR,False,False,2026-05-01T09:09:28Z
+KRK,EIN,KRK-EIN,Kraków,Polska,Eindhoven,Holandia,Eindhoven,FR,False,False,2026-05-01T09:09:28Z
+KRK,EMA,KRK-EMA,Kraków,Polska,East Midlands,Wielka Brytania,East Midlands,FR,False,False,2026-05-01T09:09:28Z
+KRK,FAO,KRK-FAO,Kraków,Polska,Faro,Portugalia,Faro,FR,False,True,2026-05-01T09:09:28Z
+KRK,FMM,KRK-FMM,Kraków,Polska,Memmingen,Niemcy,Memmingen,FR,False,True,2026-05-01T09:09:28Z
+KRK,FUE,KRK-FUE,Kraków,Polska,Fuerteventura,Hiszpania,Fuerteventura,FR,False,True,2026-05-01T09:09:28Z
+KRK,GDN,KRK-GDN,Kraków,Polska,Gdańsk,Polska,Gdańsk,FR,False,False,2026-05-01T09:09:28Z
+KRK,GLA,KRK-GLA,Kraków,Polska,Glasgow,Szkocja,Glasgow,FR,False,False,2026-05-01T09:09:28Z
+KRK,GOT,KRK-GOT,Kraków,Polska,Gotenburg,Szwecja,Göteborg-Landvetter,FR,False,False,2026-05-01T09:09:28Z
+KRK,GRO,KRK-GRO,Kraków,Polska,Girona,Hiszpania,Barcelona-Girona,FR,False,False,2026-05-01T09:09:28Z
+KRK,JTR,KRK-JTR,Kraków,Polska,Santorini,Grecja,Santorini,FR,False,False,2026-05-01T09:09:28Z
+KRK,LBA,KRK-LBA,Kraków,Polska,Leeds,Wielka Brytania,Leeds/Bradford,FR,False,False,2026-05-01T09:09:28Z
+KRK,LDE,KRK-LDE,Kraków,Polska,Lourdes,Francja,Lourdes,FR,False,False,2026-05-01T09:09:28Z
+KRK,LIS,KRK-LIS,Kraków,Polska,Lizbona,Portugalia,Lisbon,FR,False,False,2026-05-01T09:09:28Z
+KRK,LPA,KRK-LPA,Kraków,Polska,Gran Canaria,Hiszpania,Gran Canaria,FR,False,False,2026-05-01T09:09:28Z
+KRK,LPL,KRK-LPL,Kraków,Polska,Liverpool,Wielka Brytania,Liverpool,FR,False,False,2026-05-01T09:09:28Z
+KRK,LTN,KRK-LTN,Kraków,Polska,Londyn,Wielka Brytania,Londyn-Luton,FR,False,False,2026-05-01T09:09:28Z
+KRK,MAD,KRK-MAD,Kraków,Polska,Madryt,Hiszpania,Madryt,FR,False,False,2026-05-01T09:09:28Z
+KRK,MAN,KRK-MAN,Kraków,Polska,Manchester,Wielka Brytania,Manchester,FR,False,False,2026-05-01T09:09:28Z
+KRK,MLA,KRK-MLA,Kraków,Polska,Valletta,Malta,Malta,FR,False,False,2026-05-01T09:09:28Z
+KRK,MRS,KRK-MRS,Kraków,Polska,Marsylia,Francja,Marsylia,FR,False,False,2026-05-01T09:09:28Z
+KRK,MXP,KRK-MXP,Kraków,Polska,Mediolan,Włochy,Mediolan-Malpensa,FR,False,True,2026-05-01T09:09:28Z
+KRK,NAP,KRK-NAP,Kraków,Polska,Neapol,Włochy,Neapol,FR,False,False,2026-05-01T09:09:28Z
+KRK,NCL,KRK-NCL,Kraków,Polska,Newcastle,Wielka Brytania,Newcastle,FR,False,False,2026-05-01T09:09:28Z
+KRK,OLB,KRK-OLB,Kraków,Polska,Olbia,Włochy,Olbia,FR,False,True,2026-05-01T09:09:28Z
+KRK,OPO,KRK-OPO,Kraków,Polska,Porto,Portugalia,Porto,FR,False,False,2026-05-01T09:09:28Z
+KRK,PEG,KRK-PEG,Kraków,Polska,Perugia,Włochy,Perugia,FR,False,False,2026-05-01T09:09:28Z
+KRK,PFO,KRK-PFO,Kraków,Polska,Pafos,Cypr,Pafos,FR,False,False,2026-05-01T09:09:28Z
+KRK,PMI,KRK-PMI,Kraków,Polska,Majorka,Hiszpania,Palma,FR,False,False,2026-05-01T09:09:28Z
+KRK,PMO,KRK-PMO,Kraków,Polska,Palermo,Włochy,Palermo,FR,False,False,2026-05-01T09:09:28Z
+KRK,PRG,KRK-PRG,Kraków,Polska,Praga,Czechy,Praga,FR,False,False,2026-05-01T09:09:28Z
+KRK,PSA,KRK-PSA,Kraków,Polska,Piza,Włochy,Piza,FR,False,False,2026-05-01T09:09:28Z
+KRK,PSR,KRK-PSR,Kraków,Polska,Pescara,Włochy,Pescara,FR,False,False,2026-05-01T09:09:28Z
+KRK,RAK,KRK-RAK,Kraków,Polska,Marakesz,Maroko,Marrakesz,FR,False,False,2026-05-01T09:09:28Z
+KRK,RHO,KRK-RHO,Kraków,Polska,Rodos,Grecja,Rodos,FR,False,True,2026-05-01T09:09:28Z
+KRK,RIX,KRK-RIX,Kraków,Polska,Ryga,Łotwa,Ryga,FR,False,False,2026-05-01T09:09:28Z
+KRK,RMI,KRK-RMI,Kraków,Polska,Rimini,Włochy,Rimini,FR,False,True,2026-05-01T09:09:28Z
+KRK,SKG,KRK-SKG,Kraków,Polska,Saloniki,Grecja,Saloniki,FR,False,False,2026-05-01T09:09:28Z
+KRK,SNN,KRK-SNN,Kraków,Polska,Shannon,Irlandia,Shannon,FR,False,False,2026-05-01T09:09:28Z
+KRK,SOF,KRK-SOF,Kraków,Polska,Sofia,Bułagria,Sofia,FR,False,True,2026-05-01T09:09:28Z
+KRK,STN,KRK-STN,Kraków,Polska,Londyn,Wielka Brytania,Londyn-Stansted,FR,False,False,2026-05-01T09:09:28Z
+KRK,SUF,KRK-SUF,Kraków,Polska,Lamezia,Włochy,Lamezia,FR,False,False,2026-05-01T09:09:28Z
+KRK,SVQ,KRK-SVQ,Kraków,Polska,Sewilla,Hiszpania,Sewilla,FR,False,False,2026-05-01T09:09:28Z
+KRK,SZZ,KRK-SZZ,Kraków,Polska,Szczecin,Polska,Szczecin,FR,False,False,2026-05-01T09:09:28Z
+KRK,TFS,KRK-TFS,Kraków,Polska,Teneryfa,Hiszpania,Teneryfa-Południe,FR,False,False,2026-05-01T09:09:28Z
+KRK,TGD,KRK-TGD,Kraków,Polska,Podgorica,Czarnogóra,Podgorica,FR,False,False,2026-05-01T09:09:28Z
+KRK,TIA,KRK-TIA,Kraków,Polska,Tirana,Albania,Tirana,FR,False,True,2026-05-01T09:09:28Z
+KRK,TLS,KRK-TLS,Kraków,Polska,Tuluza,Francja,Tuluza,FR,False,False,2026-05-01T09:09:28Z
+KRK,TRF,KRK-TRF,Kraków,Polska,Oslo,Norwegia,Oslo-Torp,FR,False,False,2026-05-01T09:09:28Z
+KRK,TRN,KRK-TRN,Kraków,Polska,Turyn,Włochy,Turyn,FR,False,False,2026-05-01T09:09:28Z
+KRK,TRS,KRK-TRS,Kraków,Polska,Triest,Włochy,Triest,FR,False,True,2026-05-01T09:09:28Z
+KRK,TSF,KRK-TSF,Kraków,Polska,Wenecja,Włochy,Wenecja-Treviso,FR,False,False,2026-05-01T09:09:28Z
+KRK,VAR,KRK-VAR,Kraków,Polska,Warna,Bułagria,Varna,FR,False,False,2026-05-01T09:09:28Z
+KRK,VIE,KRK-VIE,Kraków,Polska,Wiedeń,Austria,Wiedeń,FR,False,False,2026-05-01T09:09:28Z
+KRK,VLC,KRK-VLC,Kraków,Polska,Valencia,Hiszpania,Walencja,FR,False,False,2026-05-01T09:09:28Z
+KRK,ZAD,KRK-ZAD,Kraków,Polska,Zadar,Chorwacja,Zadar,FR,False,False,2026-05-01T09:09:28Z
