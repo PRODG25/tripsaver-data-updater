@@ -11,14 +11,18 @@ on:
         description: "End date (YYYY-MM-DD)"
         required: true
         default: "2026-08-31"
+      max_routes:
+        description: "How many base routes to process per airline (0 = all)"
+        required: true
+        default: "0"
       max_wizzair_routes:
-        description: "How many Wizz Air base routes to process (0 = all)"
-        required: true
-        default: "0"
+        description: "Optional Wizz Air override; leave empty to use max_routes"
+        required: false
+        default: ""
       max_ryanair_routes:
-        description: "How many Ryanair base routes to process (0 = all)"
-        required: true
-        default: "0"
+        description: "Optional Ryanair override; leave empty to use max_routes"
+        required: false
+        default: ""
       output_csv:
         description: "Combined cheapest-fares CSV path"
         required: true
@@ -47,7 +51,7 @@ jobs:
         env:
           START_DATE: ${{ github.event.inputs.start_date || '2026-05-01' }}
           END_DATE: ${{ github.event.inputs.end_date || '2026-08-31' }}
-          MAX_ROUTES: ${{ github.event.inputs.max_wizzair_routes || '0' }}
+          MAX_ROUTES: ${{ github.event.inputs.max_wizzair_routes || github.event.inputs.max_routes || '0' }}
         run: |
           python scrape_wizzair_farechart_prices.py \
             --input-csv "data/wizzair_polish_routes.csv" \
@@ -86,7 +90,7 @@ jobs:
         env:
           START_DATE: ${{ github.event.inputs.start_date || '2026-05-01' }}
           END_DATE: ${{ github.event.inputs.end_date || '2026-08-31' }}
-          MAX_ROUTES: ${{ github.event.inputs.max_ryanair_routes || '0' }}
+          MAX_ROUTES: ${{ github.event.inputs.max_ryanair_routes || github.event.inputs.max_routes || '0' }}
         run: |
           python scrape_ryanair_fares.py \
             --input-csv "data/ryanair_polish_routes.csv" \
