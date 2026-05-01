@@ -19,6 +19,10 @@ on:
         description: "Previous best deals CSV for price-change comparison"
         required: true
         default: "archive/best_deals_detected.csv"
+      top_fraction:
+        description: "Per route+month, keep cheapest fraction (0.2 = top 20%, 1.0 = all before max price filter)"
+        required: true
+        default: "0.2"
       max_total_price:
         description: "Maximum total round-trip price in PLN"
         required: true
@@ -55,6 +59,7 @@ jobs:
           ROUND_TRIPS_CSV: ${{ github.event.inputs.round_trips_csv || 'archive/multi_city_tickets.csv' }}
           BEST_DEALS_CSV: ${{ github.event.inputs.best_deals_csv || 'archive/best_deals_detected.csv' }}
           PREVIOUS_BEST_DEALS_CSV: ${{ github.event.inputs.previous_best_deals_csv || 'archive/best_deals_detected.csv' }}
+          TOP_FRACTION: ${{ github.event.inputs.top_fraction || '0.2' }}
           MAX_TOTAL_PRICE: ${{ github.event.inputs.max_total_price || '800' }}
         run: |
           python process_combined_fares.py \
@@ -62,6 +67,7 @@ jobs:
             --round-trips-csv "$ROUND_TRIPS_CSV" \
             --best-deals-csv "$BEST_DEALS_CSV" \
             --previous-best-deals-csv "$PREVIOUS_BEST_DEALS_CSV" \
+            --top-fraction "$TOP_FRACTION" \
             --max-total-price "$MAX_TOTAL_PRICE"
 
       - name: Commit processed trip outputs
