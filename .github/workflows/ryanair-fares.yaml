@@ -1,0 +1,90 @@
+name: Ryanair Fare Prices
+
+on:
+  workflow_dispatch:
+    inputs:
+      start_date:
+        description: "Start date (YYYY-MM-DD)"
+        required: true
+        default: "2026-05-01"
+      end_date:
+        description: "End date (YYYY-MM-DD)"
+        required: true
+        default: "2026-08-31"
+      max_routes:
+        description: "How many base routes from data/ryanair_polish_routes.csv to process (0 = all)"
+        required: true
+        default: "0"
+      output_csv:
+        description: "CSV path to save in repo"
+        required: true
+        default: "data/ryanair_fares_may_aug.csv"
+      summary_json:
+        description: "Summary JSON path to save in repo"
+        required: true
+        default: "data/ryanair_fares_may_aug_summary.json"
+  schedule:
+    - cron: "0 6 * * *"
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run Ryanair fare scrape
+        env:
+          START_DATE: ${{ github.event.inputs.start_date || '2026-05-01' }}
+          END_DATE: ${{ github.event.inputs.end_date || '2026-08-31' }}
+          MAX_ROUTES: ${{ github.event.inputs.max_routes || '0' }}
+          OUTPUT_CSV: ${{ github.event.inputs.output_csv || 'data/ryanair_fares_may_aug.csv' }}
+          SUMMARY_JSON: ${{ github.event.inputs.summary_json || 'data/ryanair_fares_may_aug_summary.json' }}
+        run: |
+          python scrape_ryanair_fares.py \
+            --input-csv "data/ryanair_polish_routes.csv" \
+            --output-csv "$OUTPUT_CSV" \
+            --summary-json "$SUMMARY_JSON" \
+            --start-date "$START_DATE" \
+            --end-date "$END_DATE" \
+            --max-routes "$MAX_ROUTES" \
+            --include-return-routes \
+            --retries 4 \
+            --retry-delay-seconds 8 \
+            --delay-seconds 1
+
+      - name: Commit Ryanair fare outputs into repository
+        env:
+          OUTPUT_CSV: ${{ github.event.inputs.output_csv || 'data/ryanair_fares_may_aug.csv' }}
+          SUMMARY_JSON: ${{ github.event.inputs.summary_json || 'data/ryanair_fares_may_aug_summary.json' }}
+        run: |
+          if [ -f "$OUTPUT_CSV" ]; then
+            git add "$OUTPUT_CSV"
+            if [ -f "$SUMMARY_JSON" ]; then
+              git add "$SUMMARY_JSON"
+            fi
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "update ryanair fare prices" || echo "No Ryanair fare changes to commit"
+            git push
+          else
+            echo "CSV not found: $OUTPUT_CSV"
+            exit 1
+          fi
+
+      - name: Upload Ryanair fare artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ryanair-fares-output
+          path: |
+            ${{ github.event.inputs.output_csv || 'data/ryanair_fares_may_aug.csv' }}
+            ${{ github.event.inputs.summary_json || 'data/ryanair_fares_may_aug_summary.json' }}
+          if-no-files-found: error
