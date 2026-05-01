@@ -1,10 +1,10 @@
 import argparse
 import os
-from datetime import datetime
 
 import pandas as pd
 
 
+# Same metro-airport mapping as archive flight_prices_raw processor
 AIRPORT_TO_CITY = {
     "WMI": "WARS",
     "WAW": "WARS",
@@ -21,10 +21,6 @@ AIRPORT_TO_CITY = {
     "BGY": "MILA",
     "MXP": "MILA",
 }
-
-
-def airport_for_link(value: str) -> str:
-    return AIRPORT_TO_CITY.get(str(value).upper(), str(value).upper())
 
 
 def create_trip_link(row: pd.Series) -> str:
@@ -60,9 +56,19 @@ def build_round_trips(df: pd.DataFrame, top_fraction: float, max_total_price: fl
     df = df.copy()
     df["price"] = pd.to_numeric(df["price"], errors="coerce")
     df = df.dropna(subset=["price", "departure"])
-    df = df[df["price_type"] == "price"].copy()
+    if "price_type" in df.columns:
+        df = df[df["price_type"] == "price"].copy()
+
+    df = df.sort_values(by="price").reset_index(drop=True)
+
+    for col in ("departure_airport", "arrival_airport"):
+        if col in df.columns:
+            df[col] = df[col].replace(AIRPORT_TO_CITY)
+
     df["departure"] = pd.to_datetime(df["departure"], errors="coerce")
     df = df.dropna(subset=["departure"])
+    if "return" in df.columns:
+        df["return"] = pd.to_datetime(df["return"], errors="coerce")
 
     df = df.rename(
         columns={
@@ -102,17 +108,28 @@ def build_round_trips(df: pd.DataFrame, top_fraction: float, max_total_price: fl
         & (merged["trip_duration_days"] <= 7)
     ].copy()
 
-    valid_trips["price"] = pd.to_numeric(valid_trips["price"], errors="coerce").fillna(0).astype(int)
-    valid_trips["return_price"] = pd.to_numeric(valid_trips["return_price"], errors="coerce").fillna(0).astype(int)
+    valid_trips["price"] = pd.to_numeric(valid_trips["price"], errors="coerce")
+    valid_trips["return_price"] = pd.to_numeric(valid_trips["return_price"], errors="coerce")
+    valid_trips = valid_trips.dropna(subset=["price", "return_price"])
     valid_trips["total_price"] = valid_trips["price"] + valid_trips["return_price"]
     valid_trips["departure_month"] = valid_trips["return_date"].dt.to_period("M")
     valid_trips["route"] = valid_trips["DepartureCity"] + " - " + valid_trips["ArrivalCity"]
 
-    filtered = (
-        valid_trips.groupby(["route", "departure_month"], group_keys=False)
-        .apply(lambda group: top_percent(group, top_fraction))
-        .reset_index(drop=True)
-    )
+    def _top_slice(g: pd.DataFrame) -> pd.DataFrame:
+        return top_percent(g, top_fraction)
+
+    try:
+        filtered = (
+            valid_trips.groupby(["route", "departure_month"], group_keys=False)
+            .apply(_top_slice, include_groups=False)
+            .reset_index(drop=True)
+        )
+    except TypeError:
+        filtered = (
+            valid_trips.groupby(["route", "departure_month"], group_keys=False)
+            .apply(_top_slice)
+            .reset_index(drop=True)
+        )
 
     final_df = filtered[
         [
@@ -154,10 +171,6 @@ def build_round_trips(df: pd.DataFrame, top_fraction: float, max_total_price: fl
             "return_source_currency": "Inbound Source Currency",
         }
     )
-
-    final_df["IATA_Departure"] = final_df["IATA_Departure"].apply(airport_for_link)
-    final_df["IATA_Destination"] = final_df["IATA_Destination"].apply(airport_for_link)
-    final_df["IATA_Return"] = final_df["IATA_Return"].apply(airport_for_link)
 
     final_df = final_df[final_df["Total Price"] <= max_total_price].sort_values("Total Price").reset_index(drop=True)
     final_df["Round_Trip_Link"] = final_df.apply(create_trip_link, axis=1)
