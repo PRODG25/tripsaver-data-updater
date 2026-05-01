@@ -1,0 +1,170 @@
+name: Combined Cheapest Fares
+
+on:
+  workflow_dispatch:
+    inputs:
+      start_date:
+        description: "Start date (YYYY-MM-DD)"
+        required: true
+        default: "2026-05-01"
+      end_date:
+        description: "End date (YYYY-MM-DD)"
+        required: true
+        default: "2026-08-31"
+      max_wizzair_routes:
+        description: "How many Wizz Air base routes to process (0 = all)"
+        required: true
+        default: "0"
+      max_ryanair_routes:
+        description: "How many Ryanair base routes to process (0 = all)"
+        required: true
+        default: "0"
+      output_csv:
+        description: "Combined cheapest-fares CSV path"
+        required: true
+        default: "data/all_fares_best_prices.csv"
+      summary_json:
+        description: "Combined summary JSON path"
+        required: true
+        default: "data/all_fares_best_prices_summary.json"
+  schedule:
+    - cron: "0 5,11,17 * * *"
+
+jobs:
+  wizzair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run Wizz Air fare scrape
+        env:
+          START_DATE: ${{ github.event.inputs.start_date || '2026-05-01' }}
+          END_DATE: ${{ github.event.inputs.end_date || '2026-08-31' }}
+          MAX_ROUTES: ${{ github.event.inputs.max_wizzair_routes || '0' }}
+        run: |
+          python scrape_wizzair_farechart_prices.py \
+            --input-csv "data/wizzair_polish_routes.csv" \
+            --output-csv "data/wizzair_fares_raw.csv" \
+            --summary-json "data/wizzair_fares_raw_summary.json" \
+            --start-date "$START_DATE" \
+            --end-date "$END_DATE" \
+            --max-routes "$MAX_ROUTES" \
+            --include-return-routes \
+            --retries 4 \
+            --retry-delay-seconds 8 \
+            --delay-seconds 1
+
+      - name: Upload Wizz Air raw fares
+        uses: actions/upload-artifact@v4
+        with:
+          name: wizzair-fares-raw
+          path: |
+            data/wizzair_fares_raw.csv
+            data/wizzair_fares_raw_summary.json
+          if-no-files-found: error
+
+  ryanair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run Ryanair fare scrape
+        env:
+          START_DATE: ${{ github.event.inputs.start_date || '2026-05-01' }}
+          END_DATE: ${{ github.event.inputs.end_date || '2026-08-31' }}
+          MAX_ROUTES: ${{ github.event.inputs.max_ryanair_routes || '0' }}
+        run: |
+          python scrape_ryanair_fares.py \
+            --input-csv "data/ryanair_polish_routes.csv" \
+            --output-csv "data/ryanair_fares_raw.csv" \
+            --summary-json "data/ryanair_fares_raw_summary.json" \
+            --start-date "$START_DATE" \
+            --end-date "$END_DATE" \
+            --max-routes "$MAX_ROUTES" \
+            --include-return-routes \
+            --retries 4 \
+            --retry-delay-seconds 8 \
+            --delay-seconds 1
+
+      - name: Upload Ryanair raw fares
+        uses: actions/upload-artifact@v4
+        with:
+          name: ryanair-fares-raw
+          path: |
+            data/ryanair_fares_raw.csv
+            data/ryanair_fares_raw_summary.json
+          if-no-files-found: error
+
+  combine:
+    runs-on: ubuntu-latest
+    needs:
+      - wizzair
+      - ryanair
+    timeout-minutes: 30
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Download Wizz Air raw fares
+        uses: actions/download-artifact@v4
+        with:
+          name: wizzair-fares-raw
+          path: data
+
+      - name: Download Ryanair raw fares
+        uses: actions/download-artifact@v4
+        with:
+          name: ryanair-fares-raw
+          path: data
+
+      - name: Combine cheapest fares
+        env:
+          OUTPUT_CSV: ${{ github.event.inputs.output_csv || 'data/all_fares_best_prices.csv' }}
+          SUMMARY_JSON: ${{ github.event.inputs.summary_json || 'data/all_fares_best_prices_summary.json' }}
+        run: |
+          python combine_fares.py \
+            --wizzair-csv "data/wizzair_fares_raw.csv" \
+            --ryanair-csv "data/ryanair_fares_raw.csv" \
+            --output-csv "$OUTPUT_CSV" \
+            --summary-json "$SUMMARY_JSON"
+
+      - name: Commit combined outputs into repository
+        env:
+          OUTPUT_CSV: ${{ github.event.inputs.output_csv || 'data/all_fares_best_prices.csv' }}
+          SUMMARY_JSON: ${{ github.event.inputs.summary_json || 'data/all_fares_best_prices_summary.json' }}
+        run: |
+          git add "$OUTPUT_CSV" "$SUMMARY_JSON"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "update combined cheapest fares" || echo "No combined fare changes to commit"
+          git push
+
+      - name: Upload combined fare artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: combined-fares-output
+          path: |
+            ${{ github.event.inputs.output_csv || 'data/all_fares_best_prices.csv' }}
+            ${{ github.event.inputs.summary_json || 'data/all_fares_best_prices_summary.json' }}
+          if-no-files-found: error
