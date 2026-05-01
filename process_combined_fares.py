@@ -102,6 +102,8 @@ def build_round_trips(df: pd.DataFrame, top_fraction: float, max_total_price: fl
         & (merged["trip_duration_days"] <= 7)
     ].copy()
 
+    valid_trips["price"] = pd.to_numeric(valid_trips["price"], errors="coerce").fillna(0).astype(int)
+    valid_trips["return_price"] = pd.to_numeric(valid_trips["return_price"], errors="coerce").fillna(0).astype(int)
     valid_trips["total_price"] = valid_trips["price"] + valid_trips["return_price"]
     valid_trips["departure_month"] = valid_trips["return_date"].dt.to_period("M")
     valid_trips["route"] = valid_trips["DepartureCity"] + " - " + valid_trips["ArrivalCity"]
@@ -217,8 +219,8 @@ def build_best_deals(round_trips: pd.DataFrame, previous_best_deals_csv: str) ->
 def main() -> None:
     parser = argparse.ArgumentParser(description="Build round-trip deal CSVs from combined one-way fare prices.")
     parser.add_argument("--input-csv", default="data/all_fares_best_prices.csv")
-    parser.add_argument("--round-trips-csv", default="combined_multi_city_tickets.csv")
-    parser.add_argument("--best-deals-csv", default="combined_best_deals_detected.csv")
+    parser.add_argument("--round-trips-csv", default="archive/combined_multi_city_tickets.csv")
+    parser.add_argument("--best-deals-csv", default="archive/combined_best_deals_detected.csv")
     parser.add_argument("--previous-best-deals-csv", default="archive/combined_best_deals_detected.csv")
     parser.add_argument("--top-fraction", type=float, default=0.2)
     parser.add_argument("--max-total-price", type=float, default=800)
@@ -226,10 +228,12 @@ def main() -> None:
 
     raw_df = pd.read_csv(args.input_csv)
     round_trips = build_round_trips(raw_df, args.top_fraction, args.max_total_price)
+    os.makedirs(os.path.dirname(args.round_trips_csv) or ".", exist_ok=True)
     round_trips.to_csv(args.round_trips_csv, index=False, encoding="utf-8-sig")
     print(f"Saved {len(round_trips)} round trips to {args.round_trips_csv}")
 
     best_deals = build_best_deals(round_trips, args.previous_best_deals_csv)
+    os.makedirs(os.path.dirname(args.best_deals_csv) or ".", exist_ok=True)
     best_deals.to_csv(args.best_deals_csv, index=False, encoding="utf-8-sig")
     print(f"Saved {len(best_deals)} best deals to {args.best_deals_csv}")
 
