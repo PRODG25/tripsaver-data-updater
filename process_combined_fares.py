@@ -219,9 +219,9 @@ def build_best_deals(round_trips: pd.DataFrame, previous_best_deals_csv: str) ->
 def main() -> None:
     parser = argparse.ArgumentParser(description="Build round-trip deal CSVs from combined one-way fare prices.")
     parser.add_argument("--input-csv", default="data/all_fares_best_prices.csv")
-    parser.add_argument("--round-trips-csv", default="archive/combined_multi_city_tickets.csv")
-    parser.add_argument("--best-deals-csv", default="archive/combined_best_deals_detected.csv")
-    parser.add_argument("--previous-best-deals-csv", default="archive/combined_best_deals_detected.csv")
+    parser.add_argument("--round-trips-csv", default="archive/multi_city_tickets.csv")
+    parser.add_argument("--best-deals-csv", default="archive/best_deals_detected.csv")
+    parser.add_argument("--previous-best-deals-csv", default="archive/best_deals_detected.csv")
     parser.add_argument("--top-fraction", type=float, default=0.2)
     parser.add_argument("--max-total-price", type=float, default=800)
     args = parser.parse_args()
