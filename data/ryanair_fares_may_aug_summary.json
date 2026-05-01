@@ -1,0 +1,157 @@
+{
+  "input_csv": "data/ryanair_polish_routes.csv",
+  "start_date": "2026-05-01",
+  "end_date": "2026-08-31",
+  "currency": "PLN",
+  "output_csv": "data/ryanair_fares_may_aug.csv",
+  "include_return_routes": true,
+  "base_routes_requested": 10,
+  "route_directions_requested": 20,
+  "rows_written": 2460,
+  "priced_rows": 1227,
+  "missing_airport_metadata": [],
+  "errors": [],
+  "routes": [
+    {
+      "route": "WAW-AGP",
+      "calendar_days": 123,
+      "priced_days": 88,
+      "errors": 0,
+      "elapsed_seconds": 5.08
+    },
+    {
+      "route": "AGP-WAW",
+      "calendar_days": 123,
+      "priced_days": 88,
+      "errors": 0,
+      "elapsed_seconds": 4.92
+    },
+    {
+      "route": "WAW-ALC",
+      "calendar_days": 123,
+      "priced_days": 121,
+      "errors": 0,
+      "elapsed_seconds": 5.16
+    },
+    {
+      "route": "ALC-WAW",
+      "calendar_days": 123,
+      "priced_days": 122,
+      "errors": 0,
+      "elapsed_seconds": 4.98
+    },
+    {
+      "route": "WAW-CRL",
+      "calendar_days": 123,
+      "priced_days": 53,
+      "errors": 0,
+      "elapsed_seconds": 4.88
+    },
+    {
+      "route": "CRL-WAW",
+      "calendar_days": 123,
+      "priced_days": 54,
+      "errors": 0,
+      "elapsed_seconds": 5.13
+    },
+    {
+      "route": "WAW-LBA",
+      "calendar_days": 123,
+      "priced_days": 53,
+      "errors": 0,
+      "elapsed_seconds": 5.01
+    },
+    {
+      "route": "LBA-WAW",
+      "calendar_days": 123,
+      "priced_days": 53,
+      "errors": 0,
+      "elapsed_seconds": 5.14
+    },
+    {
+      "route": "WAW-MAN",
+      "calendar_days": 123,
+      "priced_days": 54,
+      "errors": 0,
+      "elapsed_seconds": 4.87
+    },
+    {
+      "route": "MAN-WAW",
+      "calendar_days": 123,
+      "priced_days": 53,
+      "errors": 0,
+      "elapsed_seconds": 4.93
+    },
+    {
+      "route": "WAW-OPO",
+      "calendar_days": 123,
+      "priced_days": 35,
+      "errors": 0,
+      "elapsed_seconds": 4.87
+    },
+    {
+      "route": "OPO-WAW",
+      "calendar_days": 123,
+      "priced_days": 35,
+      "errors": 0,
+      "elapsed_seconds": 4.94
+    },
+    {
+      "route": "WAW-PFO",
+      "calendar_days": 123,
+      "priced_days": 36,
+      "errors": 0,
+      "elapsed_seconds": 5.39
+    },
+    {
+      "route": "PFO-WAW",
+      "calendar_days": 123,
+      "priced_days": 36,
+      "errors": 0,
+      "elapsed_seconds": 5.37
+    },
+    {
+      "route": "WAW-PMI",
+      "calendar_days": 123,
+      "priced_days": 86,
+      "errors": 0,
+      "elapsed_seconds": 5.14
+    },
+    {
+      "route": "PMI-WAW",
+      "calendar_days": 123,
+      "priced_days": 87,
+      "errors": 0,
+      "elapsed_seconds": 5.16
+    },
+    {
+      "route": "WAW-PSA",
+      "calendar_days": 123,
+      "priced_days": 52,
+      "errors": 0,
+      "elapsed_seconds": 5.17
+    },
+    {
+      "route": "PSA-WAW",
+      "calendar_days": 123,
+      "priced_days": 52,
+      "errors": 0,
+      "elapsed_seconds": 4.9
+    },
+    {
+      "route": "WAW-SVQ",
+      "calendar_days": 123,
+      "priced_days": 34,
+      "errors": 0,
+      "elapsed_seconds": 4.9
+    },
+    {
+      "route": "SVQ-WAW",
+      "calendar_days": 123,
+      "priced_days": 35,
+      "errors": 0,
+      "elapsed_seconds": 4.85
+    }
+  ],
+  "scraped_at_utc": "2026-05-01T09:40:43Z"
+}
