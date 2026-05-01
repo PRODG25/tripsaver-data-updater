@@ -10,15 +10,15 @@ on:
       round_trips_csv:
         description: "Output CSV for 2-7 day round trips"
         required: true
-        default: "archive/combined_multi_city_tickets.csv"
+        default: "archive/multi_city_tickets.csv"
       best_deals_csv:
         description: "Output CSV for best detected deals"
         required: true
-        default: "archive/combined_best_deals_detected.csv"
+        default: "archive/best_deals_detected.csv"
       previous_best_deals_csv:
         description: "Previous best deals CSV for price-change comparison"
         required: true
-        default: "archive/combined_best_deals_detected.csv"
+        default: "archive/best_deals_detected.csv"
       max_total_price:
         description: "Maximum total round-trip price in PLN"
         required: true
