@@ -10,11 +10,11 @@ on:
       round_trips_csv:
         description: "Output CSV for 2-7 day round trips"
         required: true
-        default: "combined_multi_city_tickets.csv"
+        default: "archive/combined_multi_city_tickets.csv"
       best_deals_csv:
         description: "Output CSV for best detected deals"
         required: true
-        default: "combined_best_deals_detected.csv"
+        default: "archive/combined_best_deals_detected.csv"
       previous_best_deals_csv:
         description: "Previous best deals CSV for price-change comparison"
         required: true
@@ -52,8 +52,8 @@ jobs:
       - name: Process combined fares into round trips
         env:
           INPUT_CSV: ${{ github.event.inputs.input_csv || 'data/all_fares_best_prices.csv' }}
-          ROUND_TRIPS_CSV: ${{ github.event.inputs.round_trips_csv || 'combined_multi_city_tickets.csv' }}
-          BEST_DEALS_CSV: ${{ github.event.inputs.best_deals_csv || 'combined_best_deals_detected.csv' }}
+          ROUND_TRIPS_CSV: ${{ github.event.inputs.round_trips_csv || 'archive/combined_multi_city_tickets.csv' }}
+          BEST_DEALS_CSV: ${{ github.event.inputs.best_deals_csv || 'archive/combined_best_deals_detected.csv' }}
           PREVIOUS_BEST_DEALS_CSV: ${{ github.event.inputs.previous_best_deals_csv || 'archive/combined_best_deals_detected.csv' }}
           MAX_TOTAL_PRICE: ${{ github.event.inputs.max_total_price || '800' }}
         run: |
@@ -66,8 +66,8 @@ jobs:
 
       - name: Commit processed trip outputs
         env:
-          ROUND_TRIPS_CSV: ${{ github.event.inputs.round_trips_csv || 'combined_multi_city_tickets.csv' }}
-          BEST_DEALS_CSV: ${{ github.event.inputs.best_deals_csv || 'combined_best_deals_detected.csv' }}
+          ROUND_TRIPS_CSV: ${{ github.event.inputs.round_trips_csv || 'archive/combined_multi_city_tickets.csv' }}
+          BEST_DEALS_CSV: ${{ github.event.inputs.best_deals_csv || 'archive/combined_best_deals_detected.csv' }}
         run: |
           git add "$ROUND_TRIPS_CSV" "$BEST_DEALS_CSV"
           git config user.name "github-actions[bot]"
@@ -80,6 +80,6 @@ jobs:
         with:
           name: combined-trip-deals
           path: |
-            ${{ github.event.inputs.round_trips_csv || 'combined_multi_city_tickets.csv' }}
-            ${{ github.event.inputs.best_deals_csv || 'combined_best_deals_detected.csv' }}
+            ${{ github.event.inputs.round_trips_csv || 'archive/combined_multi_city_tickets.csv' }}
+            ${{ github.event.inputs.best_deals_csv || 'archive/combined_best_deals_detected.csv' }}
           if-no-files-found: error
