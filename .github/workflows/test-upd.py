@@ -3,7 +3,7 @@ import os
 from datetime import datetime, timedelta
 import time
 
-df = pd.read_csv("archive/flight_prices_raw (5).csv")
+df = pd.read_csv("archive/flight_prices_raw (5).csv",  sep=";")
 print(f"DataFrame with all fight prices created saved")
 print(df.head())
 df = df.sort_values(by='price').reset_index(drop=True)
