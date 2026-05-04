@@ -27,10 +27,6 @@ on:
         description: "Maximum total round-trip price in PLN"
         required: true
         default: "800"
-  workflow_run:
-    workflows: ["Combined Cheapest Fares"]
-    types:
-      - completed
 
 jobs:
   process:
