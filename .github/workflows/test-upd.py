@@ -3,7 +3,26 @@ import os
 from datetime import datetime, timedelta
 import time
 
-df = pd.read_csv("archive/flight_prices_raw (5).csv",  sep=";")
+INPUT_CSV = "all_fares_best_prices.csv"
+RAW_PRICES_COLUMNS = [
+    "departure",
+    "return",
+    "price",
+    "departure_airport",
+    "arrival_airport",
+    "date_of_export",
+    "DepartureCity",
+    "DepartureCountry",
+    "ArrivalCity",
+    "ArrivalCountry",
+]
+
+df = pd.read_csv(INPUT_CSV)
+# Drop extra columns (provider, source_*, route, etc.) to match legacy raw_prices layout
+missing = [c for c in RAW_PRICES_COLUMNS if c not in df.columns]
+if missing:
+    raise ValueError(f"{INPUT_CSV} is missing expected columns: {missing}")
+df = df[RAW_PRICES_COLUMNS].copy()
 print(f"DataFrame with all fight prices created saved")
 print(df.head())
 df = df.sort_values(by='price').reset_index(drop=True)
@@ -132,13 +151,9 @@ final_df = filtered_df[[
 final_df = final_df[final_df['Total Price'] <= 800].sort_values(by='Total Price').reset_index(drop=True)
 
 
-from urllib.parse import quote
-
 def format_ddmm(date_val):
     return date_val.strftime("%d%m")  # ensure datetime
 
-
-from urllib.parse import quote
 
 def format_skyscanner_date(dt):
     return dt.strftime("%y%m%d")  # Skyscanner uses YYMMDD
