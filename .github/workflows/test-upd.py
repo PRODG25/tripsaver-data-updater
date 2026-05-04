@@ -3,7 +3,7 @@ import os
 from datetime import datetime, timedelta
 import time
 
-INPUT_CSV = "all_fares_best_prices.csv"
+INPUT_CSV = "data/all_fares_best_prices.csv"
 RAW_PRICES_COLUMNS = [
     "departure",
     "return",
