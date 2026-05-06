@@ -3,12 +3,12 @@
   "wizzair_csv": "data/wizzair_fares_raw.csv",
   "ryanair_csv": "data/ryanair_fares_raw.csv",
   "fx_source": "https://open.er-api.com/v6/latest/PLN",
-  "raw_priced_rows": 74244,
-  "best_rows_written": 68565,
+  "raw_priced_rows": 73981,
+  "best_rows_written": 68322,
   "provider_wins": {
-    "wizzair": 30958,
-    "ryanair": 37607
+    "wizzair": 30625,
+    "ryanair": 37697
   },
   "rejected_rows": [],
-  "combined_at_utc": "2026-05-05T20:38:45Z"
+  "combined_at_utc": "2026-05-06T09:59:02Z"
 }
