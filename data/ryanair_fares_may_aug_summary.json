@@ -8,1255 +8,1255 @@
   "base_routes_requested": 306,
   "route_directions_requested": 608,
   "rows_written": 74784,
-  "priced_rows": 39704,
+  "priced_rows": 39356,
   "missing_airport_metadata": [],
   "errors": [],
   "routes": [
     {
       "route": "WAW-AGP",
       "calendar_days": 123,
-      "priced_days": 81,
+      "priced_days": 80,
       "errors": 0,
-      "elapsed_seconds": 5.25
+      "elapsed_seconds": 5.09
     },
     {
       "route": "AGP-WAW",
       "calendar_days": 123,
-      "priced_days": 81,
+      "priced_days": 80,
       "errors": 0,
-      "elapsed_seconds": 5.13
+      "elapsed_seconds": 4.96
     },
     {
       "route": "WAW-ALC",
       "calendar_days": 123,
-      "priced_days": 113,
+      "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.99
     },
     {
       "route": "ALC-WAW",
       "calendar_days": 123,
       "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.14
+      "elapsed_seconds": 4.91
     },
     {
       "route": "WAW-CRL",
       "calendar_days": 123,
-      "priced_days": 49,
+      "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.14
+      "elapsed_seconds": 4.91
     },
     {
       "route": "CRL-WAW",
       "calendar_days": 123,
-      "priced_days": 49,
+      "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.3
+      "elapsed_seconds": 4.85
     },
     {
       "route": "WAW-LBA",
       "calendar_days": 123,
       "priced_days": 49,
       "errors": 0,
-      "elapsed_seconds": 5.51
+      "elapsed_seconds": 4.98
     },
     {
       "route": "LBA-WAW",
       "calendar_days": 123,
       "priced_days": 49,
       "errors": 0,
-      "elapsed_seconds": 5.08
+      "elapsed_seconds": 5.05
     },
     {
       "route": "WAW-MAN",
       "calendar_days": 123,
-      "priced_days": 50,
-      "errors": 0,
-      "elapsed_seconds": 4.95
-    },
-    {
-      "route": "MAN-WAW",
-      "calendar_days": 123,
-      "priced_days": 50,
-      "errors": 0,
-      "elapsed_seconds": 5.16
-    },
-    {
-      "route": "WAW-OPO",
-      "calendar_days": 123,
-      "priced_days": 33,
-      "errors": 0,
-      "elapsed_seconds": 5.34
-    },
-    {
-      "route": "OPO-WAW",
-      "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 48,
       "errors": 0,
       "elapsed_seconds": 5.0
     },
     {
-      "route": "WAW-PFO",
+      "route": "MAN-WAW",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 48,
+      "errors": 0,
+      "elapsed_seconds": 4.67
+    },
+    {
+      "route": "WAW-OPO",
+      "calendar_days": 123,
+      "priced_days": 32,
       "errors": 0,
       "elapsed_seconds": 5.01
     },
     {
-      "route": "PFO-WAW",
+      "route": "OPO-WAW",
       "calendar_days": 123,
-      "priced_days": 33,
-      "errors": 0,
-      "elapsed_seconds": 5.08
-    },
-    {
-      "route": "WAW-PMI",
-      "calendar_days": 123,
-      "priced_days": 81,
+      "priced_days": 32,
       "errors": 0,
       "elapsed_seconds": 5.04
     },
     {
+      "route": "WAW-PFO",
+      "calendar_days": 123,
+      "priced_days": 32,
+      "errors": 0,
+      "elapsed_seconds": 4.86
+    },
+    {
+      "route": "PFO-WAW",
+      "calendar_days": 123,
+      "priced_days": 32,
+      "errors": 0,
+      "elapsed_seconds": 5.04
+    },
+    {
+      "route": "WAW-PMI",
+      "calendar_days": 123,
+      "priced_days": 80,
+      "errors": 0,
+      "elapsed_seconds": 4.8
+    },
+    {
       "route": "PMI-WAW",
       "calendar_days": 123,
-      "priced_days": 81,
+      "priced_days": 80,
       "errors": 0,
-      "elapsed_seconds": 4.94
+      "elapsed_seconds": 4.69
     },
     {
       "route": "WAW-PSA",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 4.95
+      "elapsed_seconds": 4.92
     },
     {
       "route": "PSA-WAW",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.13
+      "elapsed_seconds": 4.83
     },
     {
       "route": "WAW-SVQ",
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 4.99
+      "elapsed_seconds": 5.0
     },
     {
       "route": "SVQ-WAW",
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.08
+      "elapsed_seconds": 5.01
     },
     {
       "route": "WAW-TIA",
       "calendar_days": 123,
       "priced_days": 33,
       "errors": 0,
-      "elapsed_seconds": 5.17
+      "elapsed_seconds": 4.69
     },
     {
       "route": "TIA-WAW",
       "calendar_days": 123,
       "priced_days": 33,
       "errors": 0,
-      "elapsed_seconds": 5.06
+      "elapsed_seconds": 4.75
     },
     {
       "route": "WAW-VIE",
       "calendar_days": 123,
-      "priced_days": 66,
+      "priced_days": 65,
       "errors": 0,
-      "elapsed_seconds": 5.11
+      "elapsed_seconds": 4.94
     },
     {
       "route": "VIE-WAW",
       "calendar_days": 123,
       "priced_days": 65,
       "errors": 0,
-      "elapsed_seconds": 5.51
+      "elapsed_seconds": 5.1
     },
     {
       "route": "WMI-AGP",
       "calendar_days": 123,
       "priced_days": 61,
       "errors": 0,
-      "elapsed_seconds": 5.05
+      "elapsed_seconds": 5.12
     },
     {
       "route": "AGP-WMI",
       "calendar_days": 123,
       "priced_days": 61,
       "errors": 0,
-      "elapsed_seconds": 4.97
+      "elapsed_seconds": 4.67
     },
     {
       "route": "WMI-AHO",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.8
     },
     {
       "route": "AHO-WMI",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 4.9
+      "elapsed_seconds": 4.72
     },
     {
       "route": "WMI-ALC",
       "calendar_days": 123,
       "priced_days": 61,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 4.77
     },
     {
       "route": "ALC-WMI",
       "calendar_days": 123,
       "priced_days": 61,
       "errors": 0,
-      "elapsed_seconds": 5.09
+      "elapsed_seconds": 4.77
     },
     {
       "route": "WMI-ARN",
       "calendar_days": 123,
-      "priced_days": 82,
+      "priced_days": 81,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.96
     },
     {
       "route": "ARN-WMI",
       "calendar_days": 123,
       "priced_days": 81,
       "errors": 0,
-      "elapsed_seconds": 5.04
+      "elapsed_seconds": 4.75
     },
     {
       "route": "WMI-ATH",
       "calendar_days": 123,
-      "priced_days": 81,
+      "priced_days": 79,
       "errors": 0,
-      "elapsed_seconds": 5.25
+      "elapsed_seconds": 4.78
     },
     {
       "route": "ATH-WMI",
       "calendar_days": 123,
-      "priced_days": 81,
+      "priced_days": 80,
       "errors": 0,
-      "elapsed_seconds": 4.97
+      "elapsed_seconds": 4.88
     },
     {
       "route": "WMI-BCN",
       "calendar_days": 123,
-      "priced_days": 98,
+      "priced_days": 96,
       "errors": 0,
-      "elapsed_seconds": 4.98
+      "elapsed_seconds": 4.71
     },
     {
       "route": "BCN-WMI",
       "calendar_days": 123,
-      "priced_days": 97,
+      "priced_days": 96,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.67
     },
     {
       "route": "WMI-BGY",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.88
     },
     {
       "route": "BGY-WMI",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.71
     },
     {
       "route": "WMI-BHX",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.32
+      "elapsed_seconds": 4.74
     },
     {
       "route": "BHX-WMI",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.85
     },
     {
       "route": "WMI-BLQ",
       "calendar_days": 123,
-      "priced_days": 65,
+      "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.05
+      "elapsed_seconds": 4.9
     },
     {
       "route": "BLQ-WMI",
       "calendar_days": 123,
       "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 4.96
+      "elapsed_seconds": 4.85
     },
     {
       "route": "WMI-BOJ",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.2
+      "elapsed_seconds": 4.87
     },
     {
       "route": "BOJ-WMI",
       "calendar_days": 123,
       "priced_days": 49,
       "errors": 0,
-      "elapsed_seconds": 4.99
+      "elapsed_seconds": 5.01
     },
     {
       "route": "WMI-BRI",
       "calendar_days": 123,
-      "priced_days": 97,
+      "priced_days": 96,
       "errors": 0,
-      "elapsed_seconds": 4.97
+      "elapsed_seconds": 4.78
     },
     {
       "route": "BRI-WMI",
       "calendar_days": 123,
       "priced_days": 96,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 5.33
     },
     {
       "route": "WMI-BTS",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 5.21
     },
     {
       "route": "BTS-WMI",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 4.97
+      "elapsed_seconds": 4.68
     },
     {
       "route": "WMI-BUD",
       "calendar_days": 123,
-      "priced_days": 52,
+      "priced_days": 51,
       "errors": 0,
-      "elapsed_seconds": 5.24
+      "elapsed_seconds": 5.07
     },
     {
       "route": "BUD-WMI",
       "calendar_days": 123,
-      "priced_days": 52,
+      "priced_days": 51,
       "errors": 0,
-      "elapsed_seconds": 4.99
+      "elapsed_seconds": 4.89
     },
     {
       "route": "WMI-BVA",
       "calendar_days": 123,
-      "priced_days": 65,
+      "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 5.07
     },
     {
       "route": "BVA-WMI",
       "calendar_days": 123,
-      "priced_days": 65,
+      "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.1
+      "elapsed_seconds": 4.93
     },
     {
       "route": "WMI-CFU",
       "calendar_days": 123,
-      "priced_days": 49,
+      "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.08
+      "elapsed_seconds": 4.74
     },
     {
       "route": "CFU-WMI",
       "calendar_days": 123,
-      "priced_days": 49,
+      "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 4.97
+      "elapsed_seconds": 4.84
     },
     {
       "route": "WMI-CHQ",
       "calendar_days": 123,
       "priced_days": 49,
       "errors": 0,
-      "elapsed_seconds": 5.09
+      "elapsed_seconds": 4.83
     },
     {
       "route": "CHQ-WMI",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.89
     },
     {
       "route": "WMI-CIA",
       "calendar_days": 123,
-      "priced_days": 113,
-      "errors": 0,
-      "elapsed_seconds": 5.14
-    },
-    {
-      "route": "CIA-WMI",
-      "calendar_days": 123,
-      "priced_days": 114,
-      "errors": 0,
-      "elapsed_seconds": 5.08
-    },
-    {
-      "route": "WMI-CPH",
-      "calendar_days": 123,
-      "priced_days": 66,
+      "priced_days": 112,
       "errors": 0,
       "elapsed_seconds": 4.94
     },
     {
+      "route": "CIA-WMI",
+      "calendar_days": 123,
+      "priced_days": 113,
+      "errors": 0,
+      "elapsed_seconds": 4.9
+    },
+    {
+      "route": "WMI-CPH",
+      "calendar_days": 123,
+      "priced_days": 65,
+      "errors": 0,
+      "elapsed_seconds": 4.66
+    },
+    {
       "route": "CPH-WMI",
       "calendar_days": 123,
-      "priced_days": 66,
+      "priced_days": 65,
       "errors": 0,
-      "elapsed_seconds": 5.11
+      "elapsed_seconds": 4.71
     },
     {
       "route": "WMI-CRL",
       "calendar_days": 123,
-      "priced_days": 65,
+      "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.13
+      "elapsed_seconds": 4.92
     },
     {
       "route": "CRL-WMI",
       "calendar_days": 123,
-      "priced_days": 64,
+      "priced_days": 63,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 4.74
     },
     {
       "route": "WMI-CTA",
       "calendar_days": 123,
-      "priced_days": 81,
+      "priced_days": 80,
       "errors": 0,
-      "elapsed_seconds": 5.09
+      "elapsed_seconds": 4.78
     },
     {
       "route": "CTA-WMI",
       "calendar_days": 123,
-      "priced_days": 81,
+      "priced_days": 80,
       "errors": 0,
-      "elapsed_seconds": 5.34
+      "elapsed_seconds": 4.69
     },
     {
       "route": "WMI-DUB",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 111,
       "errors": 0,
-      "elapsed_seconds": 5.12
+      "elapsed_seconds": 4.88
     },
     {
       "route": "DUB-WMI",
       "calendar_days": 123,
       "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.05
+      "elapsed_seconds": 4.76
     },
     {
       "route": "WMI-EDI",
       "calendar_days": 123,
-      "priced_days": 66,
+      "priced_days": 65,
       "errors": 0,
-      "elapsed_seconds": 5.43
+      "elapsed_seconds": 5.0
     },
     {
       "route": "EDI-WMI",
       "calendar_days": 123,
       "priced_days": 65,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.86
     },
     {
       "route": "WMI-EIN",
       "calendar_days": 123,
       "priced_days": 33,
       "errors": 0,
-      "elapsed_seconds": 4.96
+      "elapsed_seconds": 4.8
     },
     {
       "route": "EIN-WMI",
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.1
+      "elapsed_seconds": 4.85
     },
     {
       "route": "WMI-FAO",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.08
+      "elapsed_seconds": 4.88
     },
     {
       "route": "FAO-WMI",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 5.22
     },
     {
       "route": "WMI-GLA",
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.25
+      "elapsed_seconds": 4.95
     },
     {
       "route": "GLA-WMI",
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.34
+      "elapsed_seconds": 4.83
     },
     {
       "route": "WMI-HEL",
       "calendar_days": 123,
       "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.09
+      "elapsed_seconds": 4.92
     },
     {
       "route": "HEL-WMI",
       "calendar_days": 123,
       "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.87
     },
     {
       "route": "WMI-LIS",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 4.99
+      "elapsed_seconds": 4.95
     },
     {
       "route": "LIS-WMI",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.05
+      "elapsed_seconds": 4.97
     },
     {
       "route": "WMI-LPL",
       "calendar_days": 123,
-      "priced_days": 49,
+      "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.09
+      "elapsed_seconds": 4.82
     },
     {
       "route": "LPL-WMI",
       "calendar_days": 123,
-      "priced_days": 49,
+      "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.27
+      "elapsed_seconds": 4.92
     },
     {
       "route": "WMI-MAD",
       "calendar_days": 123,
       "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.27
+      "elapsed_seconds": 4.93
     },
     {
       "route": "MAD-WMI",
       "calendar_days": 123,
       "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 4.99
+      "elapsed_seconds": 4.79
     },
     {
       "route": "WMI-MLA",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.15
+      "elapsed_seconds": 4.74
     },
     {
       "route": "MLA-WMI",
       "calendar_days": 123,
-      "priced_days": 113,
+      "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.04
+      "elapsed_seconds": 4.8
     },
     {
       "route": "WMI-MMX",
       "calendar_days": 123,
       "priced_days": 33,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 4.87
     },
     {
       "route": "MMX-WMI",
       "calendar_days": 123,
       "priced_days": 33,
       "errors": 0,
-      "elapsed_seconds": 5.07
+      "elapsed_seconds": 4.96
     },
     {
       "route": "WMI-MXP",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.84
     },
     {
       "route": "MXP-WMI",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.99
     },
     {
       "route": "WMI-NAP",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 4.95
+      "elapsed_seconds": 4.99
     },
     {
       "route": "NAP-WMI",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.06
+      "elapsed_seconds": 4.82
     },
     {
       "route": "WMI-OPO",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.93
     },
     {
       "route": "OPO-WMI",
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.31
+      "elapsed_seconds": 5.05
     },
     {
       "route": "WMI-PFO",
       "calendar_days": 123,
       "priced_days": 51,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.74
     },
     {
       "route": "PFO-WMI",
       "calendar_days": 123,
       "priced_days": 51,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.74
     },
     {
       "route": "WMI-PMI",
       "calendar_days": 123,
-      "priced_days": 81,
+      "priced_days": 80,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.82
     },
     {
       "route": "PMI-WMI",
       "calendar_days": 123,
       "priced_days": 81,
       "errors": 0,
-      "elapsed_seconds": 5.04
+      "elapsed_seconds": 4.89
     },
     {
       "route": "WMI-PMO",
-      "calendar_days": 123,
-      "priced_days": 81,
-      "errors": 0,
-      "elapsed_seconds": 5.06
-    },
-    {
-      "route": "PMO-WMI",
       "calendar_days": 123,
       "priced_days": 80,
       "errors": 0,
       "elapsed_seconds": 4.99
     },
     {
+      "route": "PMO-WMI",
+      "calendar_days": 123,
+      "priced_days": 79,
+      "errors": 0,
+      "elapsed_seconds": 4.8
+    },
+    {
       "route": "WMI-RHO",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.72
     },
     {
       "route": "RHO-WMI",
       "calendar_days": 123,
-      "priced_days": 49,
+      "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.13
+      "elapsed_seconds": 4.86
     },
     {
       "route": "WMI-SKG",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.07
+      "elapsed_seconds": 4.75
     },
     {
       "route": "SKG-WMI",
       "calendar_days": 123,
-      "priced_days": 47,
+      "priced_days": 46,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.73
     },
     {
       "route": "WMI-SNN",
       "calendar_days": 123,
-      "priced_days": 65,
+      "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.06
+      "elapsed_seconds": 4.73
     },
     {
       "route": "SNN-WMI",
       "calendar_days": 123,
-      "priced_days": 65,
+      "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 5.11
     },
     {
       "route": "WMI-SOF",
       "calendar_days": 123,
-      "priced_days": 98,
+      "priced_days": 97,
       "errors": 0,
-      "elapsed_seconds": 4.93
+      "elapsed_seconds": 4.8
     },
     {
       "route": "SOF-WMI",
       "calendar_days": 123,
-      "priced_days": 98,
+      "priced_days": 97,
       "errors": 0,
-      "elapsed_seconds": 5.09
+      "elapsed_seconds": 5.02
     },
     {
       "route": "WMI-STN",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.05
+      "elapsed_seconds": 4.9
     },
     {
       "route": "STN-WMI",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.99
     },
     {
       "route": "WMI-SUF",
       "calendar_days": 123,
       "priced_days": 33,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.75
     },
     {
       "route": "SUF-WMI",
       "calendar_days": 123,
       "priced_days": 33,
       "errors": 0,
-      "elapsed_seconds": 5.44
+      "elapsed_seconds": 4.74
     },
     {
       "route": "WMI-TFS",
       "calendar_days": 123,
       "priced_days": 33,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.87
     },
     {
       "route": "TFS-WMI",
       "calendar_days": 123,
       "priced_days": 33,
       "errors": 0,
-      "elapsed_seconds": 5.07
+      "elapsed_seconds": 4.87
     },
     {
       "route": "WMI-TIA",
       "calendar_days": 123,
-      "priced_days": 65,
+      "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.26
+      "elapsed_seconds": 4.78
     },
     {
       "route": "TIA-WMI",
       "calendar_days": 123,
-      "priced_days": 65,
+      "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.06
+      "elapsed_seconds": 4.95
     },
     {
       "route": "WMI-TSF",
       "calendar_days": 123,
-      "priced_days": 65,
+      "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 4.93
+      "elapsed_seconds": 4.79
     },
     {
       "route": "TSF-WMI",
       "calendar_days": 123,
-      "priced_days": 65,
+      "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.11
+      "elapsed_seconds": 4.69
     },
     {
       "route": "WMI-VLC",
       "calendar_days": 123,
       "priced_days": 45,
       "errors": 0,
-      "elapsed_seconds": 5.22
+      "elapsed_seconds": 4.71
     },
     {
       "route": "VLC-WMI",
       "calendar_days": 123,
       "priced_days": 45,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 5.04
     },
     {
       "route": "WMI-ZAD",
       "calendar_days": 123,
       "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 4.98
+      "elapsed_seconds": 4.71
     },
     {
       "route": "ZAD-WMI",
       "calendar_days": 123,
       "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 4.98
+      "elapsed_seconds": 4.73
     },
     {
       "route": "WMI-ZTH",
       "calendar_days": 123,
-      "priced_days": 17,
+      "priced_days": 16,
       "errors": 0,
-      "elapsed_seconds": 5.04
+      "elapsed_seconds": 4.88
     },
     {
       "route": "ZTH-WMI",
       "calendar_days": 123,
       "priced_days": 17,
       "errors": 0,
-      "elapsed_seconds": 4.93
+      "elapsed_seconds": 4.81
     },
     {
       "route": "WRO-AGA",
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.06
+      "elapsed_seconds": 4.81
     },
     {
       "route": "AGA-WRO",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.98
     },
     {
       "route": "WRO-AGP",
       "calendar_days": 123,
-      "priced_days": 94,
+      "priced_days": 93,
       "errors": 0,
-      "elapsed_seconds": 5.04
+      "elapsed_seconds": 5.29
     },
     {
       "route": "AGP-WRO",
       "calendar_days": 123,
-      "priced_days": 94,
+      "priced_days": 93,
       "errors": 0,
-      "elapsed_seconds": 5.06
+      "elapsed_seconds": 4.87
     },
     {
       "route": "WRO-ALC",
       "calendar_days": 123,
-      "priced_days": 111,
+      "priced_days": 109,
       "errors": 0,
-      "elapsed_seconds": 5.27
+      "elapsed_seconds": 4.82
     },
     {
       "route": "ALC-WRO",
       "calendar_days": 123,
-      "priced_days": 111,
+      "priced_days": 109,
       "errors": 0,
-      "elapsed_seconds": 5.23
+      "elapsed_seconds": 4.92
     },
     {
       "route": "WRO-ARN",
       "calendar_days": 123,
       "priced_days": 45,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.74
     },
     {
       "route": "ARN-WRO",
       "calendar_days": 123,
       "priced_days": 45,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.79
     },
     {
       "route": "WRO-ATH",
       "calendar_days": 123,
       "priced_days": 92,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.83
     },
     {
       "route": "ATH-WRO",
       "calendar_days": 123,
       "priced_days": 94,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 4.87
     },
     {
       "route": "WRO-BDS",
       "calendar_days": 123,
-      "priced_days": 46,
+      "priced_days": 45,
       "errors": 0,
-      "elapsed_seconds": 4.96
+      "elapsed_seconds": 4.95
     },
     {
       "route": "BDS-WRO",
       "calendar_days": 123,
-      "priced_days": 46,
+      "priced_days": 45,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.81
     },
     {
       "route": "WRO-BGY",
       "calendar_days": 123,
       "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 4.99
+      "elapsed_seconds": 4.91
     },
     {
       "route": "BGY-WRO",
       "calendar_days": 123,
-      "priced_days": 110,
+      "priced_days": 111,
       "errors": 0,
-      "elapsed_seconds": 5.26
+      "elapsed_seconds": 4.9
     },
     {
       "route": "WRO-BLQ",
       "calendar_days": 123,
       "priced_days": 68,
       "errors": 0,
-      "elapsed_seconds": 5.39
+      "elapsed_seconds": 4.83
     },
     {
       "route": "BLQ-WRO",
       "calendar_days": 123,
-      "priced_days": 69,
+      "priced_days": 68,
       "errors": 0,
-      "elapsed_seconds": 5.06
+      "elapsed_seconds": 5.19
     },
     {
       "route": "WRO-BOH",
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 4.95
+      "elapsed_seconds": 4.97
     },
     {
       "route": "BOH-WRO",
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.1
+      "elapsed_seconds": 5.09
     },
     {
       "route": "WRO-BRS",
       "calendar_days": 123,
       "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.98
     },
     {
       "route": "BRS-WRO",
       "calendar_days": 123,
-      "priced_days": 65,
+      "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.27
+      "elapsed_seconds": 4.87
     },
     {
       "route": "WRO-BVA",
       "calendar_days": 123,
       "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.07
+      "elapsed_seconds": 4.85
     },
     {
       "route": "BVA-WRO",
       "calendar_days": 123,
-      "priced_days": 113,
+      "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.89
     },
     {
       "route": "WRO-CFU",
       "calendar_days": 123,
-      "priced_days": 48,
+      "priced_days": 47,
       "errors": 0,
-      "elapsed_seconds": 4.99
+      "elapsed_seconds": 4.86
     },
     {
       "route": "CFU-WRO",
       "calendar_days": 123,
       "priced_days": 49,
       "errors": 0,
-      "elapsed_seconds": 5.05
+      "elapsed_seconds": 4.88
     },
     {
       "route": "WRO-CHQ",
       "calendar_days": 123,
-      "priced_days": 49,
+      "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.82
     },
     {
       "route": "CHQ-WRO",
       "calendar_days": 123,
-      "priced_days": 47,
+      "priced_days": 45,
       "errors": 0,
-      "elapsed_seconds": 5.13
+      "elapsed_seconds": 4.82
     },
     {
       "route": "WRO-CIA",
       "calendar_days": 123,
       "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.09
+      "elapsed_seconds": 5.07
     },
     {
       "route": "CIA-WRO",
       "calendar_days": 123,
       "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.17
+      "elapsed_seconds": 4.83
     },
     {
       "route": "WRO-CRL",
       "calendar_days": 123,
       "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.91
     },
     {
       "route": "CRL-WRO",
       "calendar_days": 123,
-      "priced_days": 64,
+      "priced_days": 63,
       "errors": 0,
-      "elapsed_seconds": 5.17
+      "elapsed_seconds": 4.96
     },
     {
       "route": "WRO-DBV",
       "calendar_days": 123,
       "priced_days": 68,
       "errors": 0,
-      "elapsed_seconds": 5.27
+      "elapsed_seconds": 5.01
     },
     {
       "route": "DBV-WRO",
       "calendar_days": 123,
-      "priced_days": 67,
+      "priced_days": 66,
       "errors": 0,
-      "elapsed_seconds": 5.06
+      "elapsed_seconds": 4.79
     },
     {
       "route": "WRO-DUB",
       "calendar_days": 123,
-      "priced_days": 66,
+      "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.75
     },
     {
       "route": "DUB-WRO",
       "calendar_days": 123,
-      "priced_days": 65,
+      "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.08
+      "elapsed_seconds": 4.79
     },
     {
       "route": "WRO-EDI",
       "calendar_days": 123,
-      "priced_days": 62,
+      "priced_days": 61,
       "errors": 0,
-      "elapsed_seconds": 4.99
+      "elapsed_seconds": 4.78
     },
     {
       "route": "EDI-WRO",
       "calendar_days": 123,
       "priced_days": 61,
       "errors": 0,
-      "elapsed_seconds": 5.26
+      "elapsed_seconds": 4.96
     },
     {
       "route": "WRO-EMA",
       "calendar_days": 123,
       "priced_days": 81,
       "errors": 0,
-      "elapsed_seconds": 5.11
+      "elapsed_seconds": 4.8
     },
     {
       "route": "EMA-WRO",
       "calendar_days": 123,
-      "priced_days": 81,
+      "priced_days": 80,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.94
     },
     {
       "route": "WRO-GDN",
       "calendar_days": 123,
-      "priced_days": 79,
+      "priced_days": 78,
       "errors": 0,
-      "elapsed_seconds": 5.21
+      "elapsed_seconds": 4.74
     },
     {
       "route": "GDN-WRO",
       "calendar_days": 123,
-      "priced_days": 79,
+      "priced_days": 77,
       "errors": 0,
-      "elapsed_seconds": 5.25
+      "elapsed_seconds": 4.91
     },
     {
       "route": "WRO-GLA",
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.74
     },
     {
       "route": "GLA-WRO",
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.82
     },
     {
       "route": "WRO-GRO",
       "calendar_days": 123,
-      "priced_days": 95,
+      "priced_days": 94,
       "errors": 0,
-      "elapsed_seconds": 5.07
+      "elapsed_seconds": 4.82
     },
     {
       "route": "GRO-WRO",
       "calendar_days": 123,
-      "priced_days": 95,
+      "priced_days": 94,
       "errors": 0,
-      "elapsed_seconds": 5.27
+      "elapsed_seconds": 4.91
     },
     {
       "route": "WRO-LBA",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.25
+      "elapsed_seconds": 4.74
     },
     {
       "route": "LBA-WRO",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.12
+      "elapsed_seconds": 4.88
     },
     {
       "route": "WRO-LIS",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 4.99
+      "elapsed_seconds": 4.93
     },
     {
       "route": "LIS-WRO",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 4.95
+      "elapsed_seconds": 4.72
     },
     {
       "route": "WRO-LPL",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.92
     },
     {
       "route": "LPL-WRO",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 4.97
+      "elapsed_seconds": 4.75
     },
     {
       "route": "WRO-LTN",
       "calendar_days": 123,
       "priced_days": 65,
       "errors": 0,
-      "elapsed_seconds": 5.07
+      "elapsed_seconds": 4.97
     },
     {
       "route": "LTN-WRO",
       "calendar_days": 123,
       "priced_days": 65,
       "errors": 0,
-      "elapsed_seconds": 5.07
+      "elapsed_seconds": 4.72
     },
     {
       "route": "WRO-MAN",
       "calendar_days": 123,
-      "priced_days": 50,
+      "priced_days": 49,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 5.01
     },
     {
       "route": "MAN-WRO",
       "calendar_days": 123,
-      "priced_days": 50,
+      "priced_days": 49,
       "errors": 0,
-      "elapsed_seconds": 5.31
+      "elapsed_seconds": 4.78
     },
     {
       "route": "WRO-MLA",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.04
+      "elapsed_seconds": 4.85
     },
     {
       "route": "MLA-WRO",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 4.98
     },
     {
       "route": "WRO-MRS",
@@ -1270,329 +1270,329 @@
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 4.99
+      "elapsed_seconds": 4.77
     },
     {
       "route": "WRO-NAP",
       "calendar_days": 123,
-      "priced_days": 36,
+      "priced_days": 35,
       "errors": 0,
-      "elapsed_seconds": 4.98
+      "elapsed_seconds": 5.12
     },
     {
       "route": "NAP-WRO",
       "calendar_days": 123,
-      "priced_days": 36,
+      "priced_days": 35,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 4.81
     },
     {
       "route": "WRO-NCL",
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 4.71
     },
     {
       "route": "NCL-WRO",
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.84
     },
     {
       "route": "WRO-OPO",
       "calendar_days": 123,
       "priced_days": 31,
       "errors": 0,
-      "elapsed_seconds": 4.99
+      "elapsed_seconds": 4.76
     },
     {
       "route": "OPO-WRO",
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.07
+      "elapsed_seconds": 4.98
     },
     {
       "route": "WRO-PFO",
       "calendar_days": 123,
       "priced_days": 51,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.89
     },
     {
       "route": "PFO-WRO",
       "calendar_days": 123,
       "priced_days": 51,
       "errors": 0,
-      "elapsed_seconds": 4.99
+      "elapsed_seconds": 4.85
     },
     {
       "route": "WRO-PMI",
       "calendar_days": 123,
       "priced_days": 81,
       "errors": 0,
-      "elapsed_seconds": 5.24
+      "elapsed_seconds": 5.05
     },
     {
       "route": "PMI-WRO",
       "calendar_days": 123,
       "priced_days": 81,
       "errors": 0,
-      "elapsed_seconds": 5.1
+      "elapsed_seconds": 4.89
     },
     {
       "route": "WRO-PMO",
       "calendar_days": 123,
-      "priced_days": 97,
+      "priced_days": 96,
       "errors": 0,
-      "elapsed_seconds": 4.95
+      "elapsed_seconds": 4.83
     },
     {
       "route": "PMO-WRO",
       "calendar_days": 123,
-      "priced_days": 98,
+      "priced_days": 97,
       "errors": 0,
-      "elapsed_seconds": 4.92
+      "elapsed_seconds": 4.88
     },
     {
       "route": "WRO-PSA",
       "calendar_days": 123,
-      "priced_days": 52,
+      "priced_days": 51,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.74
     },
     {
       "route": "PSA-WRO",
       "calendar_days": 123,
-      "priced_days": 52,
+      "priced_days": 51,
       "errors": 0,
-      "elapsed_seconds": 5.06
+      "elapsed_seconds": 4.96
     },
     {
       "route": "WRO-PSR",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.7
     },
     {
       "route": "PSR-WRO",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.09
+      "elapsed_seconds": 4.84
     },
     {
       "route": "WRO-RJK",
       "calendar_days": 123,
       "priced_days": 39,
       "errors": 0,
-      "elapsed_seconds": 5.07
+      "elapsed_seconds": 5.01
     },
     {
       "route": "RJK-WRO",
       "calendar_days": 123,
       "priced_days": 39,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 4.77
     },
     {
       "route": "WRO-RMI",
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.15
+      "elapsed_seconds": 4.88
     },
     {
       "route": "RMI-WRO",
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.04
+      "elapsed_seconds": 5.21
     },
     {
       "route": "WRO-SNN",
       "calendar_days": 123,
-      "priced_days": 66,
+      "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.26
+      "elapsed_seconds": 4.76
     },
     {
       "route": "SNN-WRO",
       "calendar_days": 123,
-      "priced_days": 65,
+      "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.79
     },
     {
       "route": "WRO-SOF",
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.45
+      "elapsed_seconds": 4.92
     },
     {
       "route": "SOF-WRO",
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.83
     },
     {
       "route": "WRO-STN",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 113,
       "errors": 0,
       "elapsed_seconds": 5.1
     },
     {
       "route": "STN-WRO",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 5.05
     },
     {
       "route": "WRO-SUF",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
       "elapsed_seconds": 5.04
     },
     {
       "route": "SUF-WRO",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.06
+      "elapsed_seconds": 4.83
     },
     {
       "route": "WRO-SVQ",
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 4.93
+      "elapsed_seconds": 4.86
     },
     {
       "route": "SVQ-WRO",
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.25
+      "elapsed_seconds": 4.73
     },
     {
       "route": "WRO-TGD",
       "calendar_days": 123,
       "priced_days": 58,
       "errors": 0,
-      "elapsed_seconds": 5.04
+      "elapsed_seconds": 4.84
     },
     {
       "route": "TGD-WRO",
       "calendar_days": 123,
       "priced_days": 58,
       "errors": 0,
-      "elapsed_seconds": 5.05
+      "elapsed_seconds": 4.91
     },
     {
       "route": "WRO-TIA",
       "calendar_days": 123,
       "priced_days": 40,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 4.81
     },
     {
       "route": "TIA-WRO",
       "calendar_days": 123,
       "priced_days": 40,
       "errors": 0,
-      "elapsed_seconds": 5.23
+      "elapsed_seconds": 4.86
     },
     {
       "route": "WRO-TRF",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 4.95
+      "elapsed_seconds": 4.71
     },
     {
       "route": "TRF-WRO",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.72
     },
     {
       "route": "WRO-TSF",
       "calendar_days": 123,
-      "priced_days": 49,
+      "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.12
+      "elapsed_seconds": 4.72
     },
     {
       "route": "TSF-WRO",
       "calendar_days": 123,
-      "priced_days": 49,
+      "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 4.97
+      "elapsed_seconds": 4.88
     },
     {
       "route": "WRO-VLC",
       "calendar_days": 123,
-      "priced_days": 65,
+      "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.75
     },
     {
       "route": "VLC-WRO",
       "calendar_days": 123,
-      "priced_days": 65,
+      "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.68
     },
     {
       "route": "WRO-ZAD",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.05
+      "elapsed_seconds": 5.07
     },
     {
       "route": "ZAD-WRO",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 4.97
+      "elapsed_seconds": 4.95
     },
     {
       "route": "GDN-AAR",
       "calendar_days": 123,
       "priced_days": 93,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.85
     },
     {
       "route": "AAR-GDN",
       "calendar_days": 123,
       "priced_days": 93,
       "errors": 0,
-      "elapsed_seconds": 5.06
+      "elapsed_seconds": 4.7
     },
     {
       "route": "GDN-AGP",
       "calendar_days": 123,
       "priced_days": 78,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 4.74
     },
     {
       "route": "AGP-GDN",
       "calendar_days": 123,
       "priced_days": 78,
       "errors": 0,
-      "elapsed_seconds": 5.29
+      "elapsed_seconds": 4.69
     },
     {
       "route": "GDN-ALC",
@@ -1606,119 +1606,119 @@
       "calendar_days": 123,
       "priced_days": 91,
       "errors": 0,
-      "elapsed_seconds": 5.25
+      "elapsed_seconds": 4.87
     },
     {
       "route": "GDN-ARN",
       "calendar_days": 123,
       "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 4.99
+      "elapsed_seconds": 5.37
     },
     {
       "route": "ARN-GDN",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.72
     },
     {
       "route": "GDN-BCN",
       "calendar_days": 123,
       "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.24
+      "elapsed_seconds": 4.7
     },
     {
       "route": "BCN-GDN",
       "calendar_days": 123,
       "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 4.96
+      "elapsed_seconds": 4.74
     },
     {
       "route": "GDN-BDS",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
       "elapsed_seconds": 5.06
     },
     {
       "route": "BDS-GDN",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.75
     },
     {
       "route": "GDN-BGY",
       "calendar_days": 123,
-      "priced_days": 110,
+      "priced_days": 109,
       "errors": 0,
-      "elapsed_seconds": 5.22
+      "elapsed_seconds": 4.71
     },
     {
       "route": "BGY-GDN",
       "calendar_days": 123,
-      "priced_days": 111,
+      "priced_days": 109,
       "errors": 0,
-      "elapsed_seconds": 4.94
+      "elapsed_seconds": 4.68
     },
     {
       "route": "GDN-BOJ",
       "calendar_days": 123,
       "priced_days": 53,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.88
     },
     {
       "route": "BOJ-GDN",
       "calendar_days": 123,
       "priced_days": 53,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.91
     },
     {
       "route": "GDN-BRS",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.48
+      "elapsed_seconds": 4.68
     },
     {
       "route": "BRS-GDN",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.73
     },
     {
       "route": "GDN-BTS",
       "calendar_days": 123,
       "priced_days": 65,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.82
     },
     {
       "route": "BTS-GDN",
       "calendar_days": 123,
       "priced_days": 65,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.88
     },
     {
       "route": "GDN-BVA",
       "calendar_days": 123,
-      "priced_days": 81,
+      "priced_days": 80,
       "errors": 0,
-      "elapsed_seconds": 5.19
+      "elapsed_seconds": 4.78
     },
     {
       "route": "BVA-GDN",
       "calendar_days": 123,
-      "priced_days": 81,
+      "priced_days": 80,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.75
     },
     {
       "route": "GDN-CFU",
@@ -1732,91 +1732,91 @@
       "calendar_days": 123,
       "priced_days": 16,
       "errors": 0,
-      "elapsed_seconds": 5.18
+      "elapsed_seconds": 4.81
     },
     {
       "route": "GDN-CHQ",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.04
+      "elapsed_seconds": 4.87
     },
     {
       "route": "CHQ-GDN",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.5
+      "elapsed_seconds": 5.04
     },
     {
       "route": "GDN-CPH",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.27
+      "elapsed_seconds": 4.97
     },
     {
       "route": "CPH-GDN",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 4.95
+      "elapsed_seconds": 4.85
     },
     {
       "route": "GDN-DBV",
       "calendar_days": 123,
       "priced_days": 26,
       "errors": 0,
-      "elapsed_seconds": 5.26
+      "elapsed_seconds": 4.82
     },
     {
       "route": "DBV-GDN",
       "calendar_days": 123,
       "priced_days": 26,
       "errors": 0,
-      "elapsed_seconds": 4.98
+      "elapsed_seconds": 4.86
     },
     {
       "route": "GDN-DUB",
       "calendar_days": 123,
-      "priced_days": 65,
+      "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.87
     },
     {
       "route": "DUB-GDN",
       "calendar_days": 123,
       "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.37
+      "elapsed_seconds": 4.86
     },
     {
       "route": "GDN-EDI",
       "calendar_days": 123,
-      "priced_days": 113,
+      "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.05
+      "elapsed_seconds": 4.96
     },
     {
       "route": "EDI-GDN",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.67
     },
     {
       "route": "GDN-FCO",
       "calendar_days": 123,
-      "priced_days": 111,
+      "priced_days": 110,
       "errors": 0,
-      "elapsed_seconds": 4.98
+      "elapsed_seconds": 4.97
     },
     {
       "route": "FCO-GDN",
       "calendar_days": 123,
-      "priced_days": 111,
+      "priced_days": 109,
       "errors": 0,
-      "elapsed_seconds": 5.05
+      "elapsed_seconds": 4.95
     },
     {
       "route": "GDN-GOT",
@@ -1830,994 +1830,994 @@
       "calendar_days": 123,
       "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.31
+      "elapsed_seconds": 5.05
     },
     {
       "route": "GDN-HAM",
       "calendar_days": 123,
       "priced_days": 49,
       "errors": 0,
-      "elapsed_seconds": 4.99
+      "elapsed_seconds": 4.84
     },
     {
       "route": "HAM-GDN",
       "calendar_days": 123,
       "priced_days": 49,
       "errors": 0,
-      "elapsed_seconds": 5.28
+      "elapsed_seconds": 4.94
     },
     {
       "route": "GDN-JTR",
       "calendar_days": 123,
       "priced_days": 14,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.66
     },
     {
       "route": "JTR-GDN",
       "calendar_days": 123,
       "priced_days": 14,
       "errors": 0,
-      "elapsed_seconds": 5.25
+      "elapsed_seconds": 4.79
     },
     {
       "route": "GDN-KRK",
       "calendar_days": 123,
-      "priced_days": 98,
+      "priced_days": 97,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.89
     },
     {
       "route": "KRK-GDN",
       "calendar_days": 123,
-      "priced_days": 98,
+      "priced_days": 97,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.82
     },
     {
       "route": "GDN-LBA",
       "calendar_days": 123,
       "priced_days": 81,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 5.17
     },
     {
       "route": "LBA-GDN",
       "calendar_days": 123,
       "priced_days": 81,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 5.22
     },
     {
       "route": "GDN-LUZ",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.91
     },
     {
       "route": "LUZ-GDN",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.19
+      "elapsed_seconds": 4.85
     },
     {
       "route": "GDN-MAN",
       "calendar_days": 123,
       "priced_days": 81,
       "errors": 0,
-      "elapsed_seconds": 5.05
+      "elapsed_seconds": 4.93
     },
     {
       "route": "MAN-GDN",
       "calendar_days": 123,
-      "priced_days": 82,
+      "priced_days": 81,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 5.19
     },
     {
       "route": "GDN-MLA",
       "calendar_days": 123,
-      "priced_days": 65,
+      "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 4.9
+      "elapsed_seconds": 5.12
     },
     {
       "route": "MLA-GDN",
       "calendar_days": 123,
-      "priced_days": 65,
+      "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.27
+      "elapsed_seconds": 5.16
     },
     {
       "route": "GDN-NAP",
       "calendar_days": 123,
       "priced_days": 33,
       "errors": 0,
-      "elapsed_seconds": 5.43
+      "elapsed_seconds": 4.91
     },
     {
       "route": "NAP-GDN",
       "calendar_days": 123,
       "priced_days": 33,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 4.83
     },
     {
       "route": "GDN-NCL",
       "calendar_days": 123,
       "priced_days": 61,
       "errors": 0,
-      "elapsed_seconds": 5.04
+      "elapsed_seconds": 4.94
     },
     {
       "route": "NCL-GDN",
       "calendar_days": 123,
-      "priced_days": 62,
+      "priced_days": 61,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 4.84
     },
     {
       "route": "GDN-OTP",
       "calendar_days": 123,
       "priced_days": 39,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 5.08
     },
     {
       "route": "OTP-GDN",
       "calendar_days": 123,
       "priced_days": 39,
       "errors": 0,
-      "elapsed_seconds": 4.98
+      "elapsed_seconds": 4.83
     },
     {
       "route": "GDN-PFO",
       "calendar_days": 123,
-      "priced_days": 52,
+      "priced_days": 51,
       "errors": 0,
-      "elapsed_seconds": 5.14
+      "elapsed_seconds": 4.81
     },
     {
       "route": "PFO-GDN",
       "calendar_days": 123,
-      "priced_days": 52,
+      "priced_days": 50,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.81
     },
     {
       "route": "GDN-PMI",
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.86
     },
     {
       "route": "PMI-GDN",
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 4.98
+      "elapsed_seconds": 4.96
     },
     {
       "route": "GDN-PMO",
       "calendar_days": 123,
       "priced_days": 39,
       "errors": 0,
-      "elapsed_seconds": 4.97
+      "elapsed_seconds": 4.8
     },
     {
       "route": "PMO-GDN",
       "calendar_days": 123,
       "priced_days": 39,
       "errors": 0,
-      "elapsed_seconds": 4.96
+      "elapsed_seconds": 4.95
     },
     {
       "route": "GDN-PRG",
       "calendar_days": 123,
       "priced_days": 97,
       "errors": 0,
-      "elapsed_seconds": 5.1
+      "elapsed_seconds": 4.85
     },
     {
       "route": "PRG-GDN",
       "calendar_days": 123,
       "priced_days": 97,
       "errors": 0,
-      "elapsed_seconds": 4.98
+      "elapsed_seconds": 4.83
     },
     {
       "route": "GDN-PSA",
       "calendar_days": 123,
-      "priced_days": 36,
+      "priced_days": 35,
       "errors": 0,
-      "elapsed_seconds": 4.95
+      "elapsed_seconds": 4.85
     },
     {
       "route": "PSA-GDN",
       "calendar_days": 123,
-      "priced_days": 36,
+      "priced_days": 35,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.96
     },
     {
       "route": "GDN-SFT",
       "calendar_days": 123,
-      "priced_days": 45,
+      "priced_days": 44,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.99
     },
     {
       "route": "SFT-GDN",
       "calendar_days": 123,
-      "priced_days": 46,
+      "priced_days": 45,
       "errors": 0,
-      "elapsed_seconds": 5.25
+      "elapsed_seconds": 4.83
     },
     {
       "route": "GDN-STN",
       "calendar_days": 123,
       "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 4.95
+      "elapsed_seconds": 4.97
     },
     {
       "route": "STN-GDN",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.27
+      "elapsed_seconds": 4.86
     },
     {
       "route": "GDN-TGD",
       "calendar_days": 123,
-      "priced_days": 75,
+      "priced_days": 74,
       "errors": 0,
-      "elapsed_seconds": 5.12
+      "elapsed_seconds": 4.85
     },
     {
       "route": "TGD-GDN",
       "calendar_days": 123,
-      "priced_days": 75,
+      "priced_days": 74,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 4.88
     },
     {
       "route": "GDN-TIA",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.06
+      "elapsed_seconds": 4.9
     },
     {
       "route": "TIA-GDN",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.25
+      "elapsed_seconds": 4.99
     },
     {
       "route": "GDN-TRF",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.81
     },
     {
       "route": "TRF-GDN",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 5.22
     },
     {
       "route": "GDN-TSF",
       "calendar_days": 123,
       "priced_days": 33,
       "errors": 0,
-      "elapsed_seconds": 4.99
+      "elapsed_seconds": 5.02
     },
     {
       "route": "TSF-GDN",
       "calendar_days": 123,
       "priced_days": 33,
       "errors": 0,
-      "elapsed_seconds": 5.07
+      "elapsed_seconds": 4.8
     },
     {
       "route": "GDN-VXO",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 4.97
+      "elapsed_seconds": 4.76
     },
     {
       "route": "VXO-GDN",
-      "calendar_days": 123,
-      "priced_days": 33,
-      "errors": 0,
-      "elapsed_seconds": 4.99
-    },
-    {
-      "route": "GDN-ZAD",
-      "calendar_days": 123,
-      "priced_days": 62,
-      "errors": 0,
-      "elapsed_seconds": 5.02
-    },
-    {
-      "route": "ZAD-GDN",
-      "calendar_days": 123,
-      "priced_days": 62,
-      "errors": 0,
-      "elapsed_seconds": 4.96
-    },
-    {
-      "route": "POZ-AGP",
-      "calendar_days": 123,
-      "priced_days": 33,
-      "errors": 0,
-      "elapsed_seconds": 4.99
-    },
-    {
-      "route": "AGP-POZ",
-      "calendar_days": 123,
-      "priced_days": 33,
-      "errors": 0,
-      "elapsed_seconds": 5.0
-    },
-    {
-      "route": "POZ-ALC",
-      "calendar_days": 123,
-      "priced_days": 90,
-      "errors": 0,
-      "elapsed_seconds": 5.03
-    },
-    {
-      "route": "ALC-POZ",
-      "calendar_days": 123,
-      "priced_days": 89,
-      "errors": 0,
-      "elapsed_seconds": 5.07
-    },
-    {
-      "route": "POZ-AMM",
-      "calendar_days": 123,
-      "priced_days": 18,
-      "errors": 0,
-      "elapsed_seconds": 5.03
-    },
-    {
-      "route": "AMM-POZ",
-      "calendar_days": 123,
-      "priced_days": 18,
-      "errors": 0,
-      "elapsed_seconds": 4.94
-    },
-    {
-      "route": "POZ-ARN",
-      "calendar_days": 123,
-      "priced_days": 38,
-      "errors": 0,
-      "elapsed_seconds": 5.03
-    },
-    {
-      "route": "ARN-POZ",
-      "calendar_days": 123,
-      "priced_days": 39,
-      "errors": 0,
-      "elapsed_seconds": 5.09
-    },
-    {
-      "route": "POZ-BGY",
-      "calendar_days": 123,
-      "priced_days": 112,
-      "errors": 0,
-      "elapsed_seconds": 5.22
-    },
-    {
-      "route": "BGY-POZ",
-      "calendar_days": 123,
-      "priced_days": 113,
-      "errors": 0,
-      "elapsed_seconds": 5.01
-    },
-    {
-      "route": "POZ-BHX",
-      "calendar_days": 123,
-      "priced_days": 32,
-      "errors": 0,
-      "elapsed_seconds": 4.97
-    },
-    {
-      "route": "BHX-POZ",
-      "calendar_days": 123,
-      "priced_days": 33,
-      "errors": 0,
-      "elapsed_seconds": 5.02
-    },
-    {
-      "route": "POZ-BOJ",
-      "calendar_days": 123,
-      "priced_days": 26,
-      "errors": 0,
-      "elapsed_seconds": 4.92
-    },
-    {
-      "route": "BOJ-POZ",
-      "calendar_days": 123,
-      "priced_days": 26,
-      "errors": 0,
-      "elapsed_seconds": 4.98
-    },
-    {
-      "route": "POZ-BRI",
-      "calendar_days": 123,
-      "priced_days": 85,
-      "errors": 0,
-      "elapsed_seconds": 4.95
-    },
-    {
-      "route": "BRI-POZ",
-      "calendar_days": 123,
-      "priced_days": 85,
-      "errors": 0,
-      "elapsed_seconds": 5.22
-    },
-    {
-      "route": "POZ-BRS",
-      "calendar_days": 123,
-      "priced_days": 33,
-      "errors": 0,
-      "elapsed_seconds": 5.3
-    },
-    {
-      "route": "BRS-POZ",
-      "calendar_days": 123,
-      "priced_days": 33,
-      "errors": 0,
-      "elapsed_seconds": 5.03
-    },
-    {
-      "route": "POZ-BVA",
-      "calendar_days": 123,
-      "priced_days": 85,
-      "errors": 0,
-      "elapsed_seconds": 5.27
-    },
-    {
-      "route": "BVA-POZ",
-      "calendar_days": 123,
-      "priced_days": 84,
-      "errors": 0,
-      "elapsed_seconds": 4.98
-    },
-    {
-      "route": "POZ-CAG",
-      "calendar_days": 123,
-      "priced_days": 81,
-      "errors": 0,
-      "elapsed_seconds": 5.01
-    },
-    {
-      "route": "CAG-POZ",
-      "calendar_days": 123,
-      "priced_days": 81,
-      "errors": 0,
-      "elapsed_seconds": 4.95
-    },
-    {
-      "route": "POZ-CFU",
-      "calendar_days": 123,
-      "priced_days": 46,
-      "errors": 0,
-      "elapsed_seconds": 5.01
-    },
-    {
-      "route": "CFU-POZ",
-      "calendar_days": 123,
-      "priced_days": 46,
-      "errors": 0,
-      "elapsed_seconds": 5.04
-    },
-    {
-      "route": "POZ-CHQ",
-      "calendar_days": 123,
-      "priced_days": 32,
-      "errors": 0,
-      "elapsed_seconds": 4.92
-    },
-    {
-      "route": "CHQ-POZ",
-      "calendar_days": 123,
-      "priced_days": 33,
-      "errors": 0,
-      "elapsed_seconds": 5.09
-    },
-    {
-      "route": "POZ-CIA",
-      "calendar_days": 123,
-      "priced_days": 97,
-      "errors": 0,
-      "elapsed_seconds": 5.23
-    },
-    {
-      "route": "CIA-POZ",
-      "calendar_days": 123,
-      "priced_days": 97,
-      "errors": 0,
-      "elapsed_seconds": 5.01
-    },
-    {
-      "route": "POZ-CPH",
-      "calendar_days": 123,
-      "priced_days": 49,
-      "errors": 0,
-      "elapsed_seconds": 4.99
-    },
-    {
-      "route": "CPH-POZ",
-      "calendar_days": 123,
-      "priced_days": 49,
-      "errors": 0,
-      "elapsed_seconds": 4.97
-    },
-    {
-      "route": "POZ-CRL",
-      "calendar_days": 123,
-      "priced_days": 51,
-      "errors": 0,
-      "elapsed_seconds": 5.07
-    },
-    {
-      "route": "CRL-POZ",
-      "calendar_days": 123,
-      "priced_days": 50,
-      "errors": 0,
-      "elapsed_seconds": 4.97
-    },
-    {
-      "route": "POZ-DBV",
-      "calendar_days": 123,
-      "priced_days": 49,
-      "errors": 0,
-      "elapsed_seconds": 5.04
-    },
-    {
-      "route": "DBV-POZ",
-      "calendar_days": 123,
-      "priced_days": 49,
-      "errors": 0,
-      "elapsed_seconds": 5.02
-    },
-    {
-      "route": "POZ-DUB",
-      "calendar_days": 123,
-      "priced_days": 79,
-      "errors": 0,
-      "elapsed_seconds": 5.07
-    },
-    {
-      "route": "DUB-POZ",
-      "calendar_days": 123,
-      "priced_days": 80,
-      "errors": 0,
-      "elapsed_seconds": 5.22
-    },
-    {
-      "route": "POZ-EDI",
-      "calendar_days": 123,
-      "priced_days": 78,
-      "errors": 0,
-      "elapsed_seconds": 5.14
-    },
-    {
-      "route": "EDI-POZ",
-      "calendar_days": 123,
-      "priced_days": 78,
-      "errors": 0,
-      "elapsed_seconds": 5.79
-    },
-    {
-      "route": "POZ-GRO",
-      "calendar_days": 123,
-      "priced_days": 90,
-      "errors": 0,
-      "elapsed_seconds": 4.99
-    },
-    {
-      "route": "GRO-POZ",
-      "calendar_days": 123,
-      "priced_days": 91,
-      "errors": 0,
-      "elapsed_seconds": 5.12
-    },
-    {
-      "route": "POZ-LBA",
-      "calendar_days": 123,
-      "priced_days": 48,
-      "errors": 0,
-      "elapsed_seconds": 5.03
-    },
-    {
-      "route": "LBA-POZ",
-      "calendar_days": 123,
-      "priced_days": 48,
-      "errors": 0,
-      "elapsed_seconds": 4.98
-    },
-    {
-      "route": "POZ-LIS",
-      "calendar_days": 123,
-      "priced_days": 33,
-      "errors": 0,
-      "elapsed_seconds": 5.02
-    },
-    {
-      "route": "LIS-POZ",
-      "calendar_days": 123,
-      "priced_days": 33,
-      "errors": 0,
-      "elapsed_seconds": 5.51
-    },
-    {
-      "route": "POZ-LPL",
-      "calendar_days": 123,
-      "priced_days": 32,
-      "errors": 0,
-      "elapsed_seconds": 5.39
-    },
-    {
-      "route": "LPL-POZ",
-      "calendar_days": 123,
-      "priced_days": 32,
-      "errors": 0,
-      "elapsed_seconds": 5.34
-    },
-    {
-      "route": "POZ-MAN",
-      "calendar_days": 123,
-      "priced_days": 35,
-      "errors": 0,
-      "elapsed_seconds": 4.96
-    },
-    {
-      "route": "MAN-POZ",
-      "calendar_days": 123,
-      "priced_days": 35,
-      "errors": 0,
-      "elapsed_seconds": 5.15
-    },
-    {
-      "route": "POZ-MLA",
-      "calendar_days": 123,
-      "priced_days": 97,
-      "errors": 0,
-      "elapsed_seconds": 5.25
-    },
-    {
-      "route": "MLA-POZ",
-      "calendar_days": 123,
-      "priced_days": 97,
-      "errors": 0,
-      "elapsed_seconds": 5.43
-    },
-    {
-      "route": "POZ-PFO",
-      "calendar_days": 123,
-      "priced_days": 33,
-      "errors": 0,
-      "elapsed_seconds": 5.41
-    },
-    {
-      "route": "PFO-POZ",
-      "calendar_days": 123,
-      "priced_days": 33,
-      "errors": 0,
-      "elapsed_seconds": 5.0
-    },
-    {
-      "route": "POZ-PMI",
-      "calendar_days": 123,
-      "priced_days": 78,
-      "errors": 0,
-      "elapsed_seconds": 5.52
-    },
-    {
-      "route": "PMI-POZ",
-      "calendar_days": 123,
-      "priced_days": 78,
-      "errors": 0,
-      "elapsed_seconds": 5.03
-    },
-    {
-      "route": "POZ-PMO",
-      "calendar_days": 123,
-      "priced_days": 48,
-      "errors": 0,
-      "elapsed_seconds": 5.9
-    },
-    {
-      "route": "PMO-POZ",
-      "calendar_days": 123,
-      "priced_days": 48,
-      "errors": 0,
-      "elapsed_seconds": 5.32
-    },
-    {
-      "route": "POZ-PRG",
-      "calendar_days": 123,
-      "priced_days": 48,
-      "errors": 0,
-      "elapsed_seconds": 5.81
-    },
-    {
-      "route": "PRG-POZ",
-      "calendar_days": 123,
-      "priced_days": 48,
-      "errors": 0,
-      "elapsed_seconds": 5.12
-    },
-    {
-      "route": "POZ-PUY",
-      "calendar_days": 123,
-      "priced_days": 52,
-      "errors": 0,
-      "elapsed_seconds": 5.01
-    },
-    {
-      "route": "PUY-POZ",
-      "calendar_days": 123,
-      "priced_days": 52,
-      "errors": 0,
-      "elapsed_seconds": 5.31
-    },
-    {
-      "route": "POZ-SKG",
-      "calendar_days": 123,
-      "priced_days": 35,
-      "errors": 0,
-      "elapsed_seconds": 5.02
-    },
-    {
-      "route": "SKG-POZ",
-      "calendar_days": 123,
-      "priced_days": 35,
-      "errors": 0,
-      "elapsed_seconds": 4.99
-    },
-    {
-      "route": "POZ-SNN",
-      "calendar_days": 123,
-      "priced_days": 32,
-      "errors": 0,
-      "elapsed_seconds": 5.42
-    },
-    {
-      "route": "SNN-POZ",
-      "calendar_days": 123,
-      "priced_days": 32,
-      "errors": 0,
-      "elapsed_seconds": 5.01
-    },
-    {
-      "route": "POZ-STN",
-      "calendar_days": 123,
-      "priced_days": 113,
-      "errors": 0,
-      "elapsed_seconds": 5.11
-    },
-    {
-      "route": "STN-POZ",
-      "calendar_days": 123,
-      "priced_days": 114,
-      "errors": 0,
-      "elapsed_seconds": 5.57
-    },
-    {
-      "route": "POZ-TGD",
-      "calendar_days": 123,
-      "priced_days": 32,
-      "errors": 0,
-      "elapsed_seconds": 5.29
-    },
-    {
-      "route": "TGD-POZ",
-      "calendar_days": 123,
-      "priced_days": 32,
-      "errors": 0,
-      "elapsed_seconds": 4.96
-    },
-    {
-      "route": "POZ-TIA",
-      "calendar_days": 123,
-      "priced_days": 33,
-      "errors": 0,
-      "elapsed_seconds": 5.0
-    },
-    {
-      "route": "TIA-POZ",
-      "calendar_days": 123,
-      "priced_days": 33,
-      "errors": 0,
-      "elapsed_seconds": 4.95
-    },
-    {
-      "route": "POZ-TRF",
-      "calendar_days": 123,
-      "priced_days": 97,
-      "errors": 0,
-      "elapsed_seconds": 5.02
-    },
-    {
-      "route": "TRF-POZ",
-      "calendar_days": 123,
-      "priced_days": 98,
-      "errors": 0,
-      "elapsed_seconds": 5.0
-    },
-    {
-      "route": "POZ-TSF",
-      "calendar_days": 123,
-      "priced_days": 50,
-      "errors": 0,
-      "elapsed_seconds": 5.21
-    },
-    {
-      "route": "TSF-POZ",
-      "calendar_days": 123,
-      "priced_days": 50,
-      "errors": 0,
-      "elapsed_seconds": 4.97
-    },
-    {
-      "route": "POZ-VLC",
-      "calendar_days": 123,
-      "priced_days": 32,
-      "errors": 0,
-      "elapsed_seconds": 5.0
-    },
-    {
-      "route": "VLC-POZ",
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
       "elapsed_seconds": 5.05
     },
     {
-      "route": "POZ-ZAD",
+      "route": "GDN-ZAD",
+      "calendar_days": 123,
+      "priced_days": 62,
+      "errors": 0,
+      "elapsed_seconds": 4.83
+    },
+    {
+      "route": "ZAD-GDN",
+      "calendar_days": 123,
+      "priced_days": 62,
+      "errors": 0,
+      "elapsed_seconds": 4.79
+    },
+    {
+      "route": "POZ-AGP",
+      "calendar_days": 123,
+      "priced_days": 32,
+      "errors": 0,
+      "elapsed_seconds": 4.76
+    },
+    {
+      "route": "AGP-POZ",
+      "calendar_days": 123,
+      "priced_days": 32,
+      "errors": 0,
+      "elapsed_seconds": 5.07
+    },
+    {
+      "route": "POZ-ALC",
+      "calendar_days": 123,
+      "priced_days": 90,
+      "errors": 0,
+      "elapsed_seconds": 4.96
+    },
+    {
+      "route": "ALC-POZ",
+      "calendar_days": 123,
+      "priced_days": 89,
+      "errors": 0,
+      "elapsed_seconds": 5.14
+    },
+    {
+      "route": "POZ-AMM",
+      "calendar_days": 123,
+      "priced_days": 18,
+      "errors": 0,
+      "elapsed_seconds": 5.2
+    },
+    {
+      "route": "AMM-POZ",
+      "calendar_days": 123,
+      "priced_days": 18,
+      "errors": 0,
+      "elapsed_seconds": 4.86
+    },
+    {
+      "route": "POZ-ARN",
+      "calendar_days": 123,
+      "priced_days": 38,
+      "errors": 0,
+      "elapsed_seconds": 4.86
+    },
+    {
+      "route": "ARN-POZ",
+      "calendar_days": 123,
+      "priced_days": 38,
+      "errors": 0,
+      "elapsed_seconds": 5.0
+    },
+    {
+      "route": "POZ-BGY",
+      "calendar_days": 123,
+      "priced_days": 111,
+      "errors": 0,
+      "elapsed_seconds": 4.9
+    },
+    {
+      "route": "BGY-POZ",
+      "calendar_days": 123,
+      "priced_days": 112,
+      "errors": 0,
+      "elapsed_seconds": 4.82
+    },
+    {
+      "route": "POZ-BHX",
+      "calendar_days": 123,
+      "priced_days": 32,
+      "errors": 0,
+      "elapsed_seconds": 5.0
+    },
+    {
+      "route": "BHX-POZ",
+      "calendar_days": 123,
+      "priced_days": 32,
+      "errors": 0,
+      "elapsed_seconds": 4.8
+    },
+    {
+      "route": "POZ-BOJ",
+      "calendar_days": 123,
+      "priced_days": 26,
+      "errors": 0,
+      "elapsed_seconds": 5.15
+    },
+    {
+      "route": "BOJ-POZ",
+      "calendar_days": 123,
+      "priced_days": 26,
+      "errors": 0,
+      "elapsed_seconds": 4.75
+    },
+    {
+      "route": "POZ-BRI",
+      "calendar_days": 123,
+      "priced_days": 84,
+      "errors": 0,
+      "elapsed_seconds": 5.01
+    },
+    {
+      "route": "BRI-POZ",
+      "calendar_days": 123,
+      "priced_days": 84,
+      "errors": 0,
+      "elapsed_seconds": 5.02
+    },
+    {
+      "route": "POZ-BRS",
+      "calendar_days": 123,
+      "priced_days": 32,
+      "errors": 0,
+      "elapsed_seconds": 5.0
+    },
+    {
+      "route": "BRS-POZ",
+      "calendar_days": 123,
+      "priced_days": 32,
+      "errors": 0,
+      "elapsed_seconds": 5.21
+    },
+    {
+      "route": "POZ-BVA",
+      "calendar_days": 123,
+      "priced_days": 83,
+      "errors": 0,
+      "elapsed_seconds": 4.84
+    },
+    {
+      "route": "BVA-POZ",
+      "calendar_days": 123,
+      "priced_days": 82,
+      "errors": 0,
+      "elapsed_seconds": 4.83
+    },
+    {
+      "route": "POZ-CAG",
+      "calendar_days": 123,
+      "priced_days": 81,
+      "errors": 0,
+      "elapsed_seconds": 4.97
+    },
+    {
+      "route": "CAG-POZ",
+      "calendar_days": 123,
+      "priced_days": 81,
+      "errors": 0,
+      "elapsed_seconds": 5.05
+    },
+    {
+      "route": "POZ-CFU",
+      "calendar_days": 123,
+      "priced_days": 46,
+      "errors": 0,
+      "elapsed_seconds": 4.89
+    },
+    {
+      "route": "CFU-POZ",
+      "calendar_days": 123,
+      "priced_days": 46,
+      "errors": 0,
+      "elapsed_seconds": 5.02
+    },
+    {
+      "route": "POZ-CHQ",
+      "calendar_days": 123,
+      "priced_days": 32,
+      "errors": 0,
+      "elapsed_seconds": 4.72
+    },
+    {
+      "route": "CHQ-POZ",
+      "calendar_days": 123,
+      "priced_days": 32,
+      "errors": 0,
+      "elapsed_seconds": 4.68
+    },
+    {
+      "route": "POZ-CIA",
+      "calendar_days": 123,
+      "priced_days": 96,
+      "errors": 0,
+      "elapsed_seconds": 4.89
+    },
+    {
+      "route": "CIA-POZ",
+      "calendar_days": 123,
+      "priced_days": 96,
+      "errors": 0,
+      "elapsed_seconds": 4.89
+    },
+    {
+      "route": "POZ-CPH",
+      "calendar_days": 123,
+      "priced_days": 48,
+      "errors": 0,
+      "elapsed_seconds": 4.98
+    },
+    {
+      "route": "CPH-POZ",
+      "calendar_days": 123,
+      "priced_days": 48,
+      "errors": 0,
+      "elapsed_seconds": 5.01
+    },
+    {
+      "route": "POZ-CRL",
+      "calendar_days": 123,
+      "priced_days": 50,
+      "errors": 0,
+      "elapsed_seconds": 4.69
+    },
+    {
+      "route": "CRL-POZ",
+      "calendar_days": 123,
+      "priced_days": 49,
+      "errors": 0,
+      "elapsed_seconds": 4.84
+    },
+    {
+      "route": "POZ-DBV",
+      "calendar_days": 123,
+      "priced_days": 48,
+      "errors": 0,
+      "elapsed_seconds": 4.78
+    },
+    {
+      "route": "DBV-POZ",
+      "calendar_days": 123,
+      "priced_days": 48,
+      "errors": 0,
+      "elapsed_seconds": 4.74
+    },
+    {
+      "route": "POZ-DUB",
+      "calendar_days": 123,
+      "priced_days": 79,
+      "errors": 0,
+      "elapsed_seconds": 4.71
+    },
+    {
+      "route": "DUB-POZ",
+      "calendar_days": 123,
+      "priced_days": 80,
+      "errors": 0,
+      "elapsed_seconds": 4.73
+    },
+    {
+      "route": "POZ-EDI",
+      "calendar_days": 123,
+      "priced_days": 78,
+      "errors": 0,
+      "elapsed_seconds": 5.0
+    },
+    {
+      "route": "EDI-POZ",
+      "calendar_days": 123,
+      "priced_days": 78,
+      "errors": 0,
+      "elapsed_seconds": 4.9
+    },
+    {
+      "route": "POZ-GRO",
+      "calendar_days": 123,
+      "priced_days": 90,
+      "errors": 0,
+      "elapsed_seconds": 4.68
+    },
+    {
+      "route": "GRO-POZ",
+      "calendar_days": 123,
+      "priced_days": 90,
+      "errors": 0,
+      "elapsed_seconds": 4.68
+    },
+    {
+      "route": "POZ-LBA",
+      "calendar_days": 123,
+      "priced_days": 48,
+      "errors": 0,
+      "elapsed_seconds": 4.83
+    },
+    {
+      "route": "LBA-POZ",
+      "calendar_days": 123,
+      "priced_days": 48,
+      "errors": 0,
+      "elapsed_seconds": 4.82
+    },
+    {
+      "route": "POZ-LIS",
+      "calendar_days": 123,
+      "priced_days": 33,
+      "errors": 0,
+      "elapsed_seconds": 4.82
+    },
+    {
+      "route": "LIS-POZ",
+      "calendar_days": 123,
+      "priced_days": 33,
+      "errors": 0,
+      "elapsed_seconds": 4.76
+    },
+    {
+      "route": "POZ-LPL",
+      "calendar_days": 123,
+      "priced_days": 32,
+      "errors": 0,
+      "elapsed_seconds": 4.81
+    },
+    {
+      "route": "LPL-POZ",
+      "calendar_days": 123,
+      "priced_days": 32,
+      "errors": 0,
+      "elapsed_seconds": 4.78
+    },
+    {
+      "route": "POZ-MAN",
+      "calendar_days": 123,
+      "priced_days": 35,
+      "errors": 0,
+      "elapsed_seconds": 5.59
+    },
+    {
+      "route": "MAN-POZ",
+      "calendar_days": 123,
+      "priced_days": 35,
+      "errors": 0,
+      "elapsed_seconds": 4.8
+    },
+    {
+      "route": "POZ-MLA",
+      "calendar_days": 123,
+      "priced_days": 96,
+      "errors": 0,
+      "elapsed_seconds": 4.68
+    },
+    {
+      "route": "MLA-POZ",
+      "calendar_days": 123,
+      "priced_days": 96,
+      "errors": 0,
+      "elapsed_seconds": 4.66
+    },
+    {
+      "route": "POZ-PFO",
+      "calendar_days": 123,
+      "priced_days": 32,
+      "errors": 0,
+      "elapsed_seconds": 4.9
+    },
+    {
+      "route": "PFO-POZ",
+      "calendar_days": 123,
+      "priced_days": 32,
+      "errors": 0,
+      "elapsed_seconds": 5.67
+    },
+    {
+      "route": "POZ-PMI",
+      "calendar_days": 123,
+      "priced_days": 77,
+      "errors": 0,
+      "elapsed_seconds": 4.88
+    },
+    {
+      "route": "PMI-POZ",
+      "calendar_days": 123,
+      "priced_days": 77,
+      "errors": 0,
+      "elapsed_seconds": 5.05
+    },
+    {
+      "route": "POZ-PMO",
+      "calendar_days": 123,
+      "priced_days": 48,
+      "errors": 0,
+      "elapsed_seconds": 4.74
+    },
+    {
+      "route": "PMO-POZ",
+      "calendar_days": 123,
+      "priced_days": 48,
+      "errors": 0,
+      "elapsed_seconds": 4.8
+    },
+    {
+      "route": "POZ-PRG",
+      "calendar_days": 123,
+      "priced_days": 48,
+      "errors": 0,
+      "elapsed_seconds": 4.8
+    },
+    {
+      "route": "PRG-POZ",
+      "calendar_days": 123,
+      "priced_days": 48,
+      "errors": 0,
+      "elapsed_seconds": 4.87
+    },
+    {
+      "route": "POZ-PUY",
+      "calendar_days": 123,
+      "priced_days": 52,
+      "errors": 0,
+      "elapsed_seconds": 4.74
+    },
+    {
+      "route": "PUY-POZ",
+      "calendar_days": 123,
+      "priced_days": 52,
+      "errors": 0,
+      "elapsed_seconds": 4.7
+    },
+    {
+      "route": "POZ-SKG",
+      "calendar_days": 123,
+      "priced_days": 35,
+      "errors": 0,
+      "elapsed_seconds": 4.68
+    },
+    {
+      "route": "SKG-POZ",
+      "calendar_days": 123,
+      "priced_days": 35,
+      "errors": 0,
+      "elapsed_seconds": 4.84
+    },
+    {
+      "route": "POZ-SNN",
+      "calendar_days": 123,
+      "priced_days": 32,
+      "errors": 0,
+      "elapsed_seconds": 4.92
+    },
+    {
+      "route": "SNN-POZ",
+      "calendar_days": 123,
+      "priced_days": 32,
+      "errors": 0,
+      "elapsed_seconds": 4.87
+    },
+    {
+      "route": "POZ-STN",
       "calendar_days": 123,
       "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.24
+      "elapsed_seconds": 5.03
+    },
+    {
+      "route": "STN-POZ",
+      "calendar_days": 123,
+      "priced_days": 113,
+      "errors": 0,
+      "elapsed_seconds": 4.69
+    },
+    {
+      "route": "POZ-TGD",
+      "calendar_days": 123,
+      "priced_days": 32,
+      "errors": 0,
+      "elapsed_seconds": 4.78
+    },
+    {
+      "route": "TGD-POZ",
+      "calendar_days": 123,
+      "priced_days": 32,
+      "errors": 0,
+      "elapsed_seconds": 9.38
+    },
+    {
+      "route": "POZ-TIA",
+      "calendar_days": 123,
+      "priced_days": 32,
+      "errors": 0,
+      "elapsed_seconds": 4.98
+    },
+    {
+      "route": "TIA-POZ",
+      "calendar_days": 123,
+      "priced_days": 33,
+      "errors": 0,
+      "elapsed_seconds": 4.98
+    },
+    {
+      "route": "POZ-TRF",
+      "calendar_days": 123,
+      "priced_days": 96,
+      "errors": 0,
+      "elapsed_seconds": 5.08
+    },
+    {
+      "route": "TRF-POZ",
+      "calendar_days": 123,
+      "priced_days": 96,
+      "errors": 0,
+      "elapsed_seconds": 4.7
+    },
+    {
+      "route": "POZ-TSF",
+      "calendar_days": 123,
+      "priced_days": 49,
+      "errors": 0,
+      "elapsed_seconds": 4.86
+    },
+    {
+      "route": "TSF-POZ",
+      "calendar_days": 123,
+      "priced_days": 49,
+      "errors": 0,
+      "elapsed_seconds": 4.82
+    },
+    {
+      "route": "POZ-VLC",
+      "calendar_days": 123,
+      "priced_days": 32,
+      "errors": 0,
+      "elapsed_seconds": 4.74
+    },
+    {
+      "route": "VLC-POZ",
+      "calendar_days": 123,
+      "priced_days": 32,
+      "errors": 0,
+      "elapsed_seconds": 5.1
+    },
+    {
+      "route": "POZ-ZAD",
+      "calendar_days": 123,
+      "priced_days": 112,
+      "errors": 0,
+      "elapsed_seconds": 4.86
     },
     {
       "route": "ZAD-POZ",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.89
     },
     {
       "route": "KTW-AAR",
       "calendar_days": 123,
       "priced_days": 26,
       "errors": 0,
-      "elapsed_seconds": 5.25
+      "elapsed_seconds": 4.9
     },
     {
       "route": "AAR-KTW",
       "calendar_days": 123,
       "priced_days": 26,
       "errors": 0,
-      "elapsed_seconds": 5.04
+      "elapsed_seconds": 4.89
     },
     {
       "route": "KTW-AGP",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.39
+      "elapsed_seconds": 4.85
     },
     {
       "route": "AGP-KTW",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.55
+      "elapsed_seconds": 4.8
     },
     {
       "route": "KTW-AHO",
       "calendar_days": 123,
-      "priced_days": 87,
+      "priced_days": 86,
       "errors": 0,
-      "elapsed_seconds": 5.11
+      "elapsed_seconds": 5.03
     },
     {
       "route": "AHO-KTW",
       "calendar_days": 123,
       "priced_days": 87,
       "errors": 0,
-      "elapsed_seconds": 4.98
+      "elapsed_seconds": 4.91
     },
     {
       "route": "KTW-ALC",
       "calendar_days": 123,
       "priced_days": 81,
       "errors": 0,
-      "elapsed_seconds": 5.1
+      "elapsed_seconds": 4.88
     },
     {
       "route": "ALC-KTW",
       "calendar_days": 123,
       "priced_days": 81,
       "errors": 0,
-      "elapsed_seconds": 5.07
+      "elapsed_seconds": 4.69
     },
     {
       "route": "KTW-ATH",
       "calendar_days": 123,
       "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.85
     },
     {
       "route": "ATH-KTW",
       "calendar_days": 123,
       "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.73
     },
     {
       "route": "KTW-BGY",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 4.97
+      "elapsed_seconds": 5.34
     },
     {
       "route": "BGY-KTW",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.09
+      "elapsed_seconds": 5.13
     },
     {
       "route": "KTW-BRI",
       "calendar_days": 123,
-      "priced_days": 88,
+      "priced_days": 87,
       "errors": 0,
-      "elapsed_seconds": 5.2
+      "elapsed_seconds": 4.7
     },
     {
       "route": "BRI-KTW",
       "calendar_days": 123,
-      "priced_days": 88,
+      "priced_days": 87,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.68
     },
     {
       "route": "KTW-BUD",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.64
     },
     {
       "route": "BUD-KTW",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 4.97
+      "elapsed_seconds": 4.88
     },
     {
       "route": "KTW-CRL",
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.79
     },
     {
       "route": "CRL-KTW",
@@ -2831,446 +2831,446 @@
       "calendar_days": 123,
       "priced_days": 80,
       "errors": 0,
-      "elapsed_seconds": 5.07
+      "elapsed_seconds": 5.04
     },
     {
       "route": "CTA-KTW",
       "calendar_days": 123,
-      "priced_days": 82,
+      "priced_days": 80,
       "errors": 0,
-      "elapsed_seconds": 5.38
+      "elapsed_seconds": 4.77
     },
     {
       "route": "KTW-DBV",
       "calendar_days": 123,
-      "priced_days": 49,
+      "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.08
+      "elapsed_seconds": 4.69
     },
     {
       "route": "DBV-KTW",
       "calendar_days": 123,
-      "priced_days": 49,
+      "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 4.97
+      "elapsed_seconds": 4.78
     },
     {
       "route": "KTW-DUB",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.97
     },
     {
       "route": "DUB-KTW",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.1
+      "elapsed_seconds": 4.85
     },
     {
       "route": "KTW-FCO",
       "calendar_days": 123,
-      "priced_days": 55,
+      "priced_days": 54,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.72
     },
     {
       "route": "FCO-KTW",
       "calendar_days": 123,
-      "priced_days": 55,
+      "priced_days": 54,
       "errors": 0,
-      "elapsed_seconds": 5.47
+      "elapsed_seconds": 4.81
     },
     {
       "route": "KTW-GRO",
       "calendar_days": 123,
       "priced_days": 0,
       "errors": 0,
-      "elapsed_seconds": 5.19
+      "elapsed_seconds": 4.85
     },
     {
       "route": "GRO-KTW",
       "calendar_days": 123,
       "priced_days": 0,
       "errors": 0,
-      "elapsed_seconds": 5.04
+      "elapsed_seconds": 4.88
     },
     {
       "route": "KTW-MAN",
       "calendar_days": 123,
-      "priced_days": 49,
+      "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 4.97
+      "elapsed_seconds": 5.12
     },
     {
       "route": "MAN-KTW",
       "calendar_days": 123,
-      "priced_days": 49,
+      "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.25
+      "elapsed_seconds": 4.82
     },
     {
       "route": "KTW-MLA",
       "calendar_days": 123,
       "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 5.03
     },
     {
       "route": "MLA-KTW",
       "calendar_days": 123,
-      "priced_days": 65,
+      "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.05
+      "elapsed_seconds": 4.99
     },
     {
       "route": "KTW-OSL",
       "calendar_days": 123,
-      "priced_days": 55,
+      "priced_days": 54,
       "errors": 0,
-      "elapsed_seconds": 5.06
+      "elapsed_seconds": 4.89
     },
     {
       "route": "OSL-KTW",
       "calendar_days": 123,
-      "priced_days": 55,
+      "priced_days": 54,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 4.87
     },
     {
       "route": "KTW-PFO",
       "calendar_days": 123,
       "priced_days": 35,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 5.16
     },
     {
       "route": "PFO-KTW",
       "calendar_days": 123,
       "priced_days": 35,
       "errors": 0,
-      "elapsed_seconds": 5.21
+      "elapsed_seconds": 5.03
     },
     {
       "route": "KTW-PUY",
       "calendar_days": 123,
       "priced_days": 53,
       "errors": 0,
-      "elapsed_seconds": 5.11
+      "elapsed_seconds": 5.14
     },
     {
       "route": "PUY-KTW",
       "calendar_days": 123,
       "priced_days": 53,
       "errors": 0,
-      "elapsed_seconds": 5.31
+      "elapsed_seconds": 4.92
     },
     {
       "route": "KTW-REG",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.25
+      "elapsed_seconds": 5.07
     },
     {
       "route": "REG-KTW",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 4.99
+      "elapsed_seconds": 4.81
     },
     {
       "route": "KTW-STN",
       "calendar_days": 123,
       "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 4.96
+      "elapsed_seconds": 5.08
     },
     {
       "route": "STN-KTW",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.3
+      "elapsed_seconds": 4.87
     },
     {
       "route": "KTW-SUF",
       "calendar_days": 123,
       "priced_days": 39,
       "errors": 0,
-      "elapsed_seconds": 5.05
+      "elapsed_seconds": 5.04
     },
     {
       "route": "SUF-KTW",
       "calendar_days": 123,
       "priced_days": 39,
       "errors": 0,
-      "elapsed_seconds": 5.25
+      "elapsed_seconds": 4.73
     },
     {
       "route": "KTW-TIA",
       "calendar_days": 123,
       "priced_days": 39,
       "errors": 0,
-      "elapsed_seconds": 5.31
+      "elapsed_seconds": 5.4
     },
     {
       "route": "TIA-KTW",
       "calendar_days": 123,
       "priced_days": 39,
       "errors": 0,
-      "elapsed_seconds": 4.97
+      "elapsed_seconds": 5.12
     },
     {
       "route": "KTW-TPS",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 4.93
     },
     {
       "route": "TPS-KTW",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 4.89
     },
     {
       "route": "KTW-TSF",
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.89
     },
     {
       "route": "TSF-KTW",
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 4.96
+      "elapsed_seconds": 4.76
     },
     {
       "route": "KTW-VAR",
       "calendar_days": 123,
       "priced_days": 65,
       "errors": 0,
-      "elapsed_seconds": 5.49
+      "elapsed_seconds": 4.71
     },
     {
       "route": "VAR-KTW",
       "calendar_days": 123,
       "priced_days": 65,
       "errors": 0,
-      "elapsed_seconds": 4.95
+      "elapsed_seconds": 4.69
     },
     {
       "route": "KTW-ZAD",
       "calendar_days": 123,
-      "priced_days": 40,
+      "priced_days": 39,
       "errors": 0,
-      "elapsed_seconds": 5.14
+      "elapsed_seconds": 4.85
     },
     {
       "route": "ZAD-KTW",
       "calendar_days": 123,
-      "priced_days": 40,
+      "priced_days": 39,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.87
     },
     {
       "route": "KRK-ABZ",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.08
+      "elapsed_seconds": 4.83
     },
     {
       "route": "ABZ-KRK",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.1
+      "elapsed_seconds": 5.15
     },
     {
       "route": "KRK-AGA",
       "calendar_days": 123,
       "priced_days": 16,
       "errors": 0,
-      "elapsed_seconds": 5.05
+      "elapsed_seconds": 4.68
     },
     {
       "route": "AGA-KRK",
       "calendar_days": 123,
       "priced_days": 16,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.66
     },
     {
       "route": "KRK-AGP",
       "calendar_days": 123,
-      "priced_days": 94,
+      "priced_days": 93,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.9
     },
     {
       "route": "AGP-KRK",
       "calendar_days": 123,
-      "priced_days": 95,
+      "priced_days": 94,
       "errors": 0,
-      "elapsed_seconds": 5.11
+      "elapsed_seconds": 5.03
     },
     {
       "route": "KRK-ALC",
       "calendar_days": 123,
       "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 4.98
+      "elapsed_seconds": 5.09
     },
     {
       "route": "ALC-KRK",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.28
+      "elapsed_seconds": 5.0
     },
     {
       "route": "KRK-AMM",
       "calendar_days": 123,
       "priced_days": 18,
       "errors": 0,
-      "elapsed_seconds": 5.07
+      "elapsed_seconds": 4.71
     },
     {
       "route": "AMM-KRK",
       "calendar_days": 123,
       "priced_days": 18,
       "errors": 0,
-      "elapsed_seconds": 5.4
+      "elapsed_seconds": 5.04
     },
     {
       "route": "KRK-AOI",
       "calendar_days": 123,
       "priced_days": 51,
       "errors": 0,
-      "elapsed_seconds": 5.31
+      "elapsed_seconds": 4.85
     },
     {
       "route": "AOI-KRK",
       "calendar_days": 123,
       "priced_days": 51,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 4.71
     },
     {
       "route": "KRK-ARN",
       "calendar_days": 123,
       "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.05
+      "elapsed_seconds": 4.91
     },
     {
       "route": "ARN-KRK",
       "calendar_days": 123,
       "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.12
+      "elapsed_seconds": 4.7
     },
     {
       "route": "KRK-ATH",
       "calendar_days": 123,
       "priced_days": 96,
       "errors": 0,
-      "elapsed_seconds": 5.2
+      "elapsed_seconds": 4.75
     },
     {
       "route": "ATH-KRK",
       "calendar_days": 123,
-      "priced_days": 97,
+      "priced_days": 96,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 4.78
     },
     {
       "route": "KRK-BBU",
       "calendar_days": 123,
-      "priced_days": 65,
+      "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.06
+      "elapsed_seconds": 4.92
     },
     {
       "route": "BBU-KRK",
       "calendar_days": 123,
-      "priced_days": 65,
+      "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 4.97
+      "elapsed_seconds": 4.87
     },
     {
       "route": "KRK-BCN",
       "calendar_days": 123,
       "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.05
+      "elapsed_seconds": 4.83
     },
     {
       "route": "BCN-KRK",
       "calendar_days": 123,
       "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.07
+      "elapsed_seconds": 4.72
     },
     {
       "route": "KRK-BFS",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.05
+      "elapsed_seconds": 4.99
     },
     {
       "route": "BFS-KRK",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.3
+      "elapsed_seconds": 4.85
     },
     {
       "route": "KRK-BGY",
       "calendar_days": 123,
-      "priced_days": 112,
+      "priced_days": 111,
       "errors": 0,
-      "elapsed_seconds": 5.09
+      "elapsed_seconds": 4.84
     },
     {
       "route": "BGY-KRK",
       "calendar_days": 123,
-      "priced_days": 113,
+      "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.06
+      "elapsed_seconds": 4.74
     },
     {
       "route": "KRK-BHX",
       "calendar_days": 123,
-      "priced_days": 113,
+      "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.27
+      "elapsed_seconds": 4.72
     },
     {
       "route": "BHX-KRK",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 4.97
+      "elapsed_seconds": 4.96
     },
     {
       "route": "KRK-BLQ",
       "calendar_days": 123,
       "priced_days": 111,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.94
     },
     {
       "route": "BLQ-KRK",
       "calendar_days": 123,
-      "priced_days": 113,
+      "priced_days": 112,
       "errors": 0,
       "elapsed_seconds": 5.03
     },
@@ -3279,903 +3279,903 @@
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.07
+      "elapsed_seconds": 4.91
     },
     {
       "route": "BOH-KRK",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.16
+      "elapsed_seconds": 4.8
     },
     {
       "route": "KRK-BOJ",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.04
+      "elapsed_seconds": 5.05
     },
     {
       "route": "BOJ-KRK",
       "calendar_days": 123,
       "priced_days": 97,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 5.19
     },
     {
       "route": "KRK-BRI",
       "calendar_days": 123,
       "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.39
+      "elapsed_seconds": 4.9
     },
     {
       "route": "BRI-KRK",
       "calendar_days": 123,
       "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.14
+      "elapsed_seconds": 4.81
     },
     {
       "route": "KRK-BRS",
       "calendar_days": 123,
       "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.07
+      "elapsed_seconds": 4.86
     },
     {
       "route": "BRS-KRK",
       "calendar_days": 123,
       "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.26
+      "elapsed_seconds": 4.88
     },
     {
       "route": "KRK-BUD",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.22
+      "elapsed_seconds": 5.06
     },
     {
       "route": "BUD-KRK",
       "calendar_days": 123,
-      "priced_days": 32,
+      "priced_days": 31,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.72
     },
     {
       "route": "KRK-BVA",
       "calendar_days": 123,
-      "priced_days": 112,
+      "priced_days": 111,
       "errors": 0,
-      "elapsed_seconds": 5.27
+      "elapsed_seconds": 4.79
     },
     {
       "route": "BVA-KRK",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 111,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.92
     },
     {
       "route": "KRK-CAG",
       "calendar_days": 123,
-      "priced_days": 89,
+      "priced_days": 87,
       "errors": 0,
-      "elapsed_seconds": 5.21
+      "elapsed_seconds": 4.86
     },
     {
       "route": "CAG-KRK",
       "calendar_days": 123,
-      "priced_days": 88,
+      "priced_days": 87,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.85
     },
     {
       "route": "KRK-CDT",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 4.99
+      "elapsed_seconds": 4.85
     },
     {
       "route": "CDT-KRK",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.23
+      "elapsed_seconds": 4.87
     },
     {
       "route": "KRK-CFU",
       "calendar_days": 123,
       "priced_days": 78,
       "errors": 0,
-      "elapsed_seconds": 5.16
+      "elapsed_seconds": 4.75
     },
     {
       "route": "CFU-KRK",
       "calendar_days": 123,
-      "priced_days": 79,
+      "priced_days": 78,
       "errors": 0,
-      "elapsed_seconds": 5.26
+      "elapsed_seconds": 4.72
     },
     {
       "route": "KRK-CHQ",
       "calendar_days": 123,
       "priced_days": 60,
       "errors": 0,
-      "elapsed_seconds": 5.28
+      "elapsed_seconds": 4.83
     },
     {
       "route": "CHQ-KRK",
       "calendar_days": 123,
-      "priced_days": 62,
+      "priced_days": 61,
       "errors": 0,
       "elapsed_seconds": 5.07
     },
     {
       "route": "KRK-CIA",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.29
+      "elapsed_seconds": 4.71
     },
     {
       "route": "CIA-KRK",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.05
+      "elapsed_seconds": 4.94
     },
     {
       "route": "KRK-CPH",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.22
+      "elapsed_seconds": 4.89
     },
     {
       "route": "CPH-KRK",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.17
+      "elapsed_seconds": 4.84
     },
     {
       "route": "KRK-CRL",
       "calendar_days": 123,
-      "priced_days": 111,
+      "priced_days": 110,
       "errors": 0,
-      "elapsed_seconds": 5.21
+      "elapsed_seconds": 4.79
     },
     {
       "route": "CRL-KRK",
       "calendar_days": 123,
       "priced_days": 110,
       "errors": 0,
-      "elapsed_seconds": 4.99
+      "elapsed_seconds": 4.86
     },
     {
       "route": "KRK-CTA",
       "calendar_days": 123,
       "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 4.91
+      "elapsed_seconds": 4.94
     },
     {
       "route": "CTA-KRK",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.09
+      "elapsed_seconds": 5.22
     },
     {
       "route": "KRK-DBV",
       "calendar_days": 123,
-      "priced_days": 69,
+      "priced_days": 68,
       "errors": 0,
-      "elapsed_seconds": 5.25
+      "elapsed_seconds": 5.03
     },
     {
       "route": "DBV-KRK",
       "calendar_days": 123,
-      "priced_days": 69,
+      "priced_days": 68,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.68
     },
     {
       "route": "KRK-DUB",
       "calendar_days": 123,
       "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.21
+      "elapsed_seconds": 5.01
     },
     {
       "route": "DUB-KRK",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 111,
       "errors": 0,
-      "elapsed_seconds": 4.98
+      "elapsed_seconds": 4.79
     },
     {
       "route": "KRK-EDI",
       "calendar_days": 123,
-      "priced_days": 113,
+      "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 4.99
+      "elapsed_seconds": 4.96
     },
     {
       "route": "EDI-KRK",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.86
     },
     {
       "route": "KRK-EIN",
       "calendar_days": 123,
-      "priced_days": 113,
+      "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.32
+      "elapsed_seconds": 4.95
     },
     {
       "route": "EIN-KRK",
       "calendar_days": 123,
-      "priced_days": 112,
+      "priced_days": 111,
       "errors": 0,
-      "elapsed_seconds": 5.04
+      "elapsed_seconds": 4.76
     },
     {
       "route": "KRK-EMA",
       "calendar_days": 123,
       "priced_days": 81,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.84
     },
     {
       "route": "EMA-KRK",
       "calendar_days": 123,
-      "priced_days": 82,
+      "priced_days": 81,
       "errors": 0,
-      "elapsed_seconds": 4.95
+      "elapsed_seconds": 4.97
     },
     {
       "route": "KRK-FAO",
       "calendar_days": 123,
-      "priced_days": 65,
+      "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.3
+      "elapsed_seconds": 4.87
     },
     {
       "route": "FAO-KRK",
       "calendar_days": 123,
-      "priced_days": 65,
+      "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.34
+      "elapsed_seconds": 4.71
     },
     {
       "route": "KRK-FMM",
       "calendar_days": 123,
       "priced_days": 63,
       "errors": 0,
-      "elapsed_seconds": 4.94
+      "elapsed_seconds": 4.88
     },
     {
       "route": "FMM-KRK",
       "calendar_days": 123,
       "priced_days": 63,
       "errors": 0,
-      "elapsed_seconds": 5.18
+      "elapsed_seconds": 4.88
     },
     {
       "route": "KRK-FUE",
       "calendar_days": 123,
       "priced_days": 16,
       "errors": 0,
-      "elapsed_seconds": 5.2
+      "elapsed_seconds": 4.93
     },
     {
       "route": "FUE-KRK",
       "calendar_days": 123,
       "priced_days": 16,
       "errors": 0,
-      "elapsed_seconds": 5.06
+      "elapsed_seconds": 4.86
     },
     {
       "route": "KRK-GLA",
       "calendar_days": 123,
       "priced_days": 65,
       "errors": 0,
-      "elapsed_seconds": 4.97
+      "elapsed_seconds": 4.86
     },
     {
       "route": "GLA-KRK",
       "calendar_days": 123,
       "priced_days": 65,
       "errors": 0,
-      "elapsed_seconds": 5.28
+      "elapsed_seconds": 4.71
     },
     {
       "route": "KRK-GOT",
       "calendar_days": 123,
-      "priced_days": 85,
+      "priced_days": 83,
       "errors": 0,
-      "elapsed_seconds": 5.07
+      "elapsed_seconds": 5.02
     },
     {
       "route": "GOT-KRK",
       "calendar_days": 123,
-      "priced_days": 85,
+      "priced_days": 83,
       "errors": 0,
-      "elapsed_seconds": 5.54
+      "elapsed_seconds": 4.75
     },
     {
       "route": "KRK-GRO",
       "calendar_days": 123,
       "priced_days": 77,
       "errors": 0,
-      "elapsed_seconds": 5.1
+      "elapsed_seconds": 4.97
     },
     {
       "route": "GRO-KRK",
       "calendar_days": 123,
       "priced_days": 77,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 4.94
     },
     {
       "route": "KRK-JTR",
       "calendar_days": 123,
       "priced_days": 40,
       "errors": 0,
-      "elapsed_seconds": 5.06
+      "elapsed_seconds": 5.0
     },
     {
       "route": "JTR-KRK",
       "calendar_days": 123,
       "priced_days": 40,
       "errors": 0,
-      "elapsed_seconds": 5.17
+      "elapsed_seconds": 4.86
     },
     {
       "route": "KRK-LBA",
       "calendar_days": 123,
-      "priced_days": 113,
+      "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.07
+      "elapsed_seconds": 4.86
     },
     {
       "route": "LBA-KRK",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.69
     },
     {
       "route": "KRK-LDE",
       "calendar_days": 123,
       "priced_days": 33,
       "errors": 0,
-      "elapsed_seconds": 5.2
+      "elapsed_seconds": 4.84
     },
     {
       "route": "LDE-KRK",
       "calendar_days": 123,
       "priced_days": 33,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.96
     },
     {
       "route": "KRK-LIS",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.05
+      "elapsed_seconds": 4.99
     },
     {
       "route": "LIS-KRK",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 4.98
+      "elapsed_seconds": 4.94
     },
     {
       "route": "KRK-LPA",
       "calendar_days": 123,
       "priced_days": 16,
       "errors": 0,
-      "elapsed_seconds": 5.04
+      "elapsed_seconds": 4.83
     },
     {
       "route": "LPA-KRK",
       "calendar_days": 123,
       "priced_days": 16,
       "errors": 0,
-      "elapsed_seconds": 5.05
+      "elapsed_seconds": 4.85
     },
     {
       "route": "KRK-LPL",
       "calendar_days": 123,
-      "priced_days": 110,
+      "priced_days": 109,
       "errors": 0,
-      "elapsed_seconds": 5.11
+      "elapsed_seconds": 4.99
     },
     {
       "route": "LPL-KRK",
       "calendar_days": 123,
-      "priced_days": 110,
+      "priced_days": 109,
       "errors": 0,
-      "elapsed_seconds": 5.05
+      "elapsed_seconds": 4.92
     },
     {
       "route": "KRK-LTN",
       "calendar_days": 123,
-      "priced_days": 113,
+      "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.99
     },
     {
       "route": "LTN-KRK",
       "calendar_days": 123,
-      "priced_days": 113,
+      "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.62
+      "elapsed_seconds": 4.78
     },
     {
       "route": "KRK-MAD",
       "calendar_days": 123,
       "priced_days": 97,
       "errors": 0,
-      "elapsed_seconds": 5.25
+      "elapsed_seconds": 4.73
     },
     {
       "route": "MAD-KRK",
       "calendar_days": 123,
       "priced_days": 97,
       "errors": 0,
-      "elapsed_seconds": 5.41
+      "elapsed_seconds": 4.89
     },
     {
       "route": "KRK-MAN",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.11
+      "elapsed_seconds": 4.8
     },
     {
       "route": "MAN-KRK",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.68
+      "elapsed_seconds": 4.72
     },
     {
       "route": "KRK-MLA",
       "calendar_days": 123,
       "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.08
+      "elapsed_seconds": 4.91
     },
     {
       "route": "MLA-KRK",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.17
+      "elapsed_seconds": 4.71
     },
     {
       "route": "KRK-MRS",
       "calendar_days": 123,
-      "priced_days": 49,
+      "priced_days": 47,
       "errors": 0,
-      "elapsed_seconds": 5.23
+      "elapsed_seconds": 5.04
     },
     {
       "route": "MRS-KRK",
       "calendar_days": 123,
-      "priced_days": 49,
+      "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.35
+      "elapsed_seconds": 4.95
     },
     {
       "route": "KRK-MXP",
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.14
+      "elapsed_seconds": 4.97
     },
     {
       "route": "MXP-KRK",
       "calendar_days": 123,
       "priced_days": 33,
       "errors": 0,
-      "elapsed_seconds": 4.95
+      "elapsed_seconds": 4.98
     },
     {
       "route": "KRK-NAP",
       "calendar_days": 123,
-      "priced_days": 49,
+      "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 4.84
     },
     {
       "route": "NAP-KRK",
       "calendar_days": 123,
-      "priced_days": 49,
+      "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.37
+      "elapsed_seconds": 5.06
     },
     {
       "route": "KRK-NCL",
       "calendar_days": 123,
-      "priced_days": 82,
+      "priced_days": 81,
       "errors": 0,
-      "elapsed_seconds": 4.95
+      "elapsed_seconds": 4.85
     },
     {
       "route": "NCL-KRK",
       "calendar_days": 123,
-      "priced_days": 82,
+      "priced_days": 81,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 5.09
     },
     {
       "route": "KRK-OLB",
       "calendar_days": 123,
-      "priced_days": 64,
+      "priced_days": 63,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.92
     },
     {
       "route": "OLB-KRK",
       "calendar_days": 123,
       "priced_days": 65,
       "errors": 0,
-      "elapsed_seconds": 4.92
+      "elapsed_seconds": 4.68
     },
     {
       "route": "KRK-OPO",
       "calendar_days": 123,
       "priced_days": 63,
       "errors": 0,
-      "elapsed_seconds": 4.99
+      "elapsed_seconds": 4.67
     },
     {
       "route": "OPO-KRK",
       "calendar_days": 123,
       "priced_days": 63,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.69
     },
     {
       "route": "KRK-PEG",
       "calendar_days": 123,
-      "priced_days": 49,
+      "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 4.99
+      "elapsed_seconds": 4.67
     },
     {
       "route": "PEG-KRK",
       "calendar_days": 123,
-      "priced_days": 49,
+      "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.13
+      "elapsed_seconds": 4.85
     },
     {
       "route": "KRK-PFO",
       "calendar_days": 123,
-      "priced_days": 40,
+      "priced_days": 38,
       "errors": 0,
-      "elapsed_seconds": 4.94
+      "elapsed_seconds": 4.77
     },
     {
       "route": "PFO-KRK",
       "calendar_days": 123,
-      "priced_days": 40,
+      "priced_days": 36,
       "errors": 0,
-      "elapsed_seconds": 5.23
+      "elapsed_seconds": 4.67
     },
     {
       "route": "KRK-PMI",
       "calendar_days": 123,
-      "priced_days": 98,
+      "priced_days": 95,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.95
     },
     {
       "route": "PMI-KRK",
       "calendar_days": 123,
-      "priced_days": 98,
+      "priced_days": 97,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.7
     },
     {
       "route": "KRK-PMO",
       "calendar_days": 123,
-      "priced_days": 62,
+      "priced_days": 61,
       "errors": 0,
-      "elapsed_seconds": 5.08
+      "elapsed_seconds": 4.97
     },
     {
       "route": "PMO-KRK",
       "calendar_days": 123,
       "priced_days": 62,
       "errors": 0,
-      "elapsed_seconds": 4.99
+      "elapsed_seconds": 4.98
     },
     {
       "route": "KRK-PRG",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 4.91
+      "elapsed_seconds": 4.9
     },
     {
       "route": "PRG-KRK",
       "calendar_days": 123,
       "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 5.33
+      "elapsed_seconds": 4.81
     },
     {
       "route": "KRK-PSA",
       "calendar_days": 123,
       "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.99
     },
     {
       "route": "PSA-KRK",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.26
+      "elapsed_seconds": 4.86
     },
     {
       "route": "KRK-PSR",
       "calendar_days": 123,
       "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.22
+      "elapsed_seconds": 5.0
     },
     {
       "route": "PSR-KRK",
       "calendar_days": 123,
       "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.69
     },
     {
       "route": "KRK-RAK",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.22
+      "elapsed_seconds": 4.84
     },
     {
       "route": "RAK-KRK",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 4.82
     },
     {
       "route": "KRK-RHO",
       "calendar_days": 123,
       "priced_days": 78,
       "errors": 0,
-      "elapsed_seconds": 4.94
+      "elapsed_seconds": 5.02
     },
     {
       "route": "RHO-KRK",
       "calendar_days": 123,
-      "priced_days": 79,
+      "priced_days": 78,
       "errors": 0,
-      "elapsed_seconds": 5.04
+      "elapsed_seconds": 4.74
     },
     {
       "route": "KRK-RIX",
       "calendar_days": 123,
-      "priced_days": 82,
+      "priced_days": 81,
       "errors": 0,
-      "elapsed_seconds": 5.24
+      "elapsed_seconds": 4.71
     },
     {
       "route": "RIX-KRK",
       "calendar_days": 123,
-      "priced_days": 65,
+      "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 4.9
     },
     {
       "route": "KRK-RMI",
       "calendar_days": 123,
-      "priced_days": 85,
+      "priced_days": 84,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.79
     },
     {
       "route": "RMI-KRK",
       "calendar_days": 123,
       "priced_days": 85,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 4.68
     },
     {
       "route": "KRK-SKG",
       "calendar_days": 123,
       "priced_days": 110,
       "errors": 0,
-      "elapsed_seconds": 4.93
+      "elapsed_seconds": 5.07
     },
     {
       "route": "SKG-KRK",
       "calendar_days": 123,
       "priced_days": 110,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 4.91
     },
     {
       "route": "KRK-SNN",
       "calendar_days": 123,
       "priced_days": 76,
       "errors": 0,
-      "elapsed_seconds": 4.99
+      "elapsed_seconds": 4.93
     },
     {
       "route": "SNN-KRK",
       "calendar_days": 123,
       "priced_days": 78,
       "errors": 0,
-      "elapsed_seconds": 5.25
+      "elapsed_seconds": 5.03
     },
     {
       "route": "KRK-SOF",
       "calendar_days": 123,
-      "priced_days": 65,
+      "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.93
     },
     {
       "route": "SOF-KRK",
       "calendar_days": 123,
-      "priced_days": 65,
+      "priced_days": 64,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 5.18
     },
     {
       "route": "KRK-STN",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 4.96
+      "elapsed_seconds": 4.81
     },
     {
       "route": "STN-KRK",
       "calendar_days": 123,
       "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.05
+      "elapsed_seconds": 4.94
     },
     {
       "route": "KRK-SUF",
       "calendar_days": 123,
       "priced_days": 65,
       "errors": 0,
-      "elapsed_seconds": 5.24
+      "elapsed_seconds": 4.89
     },
     {
       "route": "SUF-KRK",
       "calendar_days": 123,
-      "priced_days": 66,
+      "priced_days": 65,
       "errors": 0,
-      "elapsed_seconds": 5.03
+      "elapsed_seconds": 4.83
     },
     {
       "route": "KRK-SVQ",
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 4.99
+      "elapsed_seconds": 4.93
     },
     {
       "route": "SVQ-KRK",
       "calendar_days": 123,
-      "priced_days": 33,
+      "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 4.97
+      "elapsed_seconds": 4.99
     },
     {
       "route": "KRK-SZZ",
       "calendar_days": 123,
-      "priced_days": 49,
+      "priced_days": 48,
       "errors": 0,
-      "elapsed_seconds": 4.89
+      "elapsed_seconds": 4.78
     },
     {
       "route": "SZZ-KRK",
       "calendar_days": 123,
       "priced_days": 49,
       "errors": 0,
-      "elapsed_seconds": 4.99
+      "elapsed_seconds": 4.81
     },
     {
       "route": "KRK-TFS",
       "calendar_days": 123,
       "priced_days": 16,
       "errors": 0,
-      "elapsed_seconds": 5.09
+      "elapsed_seconds": 4.97
     },
     {
       "route": "TFS-KRK",
       "calendar_days": 123,
       "priced_days": 16,
       "errors": 0,
-      "elapsed_seconds": 5.04
+      "elapsed_seconds": 4.89
     },
     {
       "route": "KRK-TGD",
       "calendar_days": 123,
-      "priced_days": 97,
+      "priced_days": 96,
       "errors": 0,
-      "elapsed_seconds": 5.15
+      "elapsed_seconds": 4.79
     },
     {
       "route": "TGD-KRK",
       "calendar_days": 123,
       "priced_days": 97,
       "errors": 0,
-      "elapsed_seconds": 5.35
+      "elapsed_seconds": 5.1
     },
     {
       "route": "KRK-TIA",
       "calendar_days": 123,
       "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.52
+      "elapsed_seconds": 4.95
     },
     {
       "route": "TIA-KRK",
       "calendar_days": 123,
       "priced_days": 113,
       "errors": 0,
-      "elapsed_seconds": 5.34
+      "elapsed_seconds": 4.8
     },
     {
       "route": "KRK-TLS",
       "calendar_days": 123,
       "priced_days": 49,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 4.71
     },
     {
       "route": "TLS-KRK",
       "calendar_days": 123,
       "priced_days": 49,
       "errors": 0,
-      "elapsed_seconds": 4.96
+      "elapsed_seconds": 4.99
     },
     {
       "route": "KRK-TRF",
       "calendar_days": 123,
       "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.07
+      "elapsed_seconds": 4.85
     },
     {
       "route": "TRF-KRK",
       "calendar_days": 123,
-      "priced_days": 114,
+      "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 4.97
+      "elapsed_seconds": 4.92
     },
     {
       "route": "KRK-TRN",
       "calendar_days": 123,
       "priced_days": 32,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.82
     },
     {
       "route": "TRN-KRK",
@@ -4189,85 +4189,85 @@
       "calendar_days": 123,
       "priced_days": 49,
       "errors": 0,
-      "elapsed_seconds": 5.1
+      "elapsed_seconds": 4.91
     },
     {
       "route": "TRS-KRK",
       "calendar_days": 123,
       "priced_days": 49,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 5.05
     },
     {
       "route": "KRK-TSF",
       "calendar_days": 123,
-      "priced_days": 97,
+      "priced_days": 96,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 5.05
     },
     {
       "route": "TSF-KRK",
       "calendar_days": 123,
       "priced_days": 96,
       "errors": 0,
-      "elapsed_seconds": 4.97
+      "elapsed_seconds": 4.73
     },
     {
       "route": "KRK-VAR",
       "calendar_days": 123,
       "priced_days": 40,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.96
     },
     {
       "route": "VAR-KRK",
       "calendar_days": 123,
       "priced_days": 40,
       "errors": 0,
-      "elapsed_seconds": 5.2
+      "elapsed_seconds": 4.78
     },
     {
       "route": "KRK-VIE",
       "calendar_days": 123,
       "priced_days": 67,
       "errors": 0,
-      "elapsed_seconds": 4.97
+      "elapsed_seconds": 5.01
     },
     {
       "route": "VIE-KRK",
       "calendar_days": 123,
       "priced_days": 67,
       "errors": 0,
-      "elapsed_seconds": 5.0
+      "elapsed_seconds": 5.22
     },
     {
       "route": "KRK-VLC",
       "calendar_days": 123,
-      "priced_days": 82,
+      "priced_days": 80,
       "errors": 0,
-      "elapsed_seconds": 5.05
+      "elapsed_seconds": 4.97
     },
     {
       "route": "VLC-KRK",
       "calendar_days": 123,
-      "priced_days": 82,
+      "priced_days": 80,
       "errors": 0,
-      "elapsed_seconds": 4.93
+      "elapsed_seconds": 4.97
     },
     {
       "route": "KRK-ZAD",
       "calendar_days": 123,
-      "priced_days": 113,
+      "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.01
+      "elapsed_seconds": 4.72
     },
     {
       "route": "ZAD-KRK",
       "calendar_days": 123,
-      "priced_days": 113,
+      "priced_days": 112,
       "errors": 0,
-      "elapsed_seconds": 5.02
+      "elapsed_seconds": 4.83
     }
   ],
-  "scraped_at_utc": "2026-05-10T08:04:28Z"
+  "scraped_at_utc": "2026-05-11T09:35:04Z"
 }
