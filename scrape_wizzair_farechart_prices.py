@@ -10,8 +10,8 @@ from pathlib import Path
 from typing import Dict, Iterable, List, Tuple
 
 
-FARECHART_URL = "https://be.wizzair.com/28.8.0/Api/asset/farechart"
-WIZZ_MAP_URL = "https://be.wizzair.com/28.8.0/Api/asset/map?languageCode=pl-pl"
+FARECHART_URL = "https://be.wizzair.com/28.9.0/Api/asset/farechart"
+WIZZ_MAP_URL = "https://be.wizzair.com/28.9.0/Api/asset/map?languageCode=pl-pl"
 DEFAULT_INPUT_CSV = "data/wizzair_polish_routes.csv"
 DEFAULT_OUTPUT_CSV = "data/wizzair_farechart_prices_may_aug.csv"
 DEFAULT_SUMMARY_JSON = "data/wizzair_farechart_prices_may_aug_summary.json"
