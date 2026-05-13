@@ -2,16 +2,18 @@ import argparse
 import ast
 import csv
 import json
+import re
 import time
 import urllib.error
 import urllib.request
 from datetime import date, datetime, timedelta
 from pathlib import Path
-from typing import Dict, Iterable, List, Tuple
+from typing import Dict, Iterable, List, Optional, Tuple
 
 
-FARECHART_URL = "https://be.wizzair.com/28.9.0/Api/asset/farechart"
-WIZZ_MAP_URL = "https://be.wizzair.com/28.9.0/Api/asset/map?languageCode=pl-pl"
+# Fallback when HTML discovery fails (see discover_wizz_api_version).
+DEFAULT_WIZZ_API_VERSION = "28.9.0"
+DEFAULT_API_DISCOVERY_URL = "https://www.wizzair.com/pl-pl"
 DEFAULT_INPUT_CSV = "data/wizzair_polish_routes.csv"
 DEFAULT_OUTPUT_CSV = "data/wizzair_farechart_prices_may_aug.csv"
 DEFAULT_SUMMARY_JSON = "data/wizzair_farechart_prices_may_aug_summary.json"
@@ -39,6 +41,55 @@ CSV_FIELDNAMES = [
 
 def parse_date(value: str) -> date:
     return datetime.strptime(value, "%Y-%m-%d").date()
+
+
+def discover_wizz_api_version(
+    discovery_url: str,
+    timeout_seconds: int,
+    user_agent: str,
+) -> Optional[str]:
+    """Read apiVersion base path from Wizz web HTML (same source as the live site)."""
+    try:
+        request = urllib.request.Request(
+            discovery_url,
+            headers={
+                "User-Agent": user_agent,
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                "Accept-Language": "pl-PL,pl;q=0.9,en;q=0.8",
+            },
+        )
+        with urllib.request.urlopen(request, timeout=timeout_seconds) as response:
+            html = response.read().decode("utf-8", errors="replace")
+    except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError):
+        return None
+
+    # SSR JSON escapes slashes as \u002F; also accept plain URLs.
+    for pattern in (
+        r"be\.wizzair\.com\\u002F(\d+\.\d+\.\d+)\\u002FApi",
+        r"https://be\.wizzair\.com/(\d+\.\d+\.\d+)/Api",
+    ):
+        match = re.search(pattern, html)
+        if match:
+            return match.group(1)
+    return None
+
+
+def resolve_wizz_api_version(args: argparse.Namespace) -> str:
+    if args.api_version:
+        return args.api_version
+    discovered = discover_wizz_api_version(
+        args.api_discovery_url,
+        args.timeout_seconds,
+        args.user_agent,
+    )
+    if discovered:
+        print(f"Discovered Wizz API version {discovered} from {args.api_discovery_url}", flush=True)
+        return discovered
+    print(
+        f"Could not discover API version; using fallback {DEFAULT_WIZZ_API_VERSION}",
+        flush=True,
+    )
+    return DEFAULT_WIZZ_API_VERSION
 
 
 def read_routes(path: Path, max_routes: int) -> List[Tuple[str, str]]:
@@ -102,9 +153,9 @@ def city_from_wizz_short_name(short_name: str) -> str:
     return city
 
 
-def fetch_wizz_airport_data(timeout_seconds: int) -> Dict[str, Dict[str, str]]:
+def fetch_wizz_airport_data(map_url: str, timeout_seconds: int) -> Dict[str, Dict[str, str]]:
     try:
-        with urllib.request.urlopen(WIZZ_MAP_URL, timeout=timeout_seconds) as response:
+        with urllib.request.urlopen(map_url, timeout=timeout_seconds) as response:
             data = json.load(response)
     except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError) as exc:
         print(f"Could not fetch Wizz airport metadata: {exc}", flush=True)
@@ -123,7 +174,7 @@ def fetch_wizz_airport_data(timeout_seconds: int) -> Dict[str, Dict[str, str]]:
 
 
 def load_airport_lookup(args: argparse.Namespace) -> Dict[str, Dict[str, str]]:
-    lookup = fetch_wizz_airport_data(args.timeout_seconds)
+    lookup = fetch_wizz_airport_data(args.wizz_map_url, args.timeout_seconds)
     # Prefer the curated Polish names from data-updater.py where available.
     lookup.update(parse_airport_data_from_script(Path(args.airport_data_script)))
     return lookup
@@ -193,7 +244,7 @@ def request_farechart(
         f"{origin}/{destination}/{center_date.isoformat()}/null/{args.adult_count}/{args.child_count}/0/null"
     )
     request = urllib.request.Request(
-        FARECHART_URL,
+        args.wizz_farechart_url,
         data=json.dumps(payload).encode("utf-8"),
         headers={
             "Content-Type": "application/json;charset=UTF-8",
@@ -318,6 +369,14 @@ def run(args: argparse.Namespace) -> None:
     routes = add_return_routes(base_routes) if args.include_return_routes else base_routes
     scraped_at_utc = datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
     date_of_export = datetime.utcnow().date().isoformat()
+
+    api_version = resolve_wizz_api_version(args)
+    args.wizz_farechart_url = f"https://be.wizzair.com/{api_version}/Api/asset/farechart"
+    args.wizz_map_url = (
+        f"https://be.wizzair.com/{api_version}/Api/asset/map?languageCode=pl-pl"
+    )
+    print(f"Farechart URL: {args.wizz_farechart_url}", flush=True)
+
     airport_lookup = load_airport_lookup(args)
 
     all_rows: List[Dict] = []
@@ -358,6 +417,9 @@ def run(args: argparse.Namespace) -> None:
 
     write_csv(all_rows, Path(args.output_csv))
     summary = {
+        "wizz_api_version": api_version,
+        "wizz_farechart_url": args.wizz_farechart_url,
+        "api_discovery_url": args.api_discovery_url,
         "input_csv": args.input_csv,
         "output_csv": args.output_csv,
         "start_date": start_date.isoformat(),
@@ -394,6 +456,16 @@ def main() -> None:
     parser.add_argument("--input-csv", default=DEFAULT_INPUT_CSV)
     parser.add_argument("--output-csv", default=DEFAULT_OUTPUT_CSV)
     parser.add_argument("--summary-json", default=DEFAULT_SUMMARY_JSON)
+    parser.add_argument(
+        "--api-version",
+        default="",
+        help="be.wizzair.com path version (e.g. 28.9.0). Empty = discover from --api-discovery-url.",
+    )
+    parser.add_argument(
+        "--api-discovery-url",
+        default=DEFAULT_API_DISCOVERY_URL,
+        help="Wizz HTML page used to read embedded apiUrl (must contain apiUrl / be.wizzair.com).",
+    )
     parser.add_argument("--airport-data-script", default=DEFAULT_AIRPORT_DATA_SCRIPT)
     parser.add_argument("--start-date", default="2026-05-01")
     parser.add_argument("--end-date", default="2026-08-31")
