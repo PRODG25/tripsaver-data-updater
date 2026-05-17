@@ -35,6 +35,7 @@ class RateLimiter:
 
 # Fallback when HTML discovery fails (see discover_wizz_api_version).
 DEFAULT_WIZZ_API_VERSION = "28.9.0"
+MAX_DAY_INTERVAL = 10  # Wizz API: DayIntervalMustBeLessOrEqualTo10
 DEFAULT_API_DISCOVERY_URL = "https://www.wizzair.com/pl-pl"
 DEFAULT_INPUT_CSV = "data/wizzair_polish_routes.csv"
 DEFAULT_OUTPUT_CSV = "data/wizzair_farechart_prices_may_aug.csv"
@@ -356,11 +357,19 @@ def scrape_route(
                 break
             except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError) as exc:
                 if attempt > args.retries:
+                    error_detail = str(exc)
+                    if isinstance(exc, urllib.error.HTTPError):
+                        try:
+                            body = exc.read().decode("utf-8", errors="replace").strip()
+                            if body:
+                                error_detail = f"{exc}: {body[:300]}"
+                        except Exception:
+                            pass
                     errors.append(
                         {
                             "route": route,
                             "center_date": center_date.isoformat(),
-                            "error": str(exc),
+                            "error": error_detail,
                         }
                     )
                 else:
@@ -387,6 +396,10 @@ def run(args: argparse.Namespace) -> None:
     end_date = parse_date(args.end_date)
     if end_date < start_date:
         raise ValueError("--end-date must be on or after --start-date")
+    if args.day_interval > MAX_DAY_INTERVAL:
+        raise ValueError(
+            f"--day-interval must be <= {MAX_DAY_INTERVAL} (Wizz API rejects larger values)"
+        )
 
     base_routes = read_routes(Path(args.input_csv), args.max_routes)
     routes = add_return_routes(base_routes) if args.include_return_routes else base_routes
@@ -520,8 +533,8 @@ def main() -> None:
     parser.add_argument(
         "--day-interval",
         type=int,
-        default=14,
-        help="Farechart window radius in days; step is 2x this value between center dates.",
+        default=9,
+        help=f"Farechart window radius in days (max {MAX_DAY_INTERVAL}); step is 2x between center dates.",
     )
     parser.add_argument(
         "--workers",

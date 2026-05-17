@@ -57,7 +57,7 @@ jobs:
             --end-date "$END_DATE" \
             --max-routes "$MAX_ROUTES" \
             --include-return-routes \
-            --day-interval 14 \
+            --day-interval 10 \
             --workers 8 \
             --retries 2 \
             --retry-delay-seconds 4 \
