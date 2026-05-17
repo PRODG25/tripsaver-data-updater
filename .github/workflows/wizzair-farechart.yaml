@@ -58,10 +58,10 @@ jobs:
             --max-routes "$MAX_ROUTES" \
             --include-return-routes \
             --day-interval 10 \
-            --workers 8 \
-            --retries 2 \
-            --retry-delay-seconds 4 \
-            --delay-seconds 0.25
+            --workers 2 \
+            --retries 4 \
+            --retry-delay-seconds 6 \
+            --delay-seconds 0.6
 
       - name: Commit farechart outputs into repository
         env:

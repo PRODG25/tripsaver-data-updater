@@ -211,14 +211,44 @@ def airport_country(airport_lookup: Dict[str, Dict[str, str]], iata: str) -> str
     return airport_lookup.get(iata, {}).get("country", "")
 
 
-def center_dates_for_range(start_date: date, end_date: date, day_interval: int) -> List[date]:
+def center_dates_for_range(
+    start_date: date,
+    end_date: date,
+    day_interval: int,
+    min_center_date: Optional[date] = None,
+) -> List[date]:
+    """Center dates for farechart windows; skips past dates Wizz rejects (InvalidDate)."""
+    floor = min_center_date or date.today()
     step_days = max(1, day_interval * 2)
     current = start_date + timedelta(days=day_interval)
-    centers = []
+    while current < floor:
+        current += timedelta(days=step_days)
+    centers: List[date] = []
     while current <= end_date + timedelta(days=day_interval):
         centers.append(current)
         current += timedelta(days=step_days)
     return centers
+
+
+def read_http_error(exc: urllib.error.HTTPError) -> Tuple[int, str]:
+    try:
+        body = exc.read().decode("utf-8", errors="replace").strip()
+    except Exception:
+        body = ""
+    return exc.code, body
+
+
+def farechart_error_action(status_code: int, body: str) -> str:
+    """How to handle a farechart HTTP error: skip, retry, or fail."""
+    if status_code == 400 and "InvalidDate" in body:
+        return "skip"
+    if status_code in (429, 500, 502, 503, 504):
+        return "retry"
+    return "fail"
+
+
+def retry_backoff_seconds(base_delay: float, attempt: int) -> float:
+    return base_delay * (2 ** max(0, attempt - 1))
 
 
 def farechart_payload(
@@ -335,8 +365,13 @@ def scrape_route(
     route = f"{origin}-{destination}"
     by_date: Dict[str, Dict] = {}
     errors = []
+    min_center = getattr(args, "min_departure_date", date.today())
+    effective_start = max(start_date, min_center)
+    center_dates = center_dates_for_range(
+        start_date, end_date, args.day_interval, min_center_date=min_center
+    )
 
-    for center_date in center_dates_for_range(start_date, end_date, args.day_interval):
+    for center_date in center_dates:
         for attempt in range(1, args.retries + 2):
             if args.rate_limiter is not None:
                 args.rate_limiter.wait()
@@ -347,7 +382,7 @@ def scrape_route(
                     route,
                     origin,
                     destination,
-                    start_date,
+                    effective_start,
                     end_date,
                     scraped_at_utc,
                     date_of_export,
@@ -355,25 +390,36 @@ def scrape_route(
                 ):
                     by_date[row["departure"]] = row
                 break
-            except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError) as exc:
+            except urllib.error.HTTPError as exc:
+                status_code, body = read_http_error(exc)
+                action = farechart_error_action(status_code, body)
+                if action == "skip":
+                    break
+                if action == "retry" and attempt <= args.retries:
+                    time.sleep(retry_backoff_seconds(args.retry_delay_seconds, attempt))
+                    continue
                 if attempt > args.retries:
-                    error_detail = str(exc)
-                    if isinstance(exc, urllib.error.HTTPError):
-                        try:
-                            body = exc.read().decode("utf-8", errors="replace").strip()
-                            if body:
-                                error_detail = f"{exc}: {body[:300]}"
-                        except Exception:
-                            pass
+                    detail = f"HTTP {status_code}"
+                    if body:
+                        detail = f"{detail}: {body[:300]}"
                     errors.append(
                         {
                             "route": route,
                             "center_date": center_date.isoformat(),
-                            "error": error_detail,
+                            "error": detail,
                         }
                     )
-                else:
-                    time.sleep(args.retry_delay_seconds * attempt)
+            except (urllib.error.URLError, TimeoutError) as exc:
+                if attempt <= args.retries:
+                    time.sleep(retry_backoff_seconds(args.retry_delay_seconds, attempt))
+                    continue
+                errors.append(
+                    {
+                        "route": route,
+                        "center_date": center_date.isoformat(),
+                        "error": str(exc),
+                    }
+                )
 
     return [by_date[key] for key in sorted(by_date)], errors
 
@@ -399,6 +445,18 @@ def run(args: argparse.Namespace) -> None:
     if args.day_interval > MAX_DAY_INTERVAL:
         raise ValueError(
             f"--day-interval must be <= {MAX_DAY_INTERVAL} (Wizz API rejects larger values)"
+        )
+
+    args.min_departure_date = date.today()
+    effective_start = max(start_date, args.min_departure_date)
+    if effective_start > end_date:
+        raise ValueError(
+            f"--end-date {end_date} is before today ({args.min_departure_date}); nothing to scrape"
+        )
+    if effective_start > start_date:
+        print(
+            f"Departure window clamped to {effective_start}..{end_date} (skipped past dates)",
+            flush=True,
         )
 
     base_routes = read_routes(Path(args.input_csv), args.max_routes)
@@ -476,6 +534,7 @@ def run(args: argparse.Namespace) -> None:
         "input_csv": args.input_csv,
         "output_csv": args.output_csv,
         "start_date": start_date.isoformat(),
+        "effective_start_date": effective_start.isoformat(),
         "end_date": end_date.isoformat(),
         "include_return_routes": args.include_return_routes,
         "base_routes_requested": len(base_routes),
