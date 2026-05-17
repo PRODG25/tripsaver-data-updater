@@ -61,9 +61,11 @@ jobs:
             --end-date "$END_DATE" \
             --max-routes "$MAX_ROUTES" \
             --include-return-routes \
-            --retries 4 \
-            --retry-delay-seconds 8 \
-            --delay-seconds 1
+            --day-interval 14 \
+            --workers 8 \
+            --retries 2 \
+            --retry-delay-seconds 4 \
+            --delay-seconds 0.25
 
       - name: Upload Wizz Air raw fares
         uses: actions/upload-artifact@v4

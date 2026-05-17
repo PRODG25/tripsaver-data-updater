@@ -3,12 +3,34 @@ import ast
 import csv
 import json
 import re
+import threading
 import time
 import urllib.error
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Dict, Iterable, List, Optional, Tuple
+
+
+class RateLimiter:
+    """Thread-safe minimum spacing between farechart HTTP requests."""
+
+    def __init__(self, min_interval_seconds: float) -> None:
+        self._min_interval = max(0.0, min_interval_seconds)
+        self._lock = threading.Lock()
+        self._next_allowed = 0.0
+
+    def wait(self) -> None:
+        if self._min_interval <= 0:
+            return
+        with self._lock:
+            now = time.monotonic()
+            sleep_for = self._next_allowed - now
+            if sleep_for > 0:
+                time.sleep(sleep_for)
+                now = time.monotonic()
+            self._next_allowed = now + self._min_interval
 
 
 # Fallback when HTML discovery fails (see discover_wizz_api_version).
@@ -315,6 +337,8 @@ def scrape_route(
 
     for center_date in center_dates_for_range(start_date, end_date, args.day_interval):
         for attempt in range(1, args.retries + 2):
+            if args.rate_limiter is not None:
+                args.rate_limiter.wait()
             try:
                 payload = request_farechart(origin, destination, center_date, args)
                 for row in extract_rows(
@@ -341,7 +365,6 @@ def scrape_route(
                     )
                 else:
                     time.sleep(args.retry_delay_seconds * attempt)
-        time.sleep(args.delay_seconds)
 
     return [by_date[key] for key in sorted(by_date)], errors
 
@@ -378,15 +401,15 @@ def run(args: argparse.Namespace) -> None:
     print(f"Farechart URL: {args.wizz_farechart_url}", flush=True)
 
     airport_lookup = load_airport_lookup(args)
+    args.rate_limiter = RateLimiter(args.delay_seconds)
 
     all_rows: List[Dict] = []
     all_errors: List[Dict] = []
-    route_summaries = []
+    route_summaries: List[Optional[Dict]] = [None] * len(routes)
     started = time.perf_counter()
 
-    for index, (origin, destination) in enumerate(routes, start=1):
+    def scrape_one(index: int, origin: str, destination: str) -> Tuple[int, List[Dict], List[Dict], Dict]:
         route_started = time.perf_counter()
-        print(f"[{index}/{len(routes)}] {origin}-{destination}", flush=True)
         rows, errors = scrape_route(
             origin,
             destination,
@@ -397,23 +420,40 @@ def run(args: argparse.Namespace) -> None:
             date_of_export,
             airport_lookup,
         )
-        all_rows.extend(rows)
-        all_errors.extend(errors)
-        route_summaries.append(
-            {
-                "route": f"{origin}-{destination}",
-                "calendar_days": len(rows),
-                "priced_days": sum(1 for row in rows if row.get("price_type") == "price"),
-                "errors": len(errors),
-                "elapsed_seconds": round(time.perf_counter() - route_started, 2),
-            }
-        )
+        summary = {
+            "route": f"{origin}-{destination}",
+            "calendar_days": len(rows),
+            "priced_days": sum(1 for row in rows if row.get("price_type") == "price"),
+            "errors": len(errors),
+            "elapsed_seconds": round(time.perf_counter() - route_started, 2),
+        }
         print(
-            f"  -> {len(rows)} days, "
-            f"{sum(1 for row in rows if row.get('price_type') == 'price')} priced, "
-            f"{len(errors)} errors",
+            f"[{index}/{len(routes)}] {origin}-{destination} -> "
+            f"{len(rows)} days, {summary['priced_days']} priced, {len(errors)} errors",
             flush=True,
         )
+        return index, rows, errors, summary
+
+    if args.workers <= 1:
+        for index, (origin, destination) in enumerate(routes, start=1):
+            idx, rows, errors, summary = scrape_one(index, origin, destination)
+            all_rows.extend(rows)
+            all_errors.extend(errors)
+            route_summaries[idx - 1] = summary
+    else:
+        print(f"Scraping with {args.workers} workers", flush=True)
+        with ThreadPoolExecutor(max_workers=args.workers) as executor:
+            futures = [
+                executor.submit(scrape_one, index, origin, destination)
+                for index, (origin, destination) in enumerate(routes, start=1)
+            ]
+            for future in as_completed(futures):
+                idx, rows, errors, summary = future.result()
+                all_rows.extend(rows)
+                all_errors.extend(errors)
+                route_summaries[idx - 1] = summary
+
+    route_summaries = [summary for summary in route_summaries if summary is not None]
 
     write_csv(all_rows, Path(args.output_csv))
     summary = {
@@ -427,6 +467,9 @@ def run(args: argparse.Namespace) -> None:
         "include_return_routes": args.include_return_routes,
         "base_routes_requested": len(base_routes),
         "route_directions_requested": len(routes),
+        "workers": args.workers,
+        "delay_seconds": args.delay_seconds,
+        "day_interval": args.day_interval,
         "rows_written": len(all_rows),
         "priced_rows": sum(1 for row in all_rows if row.get("price_type") == "price"),
         "missing_airport_metadata": sorted(
@@ -474,7 +517,18 @@ def main() -> None:
     parser.add_argument("--max-routes", type=int, default=0, help="Limit base routes from input CSV; 0 means all.")
     parser.add_argument("--adult-count", type=int, default=1)
     parser.add_argument("--child-count", type=int, default=0)
-    parser.add_argument("--day-interval", type=int, default=9)
+    parser.add_argument(
+        "--day-interval",
+        type=int,
+        default=14,
+        help="Farechart window radius in days; step is 2x this value between center dates.",
+    )
+    parser.add_argument(
+        "--workers",
+        type=int,
+        default=1,
+        help="Parallel route workers (4-10 recommended in CI with --delay-seconds 0.2-0.35).",
+    )
     parser.add_argument("--wdc", action="store_true", default=False)
     parser.add_argument("--timeout-seconds", type=int, default=30)
     parser.add_argument("--retries", type=int, default=2)
