@@ -23,8 +23,8 @@ on:
         description: "Summary JSON path to save in repo"
         required: true
         default: "data/wizzair_farechart_prices_may_aug_summary.json"
-  schedule:
-    - cron: "30 5 * * *"
+  #schedule:
+  #  - cron: "30 5 * * *"
 
 jobs:
   scrape:
