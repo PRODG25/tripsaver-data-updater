@@ -23,8 +23,8 @@ on:
         description: "Summary JSON path to save in repo"
         required: true
         default: "data/ryanair_fares_may_aug_summary.json"
-  schedule:
-    - cron: "0 6 * * *"
+  #schedule:
+  #  - cron: "0 6 * * *"
 
 jobs:
   scrape:
