@@ -19,8 +19,8 @@ on:
         description: "Output directory for JSON artifacts"
         required: true
         default: "route_matrix_output_ci_production"
-  schedule:
-    - cron: "0 5 * * *"
+ # schedule:
+    #- cron: "0 5 * * *"
 
 jobs:
   scrape:
