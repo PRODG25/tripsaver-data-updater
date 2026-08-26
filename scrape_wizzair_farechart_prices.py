@@ -582,8 +582,8 @@ def main() -> None:
         help="Wizz HTML page used to read embedded apiUrl (must contain apiUrl / be.wizzair.com).",
     )
     parser.add_argument("--airport-data-script", default=DEFAULT_AIRPORT_DATA_SCRIPT)
-    parser.add_argument("--start-date", default="2026-05-01")
-    parser.add_argument("--end-date", default="2026-08-31")
+    parser.add_argument("--start-date", default="2026-09-01")
+    parser.add_argument("--end-date", default="2026-10-30")
     parser.add_argument("--include-return-routes", action="store_true", default=True)
     parser.add_argument("--no-include-return-routes", action="store_false", dest="include_return_routes")
     parser.add_argument("--max-routes", type=int, default=0, help="Limit base routes from input CSV; 0 means all.")
