@@ -6,11 +6,11 @@ on:
       start_date:
         description: "Start date (YYYY-MM-DD)"
         required: true
-        default: "2026-05-01"
+        default: "2026-09-01"
       end_date:
         description: "End date (YYYY-MM-DD)"
         required: true
-        default: "2026-08-31"
+        default: "2026-10-30"
       max_routes:
         description: "How many base routes to process per airline (0 = all)"
         required: true
