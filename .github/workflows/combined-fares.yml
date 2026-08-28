@@ -49,8 +49,8 @@ jobs:
 
       - name: Run Wizz Air fare scrape
         env:
-          START_DATE: ${{ github.event.inputs.start_date || '2026-05-01' }}
-          END_DATE: ${{ github.event.inputs.end_date || '2026-08-31' }}
+          START_DATE: ${{ github.event.inputs.start_date || '2026-09-01' }}
+          END_DATE: ${{ github.event.inputs.end_date || '2026-10-30' }}
           MAX_ROUTES: ${{ github.event.inputs.max_wizzair_routes || github.event.inputs.max_routes || '0' }}
         run: |
           python scrape_wizzair_farechart_prices.py \
@@ -90,8 +90,8 @@ jobs:
 
       - name: Run Ryanair fare scrape
         env:
-          START_DATE: ${{ github.event.inputs.start_date || '2026-05-01' }}
-          END_DATE: ${{ github.event.inputs.end_date || '2026-08-31' }}
+          START_DATE: ${{ github.event.inputs.start_date || '2026-09-01' }}
+          END_DATE: ${{ github.event.inputs.end_date || '2026-10-30' }}
           MAX_ROUTES: ${{ github.event.inputs.max_ryanair_routes || github.event.inputs.max_routes || '0' }}
         run: |
           python scrape_ryanair_fares.py \
